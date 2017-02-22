@@ -1,0 +1,35 @@
+#! /bin/sh
+
+
+if [ -z "$1" ]
+then
+  echo 'usage: lt <name>'
+  exit
+fi
+
+mkdir $1 && cd $1
+
+cat << EOT >> Makefile
+all:
+platex main.tex
+platex main.tex
+dvipdfmx main
+clean:
+rm main.aux
+rm main.dvi
+rm main.log
+EOT
+
+cat << EOT >> main.tex
+\documentclass[dvipdfmx]{jsarticle}
+\usepackage{graphicx}
+\\title{タイトル}
+\\author{学籍番号: \\\\氏名:}
+\date{\\today}
+
+\\begin{document}
+\\maketitle
+\\section{Section}
+Reportをかく気持ちが大切です
+\end{document}
+EOT
