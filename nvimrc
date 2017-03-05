@@ -10,6 +10,9 @@ call plug#begin('~/.config/nvim/plugged')
 " ---- colorscheme ----
 Plug 'joshdick/onedark.vim'
 
+" ---- dark powered ----
+Plug 'Shougo/denite.nvim'
+
 " ---- auto completion ----
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
@@ -50,6 +53,9 @@ Plug 't9md/vim-quickhl'
 
 " ---- rich replacing feature ----
 Plug 'osyo-manga/vim-over'
+
+" ---- rich interface ----
+Plug 'ryanoasis/vim-devicons'
 
 " ---- markdown ----
 Plug 'rcmdnk/vim-markdown'
@@ -144,9 +150,9 @@ nnoremap <silent>zc  : set foldlevel=0<CR>
 " plugin shortcuts
 nnoremap <silent><C-e> : NERDTreeToggle<CR>
 nnoremap <silent><C-r> : TagbarToggle<CR>
-noremap  <silent><C-x> : OverCommandLine<CR>%s/
+nnoremap <silent>fu    : Denite file_rec<CR>
+nnoremap <silent><C-x> : OverCommandLine<CR>%s/
 vnoremap tr            : <C-u>Tabularize<Space>/
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " completion
 autocmd CompleteDone *  pclose
@@ -207,20 +213,7 @@ let g:airline#extensions#tabline#left_sep = '⮀'
 let g:airline#extensions#tabline#left_alt_sep = '⮀'
 
 " nerdtree
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
+let g:NERDTreeShowHidden=1
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
-
-" neosnippet
-let g:neosnippet#snippets_directory='~/.config/nvim/plugged/neosnippet-snippets/neosnippets'
