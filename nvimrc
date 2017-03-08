@@ -181,7 +181,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 "  python config "
 " -------------- "
 
-let g:python3_host_prog = $PYENV_ROOT . '/versions/3.6.0/bin/python'
+let g:python3_host_prog = $PYENV_ROOT . '/versions/anaconda3-4.3.0/bin/python'
 
 " ------------- "
 " plugin config "
