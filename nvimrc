@@ -149,10 +149,13 @@ nnoremap <silent>zc  : set foldlevel=0<CR>
 
 " plugin shortcuts
 nnoremap <silent><C-e> : NERDTreeToggle<CR>
-nnoremap <silent><C-r> : TagbarToggle<CR>
+nnoremap <silent><C-t> : TagbarToggle<CR>
 nnoremap <silent>fu    : Denite file_rec<CR>
 nnoremap <silent><C-x> : OverCommandLine<CR>%s/
 vnoremap tr            : <C-u>Tabularize<Space>/
+
+" deoplete
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"<Paste>
 
 " completion
 autocmd CompleteDone *  pclose
