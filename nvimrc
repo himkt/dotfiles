@@ -37,7 +37,6 @@ Plug 'Raimondi/delimitMate'
 Plug 'tomtom/tcomment_vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
-Plug 'terryma/vim-multiple-cursors'
 
 " ---- syntax checker ----
 Plug 'nathanaelkane/vim-indent-guides'
@@ -126,22 +125,17 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 " rich hilighting
 map <C-i> <Plug>(quickhl-manual-this)
 map <C-m> <Plug>(quickhl-manual-reset)
- 
 
 " tab shortcuts
 nnoremap <silent> <C-n> : <C-u>tabnew<CR>
-nnoremap <silent> <C-l> gt
-nnoremap <silent> <C-h> gT
+nnoremap <silent> <C-j> gt
+nnoremap <silent> <C-k> gT
 
 " window splitting
 nnoremap <silent>> <C-w>>
 nnoremap <silent>< <C-w><
 nnoremap <silent> vp : <C-u>vs<CR>
 nnoremap <silent> sp : <C-u>sp<CR>
-
-" paste mode
-nnoremap <silent> np : <C-u>set paste<CR>
-nnoremap <silent> nn : <C-u>set nopaste<CR>
 
 " folding
 nnoremap <silent>zx  : set foldlevel=99<CR>
@@ -155,7 +149,7 @@ nnoremap <silent><C-x> : OverCommandLine<CR>%s/
 vnoremap tr            : <C-u>Tabularize<Space>/
 
 " deoplete
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"<Paste>
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " completion
 autocmd CompleteDone *  pclose
