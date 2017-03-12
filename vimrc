@@ -14,9 +14,6 @@ Plug 'joshdick/onedark.vim'
 " ---- async -----
 Plug 'Shougo/vimproc.vim', {'do' : 'make'}
 
-" ---- completion ----
-Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer'}
-
 " ---- filer ----
 Plug 'scrooloose/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
@@ -146,7 +143,6 @@ nnoremap <silent><C-e> : NERDTreeToggle<CR>
 nnoremap <silent><C-r> : TagbarToggle<CR>
 noremap  <silent><C-x> : OverCommandLine<CR>%s/
 vnoremap tr            : <C-u>Tabularize<Space>/
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " completion
 autocmd CompleteDone *  pclose
@@ -211,6 +207,3 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Clean"     : "✔︎",
     \ "Unknown"   : "?"
     \ }
-
-" youcompleteme
-let g:ycm_global_ycm_extra_conf = '~/.vim/plugged/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
