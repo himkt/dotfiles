@@ -7,7 +7,7 @@
 
 
 # editor and charset
-export EDITOR=vim
+export EDITOR=nvim
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config

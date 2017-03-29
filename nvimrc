@@ -7,6 +7,10 @@
 " dein config "
 " ----------- "
 call plug#begin('~/.config/nvim/plugged')
+
+" ---- devicons ----
+Plug 'ryanoasis/vim-devicons'
+
 " ---- colorscheme ----
 Plug 'joshdick/onedark.vim'
 
@@ -22,7 +26,7 @@ Plug 'Shougo/neosnippet-snippets'
 
 " ---- filer ----
 Plug 'scrooloose/nerdtree'
-Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 
 " ---- git interface ----
 Plug 'tpope/vim-fugitive'
@@ -52,9 +56,6 @@ Plug 't9md/vim-quickhl'
 
 " ---- rich replacing feature ----
 Plug 'osyo-manga/vim-over'
-
-" ---- rich interface ----
-Plug 'ryanoasis/vim-devicons'
 
 " ---- markdown ----
 Plug 'rcmdnk/vim-markdown'
@@ -178,7 +179,7 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 "  python config "
 " -------------- "
 
-let g:python3_host_prog = $PYENV_ROOT . '/versions/anaconda3-4.3.0/bin/python'
+let g:python3_host_prog = $PYENV_ROOT . '/shims/python'
 
 " ------------- "
 " plugin config "
@@ -214,3 +215,21 @@ let g:NERDTreeShowHidden=1
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+"vim-nerdtree-syntax-highlight
+let s:rspec_red = 'FE405F'
+let s:git_orange = 'F54D27'
+let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
+let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
+let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+
+" vim-devicons
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+
+" dir-icons
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
+let g:DevIconsDefaultFolderOpenSymbol = ''

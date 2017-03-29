@@ -14,7 +14,6 @@ brew 'zsh'
 brew 'tmux'
 brew 'wget'
 brew 'vim', args: ['with-lua', 'with-python3']
-brew 'sanemat/font/ricty', args: ['powerline', 'vim-powerline']
 cask 'google-chrome'
 cask 'iterm2'
 cask 'mactex'
