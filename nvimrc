@@ -66,6 +66,7 @@ Plug 'lervag/vimtex'
 
 " ---- c++ ----
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tweekmonster/deoplete-clang2'
 
 " ---- ruby ----
 Plug 'vim-ruby/vim-ruby'
@@ -167,9 +168,11 @@ autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\
 autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
 
 " executing script in vim
+let g:file_name = shellescape(@%, 1)
 autocmd FileType ruby nnoremap <C-p> :!ruby %:t<CR>
-autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I/opt/brew/include' shellescape(@%, 1) ' -o ' shellescape(@%, 1) . '.out' ' && ./' . shellescape(@%, 1) . '.out'<CR>
+autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I' $BREW_HOME . '/include' g:file_name '&& ./a.out && rm a.out' <CR>
 autocmd FileType python nnoremap <C-p> :exec ':term python' shellescape(@%, 1)<CR>
+autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 
 " indent guide feature
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
@@ -235,7 +238,6 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
 
-
 function! Preserve(command)
     " Save the last search.
     let search = @/
@@ -260,4 +262,4 @@ function! Autopep8()
     call Preserve(':silent %!autopep8 -')
 endfunction
 
-autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
+let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/4.0.0/lib/libclang.dylib'
