@@ -262,4 +262,9 @@ function! Autopep8()
     call Preserve(':silent %!autopep8 -')
 endfunction
 
-let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/4.0.0/lib/libclang.dylib'
+let OSTYPE = system('uname')
+if OSTYPE == "Darwin\n"
+  let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/4.0.0/lib/libclang.dylib'
+elseif OSTYPE == "Linux\n"
+  let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/4.0.0/lib/libclang.so'
+endif
