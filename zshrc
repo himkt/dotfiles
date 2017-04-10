@@ -27,6 +27,7 @@ case ${OSTYPE} in
   darwin*)
     export PATH=/usr/local/bin:$PATH
     export PATH=/opt/homebrew/bin:$PATH
+    export PATH=$HOME/.local/bin:$PATH
     export MECAB_PATH=$(brew --prefix)/lib/libmecab.dylib
     ;;
   linux*)
@@ -37,6 +38,9 @@ case ${OSTYPE} in
     export PATH=$HOME/.clang/bin:$PATH
     ;;
 esac
+
+# brew home
+export BREW_HOME=$(brew --prefix)
 
 # zstyles
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
