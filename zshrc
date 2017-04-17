@@ -12,6 +12,7 @@ export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
 export PYENV_ROOT=$HOME/.pyenv
+export BOOST_ROOT=/home/himkt/.linuxbrew/Cellar/boost/1.63.0
 
 
 # autoloads
