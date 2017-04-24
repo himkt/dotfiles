@@ -16,7 +16,6 @@ brew 'wget'
 brew 'vim', args: ['with-lua', 'with-python3']
 cask 'google-chrome'
 cask 'iterm2'
-cask 'mactex'
 cask 'mendeley-desktop'
 cask 'microsoft-office'
 cask 'slack'
