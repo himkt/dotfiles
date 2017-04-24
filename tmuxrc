@@ -8,15 +8,11 @@ set -g status-justify left
 
 ## for mac osx
 if-shell 'test "$(uname -s)" = Darwin' 'set -g default-command "reattach-to-user-namespace -l $SHELL"'
-if-shell 'test "$(uname -s)" = Darwin' 'bind-key -t vi-copy y copy-pipe "reattach-to-user-namespace pbcopy"'
-if-shell 'test "$(uname -s)" = Darwin' 'bind-key -t vi-copy Enter copy-pipe "reattach-to-user-namespace pbcopy"'
 
 ## enable mouse mode
 set-option -g mouse on
 bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
 setw -g mode-keys vi
-bind-key -t vi-copy v begin-selection
-unbind -t vi-copy Enter
 
 # color
 set -g status-fg colour231
