@@ -217,6 +217,9 @@ let g:airline#extensions#tabline#left_alt_sep = '⮀'
 " nerdtree
 let g:NERDTreeShowHidden=1
 
+" neosnippet
+let g:neosnippet#snippets_directory='~/.dotfiles/snippet'
+
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
