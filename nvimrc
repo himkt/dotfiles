@@ -135,8 +135,8 @@ nnoremap <silent> <C-j> gt
 nnoremap <silent> <C-k> gT
 
 " window splitting
-nnoremap <silent>> <C-w>>
-nnoremap <silent>< <C-w><
+" nnoremap <silent>> <C-w>>
+" nnoremap <silent>< <C-w><
 nnoremap <silent> vp : <C-u>vs<CR>
 nnoremap <silent> sp : <C-u>sp<CR>
 
