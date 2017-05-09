@@ -199,7 +199,7 @@ let g:indent_guides_guide_size = 1
 " syntastic
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++11'
+let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
 
 " airline
 let g:airline_powerline_fonts = 1
