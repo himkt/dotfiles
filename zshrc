@@ -131,7 +131,7 @@ alias lla="ls -la"
 alias vim='nvim'
 alias zmv='noglob zmv -W'
 alias bruby="bundle exec ruby"
-alias g++="g++ --std=c++11 -I$(brew --prefix)/include"
+alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
 
 function cd() {
   builtin cd $@ && ls;
