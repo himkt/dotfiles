@@ -32,6 +32,11 @@ namespace utils{
     cout << "(" << d1 << ", " << d2 << ")" << endl;
     return make_pair(0, 0);
   }
+
+  template <typename T> vector<vector<T>> empty(int n, int m) {
+    vector<vector<T>> mat(n, vector<T>(m));
+    return mat;
+  }
 }
 
 
