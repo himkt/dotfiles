@@ -137,17 +137,18 @@ alias lla="ls -la"
 alias vim='nvim'
 alias zmv='noglob zmv -W'
 alias bruby="bundle exec ruby"
-alias g++="g++ --std=c++11 -I$(brew --prefix)/include"
+alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
 
 function cd() {
   builtin cd $@ && ls;
 }
 
 
-PROMPT=`echo -e "%{${fg[magenta]}%}[ %~ ]%{${reset_color}%}
+PROMPT=`echo -e \
+"%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
+%{${fg[magenta]}%}[ %~ ]%{${reset_color}%}
 %{${fg[yellow]}%}%n@%{${fg[cyan]}%}%m%{${reset_color}%}\
 %(?,%{${fg[blue]}%},%{${fg[red]}%}) $ %{${reset_color}%}"`
-
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 

@@ -1,0 +1,30 @@
+snippet unionfind
+  class UnionFind {
+    public:
+      UnionFind(int x) {
+        par = vector<int>(x);
+        rep (i, par.size()) {
+          par[i] = i;
+        }
+      };
+
+      int  root(int);
+      void unite(int, int);
+      bool same(int, int);
+      vector<int> par;
+  };
+
+  bool UnionFind::same(int x, int y) {
+    return root(x) == root(y);
+  }
+
+  void UnionFind::unite(int x, int y) {
+    x = root(x);
+    y = root(y);
+    if (x != y) par[x] = y;
+  }
+
+  int UnionFind::root(int x) {
+    if (par[x] == x) return x;
+    else return par[x] = root(par[x]);
+  }
