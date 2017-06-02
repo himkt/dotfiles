@@ -11,13 +11,13 @@ mkdir $1 && cd $1
 
 cat << EOT >> Makefile
 all:
-platex main.tex
-platex main.tex
-dvipdfmx main
+	platex main.tex
+	platex main.tex
+	dvipdfmx main
 clean:
-rm main.aux
-rm main.dvi
-rm main.log
+	rm main.aux
+	rm main.dvi
+	rm main.log
 EOT
 
 cat << EOT >> main.tex
