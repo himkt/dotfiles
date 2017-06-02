@@ -143,15 +143,6 @@ function cd() {
   builtin cd $@ && ls;
 }
 
-
-PROMPT=`echo -e \
-"%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
-%{${fg[magenta]}%}[ %~ ]%{${reset_color}%}
-%{${fg[yellow]}%}%n@%{${fg[cyan]}%}%m%{${reset_color}%}\
-%(?,%{${fg[blue]}%},%{${fg[red]}%}) $ %{${reset_color}%}"`
-SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
-
-
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%} ± "
 GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
@@ -214,7 +205,19 @@ function git_prompt_string() {
 }
 
 # Set the right-hand prompt
-RPROMPT='$(git_prompt_string)'
+# NOTE: do not use double quotation
+PROMPT=`echo -e "\
+%{${fg[yellow]}%}[ %~ ]%{${reset_color}%}\
+%{${fg[blue]}%}@%{${reset_color}%}\
+%{${fg[cyan]}%}%m%{${reset_color}%}\
+%(?,%{${fg[blue]}%},%{${fg[red]}%}) $ %{${reset_color}%}\
+"`
+SPROMPT="\
+%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
+RPROMPT='\
+%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
+$(git_prompt_string)\
+'
 
 source $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 source $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
