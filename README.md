@@ -22,7 +22,7 @@ ap makes a template for competitive programming.
 To use, run bellow command in your terminal.
 
 ```
-$ chmod 755 ./ap
+$ chmod 755 ap
 $ ./ap a.cpp # make a.cpp in current directory
 ```
 
