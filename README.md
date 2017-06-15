@@ -23,7 +23,7 @@ To use, run bellow command in your terminal.
 
 ```
 $ chmod 755 ap
-$ ./ap a.cpp # make a.cpp in current directory
+$ ./ap [generate_file_name] # make a.cpp in current directory
 ```
 
 lt makes a template for scientific report.
