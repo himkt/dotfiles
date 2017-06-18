@@ -37,3 +37,6 @@ bind-key    c   new-window -c "#{pane_current_path}"
 set -g status-left-length 20
 set -qg status-left '#{?client_prefix,#[fg=colour254]#[bg=colour31],#[fg=colour16]#[bg=colour254]} #S #{?client_prefix,#[fg=colour31]#[bg=colour234]#[nobold],#[fg=colour254]#[bg=colour234]#[nobold]}'
 set -qg status-right '%H:%M #[fg=colour16,bg=colour254]'
+
+# tmux config
+set -g escape-time 10
