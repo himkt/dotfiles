@@ -21,7 +21,7 @@ clean:
 EOT
 
 cat << EOT >> main.tex
-\documentclass[dvipdfmx]{jsarticle}
+\documentclass[dvipdfmx, twocolumn]{jsarticle}
 \usepackage{graphicx}
 \\title{タイトル}
 \\author{学籍番号: \\\\氏名:}
