@@ -135,6 +135,7 @@ alias l="ls"
 alias la="ls -a"
 alias lla="ls -la"
 alias vim='nvim'
+alias tmux='tmux -u'
 alias zmv='noglob zmv -W'
 alias bruby="bundle exec ruby"
 alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
