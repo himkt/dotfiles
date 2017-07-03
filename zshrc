@@ -109,11 +109,20 @@ export PYTHONDONTWRITEBYTECODE=1
 export PATH=$PATH:$HOME/.dotfiles/misc
 
 
+# peco
+function peco-history-selection() {
+    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    CURSOR=$#BUFFER
+    zle reset-prompt
+}
+zle -N peco-history-selection
+
+
 # bindkeys
 bindkey -e
 bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
-
+bindkey '^R' peco-history-selection
 
 # history
 HISTFILE=$HOME/.zsh-history

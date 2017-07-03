@@ -12,6 +12,7 @@ brew 'tmux'
 brew 'tree'
 brew 'tmux'
 brew 'wget'
+brew 'peco'
 brew 'pyenv-virtualenv'
 brew 'vim', args: ['with-lua', 'with-python3']
 cask 'google-chrome'
