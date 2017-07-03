@@ -19,6 +19,8 @@ Plug 'Shougo/denite.nvim'
 
 " ---- auto completion ----
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'tweekmonster/deoplete-clang2'
+  Plug 'zchee/deoplete-jedi'
 
 " ---- snippet ----
 Plug 'Shougo/neosnippet'
@@ -27,6 +29,7 @@ Plug 'Shougo/neosnippet-snippets'
 " ---- filer ----
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " ---- git interface ----
 Plug 'tpope/vim-fugitive'
@@ -37,10 +40,11 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " ---- efective editing ----
-Plug 'Raimondi/delimitMate'
+Plug 'cohama/lexima.vim'
 Plug 'tomtom/tcomment_vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
+Plug 'osyo-manga/vim-anzu'
 
 " ---- syntax checker ----
 Plug 'nathanaelkane/vim-indent-guides'
@@ -66,14 +70,12 @@ Plug 'lervag/vimtex'
 
 " ---- c++ ----
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'tweekmonster/deoplete-clang2'
 
 " ---- ruby ----
 Plug 'vim-ruby/vim-ruby'
 
 " ---- python ----
 Plug 'hynek/vim-python-pep8-indent'
-Plug 'zchee/deoplete-jedi'
 Plug 'tell-k/vim-autopep8'
 
 call plug#end()
@@ -178,6 +180,14 @@ autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 
+" cursor
+au WinLeave * set nocursorline nocursorcolumn
+au WinEnter * set cursorline cursorcolumn
+set cursorline cursorcolumn
+hi Tb_Normal guifg=white ctermfg=white
+hi Tb_Changed guifg=green ctermfg=green
+hi Tb_VisibleNormal ctermbg=252 ctermfg=235
+hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 
 " -------------- "
 "  python config "
@@ -230,6 +240,17 @@ let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
 let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
 let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
+let g:NERDTreeIndicatorMapCustom = {
+    \ "Modified"  : "✹",
+    \ "Staged"    : "✚",
+    \ "Untracked" : "✭",
+    \ "Renamed"   : "➜",
+    \ "Unmerged"  : "═",
+    \ "Deleted"   : "✖",
+    \ "Dirty"     : "✗",
+    \ "Clean"     : "✔︎",
+    \ "Unknown"   : "?"
+    \ }
 
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
