@@ -111,7 +111,14 @@ export PATH=$PATH:$HOME/.dotfiles/misc
 
 # peco
 function peco-history-selection() {
-    BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+    case ${OSTYPE} in
+      darwin*)
+        BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
+        ;;
+      linux*)
+        BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
+        ;;
+    esac
     CURSOR=$#BUFFER
     zle reset-prompt
 }
