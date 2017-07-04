@@ -116,6 +116,7 @@ set backspace=indent,eol,start
 set clipboard+=unnamed mouse=a
 set splitbelow splitright
 set foldmethod=marker foldlevel=99
+set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
 " basic shortcuts
@@ -161,6 +162,13 @@ autocmd CompleteDone *  pclose
 autocmd FileType *      setlocal omnifunc=syntaxcomplete#Complete
 autocmd FileType python setlocal omnifunc=python3complete#Complete
 autocmd FileType ruby   setlocal omnifunc=rubycomplete#Complete
+
+" anzu
+nmap n <Plug>(anzu-n-with-echo)
+nmap N <Plug>(anzu-N-with-echo)
+nmap * <Plug>(anzu-star-with-echo)
+nmap # <Plug>(anzu-sharp-with-echo)
+nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 
 " python tab config
 autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
