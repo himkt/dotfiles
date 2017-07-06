@@ -35,6 +35,7 @@ case ${OSTYPE} in
     export PATH=$PATH:/usr/local/sbin
     export PATH=$HOME/.local/bin:$PATH
     export PATH=$HOME/.linuxbrew/bin:$PATH
+    export PATH=$HOME/.linuxbrew/sbin:$PATH
     export PATH=$HOME/.clang/bin:$PATH
     export PATH=/usr/local/cuda/bin:$PATH
     export CPATH=/usr/local/cuda/include:$CPATH
