@@ -184,6 +184,10 @@ autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I' $BREW_HOME 
 autocmd FileType python nnoremap <C-p> :exec ':term python' shellescape(@%, 1)<CR>
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 
+" templates
+autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/template.cc
+autocmd BufNewFile *.cc 0r $HOME/.dotfiles/template/template.cc
+
 " indent guide feature
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
