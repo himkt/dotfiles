@@ -16,11 +16,10 @@ Plug 'joshdick/onedark.vim'
 
 " ---- dark powered ----
 Plug 'Shougo/denite.nvim'
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
 " ---- auto completion ----
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'tweekmonster/deoplete-clang2'
-  Plug 'zchee/deoplete-jedi'
 
 " ---- snippet ----
 Plug 'Shougo/neosnippet'
@@ -30,6 +29,7 @@ Plug 'Shougo/neosnippet-snippets'
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " ---- git interface ----
 Plug 'tpope/vim-fugitive'
@@ -41,10 +41,11 @@ Plug 'vim-airline/vim-airline-themes'
 
 " ---- efective editing ----
 Plug 'cohama/lexima.vim'
-Plug 'tomtom/tcomment_vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-anzu'
+Plug 'tpope/vim-commentary'
+Plug 'bronson/vim-trailing-whitespace'
 
 " ---- syntax checker ----
 Plug 'nathanaelkane/vim-indent-guides'
@@ -65,16 +66,24 @@ Plug 'osyo-manga/vim-over'
 Plug 'rcmdnk/vim-markdown'
 Plug 'joker1007/vim-markdown-quote-syntax'
 
+" ---- languages ----
+Plug 'sheerun/vim-polyglot'
+
 " ---- latex ----
 Plug 'lervag/vimtex'
 
+" ---- lisp ----
+Plug 'vim-scripts/slimv.vim'
+
 " ---- c++ ----
 Plug 'octol/vim-cpp-enhanced-highlight'
+Plug 'tweekmonster/deoplete-clang2'
 
 " ---- ruby ----
 Plug 'vim-ruby/vim-ruby'
 
 " ---- python ----
+Plug 'zchee/deoplete-jedi'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
 
@@ -83,6 +92,18 @@ call plug#end()
 " ----------- "
 " base config "
 " ----------- "
+
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
+
+" open with the cursor in previous session
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 
 " set leader key
 let mapleader = ","
@@ -104,7 +125,7 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
 
 set fileformats=unix,mac,dos
-set number wrap visualbell
+set number wrap visualbell ruler
 set nocompatible showcmd
 set autoindent smartindent expandtab
 set numberwidth=5 shiftwidth=2 tabstop=2
@@ -148,7 +169,7 @@ nnoremap <silent>zx  : set foldlevel=99<CR>
 nnoremap <silent>zc  : set foldlevel=0<CR>
 
 " plugin shortcuts
-nnoremap <silent><C-e> : NERDTreeToggle<CR>
+nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
 nnoremap <silent><C-t> : TagbarToggle<CR>
 nnoremap <silent>fu    : Denite file_rec<CR>
 nnoremap <silent><C-x> : OverCommandLine<CR>%s/
