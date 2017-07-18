@@ -155,8 +155,8 @@ map <C-m> <Plug>(quickhl-manual-reset)
 
 " tab shortcuts
 nnoremap <silent> <C-n> : <C-u>tabnew<CR>
-nnoremap <silent> <C-j> gt
-nnoremap <silent> <C-k> gT
+nnoremap <silent> <C-h> gT
+nnoremap <silent> <C-l> gt
 
 " window splitting
 " nnoremap <silent>> <C-w>>
