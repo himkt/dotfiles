@@ -11,9 +11,6 @@ call plug#begin('~/.config/nvim/plugged')
 " ---- devicons ----
 Plug 'ryanoasis/vim-devicons'
 
-" ---- colorscheme ----
-Plug 'joshdick/onedark.vim'
-
 " ---- dark powered ----
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
@@ -40,11 +37,10 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " ---- efective editing ----
-Plug 'cohama/lexima.vim'
 Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-anzu'
-Plug 'tpope/vim-commentary'
+Plug 'tomtom/tcomment_vim'
 Plug 'bronson/vim-trailing-whitespace'
 
 " ---- syntax checker ----
@@ -115,7 +111,7 @@ filetype plugin indent on
 syntax on
 
 " color scheme
-colorscheme onedark
+colorscheme default
 
 " omni completion
 set completeopt=menuone,longest,preview
