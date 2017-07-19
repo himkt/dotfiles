@@ -41,6 +41,7 @@ Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-anzu'
 Plug 'tomtom/tcomment_vim'
+Plug 'cohama/lexima.vim'
 Plug 'bronson/vim-trailing-whitespace'
 
 " ---- syntax checker ----
