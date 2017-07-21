@@ -72,9 +72,6 @@ Plug 'sheerun/vim-polyglot'
 " ---- latex ----
 Plug 'lervag/vimtex'
 
-" ---- lisp ----
-Plug 'vim-scripts/slimv.vim'
-
 " ---- c++ ----
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tweekmonster/deoplete-clang2'
