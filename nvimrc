@@ -28,6 +28,9 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 
+" ---- colorscheme ----
+Plug 'jonathanfilip/vim-lucius'
+
 " ---- git interface ----
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -121,6 +124,7 @@ set completeopt=menuone,longest,preview
 set encoding=utf-8
 set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
 
+set background=dark
 set fileformats=unix,mac,dos
 set number wrap visualbell ruler
 set nocompatible showcmd
@@ -136,6 +140,8 @@ set splitbelow splitright
 set foldmethod=marker foldlevel=99
 set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
+
+colorscheme lucius
 
 " basic shortcuts
 map ; :
@@ -214,10 +220,6 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 au WinLeave * set nocursorline nocursorcolumn
 au WinEnter * set cursorline cursorcolumn
 set cursorline cursorcolumn
-hi Tb_Normal guifg=white ctermfg=white
-hi Tb_Changed guifg=green ctermfg=green
-hi Tb_VisibleNormal ctermbg=252 ctermfg=235
-hi Tb_VisibleChanged guifg=green ctermbg=252 ctermfg=white
 
 " -------------- "
 "  python config "
