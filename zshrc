@@ -234,8 +234,17 @@ SPROMPT="\
 %{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 RPROMPT='\
 %{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
-$(git_prompt_string)\
-'
+$(git_prompt_string)'
+
+ssh_() {
+    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+        tmux rename-window "$(echo $* | cut -d . -f 1)"
+        command ssh "$@"
+        tmux set-window-option automatic-rename "on" 1>/dev/null
+    else
+        command ssh "$@"
+    fi
+}
 
 source $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 source $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
