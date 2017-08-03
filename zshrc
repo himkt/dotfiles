@@ -236,14 +236,14 @@ RPROMPT='\
 %{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
 $(git_prompt_string)'
 
-ssh_() {
-    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-        tmux rename-window "$(echo $* | cut -d . -f 1)"
-        command ssh "$@"
-        tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-        command ssh "$@"
-    fi
+ssh() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+    tmux rename-window ${@: -1}
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command ssh "$@"
+  fi
 }
 
 source $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
