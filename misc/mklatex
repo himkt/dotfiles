@@ -24,21 +24,21 @@ os.mkdir(args.name)
 
 print('create makefile')
 with open(args.name + '/Makefile', 'w') as mkfile_fp:
-    MAKEFILE = open(ABS_DIR + '/.mklatex/Makefile').read()
+    MAKEFILE = open(ABS_DIR + '/../template/mklatex/Makefile').read()
     print(MAKEFILE, file=mkfile_fp)
 
 
 print('create main.tex')
 with open(args.name + '/main.tex', 'w') as tex_fp:
     if args.type in ['report', 'r']:
-        REPORT = open(ABS_DIR + '/.mklatex/report.tex').read()
+        REPORT = open(ABS_DIR + '/../template/mklatex/report.tex').read()
         print(REPORT, file=tex_fp)
 
     elif args.type in ['beamer', 'b']:
-        BEAMER = open(ABS_DIR + '/.mklatex/beamer.tex').read()
+        BEAMER = open(ABS_DIR + '/../template/mklatex/beamer.tex').read()
         print(BEAMER, file=tex_fp)
 
 print('create reference.bib')
 with open(args.name + '/reference.bib', 'w') as ref_fp:
-    REFERENCE = open(ABS_DIR + '/.mklatex/reference.bib').read()
+    REFERENCE = open(ABS_DIR + '/../template/mklatex/reference.bib').read()
     print(REFERENCE, file=ref_fp)

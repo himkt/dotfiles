@@ -206,8 +206,8 @@ autocmd FileType python nnoremap <C-p> :exec ':term python' shellescape(@%, 1)<C
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 
 " templates
-autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/template.cc
-autocmd BufNewFile *.cc 0r $HOME/.dotfiles/template/template.cc
+autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.cc 0r $HOME/.dotfiles/template/cc/template.cc
 
 " indent guide feature
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
