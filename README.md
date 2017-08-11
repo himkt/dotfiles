@@ -13,25 +13,23 @@ editor: vim(>=7.3, +conceal, +luajit, +python) or neovim
 git clone git@github.com:himkt/.dotfiles.git $HOME/.dotfiles && cd $HOME/.dotfiles && make
 ```
 
-### Misc
 
-.dotfiles/bin provides you some tweak features.
+### misc tools
 
-ap makes a template for competitive programming.
+misc contains some useful tools.
 
-To use, run bellow command in your terminal.
 
-```
-$ chmod 755 ap
-$ ./ap [generate_file_name] # make a.cpp in current directory
-```
+##### mklatex
 
-lt makes a template for scientific report.
+NOTE: python3 is required.
 
-Running bellow command to use.
+mklatex is the template maker for latex/beamer.
 
-```
-lt main # create a project named "main" in current directory.
+If you want to make beamer template, please install [metropolis](https://github.com/matze/mtheme).
+If you are using macOS, you can install it by TexShop.
+
+```sh
+mklatex -n [project_name] -t [latex or l or beamer or b]
 ```
 
-This project contains Makefile, main.tex, so you can compile with make command to create a pdf file.
+For more information, please run `mklatex --help`
