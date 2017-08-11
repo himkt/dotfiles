@@ -8,7 +8,7 @@ all:
 	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-	ln -s $(HOME)/.dotfiles/emacsrc.el $(HOME)/.emacs.d/init.el
+	ln -s $(HOME)/.dotfiles/init.el $(HOME)/.emacs.d/init.el
 	ln -s $(HOME)/.dotfiles/vimrc $(HOME)/.vimrc
 	ln -s $(HOME)/.dotfiles/zshrc $(HOME)/.zshrc
 	ln -s $(HOME)/.dotfiles/tmuxrc $(HOME)/.tmux.conf
