@@ -1,0 +1,44 @@
+#! env python3
+import os
+import sys
+import argparse
+
+ABS_DIR = os.path.dirname(os.path.abspath(__file__))
+
+parser = argparse.ArgumentParser()
+parser.add_argument('--name', '-n', type=str, required=True,
+                    help='name of the latex repository')
+parser.add_argument('--type', '-t', type=str, default='report',
+                    help='type of this repository [report/beamer] or [r/b]')
+
+args = parser.parse_args()
+
+if os.path.isdir(args.name):
+    sys.exit('directory {} exists.'.format(args.name))
+
+if os.path.isfile(args.name):
+    sys.exit('file {} exists.'.format(args.name))
+
+print('mkdir {}'.format(args.name))
+os.mkdir(args.name)
+
+print('create makefile')
+with open(args.name + '/Makefile', 'w') as mkfile_fp:
+    MAKEFILE = open(ABS_DIR + '/.mklatex/Makefile').read()
+    print(MAKEFILE, file=mkfile_fp)
+
+
+print('create main.tex')
+with open(args.name + '/main.tex', 'w') as tex_fp:
+    if args.type in ['report', 'r']:
+        REPORT = open(ABS_DIR + '/.mklatex/report.tex').read()
+        print(REPORT, file=tex_fp)
+
+    elif args.type in ['beamer', 'b']:
+        BEAMER = open(ABS_DIR + '/.mklatex/beamer.tex').read()
+        print(BEAMER, file=tex_fp)
+
+print('create reference.bib')
+with open(args.name + '/reference.bib', 'w') as ref_fp:
+    REFERENCE = open(ABS_DIR + '/.mklatex/reference.bib').read()
+    print(REFERENCE, file=ref_fp)
