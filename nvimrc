@@ -104,6 +104,7 @@ augroup END
 
 " set leader key
 let mapleader = ","
+let g:mapleader = ","
 
 " enable syntax support
 filetype plugin indent on
@@ -141,6 +142,12 @@ set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \
 colorscheme lucius
 
 " basic shortcuts
+
+nnoremap <leader>d "_d
+vnoremap <leader>d "_d
+nnoremap x "_x
+vnoremap x "_x
+
 map ; :
 map /  <Plug>(incsearch-forward)
 
