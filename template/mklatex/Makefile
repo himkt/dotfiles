@@ -1,9 +1,8 @@
 all:
-	platex main.tex
+	xelatex main
 	pbibtex main
-	platex main.tex
-	platex main
-	dvipdfmx main
+	xelatex main
+	xelatex main
 clean:
 	rm -f main.aux
 	rm -f main.bbl

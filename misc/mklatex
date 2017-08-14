@@ -22,21 +22,20 @@ if os.path.isfile(args.name):
 print('mkdir {}'.format(args.name))
 os.mkdir(args.name)
 
-print('create makefile')
-with open(args.name + '/Makefile', 'w') as mkfile_fp:
-    MAKEFILE = open(ABS_DIR + '/../template/mklatex/Makefile').read()
-    print(MAKEFILE, file=mkfile_fp)
-
 
 print('create main.tex')
-with open(args.name + '/main.tex', 'w') as tex_fp:
-    if args.type in ['report', 'r']:
-        REPORT = open(ABS_DIR + '/../template/mklatex/report.tex').read()
-        print(REPORT, file=tex_fp)
+if args.type in ['report', 'r']:
+    REPORT = open(ABS_DIR + '/../template/mklatex/report.tex').read()
 
-    elif args.type in ['beamer', 'b']:
-        BEAMER = open(ABS_DIR + '/../template/mklatex/beamer.tex').read()
-        print(BEAMER, file=tex_fp)
+elif args.type in ['beamer', 'b']:
+    REPORT = open(ABS_DIR + '/../template/mklatex/beamer.tex').read()
+
+MAKEFILE = open(ABS_DIR + '/../template/mklatex/Makefile').read()
+with open(args.name + '/Makefile', 'w') as makefile_fp,\
+     open(args.name + '/main.tex', 'w') as tex_fp:
+
+    print(REPORT, file=tex_fp)
+    print(MAKEFILE, file=makefile_fp)
 
 print('create reference.bib')
 with open(args.name + '/reference.bib', 'w') as ref_fp:
