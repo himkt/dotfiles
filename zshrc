@@ -4,15 +4,13 @@
 # @author = himkt
 # @create = 2015/09/08
 #
-
-
 # editor and charset
 export EDITOR=nvim
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
 export PYENV_ROOT=$HOME/.pyenv
-export BOOST_ROOT=/home/himkt/.linuxbrew/Cellar/boost/1.63.0
+# export BOOST_ROOT=/home/himkt/.linuxbrew/Cellar/boost/1.63.0
 
 
 # autoloads
@@ -44,6 +42,17 @@ case ${OSTYPE} in
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
     export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
     export LD_LIBRARY_PATH=$HOME/cuda/lib64:$LD_LIBRARY_PATH
+    export PYTHON_INCLUDE_DIRS=$HOME/.local/python/include/python2.7
+    export Boost_INCLUDE_DIR=$HOME/.local/boost/include
+    export BOOST_INCLUDE_DIR=$HOME/.local/boost/include
+    export BOOST_ROOT=$HOME/.local/boost
+    export PYTHON_INCLUDE_DIRS=$HOME/.local/python/include
+    export Boost_LIBRARIES=$HOME/.local/boost/lib
+    export BOOST_LIBRARIES=$HOME/.local/boost/lib
+    export CPLUS_INCLUDE_PATH=$HOME/.local/python/include/python2.7
+    export CPLUS_INCLUDE_PATH=$HOME/.local/boost/include:$CPLUS_INCLUDE_PATH
+    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/boost/lib
+    export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/boost/lib
     ;;
 esac
 
@@ -234,17 +243,8 @@ SPROMPT="\
 %{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 RPROMPT='\
 %{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
-$(git_prompt_string)'
-
-ssh() {
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-    tmux rename-window ${@: -1}
-    command ssh "$@"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
-  else
-    command ssh "$@"
-  fi
-}
+$(git_prompt_string)\
+'
 
 source $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 source $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
