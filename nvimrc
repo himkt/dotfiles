@@ -207,9 +207,10 @@ autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
 
 " executing script in vim
 let g:file_name = shellescape(@%, 1)
-autocmd FileType ruby nnoremap <C-p> :!ruby %:t<CR>
-autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I' $BREW_HOME . '/include' g:file_name '&& ./a.out && rm a.out' <CR>
-autocmd FileType python nnoremap <C-p> :exec ':term python' shellescape(@%, 1)<CR>
+autocmd FileType ruby nnoremap <C-p> :exec 'term ruby' %:t<CR>
+autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I' $BREW_HOME . '/include % && ./a.out && rm a.out' <CR>
+autocmd FileType python nnoremap <C-p> :exec ':term python %'<CR>
+autocmd FileType tex nnoremap <C-p> :! make <CR>
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 
 " templates
