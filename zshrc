@@ -10,7 +10,6 @@ export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 export XDG_CONFIG_HOME=$HOME/.config
 export PYENV_ROOT=$HOME/.pyenv
-# export BOOST_ROOT=/home/himkt/.linuxbrew/Cellar/boost/1.63.0
 
 
 # autoloads
@@ -35,22 +34,23 @@ case ${OSTYPE} in
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export PATH=$HOME/.linuxbrew/sbin:$PATH
     export PATH=$HOME/.clang/bin:$PATH
+
     export PATH=/usr/local/cuda/bin:$PATH
     export CPATH=/usr/local/cuda/include:$CPATH
     export CFLAGS=-I$HOME/cuda/include
     export LDFLAGS=-L$HOME/cuda/lib64
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/lib
-    export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
-    export LD_LIBRARY_PATH=$HOME/cuda/lib64:$LD_LIBRARY_PATH
-    export PYTHON_INCLUDE_DIRS=$HOME/.local/python/include/python2.7
+
     export Boost_INCLUDE_DIR=$HOME/.local/boost/include
     export BOOST_INCLUDE_DIR=$HOME/.local/boost/include
     export BOOST_ROOT=$HOME/.local/boost
-    export PYTHON_INCLUDE_DIRS=$HOME/.local/python/include
-    export Boost_LIBRARIES=$HOME/.local/boost/lib
-    export BOOST_LIBRARIES=$HOME/.local/boost/lib
-    export CPLUS_INCLUDE_PATH=$HOME/.local/python/include/python2.7
-    export CPLUS_INCLUDE_PATH=$HOME/.local/boost/include:$CPLUS_INCLUDE_PATH
+
+    export PYTHON_INCLUDE_DIRS=$HOME/.pyenv/versions/musyoku/include/python2.7
+    export Boost_LIBRARIES=$HOME/.pyenv/versions/musyoku/lib/python2.7
+    export BOOST_LIBRARIES=$HOME/.pyenv/versions/musyoku/lib/python2.7
+
+    export CPLUS_INCLUDE_PATH=$HOME/.pyenv/versions/musyoku/include/python2.7
+    export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/.local/boost/include
+
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/boost/lib
     export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/boost/lib
     ;;
