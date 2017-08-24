@@ -1,9 +1,7 @@
 #
 # .zshrc - Zsh configuration
 #
-# @author = himkt
-# @create = 2015/09/08
-#
+
 # editor and charset
 export EDITOR=nvim
 export LANG=ja_JP.UTF-8
@@ -19,6 +17,7 @@ autoload -Uz vcs_info
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 autoload -U compinit; compinit
+
 
 # generals
 case ${OSTYPE} in
@@ -53,11 +52,14 @@ case ${OSTYPE} in
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/boost/lib
     export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/boost/lib
+
     ;;
 esac
 
+
 # brew home
 export BREW_HOME=$(brew --prefix)
+
 
 # zstyles
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
@@ -141,6 +143,7 @@ bindkey '^R' history-incremental-pattern-search-backward
 bindkey '^S' history-incremental-pattern-search-forward
 bindkey '^R' peco-history-selection
 
+
 # history
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
@@ -170,6 +173,7 @@ function cd() {
   builtin cd $@ && ls;
 }
 
+
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%} ± "
 GIT_PROMPT_PREFIX="%{$fg[green]%}[%{$reset_color%}"
@@ -181,10 +185,12 @@ GIT_PROMPT_UNTRACKED="%{$fg[red]%} ● %{$reset_color%}"
 GIT_PROMPT_MODIFIED="%{$fg[yellow]%} ● %{$reset_color%}"
 GIT_PROMPT_STAGED="%{$fg[green]%} ● %{$reset_color%}"
 
+
 # Show Git branch/tag, or name-rev if on detached head
 parse_git_branch() {
   (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
+
 
 # Show different symbols as appropriate for various Git repository states
 parse_git_state() {
@@ -225,11 +231,13 @@ parse_git_state() {
 
 }
 
+
 # If inside a Git repository, print its branch and state
 function git_prompt_string() {
   local git_where="$(parse_git_branch)"
   [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
 }
+
 
 # Set the right-hand prompt
 # NOTE: do not use double quotation
