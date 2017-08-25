@@ -122,7 +122,7 @@ export PATH=$PATH:$HOME/.dotfiles/misc
 
 
 # peco
-function peco-history-selection() {
+peco-history-selection() {
     case ${OSTYPE} in
       darwin*)
         BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -169,7 +169,7 @@ alias zmv='noglob zmv -W'
 alias bruby="bundle exec ruby"
 alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
 
-function cd() {
+cd() {
   builtin cd $@ && ls;
 }
 
@@ -233,9 +233,20 @@ parse_git_state() {
 
 
 # If inside a Git repository, print its branch and state
-function git_prompt_string() {
+git_prompt_string() {
   local git_where="$(parse_git_branch)"
   [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
+}
+
+
+ssh() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+    tmux rename-window ${@: -1}
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command ssh "$@"
+  fi
 }
 
 
