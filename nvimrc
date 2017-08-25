@@ -230,7 +230,7 @@ set cursorline cursorcolumn
 "  python config "
 " -------------- "
 
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python'
+let g:python3_host_prog = $PYENV_ROOT . '/versions/neovim/bin/python'
 
 " ------------- "
 " plugin config "
