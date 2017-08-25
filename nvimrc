@@ -165,6 +165,9 @@ nnoremap <silent> <C-n> : <C-u>tabnew<CR>
 nnoremap <silent> <C-h> gT
 nnoremap <silent> <C-l> gt
 
+" make mapping
+nnoremap :make :!make
+
 " window splitting
 " nnoremap <silent>> <C-w>>
 " nnoremap <silent>< <C-w><
@@ -210,8 +213,8 @@ let g:file_name = shellescape(@%, 1)
 autocmd FileType ruby nnoremap <C-p> :exec 'term ruby' %:t<CR>
 autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I' $BREW_HOME . '/include % && ./a.out && rm a.out' <CR>
 autocmd FileType python nnoremap <C-p> :exec ':term python %'<CR>
-autocmd FileType tex nnoremap <C-p> :! make <CR>
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
+
 
 " templates
 autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
