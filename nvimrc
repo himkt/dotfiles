@@ -250,6 +250,7 @@ let g:indent_guides_guide_size = 1
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
+let g:syntastic_cpp_check_header = 1
 
 " airline
 let g:airline_powerline_fonts = 1
@@ -301,6 +302,10 @@ let g:WebDevIconsUnicodeDecorateFolderNodes = 1
 let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
+
+" denite
+call denite#custom#map('insert', "<C-n>", '<denite:move_to_next_line>')
+call denite#custom#map('insert', "<C-p>", '<denite:move_to_previous_line>')
 
 function! Preserve(command)
     " Save the last search.
