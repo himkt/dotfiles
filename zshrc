@@ -36,8 +36,6 @@ case ${OSTYPE} in
 
     export PATH=/usr/local/cuda/bin:$PATH
     export CPATH=/usr/local/cuda/include:$CPATH
-    export CFLAGS=-I$HOME/cuda/include
-    export LDFLAGS=-L$HOME/cuda/lib64
 
     export Boost_INCLUDE_DIR=$HOME/.local/boost/include
     export BOOST_INCLUDE_DIR=$HOME/.local/boost/include
