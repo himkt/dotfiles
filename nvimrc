@@ -224,11 +224,6 @@ autocmd BufNewFile *.cc 0r $HOME/.dotfiles/template/cc/template.cc
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 
-" cursor
-au WinLeave * set nocursorline nocursorcolumn
-au WinEnter * set cursorline cursorcolumn
-set cursorline cursorcolumn
-
 " -------------- "
 "  python config "
 " -------------- "
