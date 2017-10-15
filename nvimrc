@@ -145,8 +145,6 @@ set foldmethod=marker foldlevel=99
 set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
-colorscheme lucius
-
 " basic shortcuts
 
 nnoremap <leader>d "_d
