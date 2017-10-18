@@ -41,11 +41,12 @@ case ${OSTYPE} in
     export BOOST_INCLUDE_DIR=$HOME/.local/boost/include
     export BOOST_ROOT=$HOME/.local/boost
 
-    export PYTHON_INCLUDE_DIRS=$HOME/.pyenv/versions/musyoku/include/python2.7
-    export Boost_LIBRARIES=$HOME/.pyenv/versions/musyoku/lib/python2.7
-    export BOOST_LIBRARIES=$HOME/.pyenv/versions/musyoku/lib/python2.7
+    export PYTHON_INCLUDE_DIRS=$HOME/.pyenv/versions/myenv/include/python3.6m
+    export Boost_LIBRARIES=$HOME/.pyenv/versions/myenv/lib/python3.6
+    export BOOST_LIBRARIES=$HOME/.pyenv/versions/myenv/lib/python3.6
 
-    export CPLUS_INCLUDE_PATH=$HOME/.pyenv/versions/musyoku/include/python2.7
+
+    export CPLUS_INCLUDE_PATH=$HOME/.pyenv/versions/myenv/include/python3.6m
     export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/.local/boost/include
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/boost/lib
