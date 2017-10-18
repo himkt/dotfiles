@@ -30,6 +30,8 @@ Plug 'jistr/vim-nerdtree-tabs'
 
 " ---- colorscheme ----
 Plug 'jonathanfilip/vim-lucius'
+Plug 'KeitaNakamura/neodark.vim'
+Plug 'tyrannicaltoucan/vim-quantum'
 
 " ---- git interface ----
 Plug 'tpope/vim-fugitive'
@@ -113,7 +115,7 @@ filetype plugin indent on
 syntax on
 
 " color scheme
-colorscheme default
+colorscheme neodark
 
 " omni completion
 set completeopt=menuone,longest,preview
@@ -121,6 +123,10 @@ set completeopt=menuone,longest,preview
 " file encoding
 set encoding=utf-8
 set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
+
+" for japanese input
+set ttimeout
+set ttimeoutlen=50
 
 set background=dark
 set fileformats=unix,mac,dos
