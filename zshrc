@@ -117,7 +117,7 @@ eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 export PATH=$PATH:/usr/texbin
 export PYTHONDONTWRITEBYTECODE=1
-export PATH=$PATH:$HOME/.dotfiles/misc
+export PATH=$PATH:$HOME/.dotfiles/bin
 
 
 # peco
