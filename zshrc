@@ -265,3 +265,4 @@ $(git_prompt_string)\
 
 source $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 source $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
+source $HOME/.dotfiles/private/private.zsh

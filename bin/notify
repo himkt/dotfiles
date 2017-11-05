@@ -16,6 +16,6 @@ $@
 curl -X POST \
   $URL \
   --data-urlencode "payload={\"channel\": \"#himkt-channel\",\
-  \"username\": \"himkt-auto\",\
+  \"username\": \"himkt-bot\",\
   \"text\": \"`echo $@` has terminated.\n\",\
   \"icon_emoji\": \":vim:\"}" &> /dev/null
