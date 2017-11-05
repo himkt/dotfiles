@@ -35,8 +35,8 @@ case ${OSTYPE} in
     export PATH=$HOME/.linuxbrew/sbin:$PATH
     export PATH=$HOME/.clang/bin:$PATH
 
-    export PATH=/usr/local/cuda/bin:$PATH
-    export CPATH=/usr/local/cuda/include:$CPATH
+    export PATH=/usr/local/cuda-9.0/bin:$PATH
+    export CPATH=/usr/local/cuda-9.0/include:$CPATH
 
     export Boost_INCLUDE_DIR=$HOME/.local/boost/include
     export BOOST_INCLUDE_DIR=$HOME/.local/boost/include
