@@ -2,10 +2,11 @@
 # .zshrc - Zsh configuration
 #
 
-# editor and charset
-export EDITOR=nvim
+
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
+
+export EDITOR=nvim
 export XDG_CONFIG_HOME=$HOME/.config
 export PYENV_ROOT=$HOME/.pyenv
 
@@ -45,13 +46,11 @@ case ${OSTYPE} in
     export Boost_LIBRARIES=$HOME/.pyenv/versions/myenv/lib/python3.6
     export BOOST_LIBRARIES=$HOME/.pyenv/versions/myenv/lib/python3.6
 
-
     export CPLUS_INCLUDE_PATH=$HOME/.pyenv/versions/myenv/include/python3.6m
     export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/.local/boost/include
 
     export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/boost/lib
     export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/boost/lib
-
     ;;
 esac
 
