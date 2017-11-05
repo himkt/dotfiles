@@ -16,3 +16,5 @@ secret.user.fish
 elisp
 recentf
 ac-comphist.dat
+
+private.zshrc
