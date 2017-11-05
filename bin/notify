@@ -1,0 +1,21 @@
+#!/bin/bash
+
+
+echo url is $URL
+
+curl -X POST \
+  $URL \
+  --data-urlencode "payload={\"channel\": \"#himkt-channel\",\
+  \"username\": \"himkt-auto\",\
+  \"text\": \"`echo $@` has started.\",\
+  \"icon_emoji\": \":vim:\"}" &> /dev/null
+
+# execute main command
+$@
+
+curl -X POST \
+  $URL \
+  --data-urlencode "payload={\"channel\": \"#himkt-channel\",\
+  \"username\": \"himkt-auto\",\
+  \"text\": \"`echo $@` has terminated.\n\",\
+  \"icon_emoji\": \":vim:\"}" &> /dev/null
