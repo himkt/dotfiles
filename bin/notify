@@ -1,14 +1,32 @@
 #!/bin/bash
 
+HELP=`cat << EOS
+notify: execute command with slack notification
 
-echo url is $URL
+example: notify ls -la
+EOS`
+
+if [ "$1" == "" ]; then
+  echo "$HELP"  # "で囲まないと改行が正しく表示されない
+  exit 0
+fi
+
+if [ "$1" == "-h" ]; then
+  echo "$HELP"
+  exit 0
+fi
+
+if [ "$URL" == "" ]; then
+  echo "You have to specify the environment variable URL"
+  exit 1
+fi
 
 curl -X POST \
   $URL \
   --data-urlencode "payload={\"channel\": \"#himkt-channel\",\
   \"username\": \"himkt-auto\",\
   \"text\": \"`echo $@` has started.\",\
-  \"icon_emoji\": \":vim:\"}" &> /dev/null
+  \"icon_emoji\": \":vim:\"}" &> /dev/null &
 
 # execute main command
 $@
@@ -18,4 +36,4 @@ curl -X POST \
   --data-urlencode "payload={\"channel\": \"#himkt-channel\",\
   \"username\": \"himkt-bot\",\
   \"text\": \"`echo $@` has terminated.\n\",\
-  \"icon_emoji\": \":vim:\"}" &> /dev/null
+  \"icon_emoji\": \":vim:\"}" &> /dev/null &
