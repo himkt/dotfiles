@@ -8,9 +8,7 @@ ABS_DIR = os.path.dirname(os.path.abspath(__file__))
 parser = argparse.ArgumentParser()
 parser.add_argument('--name', '-n', type=str, required=True,
                     help='name of the latex repository')
-parser.add_argument('--type', '-t', type=str, default='report',
-                    help='type of this repository [report/beamer] or [r/b]')
-
+parser.add_argument('--beamer', '-b', action='store_true')
 args = parser.parse_args()
 
 if os.path.isdir(args.name):
@@ -24,11 +22,11 @@ os.mkdir(args.name)
 
 
 print('create main.tex')
-if args.type in ['report', 'r']:
-    REPORT = open(ABS_DIR + '/../template/mklatex/report.tex').read()
-
-elif args.type in ['beamer', 'b']:
+if args.beamer:
     REPORT = open(ABS_DIR + '/../template/mklatex/beamer.tex').read()
+
+else:
+    REPORT = open(ABS_DIR + '/../template/mklatex/report.tex').read()
 
 MAKEFILE = open(ABS_DIR + '/../template/mklatex/Makefile').read()
 with open(args.name + '/Makefile', 'w') as makefile_fp,\
