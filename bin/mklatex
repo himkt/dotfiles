@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('--name', '-n', type=str, required=True,
                     help='name of the latex repository')
 parser.add_argument('--beamer', '-b', action='store_true')
+parser.add_argument('--double-column', '-d', action='store_true')
 args = parser.parse_args()
 
 if os.path.isdir(args.name):
@@ -23,19 +24,31 @@ os.mkdir(args.name)
 
 print('create main.tex')
 if args.beamer:
-    REPORT = open(ABS_DIR + '/../template/mklatex/beamer.tex').read()
+    document_template_fpath = '../template/mklatex/slide.tex'
 
 else:
-    REPORT = open(ABS_DIR + '/../template/mklatex/report.tex').read()
+    if args.double_column:
+        document_template_fpath = '../template/mklatex/double.tex'
 
-MAKEFILE = open(ABS_DIR + '/../template/mklatex/Makefile').read()
-with open(args.name + '/Makefile', 'w') as makefile_fp,\
-     open(args.name + '/main.tex', 'w') as tex_fp:
+    else:
+        document_template_fpath = '../template/mklatex/single.tex'
 
-    print(REPORT, file=tex_fp)
+document_template_fpath = os.path.join(ABS_DIR, document_template_fpath)
+DOCUMENT = open(document_template_fpath).read()
+document_fpath = os.path.join(args.name, 'main.tex')
+
+template_makefile_fpath = os.path.join(ABS_DIR, '../template/mklatex/Makefile')
+MAKEFILE = open(template_makefile_fpath).read()
+makefile_fpath = os.path.join(args.name, 'Makefile')
+
+reference_template_fpath = os.path.join(ABS_DIR, '../template/mklatex/reference.bib')  # NOQA
+REFERENCE = open(reference_template_fpath).read()
+reference_fpath = os.path.join(args.name, 'reference.bib')
+
+with open(makefile_fpath, 'w') as makefile_fp,\
+     open(document_fpath, 'w') as document_fp,\
+     open(reference_fpath, 'w') as reference_fp:
+
+    print(DOCUMENT, file=document_fp)
     print(MAKEFILE, file=makefile_fp)
-
-print('create reference.bib')
-with open(args.name + '/reference.bib', 'w') as ref_fp:
-    REFERENCE = open(ABS_DIR + '/../template/mklatex/reference.bib').read()
-    print(REFERENCE, file=ref_fp)
+    print(REFERENCE, file=reference_fp)
