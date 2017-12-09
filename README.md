@@ -29,7 +29,12 @@ If you want to make beamer template, please install [metropolis](https://github.
 If you are using macOS, you can install it by TexShop.
 
 ```sh
-mklatex -n [project_name] -t [latex or l or beamer or b]
-```
+mklatex -h                                                                                                                                                12/9/17|2:54:24  ± [ ● ][master]
+usage: mklatex [-h] --name NAME [--beamer] [--double-column]
 
-For more information, please run `mklatex --help`
+optional arguments:
+  -h, --help            show this help message and exit
+  --name NAME, -n NAME  name of the latex repository
+  --beamer, -b
+  --double-column, -d
+```
