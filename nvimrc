@@ -48,6 +48,7 @@ Plug 'osyo-manga/vim-anzu'
 Plug 'tomtom/tcomment_vim'
 Plug 'cohama/lexima.vim'
 Plug 'bronson/vim-trailing-whitespace'
+Plug 'junegunn/goyo.vim'
 
 " ---- syntax checker ----
 Plug 'nathanaelkane/vim-indent-guides'
