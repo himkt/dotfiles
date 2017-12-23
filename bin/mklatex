@@ -6,11 +6,12 @@ import argparse
 ABS_DIR = os.path.dirname(os.path.abspath(__file__))
 
 parser = argparse.ArgumentParser()
-parser.add_argument('--name', '-n', type=str, required=True,
-                    help='name of the latex repository')
+parser.add_argument('name', type=str, help='name of the latex repository')
 parser.add_argument('--beamer', '-b', action='store_true')
 parser.add_argument('--double-column', '-d', action='store_true')
 args = parser.parse_args()
+if not args.name:
+    exit("You have to specify the name")
 
 if os.path.isdir(args.name):
     sys.exit('directory {} exists.'.format(args.name))

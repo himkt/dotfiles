@@ -30,11 +30,13 @@ If you are using macOS, you can install it by TexShop.
 
 ```sh
 mklatex -h                                                                                                                                                12/9/17|2:54:24  ± [ ● ][master]
-usage: mklatex [-h] --name NAME [--beamer] [--double-column]
+usage: mklatex [-h] [--beamer] [--double-column] name
+
+positional arguments:
+  name                 name of the latex repository
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --name NAME, -n NAME  name of the latex repository
+  -h, --help           show this help message and exit
   --beamer, -b
   --double-column, -d
 ```
