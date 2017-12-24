@@ -8,6 +8,9 @@ export LC_CTYPE=ja_JP.UTF-8
 
 export EDITOR=nvim
 export XDG_CONFIG_HOME=$HOME/.config
+export PATH=$PATH:/usr/texbin
+export PATH=$PATH:$HOME/.dotfiles/bin
+export PYTHONDONTWRITEBYTECODE=1
 export PYENV_ROOT=$HOME/.pyenv
 
 
@@ -33,26 +36,21 @@ case ${OSTYPE} in
     export PATH=$HOME/.local/bin:$PATH
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export PATH=$HOME/.linuxbrew/sbin:$PATH
-    export PATH=$HOME/.clang/bin:$PATH
 
-    export PATH=/usr/local/cuda-9.0/bin:$PATH
-    export CPATH=/usr/local/cuda-9.0/include:$CPATH
-
-    export Boost_INCLUDE_DIR=$HOME/.local/boost/include
-    export BOOST_INCLUDE_DIR=$HOME/.local/boost/include
-    export BOOST_ROOT=$HOME/.local/boost
-
-    export PYTHON_INCLUDE_DIRS=$HOME/.pyenv/versions/myenv/include/python3.6m
-    export Boost_LIBRARIES=$HOME/.pyenv/versions/myenv/lib/python3.6
-    export BOOST_LIBRARIES=$HOME/.pyenv/versions/myenv/lib/python3.6
-
-    export CPLUS_INCLUDE_PATH=$HOME/.pyenv/versions/myenv/include/python3.6m
-    export CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:$HOME/.local/boost/include
-
-    export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$HOME/.local/boost/lib
-    export LIBRARY_PATH=$LIBRARY_PATH:$HOME/.local/boost/lib
+    export PATH=/usr/local/cuda/bin:$PATH
+    export CPATH=/usr/local/cuda/include:$CPATH
+    export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
+    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
     ;;
 esac
+
+
+# etc
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"
+if which pyenv-virtualenv-init > /dev/null; then
+  eval "$(pyenv virtualenv-init -)"
+fi
 
 
 # brew home
@@ -109,14 +107,6 @@ if builtin command -v tmux > /dev/null; then
     fi
   fi
 fi
-
-
-# etc
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
-export PATH=$PATH:/usr/texbin
-export PYTHONDONTWRITEBYTECODE=1
-export PATH=$PATH:$HOME/.dotfiles/bin
 
 
 # peco
