@@ -253,6 +253,11 @@ RPROMPT='\
 $(git_prompt_string)\
 '
 
-source $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
-source $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
-source $HOME/.dotfiles/private/private.zsh
+
+load() {
+  [ -f $1 ] && source $1
+}
+
+load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
+load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
+load $HOME/.dotfiles/private/private.zsh
