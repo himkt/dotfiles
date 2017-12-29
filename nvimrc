@@ -81,6 +81,7 @@ Plug 'tweekmonster/deoplete-clang2'
 
 " ---- ruby ----
 Plug 'vim-ruby/vim-ruby'
+Plug 'Shougo/deoplete-rct'
 
 " ---- python ----
 Plug 'zchee/deoplete-jedi'
