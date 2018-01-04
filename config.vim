@@ -91,7 +91,7 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
 
 set fileformats=unix,mac,dos
-set number wrap visualbell
+set wrap visualbell
 set nocompatible showcmd
 set autoindent smartindent expandtab
 set numberwidth=5 shiftwidth=2 tabstop=2

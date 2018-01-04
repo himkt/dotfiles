@@ -31,6 +31,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 " ---- colorscheme ----
 Plug 'jonathanfilip/vim-lucius'
 Plug 'KeitaNakamura/neodark.vim'
+Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
 
 " ---- git interface ----
@@ -117,7 +118,7 @@ filetype plugin indent on
 syntax on
 
 " color scheme
-colorscheme neodark
+colorscheme onedark
 
 " omni completion
 set completeopt=menuone,longest,preview
@@ -132,7 +133,7 @@ set ttimeoutlen=50
 
 set background=dark
 set fileformats=unix,mac,dos
-set number wrap visualbell ruler
+set wrap visualbell ruler
 set nocompatible showcmd
 set autoindent smartindent expandtab
 set numberwidth=5 shiftwidth=2 tabstop=2
