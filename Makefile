@@ -3,8 +3,6 @@
 all:
 	mkdir -p $(HOME)/.config/nvim
 	mkdir -p $(HOME)/.emacs.d
-	curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -24,6 +22,5 @@ clean:
 	rm -f $(HOME)/.tmux.conf
 	rm -f $(HOME)/.osx.tmux.conf
 	rm -f $(HOME)/.latexmkrc
-	rm -rf $(HOME)/.vim/plugged
-	rm -rf $(HOME)/.vim/cache
+	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
