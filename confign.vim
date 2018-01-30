@@ -212,8 +212,7 @@ nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 " tag hilighting
-autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\|BUG\|HACK\)')
-autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\|BUG\|HACK\|NOTE\|INFO\|IDEA\)')
 
 " executing script in vim
 let g:file_name = shellescape(@%, 1)
