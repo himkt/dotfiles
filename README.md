@@ -40,3 +40,7 @@ optional arguments:
   --beamer, -b
   --double-column, -d
 ```
+
+### Other my favorite softwares
+
+- [cookiecutter-data-science](https://github.com/drivendata/cookiecutter-data-science): A good template engine
