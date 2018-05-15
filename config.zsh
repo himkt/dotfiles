@@ -32,6 +32,9 @@ case ${OSTYPE} in
     export MECAB_PATH=$(brew --prefix)/lib/libmecab.dylib
     ;;
   linux*)
+    # for ipython
+    export QT_QPA_PLATFORM='offscreen'
+
     export PATH=$PATH:/usr/local/sbin
     export PATH=$HOME/.local/bin:$PATH
     export PATH=$HOME/.linuxbrew/bin:$PATH
@@ -241,7 +244,7 @@ ssh() {
 # Set the right-hand prompt
 # NOTE: do not use double quotation
 PROMPT=`echo -e "\
-%{${fg[yellow]}%}[ %~ ]%{${reset_color}%}\
+%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
 %{${fg[blue]}%}@%{${reset_color}%}\
 %{${fg[cyan]}%}%m%{${reset_color}%}\
 %(?,%{${fg[blue]}%},%{${fg[red]}%}) $ %{${reset_color}%}\
@@ -249,7 +252,7 @@ PROMPT=`echo -e "\
 SPROMPT="\
 %{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 RPROMPT='\
-%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
+%{${fg[yellow]}%}[ %~ ]%{${reset_color}%}\
 $(git_prompt_string)\
 '
 
