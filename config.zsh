@@ -244,7 +244,7 @@ ssh() {
 # Set the right-hand prompt
 # NOTE: do not use double quotation
 PROMPT=`echo -e "\
-%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%L:%M:%S}%{${reset_color}%} \
+%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%K:%M:%S}%{${reset_color}%} \
 %{${fg[blue]}%}@%{${reset_color}%}\
 %{${fg[cyan]}%}%m%{${reset_color}%}\
 %(?,%{${fg[blue]}%},%{${fg[red]}%}) $ %{${reset_color}%}\
