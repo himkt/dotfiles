@@ -3,6 +3,10 @@
 #
 
 
+load() {
+  [ -f $1 ] && source $1
+}
+
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
@@ -12,6 +16,10 @@ export PATH=$PATH:/usr/texbin
 export PATH=$PATH:$HOME/.dotfiles/bin
 export PYTHONDONTWRITEBYTECODE=1
 export PYENV_ROOT=$HOME/.pyenv
+
+
+# secret
+load $HOME/.dotfiles/private/private.zsh
 
 
 # autoloads
@@ -243,24 +251,16 @@ ssh() {
 
 # Set the right-hand prompt
 # NOTE: do not use double quotation
-PROMPT=`echo -e "\
-%{$fg_bold[blue]%}%D{%m/%f/%y}|%D{%K:%M:%S}%{${reset_color}%} \
-%{${fg[blue]}%}@%{${reset_color}%}\
-%{${fg[cyan]}%}%m%{${reset_color}%}\
-%(?,%{${fg[blue]}%},%{${fg[red]}%}) $ %{${reset_color}%}\
-"`
-SPROMPT="\
-%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
-RPROMPT='\
-%{${fg[yellow]}%}[ %~ ]%{${reset_color}%}\
-$(git_prompt_string)\
-'
+PROMPT='%{${fg[yellow]}%}[ %~ ]%{${reset_color}%}'  # filepath
+PROMPT+=' @ '
+PROMPT+='%{${fg[cyan]}%}%m%{${reset_color}%}'  # hostname
+PROMPT+=' '
+PROMPT+=`echo -e "%{$fg_bold[blue]%}%D{%m/%f} -- %D{%K:%M:%S}%{${reset_color}%}"`  # timestamp
+PROMPT+=$'\n'
+PROMPT+='$ '
+RPROMPT='$(git_prompt_string)'
+SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
-
-load() {
-  [ -f $1 ] && source $1
-}
 
 load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
-load $HOME/.dotfiles/private/private.zsh
