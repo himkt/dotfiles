@@ -3,7 +3,7 @@
 #
 
 
-load() {
+function load() {
   [ -f $1 ] && source $1
 }
 
@@ -121,7 +121,7 @@ fi
 
 
 # peco
-peco-history-selection() {
+function peco-history-selection() {
     case ${OSTYPE} in
       darwin*)
         BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
@@ -133,14 +133,27 @@ peco-history-selection() {
     CURSOR=$#BUFFER
     zle reset-prompt
 }
+
+
+function peco-change-dir() {
+    selected_dir=$(find . -type d | grep -v .git | peco --prompt "[Change dir]")
+    if [ -n "$selected_dir" ]; then
+        BUFFER="cd ${selected_dir}"
+        zle accept-line
+    fi
+    zle redisplay
+}
+
+
+# register custom functions
+zle -N peco-change-dir
 zle -N peco-history-selection
 
 
 # bindkeys
 bindkey -e
-bindkey '^R' history-incremental-pattern-search-backward
-bindkey '^S' history-incremental-pattern-search-forward
 bindkey '^R' peco-history-selection
+bindkey '^K' peco-change-dir
 
 
 # history
@@ -186,13 +199,13 @@ GIT_PROMPT_STAGED="%{$fg[green]%} ● %{$reset_color%}"
 
 
 # Show Git branch/tag, or name-rev if on detached head
-parse_git_branch() {
+function parse_git_branch() {
   (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
 
 
 # Show different symbols as appropriate for various Git repository states
-parse_git_state() {
+function parse_git_state() {
 
   # Compose this value via multiple conditional appends.
   local GIT_STATE=""
@@ -232,13 +245,13 @@ parse_git_state() {
 
 
 # If inside a Git repository, print its branch and state
-git_prompt_string() {
+function git_prompt_string() {
   local git_where="$(parse_git_branch)"
   [ -n "$git_where" ] && echo "$GIT_PROMPT_SYMBOL$(parse_git_state)$GIT_PROMPT_PREFIX%{$fg[yellow]%}${git_where#(refs/heads/|tags/)}$GIT_PROMPT_SUFFIX"
 }
 
 
-ssh() {
+function ssh() {
   if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
     tmux rename-window ${@: -1}
     command ssh "$@"
