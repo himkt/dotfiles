@@ -154,6 +154,7 @@ zle -N peco-history-selection
 bindkey -e
 bindkey '^R' peco-history-selection
 bindkey '^K' peco-change-dir
+bindkey "\e[Z" reverse-menu-complete
 
 
 # history
