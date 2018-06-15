@@ -210,6 +210,7 @@ nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 
 " python tab config
 autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
+autocmd FileType cpp setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
 " tag hilighting
 autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\|BUG\|HACK\|NOTE\|INFO\|IDEA\)')
