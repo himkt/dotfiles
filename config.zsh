@@ -109,12 +109,9 @@ fi
 # check whether tmux exists
 if builtin command -v tmux > /dev/null; then
   if [ -z $TMUX ]; then
-
     # check tmux sessions
     if $(tmux has-session); then
       tmux attach
-    else
-      tmux
     fi
   fi
 fi
