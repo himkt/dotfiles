@@ -27,7 +27,7 @@ autoload -U compinit; compinit
 case ${OSTYPE} in
   darwin*)
     export PATH=/usr/local/bin:$PATH
-    export PATH=/opt/homebrew/bin:$PATH
+    export PATH=/usr/local/sbin:$PATH
     export PATH=$HOME/.local/bin:$PATH
     export MECAB_PATH=$(brew --prefix)/lib/libmecab.dylib
     ;;
