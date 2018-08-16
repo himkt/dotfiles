@@ -254,17 +254,9 @@ let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
 let g:syntastic_cpp_check_header = 1
 
 " airline
-let g:airline_powerline_fonts = 1
-let g:airline_theme='bubblegum'
-let g:airline_right_sep = '⮂'
-let g:airline_left_sep = '⮀'
-let g:airline_branch_prefix = '⭠'
-let g:airline_linecolumn_prefix = '⭡'
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline#extensions#tabline#left_sep = '⮀'
-let g:airline#extensions#tabline#left_alt_sep = '⮀'
+" let g:airline#extensions#tabline#enabled = 1
+" let g:airline#extensions#tabline#left_sep = ' '
+" let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " nerdtree
 let g:NERDTreeShowHidden=1
