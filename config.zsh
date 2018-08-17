@@ -37,7 +37,6 @@ case ${OSTYPE} in
     export PATH=/usr/local/bin:$PATH
     export PATH=/usr/local/sbin:$PATH
     export PATH=$HOME/.local/bin:$PATH
-    export MECAB_PATH=$(brew --prefix)/lib/libmecab.dylib
     ;;
   linux*)
     # for ipython
@@ -48,8 +47,9 @@ case ${OSTYPE} in
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export PATH=$HOME/.linuxbrew/sbin:$PATH
 
-    export PATH=/usr/local/cuda/bin:$PATH
-    export CPATH=/usr/local/cuda/include:$CPATH
+    export PATH=$PATH:/usr/local/cuda/bin
+    export CPATH=$CPATH:/usr/local/include
+    export CPATH=$CPATH:/usr/local/cuda/include
     export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
     ;;
@@ -66,6 +66,11 @@ fi
 
 # brew home
 export BREW_HOME=$(brew --prefix)
+
+
+if [ `uname` = 'Darwin' ]; then
+  export MECAB_PATH=$(brew --prefix)/lib/libmecab.dylib
+fi
 
 
 # zstyles
