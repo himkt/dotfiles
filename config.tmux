@@ -40,3 +40,6 @@ set -qg status-right '%H:%M #[fg=colour16,bg=colour254]'
 
 # tmux config
 set -g escape-time 10
+
+bind ^h select-layout even-horizontal
+bind ^v select-layout even-vertical
