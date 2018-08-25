@@ -52,6 +52,7 @@ case ${OSTYPE} in
     export CPATH=$CPATH:/usr/local/cuda/include
     export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
     ;;
 esac
 
@@ -117,6 +118,8 @@ if builtin command -v tmux > /dev/null; then
     # check tmux sessions
     if $(tmux has-session); then
       tmux attach
+    else
+      tmux
     fi
   fi
 fi
