@@ -188,7 +188,6 @@ nnoremap <silent>zc  : set foldlevel=0<CR>
 " plugin shortcuts
 nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
 nnoremap <silent><C-t> : TagbarToggle<CR>
-nnoremap <silent>fu    : Denite file_rec<CR>
 nnoremap <silent><C-x> : OverCommandLine<CR>%s/
 vnoremap tr            : <C-u>Tabularize<Space>/
 
@@ -254,11 +253,6 @@ let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
 let g:syntastic_cpp_check_header = 1
 
-" airline
-" let g:airline#extensions#tabline#enabled = 1
-" let g:airline#extensions#tabline#left_sep = ' '
-" let g:airline#extensions#tabline#left_alt_sep = '|'
-
 " nerdtree
 let g:NERDTreeShowHidden=1
 
@@ -298,8 +292,22 @@ let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
 
 " denite
-call denite#custom#map('insert', "<C-n>", '<denite:move_to_next_line>')
-call denite#custom#map('insert', "<C-p>", '<denite:move_to_previous_line>')
+nnoremap [denite] <Nop>
+nmap <C-u> [denite]
+
+nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]k :<C-u>Denite -mode=normal change jump<CR>
+nnoremap <silent> [denite]l :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]o :<C-u>Denite outline -highlight-mode-insert=Search<CR>
+nnoremap <silent> [denite]g :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+nnoremap <silent> [denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
+
+
+call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
+call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
+call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
+call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
+
 
 function! Preserve(command)
     " Save the last search.
