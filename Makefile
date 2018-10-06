@@ -9,6 +9,7 @@ all:
 	ln -s $(HOME)/.dotfiles/config.vim $(HOME)/.vimrc
 	ln -s $(HOME)/.dotfiles/config.zsh $(HOME)/.zshrc
 	ln -s $(HOME)/.dotfiles/config.tmux $(HOME)/.tmux.conf
+	ln -s $(HOME)/.dotfiles/config.fish $(HOME)/.config/fish/config.fish
 	ln -s $(HOME)/.dotfiles/confign.vim $(HOME)/.config/nvim/init.vim
 
 	git submodule init
@@ -20,7 +21,7 @@ clean:
 	rm -f $(HOME)/.zshrc
 	rm -f $(HOME)/.bashrc
 	rm -f $(HOME)/.tmux.conf
-	rm -f $(HOME)/.osx.tmux.conf
 	rm -f $(HOME)/.latexmkrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
+	rm -rf $(HOME)/.config/fish/config.fish
