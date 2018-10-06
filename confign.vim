@@ -292,15 +292,9 @@ let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
 
 " denite
-nnoremap [denite] <Nop>
-nmap <C-u> [denite]
-
 nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
-nnoremap <silent> [denite]k :<C-u>Denite -mode=normal change jump<CR>
-nnoremap <silent> [denite]l :<C-u>Denite buffer -highlight-mode-insert=Search<CR>
-nnoremap <silent> [denite]o :<C-u>Denite outline -highlight-mode-insert=Search<CR>
-nnoremap <silent> [denite]g :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
-nnoremap <silent> [denite]r :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
+nnoremap <silent> fy :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+nnoremap <silent> ft :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
 
 
 call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
