@@ -6,9 +6,6 @@ set -g status-interval 2
 set -g default-terminal "screen-256color"
 set -g status-justify left
 
-## for mac osx
-if-shell 'test "$(uname -s)" = Darwin' 'set -g default-command "reattach-to-user-namespace -l $SHELL"'
-
 ## enable mouse mode
 set-option -g mouse on
 bind -n WheelUpPane if-shell -F -t = "#{mouse_any_flag}" "send-keys -M" "if -Ft= '#{pane_in_mode}' 'send-keys -M' 'copy-mode -e'"
