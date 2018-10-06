@@ -7,51 +7,65 @@ function load() {
   [ -f $1 ] && source $1
 }
 
+
+function cd() {
+  builtin cd $@ && ls;
+}
+
+
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
 export EDITOR=nvim
 export XDG_CONFIG_HOME=$HOME/.config
+
 export PATH=$PATH:/usr/texbin
 export PATH=$PATH:$HOME/.dotfiles/bin
+
+export PATH=/usr/local/bin:$PATH
+export PATH=/usr/local/sbin:$PATH
+
+export PATH=$HOME/.local/bin:$PATH
+
 export PYTHONDONTWRITEBYTECODE=1
 export PYENV_ROOT=$HOME/.pyenv
-
-
-# secret
-load $HOME/.dotfiles/private/private.zsh
-
-
-# autoloads
-autoload -Uz colors; colors
-autoload -Uz zmv
-autoload -Uz vcs_info
-autoload -Uz add-zsh-hook
-autoload -Uz is-at-least
-autoload -U compinit; compinit
 
 
 # generals
 case ${OSTYPE} in
   darwin*)
-    export PATH=/usr/local/bin:$PATH
-    export PATH=/usr/local/sbin:$PATH
-    export PATH=$HOME/.local/bin:$PATH
+    # for brew
+    export PATH=/opt/brew/bin:$PATH
     ;;
+
   linux*)
     # for ipython
     export QT_QPA_PLATFORM='offscreen'
 
-    export PATH=$PATH:/usr/local/sbin
-    export PATH=$HOME/.local/bin:$PATH
+    # for brew
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export PATH=$HOME/.linuxbrew/sbin:$PATH
 
+    # for GPU
     export PATH=$PATH:/usr/local/cuda/bin
     export CPATH=$CPATH:/usr/local/include
     export CPATH=$CPATH:/usr/local/cuda/include
     export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
     export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    ;;
+esac
+
+
+# brew home
+export BREW_HOME=$(brew --prefix)
+
+
+case ${OSTYPE} in
+  darwin*)
+    export MECAB_PATH=$BREW_HOME/lib/libmecab.dylib
+    ;;
+
+  linux*)
     export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
     ;;
 esac
@@ -65,13 +79,14 @@ if which pyenv-virtualenv-init > /dev/null; then
 fi
 
 
-# brew home
-export BREW_HOME=$(brew --prefix)
+# autoloads
+autoload -Uz colors; colors
+autoload -Uz zmv
+autoload -Uz vcs_info
+autoload -Uz add-zsh-hook
+autoload -Uz is-at-least
+autoload -U compinit; compinit
 
-
-if [ `uname` = 'Darwin' ]; then
-  export MECAB_PATH=$(brew --prefix)/lib/libmecab.dylib
-fi
 
 
 # zstyles
@@ -187,10 +202,6 @@ alias zmv='noglob zmv -W'
 alias bruby="bundle exec ruby"
 alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
 
-cd() {
-  builtin cd $@ && ls;
-}
-
 
 # Modify the colors and symbols in these variables as desired.
 GIT_PROMPT_SYMBOL="%{$fg[blue]%} ± "
@@ -281,6 +292,7 @@ RPROMPT='$(git_prompt_string)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 
+load $HOME/.dotfiles/private/private.zsh
 load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
 load $HOME/.dotfiles/submodule/z.git/z.sh
