@@ -85,6 +85,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'Shougo/deoplete-rct'
 
 " ---- python ----
+Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
