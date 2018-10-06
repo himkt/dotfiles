@@ -283,3 +283,4 @@ SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
 load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
+load $HOME/.dotfiles/submodule/z.git/z.sh

@@ -4,3 +4,6 @@
 [submodule "submodule/zsh-history-substring-search.git"]
 	path = submodule/zsh-history-substring-search.git
 	url = https://github.com/zsh-users/zsh-history-substring-search.git
+[submodule "submodule/z.git"]
+	path = submodule/z.git
+	url = git@github.com:rupa/z.git
