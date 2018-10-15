@@ -2,7 +2,7 @@
 
 all:
 	mkdir -p $(HOME)/.config/nvim
-	mkdir -p $(HOME)/.emacs.d
+	mkdir -p $(HOME)/.config/fish
 	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
 		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
@@ -16,7 +16,6 @@ all:
 	git submodule update
 
 clean:
-
 	rm -f $(HOME)/.vimrc
 	rm -f $(HOME)/.zshrc
 	rm -f $(HOME)/.bashrc
@@ -25,3 +24,5 @@ clean:
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
 	rm -rf $(HOME)/.config/fish/config.fish
+
+reset: clean all
