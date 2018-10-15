@@ -297,7 +297,6 @@ nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
 nnoremap <silent> fy :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
 nnoremap <silent> ft :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
 
-
 call denite#custom#map('normal', '<C-N>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-P>', '<denite:move_to_previous_line>')
 call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
