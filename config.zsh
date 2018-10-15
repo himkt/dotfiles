@@ -3,6 +3,47 @@
 #
 
 
+# aliases
+case ${OSTYPE} in
+  darwin*)
+    alias ls="ls -G -F"
+    ;;
+  linux*)
+    alias ls="ls --color=auto"
+    ;;
+esac
+
+alias l="ls"
+alias la="ls -a"
+alias lla="ls -la"
+alias vim='nvim'
+alias tmux='tmux -u'
+alias zmv='noglob zmv -W'
+alias bruby="bundle exec ruby"
+alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
+
+
+function load() {
+  [ -f $1 ] && source $1
+}
+
+
+function cd() {
+  builtin cd $@ && ls;
+}
+
+
+function ssh() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+    tmux rename-window ${@: -1}
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command ssh "$@"
+  fi
+}
+
+
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
@@ -61,6 +102,13 @@ case ${OSTYPE} in
 esac
 
 
+load $HOME/.dotfiles/private/private.zsh
+load $HOME/.dotfiles/submodule/zsh-git-prompt.git/zsh-git-prompt.zsh
+load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
+load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
+load $HOME/.dotfiles/submodule/z.git/z.sh
+
+
 # etc
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
@@ -70,7 +118,6 @@ fi
 
 
 # autoloads
-autoload -Uz colors; colors
 autoload -Uz zmv
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
@@ -105,7 +152,6 @@ setopt no_flow_control
 setopt magic_equal_subst
 setopt auto_menu
 setopt extended_glob
-setopt prompt_subst
 
 
 # colorscheme
@@ -170,51 +216,3 @@ bindkey "\e[Z" reverse-menu-complete
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
-
-
-# aliases
-case ${OSTYPE} in
-  darwin*)
-    alias ls="ls -G -F"
-    ;;
-  linux*)
-    alias ls="ls --color=auto"
-    ;;
-esac
-
-alias l="ls"
-alias la="ls -a"
-alias lla="ls -la"
-alias vim='nvim'
-alias tmux='tmux -u'
-alias zmv='noglob zmv -W'
-alias bruby="bundle exec ruby"
-alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
-
-
-function load() {
-  [ -f $1 ] && source $1
-}
-
-
-function cd() {
-  builtin cd $@ && ls;
-}
-
-
-function ssh() {
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-    tmux rename-window ${@: -1}
-    command ssh "$@"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
-  else
-    command ssh "$@"
-  fi
-}
-
-
-load $HOME/.dotfiles/private/private.zsh
-load $HOME/.dotfiles/submodule/zsh-git-prompt/zsh-git-prompt.zsh
-load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
-load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
-load $HOME/.dotfiles/submodule/z.git/z.sh

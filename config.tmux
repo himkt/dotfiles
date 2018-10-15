@@ -2,6 +2,7 @@
 # @author = himkt
 
 ## default config
+set -g prefix C-n
 set -g status-interval 2
 set -g default-terminal "screen-256color"
 set -g status-justify left
