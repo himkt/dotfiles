@@ -80,7 +80,9 @@ case ${OSTYPE} in
     ;;
 
   linux*)
-    export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
+    if builtin command -v mecab-config > /dev/null; then
+      export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
+    fi
     ;;
 esac
 
@@ -113,8 +115,14 @@ load $HOME/.dotfiles/submodule/z.git/z.sh
 
 
 # etc
-eval "$(rbenv init -)"
-eval "$(pyenv init -)"
+if builtin command -v rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+if builtin command -v pyenv > /dev/null; then
+  eval "$(pyenv init -)"
+fi
+
 if which pyenv-virtualenv-init > /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
