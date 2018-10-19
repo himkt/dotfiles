@@ -3,27 +3,6 @@
 #
 
 
-function load() {
-  [ -f $1 ] && source $1
-}
-
-
-function cd() {
-  builtin cd $@ && ls;
-}
-
-
-function ssh() {
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-    tmux rename-window ${@: -1}
-    command ssh "$@"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
-  else
-    command ssh "$@"
-  fi
-}
-
-
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
@@ -105,6 +84,12 @@ alias tmux='tmux -u'
 alias zmv='noglob zmv -W'
 alias bruby="bundle exec ruby"
 alias g++="g++ --std=c++11 -O3 -Wall -I$BREW_HOME/include"
+
+
+# define function for loading modules
+function load() {
+  [ -f $1 ] && source $1
+}
 
 
 load $HOME/.dotfiles/private/private.zsh
@@ -227,3 +212,20 @@ bindkey "\e[Z" reverse-menu-complete
 HISTFILE=$HOME/.zsh-history
 HISTSIZE=100000
 SAVEHIST=100000
+
+
+# general purpose functions
+function cd() {
+  builtin cd $@ && ls;
+}
+
+
+function ssh() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+    tmux rename-window ${@: -1}
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command ssh "$@"
+  fi
+}
