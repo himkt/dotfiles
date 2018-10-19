@@ -303,6 +303,11 @@ call denite#custom#map('insert', '<C-N>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-P>', '<denite:move_to_previous_line>')
 
 
+" vim-markdown
+let g:vim_markdown_math = 1
+let g:vim_markdown_conceal = 0
+
+
 function! Preserve(command)
     " Save the last search.
     let search = @/

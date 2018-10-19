@@ -3,26 +3,6 @@
 #
 
 
-# aliases
-case ${OSTYPE} in
-  darwin*)
-    alias ls="ls -G -F"
-    ;;
-  linux*)
-    alias ls="ls --color=auto"
-    ;;
-esac
-
-alias l="ls"
-alias la="ls -a"
-alias lla="ls -la"
-alias vim='nvim'
-alias tmux='tmux -u'
-alias zmv='noglob zmv -W'
-alias bruby="bundle exec ruby"
-alias g++="g++ --std=c++11 -O3 -Wall -I$(brew --prefix)/include"
-
-
 function load() {
   [ -f $1 ] && source $1
 }
@@ -60,6 +40,7 @@ export PATH=$HOME/.local/bin:$PATH
 
 export PYTHONDONTWRITEBYTECODE=1
 export PYENV_ROOT=$HOME/.pyenv
+export PATH="$PYENV_ROOT/bin:$PATH"
 
 
 # generals
@@ -76,6 +57,8 @@ case ${OSTYPE} in
     # for brew
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export PATH=$HOME/.linuxbrew/sbin:$PATH
+    export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+    export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
 
     # for GPU
     export PATH=$PATH:/usr/local/cuda/bin
@@ -100,6 +83,26 @@ case ${OSTYPE} in
     export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
     ;;
 esac
+
+
+# aliases
+case ${OSTYPE} in
+  darwin*)
+    alias ls="ls -G -F"
+    ;;
+  linux*)
+    alias ls="ls --color=auto"
+    ;;
+esac
+
+alias l="ls"
+alias la="ls -a"
+alias lla="ls -la"
+alias vim='nvim'
+alias tmux='tmux -u'
+alias zmv='noglob zmv -W'
+alias bruby="bundle exec ruby"
+alias g++="g++ --std=c++11 -O3 -Wall -I$BREW_HOME/include"
 
 
 load $HOME/.dotfiles/private/private.zsh
