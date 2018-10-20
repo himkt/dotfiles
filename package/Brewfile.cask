@@ -1,0 +1,9 @@
+tap 'caskroom/cask'
+
+cask 'google-chrome'
+cask 'mendeley'
+cask 'slack'
+
+# following packages are very large
+cask 'microsoft-office'
+cask 'mactex'
