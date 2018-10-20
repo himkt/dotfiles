@@ -112,6 +112,9 @@ if which pyenv-virtualenv-init > /dev/null; then
   eval "$(pyenv virtualenv-init -)"
 fi
 
+if which ghq > /dev/null; then
+  export GHQ_ROOT=$HOME/work
+fi
 
 # autoloads
 autoload -Uz zmv
