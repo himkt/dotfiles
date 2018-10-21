@@ -103,6 +103,9 @@ zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
 zplug "zsh-users/zsh-history-substring-search"
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "rupa/z", use:z.sh
+zplug "peco/peco", as:command, from:gh-r
+zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
 
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
