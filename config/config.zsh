@@ -51,7 +51,7 @@ esac
 
 # home dirs
 export BREW_HOME=$(brew --prefix)
-export ZPLUG_HOME=$HOME/.zplug
+export ZPLUG_HOME=$HOME/.config/zplug
 
 
 case ${OSTYPE} in
