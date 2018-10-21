@@ -31,7 +31,7 @@ case ${OSTYPE} in
 
   linux*)
     # for ipython
-    export QT_QPA_PLATFORM='offscreen'
+    export QT_QPA_PLATFORM="offscreen"
 
     # for brew
     export PATH=$HOME/.linuxbrew/bin:$PATH
@@ -51,6 +51,11 @@ esac
 
 # brew home
 export BREW_HOME=$(brew --prefix)
+
+
+# zplug
+export ZPLUG_HOME=$HOME/.zplug
+
 
 
 case ${OSTYPE} in
@@ -79,9 +84,9 @@ esac
 alias l="ls"
 alias la="ls -a"
 alias lla="ls -la"
-alias vim='nvim'
-alias tmux='tmux -u'
-alias zmv='noglob zmv -W'
+alias vim="nvim"
+alias tmux="tmux -u"
+alias zmv="noglob zmv -W"
 alias bruby="bundle exec ruby"
 alias g++="g++ --std=c++11 -O3 -Wall -I$BREW_HOME/include"
 
@@ -92,11 +97,21 @@ function load() {
 }
 
 
-load $HOME/.dotfiles/private/private.zsh
-load $HOME/.dotfiles/submodule/zsh-git-prompt.git/zsh-git-prompt.zsh
-load $HOME/.dotfiles/submodule/zsh-syntax-highlighting.git/zsh-syntax-highlighting.zsh
-load $HOME/.dotfiles/submodule/zsh-history-substring-search.git/zsh-history-substring-search.zsh
-load $HOME/.dotfiles/submodule/z.git/z.sh
+# zplug configurations
+source $ZPLUG_HOME/init.zsh
+zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
+zplug "zsh-users/zsh-history-substring-search"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+zplug "rupa/z", use:z.sh
+
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+zplug load
 
 
 # etc
@@ -125,8 +140,8 @@ autoload -U compinit; compinit
 
 
 # zstyles
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
-zstyle ':completion:*:default' menu select=1
+zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
+zstyle ":completion:*:default" menu select=1
 
 
 # options
@@ -206,8 +221,8 @@ zle -N peco-history-selection
 
 # bindkeys
 bindkey -e
-bindkey '^R' peco-history-selection
-bindkey '^K' peco-change-dir
+bindkey "^R" peco-history-selection
+bindkey "^K" peco-change-dir
 bindkey "\e[Z" reverse-menu-complete
 
 
