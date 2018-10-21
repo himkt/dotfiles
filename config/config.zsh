@@ -9,17 +9,17 @@ export LC_CTYPE=ja_JP.UTF-8
 export EDITOR=nvim
 export XDG_CONFIG_HOME=$HOME/.config
 
-export PATH=$PATH:/usr/texbin
 export PATH=$PATH:$HOME/.dotfiles/bin
+export PATH=$HOME/.local/bin:$PATH
 
+export PATH=$PATH:/usr/texbin
 export PATH=/usr/local/bin:$PATH
 export PATH=/usr/local/sbin:$PATH
 
-export PATH=$HOME/.local/bin:$PATH
-
-export PYTHONDONTWRITEBYTECODE=1
+# pyenv configs
 export PYENV_ROOT=$HOME/.pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"
+export PYTHONDONTWRITEBYTECODE=1
 
 
 # generals
@@ -49,13 +49,9 @@ case ${OSTYPE} in
 esac
 
 
-# brew home
+# home dirs
 export BREW_HOME=$(brew --prefix)
-
-
-# zplug
 export ZPLUG_HOME=$HOME/.zplug
-
 
 
 case ${OSTYPE} in
@@ -91,12 +87,6 @@ alias bruby="bundle exec ruby"
 alias g++="g++ --std=c++11 -O3 -Wall -I$BREW_HOME/include"
 
 
-# define function for loading modules
-function load() {
-  [ -f $1 ] && source $1
-}
-
-
 # zplug configurations
 source $ZPLUG_HOME/init.zsh
 zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
@@ -108,10 +98,7 @@ zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
 
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+  zplug install
 fi
 
 zplug load
