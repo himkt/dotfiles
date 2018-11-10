@@ -204,7 +204,7 @@
 	AAAZAAAAAAAAAAAAAAAAAAAA2Q==
 	</data>
 	<key>UseBoldFonts</key>
-	<true/>
+	<false/>
 	<key>UseBrightBold</key>
 	<false/>
 	<key>WindowTitle</key>
@@ -212,7 +212,7 @@
 	<key>columnCount</key>
 	<integer>185</integer>
 	<key>name</key>
-	<string>Himkt theme</string>
+	<string>config</string>
 	<key>rowCount</key>
 	<integer>52</integer>
 	<key>type</key>
