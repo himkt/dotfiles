@@ -119,7 +119,7 @@ filetype plugin indent on
 syntax on
 
 " color scheme
-colorscheme onedark
+colorscheme default
 
 " omni completion
 set completeopt=menuone,longest,preview
