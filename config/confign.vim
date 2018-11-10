@@ -308,6 +308,10 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_conceal = 0
 
 
+" vim-polygplot
+let g:polyglot_disabled = ['latex']
+
+
 function! Preserve(command)
     " Save the last search.
     let search = @/
