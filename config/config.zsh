@@ -204,15 +204,36 @@ function peco-change-dir() {
 }
 
 
+function peco-select-tmux-window()
+{
+  local window="$(tmux list-windows | peco | cut -d : -f 1)"
+  if [ -n "$window" ]; then
+    BUFFER="tmux select-window -t $window"
+    zle accept-line
+  fi
+}
+
+
+function tmux-command-prompt()
+{
+  BUFFER="tmux command-prompt"
+  zle accept-line
+}
+
+
 # register custom functions
 zle -N peco-change-dir
 zle -N peco-history-selection
+zle -N peco-select-tmux-window
+zle -N tmux-command-prompt
 
 
 # bindkeys
 bindkey -e
 bindkey "^R" peco-history-selection
 bindkey "^K" peco-change-dir
+bindkey '^T' peco-select-tmux-window
+bindkey '^Y' tmux-command-prompt
 bindkey "\e[Z" reverse-menu-complete
 
 
