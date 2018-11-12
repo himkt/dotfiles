@@ -232,8 +232,8 @@ zle -N tmux-command-prompt
 bindkey -e
 bindkey "^R" peco-history-selection
 bindkey "^K" peco-change-dir
-bindkey '^T' peco-select-tmux-window
-bindkey '^Y' tmux-command-prompt
+bindkey '^Y' peco-select-tmux-window
+bindkey '^U' tmux-command-prompt
 bindkey "\e[Z" reverse-menu-complete
 
 

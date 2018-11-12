@@ -33,6 +33,8 @@ Plug 'jonathanfilip/vim-lucius'
 Plug 'KeitaNakamura/neodark.vim'
 Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'jacoborus/tender.vim'
+Plug 'jdkanani/vim-material-theme'
 
 " ---- git interface ----
 Plug 'tpope/vim-fugitive'
@@ -263,6 +265,9 @@ let g:neosnippet#snippets_directory='~/.dotfiles/snippet'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+
+" vim-airline
+let g:airline_theme='bubblegum'
 
 " vim-nerdtree-syntax-highlight
 let s:rspec_red = 'FE405F'
