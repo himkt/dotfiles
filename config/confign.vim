@@ -198,6 +198,7 @@ inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 " completion
 autocmd CompleteDone *  pclose
 autocmd FileType *      setlocal omnifunc=syntaxcomplete#Complete
+autocmd FileType tex    setlocal omnifunc=vimtex#complete#omnifunc
 autocmd FileType python setlocal omnifunc=python3complete#Complete
 autocmd FileType ruby   setlocal omnifunc=rubycomplete#Complete
 
@@ -263,7 +264,7 @@ let g:neosnippet#snippets_directory='~/.dotfiles/snippet'
 " deoplete
 let g:deoplete#enable_at_startup = 1
 
-"vim-nerdtree-syntax-highlight
+" vim-nerdtree-syntax-highlight
 let s:rspec_red = 'FE405F'
 let s:git_orange = 'F54D27'
 let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
@@ -310,6 +311,12 @@ let g:vim_markdown_conceal = 0
 
 " vim-polygplot
 let g:polyglot_disabled = ['latex']
+
+
+" vim-tex
+call deoplete#custom#var('omni', 'input_patterns', {
+        \ 'tex': g:vimtex#re#deoplete
+        \})
 
 
 function! Preserve(command)
