@@ -314,6 +314,7 @@ let g:polyglot_disabled = ['latex']
 
 
 " vim-tex
+let g:tex_flavor = "latex"
 call deoplete#custom#var('omni', 'input_patterns', {
         \ 'tex': g:vimtex#re#deoplete
         \})
