@@ -121,7 +121,7 @@ filetype plugin indent on
 syntax on
 
 " color scheme
-colorscheme tender
+colorscheme quantum
 
 " omni completion
 set completeopt=menuone,longest,preview
@@ -134,7 +134,6 @@ set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
 set ttimeout
 set ttimeoutlen=50
 
-set background=dark
 set fileformats=unix,mac,dos
 set wrap visualbell ruler
 set nocompatible showcmd
