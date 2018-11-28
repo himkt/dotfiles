@@ -25,7 +25,6 @@ Plug 'Shougo/neosnippet-snippets'
 " ---- filer ----
 Plug 'scrooloose/nerdtree'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'jistr/vim-nerdtree-tabs'
 
 " ---- colorscheme ----
@@ -36,10 +35,6 @@ Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'jacoborus/tender.vim'
 Plug 'jdkanani/vim-material-theme'
 
-" ---- git interface ----
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
 " ---- status bar ----
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -49,9 +44,7 @@ Plug 'godlygeek/tabular'
 Plug 'majutsushi/tagbar'
 Plug 'osyo-manga/vim-anzu'
 Plug 'tomtom/tcomment_vim'
-Plug 'cohama/lexima.vim'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'junegunn/goyo.vim'
 
 " ---- syntax checker ----
 Plug 'nathanaelkane/vim-indent-guides'
@@ -79,16 +72,16 @@ Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 
 " ---- c++ ----
-Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'tweekmonster/deoplete-clang2'
+Plug 'octol/vim-cpp-enhanced-highlight'
 
 " ---- ruby ----
-Plug 'vim-ruby/vim-ruby'
 Plug 'Shougo/deoplete-rct'
+Plug 'vim-ruby/vim-ruby'
 
 " ---- python ----
-Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
+Plug 'davidhalter/jedi-vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
 
@@ -146,7 +139,7 @@ set laststatus=2
 set backspace=indent,eol,start
 set clipboard+=unnamed mouse=a
 set splitbelow splitright
-set foldmethod=marker foldlevel=99
+set foldmethod=marker foldlevel=0
 set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
@@ -269,23 +262,6 @@ let g:deoplete#enable_at_startup = 1
 let g:airline_theme='bubblegum'
 
 " vim-nerdtree-syntax-highlight
-let s:rspec_red = 'FE405F'
-let s:git_orange = 'F54D27'
-let g:NERDTreeExactMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreeExactMatchHighlightColor['.gitignore'] = s:git_orange " sets the color for .gitignore files
-let g:NERDTreePatternMatchHighlightColor = {} " this line is needed to avoid error
-let g:NERDTreePatternMatchHighlightColor['.*_spec\.rb$'] = s:rspec_red " sets the color for files ending with _spec.rb
-let g:NERDTreeIndicatorMapCustom = {
-    \ "Modified"  : "✹",
-    \ "Staged"    : "✚",
-    \ "Untracked" : "✭",
-    \ "Renamed"   : "➜",
-    \ "Unmerged"  : "═",
-    \ "Deleted"   : "✖",
-    \ "Dirty"     : "✗",
-    \ "Clean"     : "✔︎",
-    \ "Unknown"   : "?"
-    \ }
 
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
