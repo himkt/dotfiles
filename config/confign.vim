@@ -28,12 +28,7 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 
 " ---- colorscheme ----
-Plug 'jonathanfilip/vim-lucius'
-Plug 'KeitaNakamura/neodark.vim'
-Plug 'joshdick/onedark.vim'
 Plug 'tyrannicaltoucan/vim-quantum'
-Plug 'jacoborus/tender.vim'
-Plug 'jdkanani/vim-material-theme'
 
 " ---- status bar ----
 Plug 'vim-airline/vim-airline'
@@ -80,8 +75,8 @@ Plug 'Shougo/deoplete-rct'
 Plug 'vim-ruby/vim-ruby'
 
 " ---- python ----
-Plug 'zchee/deoplete-jedi'
 Plug 'davidhalter/jedi-vim'
+Plug 'zchee/deoplete-jedi'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
 
