@@ -1,4 +1,4 @@
-!/bin/sh
+#!/bin/sh
 
 
 # check git command
