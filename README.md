@@ -17,5 +17,5 @@
 ### Installation
 
 ```
-git clone git@github.com:himkt/.dotfiles.git $HOME/.dotfiles && cd $HOME/.dotfiles && make
+curl https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh| sh
 ```
