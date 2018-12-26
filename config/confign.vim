@@ -136,14 +136,13 @@ set incsearch hlsearch
 set showmatch matchtime=1
 set laststatus=2
 set backspace=indent,eol,start
-set clipboard+=unnamed mouse=a
+set mouse=a
 set splitbelow splitright
 set foldmethod=marker foldlevel=0
 set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
 " basic shortcuts
-
 nnoremap <leader>d "_d
 vnoremap <leader>d "_d
 nnoremap x "_x
@@ -166,12 +165,7 @@ nnoremap <silent> <C-n> : <C-u>tabnew<CR>
 nnoremap <silent> <C-h> gT
 nnoremap <silent> <C-l> gt
 
-" make mapping
-nnoremap :make :!make
-
 " window splitting
-" nnoremap <silent>> <C-w>>
-" nnoremap <silent>< <C-w><
 nnoremap <silent> vp : <C-u>vs<CR>
 nnoremap <silent> sp : <C-u>sp<CR>
 
