@@ -29,6 +29,7 @@ Plug 'jistr/vim-nerdtree-tabs'
 
 " ---- colorscheme ----
 Plug 'tyrannicaltoucan/vim-quantum'
+Plug 'junegunn/seoul256.vim'
 
 " ---- status bar ----
 Plug 'vim-airline/vim-airline'
@@ -108,8 +109,11 @@ filetype plugin indent on
 " enable hilighting
 syntax on
 
-" color scheme
-colorscheme quantum
+" Unified color scheme (default: dark)
+colo seoul256
+
+" Switch
+set background=dark
 
 " omni completion
 set completeopt=menuone,longest,preview
