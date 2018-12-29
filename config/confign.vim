@@ -68,7 +68,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 
 " ---- c++ ----
-Plug 'tweekmonster/deoplete-clang2'
+Plug 'zchee/deoplete-clang'
 Plug 'octol/vim-cpp-enhanced-highlight'
 
 " ---- ruby ----
@@ -99,10 +99,6 @@ augroup vimrcEx
   \ exe "normal g`\"" | endif
 augroup END
 
-" set leader key
-let mapleader = ","
-let g:mapleader = ","
-
 " enable syntax support
 filetype plugin indent on
 
@@ -111,9 +107,6 @@ syntax on
 
 " Unified color scheme (default: dark)
 colo seoul256
-
-" Switch
-set background=dark
 
 " omni completion
 set completeopt=menuone,longest,preview
@@ -142,14 +135,10 @@ set foldmethod=marker foldlevel=0
 set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
-" basic shortcuts
-nnoremap <leader>d "_d
-vnoremap <leader>d "_d
 nnoremap x "_x
 vnoremap x "_x
-
-map ; :
-map /  <Plug>(incsearch-forward)
+map /    <Plug>(incsearch-forward)
+map      ; :
 
 " snippet
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -192,8 +181,6 @@ autocmd FileType ruby   setlocal omnifunc=rubycomplete#Complete
 " anzu
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
-nmap * <Plug>(anzu-star-with-echo)
-nmap # <Plug>(anzu-sharp-with-echo)
 nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 
 " python tab config
@@ -201,33 +188,25 @@ autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtab
 autocmd FileType cpp setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
 
 " tag hilighting
-autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\|BUG\|HACK\|NOTE\|INFO\|IDEA\)')
+autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\)')
+autocmd Syntax * call matchadd('Todo',  '\W\zs\(BUG\|HACK\|NOTE\|INFO\|IDEA\)')
 
 " executing script in vim
-let g:file_name = shellescape(@%, 1)
-autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 -I' $BREW_HOME . '/include % && ./a.out && rm a.out' <CR>
+autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 % && ./a.out && rm a.out' <CR>
 autocmd FileType ruby nnoremap <C-p> :exec ':term ruby %'<CR>
 autocmd FileType python nnoremap <C-p> :exec ':term python %'<CR>
 autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 
-
 " templates
 autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
-autocmd BufNewFile *.cc 0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
 
 " indent guide feature
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
 autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
 
-" -------------- "
-"  python config "
-" -------------- "
-
+" python config
 let g:python3_host_prog = $PYENV_ROOT . '/versions/neovim/bin/python'
-
-" ------------- "
-" plugin config "
-" ------------- "
 
 " indent guide
 let g:indent_guides_enable_on_vim_startup=1
@@ -237,10 +216,10 @@ let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
 
 " syntastic
-let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
 let g:syntastic_cpp_check_header = 1
+let g:syntastic_python_checkers = ['pyflakes', 'pep8']
 
 " nerdtree
 let g:NERDTreeShowHidden=1
@@ -255,8 +234,6 @@ call deoplete#custom#source('_',  'max_menu_width', 0)
 " vim-airline
 let g:airline_theme='bubblegum'
 
-" vim-nerdtree-syntax-highlight
-
 " vim-devicons
 let g:webdevicons_conceal_nerdtree_brackets = 1
 let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
@@ -267,26 +244,21 @@ let g:DevIconsEnableFoldersOpenClose = 1
 let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
 
-
 " denite
-nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
-nnoremap <silent> fg :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
-nnoremap <silent> ff :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
-
 call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>')
 call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
-
+nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
+nnoremap <silent> fg :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
+nnoremap <silent> ff :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
 
 " vim-markdown
 let g:vim_markdown_math = 1
 let g:vim_markdown_conceal = 0
 
-
 " vim-polygplot
 let g:polyglot_disabled = ['latex']
-
 
 " vim-tex
 let g:tex_flavor = "latex"
@@ -323,7 +295,7 @@ endfunction
 
 let OSTYPE = system('uname')
 if OSTYPE == "Darwin\n"
-  let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/4.0.0/lib/libclang.dylib'
+  let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/7.0.1/lib/libclang.dylib'
 elseif OSTYPE == "Linux\n"
-  let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/4.0.0/lib/libclang.so'
+  let g:deoplete#sources#clang#libclang_path = $BREW_HOME . '/Cellar/llvm/7.0.1/lib/libclang.so'
 endif
