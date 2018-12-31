@@ -46,20 +46,12 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'scrooloose/syntastic'
 
-" ---- markdown previewer ----
-Plug 'kannokanno/previm'
-Plug 'tyru/open-browser.vim'
-
 " ---- rich visualization ----
 Plug 'haya14busa/incsearch.vim'
 Plug 't9md/vim-quickhl'
 
 " ---- rich replacing feature ----
 Plug 'osyo-manga/vim-over'
-
-" ---- markdown ----
-Plug 'rcmdnk/vim-markdown'
-Plug 'joker1007/vim-markdown-quote-syntax'
 
 " ---- languages ----
 Plug 'sheerun/vim-polyglot'
@@ -252,10 +244,6 @@ call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
 nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
 nnoremap <silent> fg :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
 nnoremap <silent> ff :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
-
-" vim-markdown
-let g:vim_markdown_math = 1
-let g:vim_markdown_conceal = 0
 
 " vim-polygplot
 let g:polyglot_disabled = ['latex']
