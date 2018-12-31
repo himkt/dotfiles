@@ -28,7 +28,6 @@ Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 
 " ---- colorscheme ----
-Plug 'tyrannicaltoucan/vim-quantum'
 Plug 'junegunn/seoul256.vim'
 
 " ---- status bar ----
