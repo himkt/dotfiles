@@ -126,10 +126,14 @@ set foldmethod=marker foldlevel=0
 set statusline=%{anzu#search_status()}
 set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
+map / <Plug>(incsearch-forward)
+map ; :
 nnoremap x "_x
 vnoremap x "_x
-map /    <Plug>(incsearch-forward)
-map      ; :
+
+" indent
+inoremap <Tab> <C-t>
+inoremap <S-Tab> <C-d>
 
 " snippet
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -158,9 +162,6 @@ nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
 nnoremap <silent><C-t> : TagbarToggle<CR>
 nnoremap <silent><C-x> : OverCommandLine<CR>%s/
 vnoremap tr            : <C-u>Tabularize<Space>/
-
-" deoplete
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " completion
 autocmd CompleteDone *  pclose
