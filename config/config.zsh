@@ -222,20 +222,27 @@ function tmux-command-prompt()
 }
 
 
+function peco-kill-process () {
+    ps -ef | peco | awk '{ print $2 }' | xargs kill
+    zle clear-screen
+}
+
+
 # register custom functions
+zle -N tmux-command-prompt
 zle -N peco-change-dir
 zle -N peco-history-selection
+zle -N peco-kill-process
 zle -N peco-select-tmux-window
-zle -N tmux-command-prompt
 
 
 # bindkeys
 bindkey -e
+bindkey '^U' tmux-command-prompt
 bindkey "^R" peco-history-selection
 bindkey "^K" peco-change-dir
 bindkey '^Y' peco-select-tmux-window
-bindkey '^U' tmux-command-prompt
-bindkey "\e[Z" reverse-menu-complete
+bindkey '^J' peco-kill-process
 
 
 # history
