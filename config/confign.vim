@@ -192,6 +192,7 @@ autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
 " templates
 autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
 autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.rs  0r $HOME/.dotfiles/template/rs/template.rs
 
 " indent guide feature
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
