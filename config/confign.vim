@@ -184,10 +184,11 @@ autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\
 autocmd Syntax * call matchadd('Todo',  '\W\zs\(BUG\|HACK\|NOTE\|INFO\|IDEA\)')
 
 " executing script in vim
-autocmd FileType cpp nnoremap <C-p> :exec ':term g++ --std=c++11 % && ./a.out && rm a.out' <CR>
-autocmd FileType ruby nnoremap <C-p> :exec ':term ruby %'<CR>
-autocmd FileType python nnoremap <C-p> :exec ':term python %'<CR>
-autocmd FileType python nnoremap <S-f> :call Autopep8()<CR>
+autocmd FileType cpp    nnoremap <C-p> :exec ':term g++ --std=c++11 % && ./a.out && rm a.out' <CR>
+autocmd FileType rust   nnoremap <C-p> :exec ':term rustc % -o a && ./a && rm ./a' <CR>
+autocmd FileType ruby   nnoremap <C-p> :exec ':term ruby %' <CR>
+autocmd FileType python nnoremap <C-p> :exec ':term python %' <CR>
+autocmd FileType python nnoremap <S-f> :call Autopep8() <CR>
 
 " templates
 autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
