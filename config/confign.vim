@@ -66,6 +66,10 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'Shougo/deoplete-rct'
 Plug 'vim-ruby/vim-ruby'
 
+" ---- rust ----
+Plug 'rust-lang/rust.vim'
+Plug 'sebastianmarkow/deoplete-rust'
+
 " ---- python ----
 Plug 'davidhalter/jedi-vim'
 Plug 'zchee/deoplete-jedi'
@@ -214,6 +218,7 @@ let g:syntastic_cpp_compiler = 'g++'
 let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
 let g:syntastic_cpp_check_header = 1
 let g:syntastic_python_checkers = ['pyflakes', 'pep8']
+let g:syntastic_rust_checkers = ['rustc', 'cargo']
 
 " nerdtree
 let g:NERDTreeShowHidden=1
@@ -223,6 +228,8 @@ let g:neosnippet#snippets_directory='~/.dotfiles/snippet'
 
 " deoplete
 let g:deoplete#enable_at_startup = 1
+let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path = $HOME . '/work'
 call deoplete#custom#source('_',  'max_menu_width', 0)
 
 " vim-airline
