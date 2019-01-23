@@ -1,13 +1,24 @@
+# essential
+brew 'gcc'
+brew 'llvm'
+
+# natural language processing
 brew 'nkf'
-brew 'tmux'
-brew 'tree'
-brew 'wget'
-brew 'neovim'
-brew 'htop'
-brew 'sqlite'
 brew 'mecab'
 brew 'mecab-ipadic'
+
+# python development
 brew 'pyenv'
 brew 'pyenv-virtualenv'
+
+# ruby development
 brew 'rbenv'
 brew 'ruby-build'
+
+brew 'tmux'
+brew 'neovim'
+brew 'htop'
+
+brew 'tree'
+brew 'wget'
+brew 'sqlite'
