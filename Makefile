@@ -4,18 +4,27 @@
 
 all: clean config
 
-config:
-	mkdir -p $(HOME)/.config/nvim
-	mkdir -p $(HOME)/.config/fish
-	curl -fLo ~/.config/nvim/autoload/plug.vim --create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+build_vimplug:
+	echo 'install vim-plug'
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+build_zplug:
+	echo 'install zplug'
 	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | \
 		ZPLUG_HOME=$(HOME)/.config/zplug zsh
+
+config: build_vimplug build_zplug
+	echo 'mkdir'
+	mkdir -p $(HOME)/.config/nvim
+	mkdir -p $(HOME)/.config/fish
+	echo 'create symbolic links...'
 	ln -s $(HOME)/.dotfiles/config/config.vim $(HOME)/.vimrc
 	ln -s $(HOME)/.dotfiles/config/config.zsh $(HOME)/.zshrc
 	ln -s $(HOME)/.dotfiles/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(HOME)/.dotfiles/config/config.fish $(HOME)/.config/fish/config.fish
 	ln -s $(HOME)/.dotfiles/config/confign.vim $(HOME)/.config/nvim/init.vim
+	echo 'done'
 
 clean:
 	rm -f $(HOME)/.vimrc
