@@ -14,6 +14,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'himkt/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'scrooloose/nerdtree'
@@ -38,6 +39,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'rust-lang/rust.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
+
 call plug#end()
 "}}}
 
@@ -65,6 +67,18 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path = $HOME . '/work'
 call deoplete#custom#source('_',  'max_menu_width', 0)
+
+" Plug 'autozimu/LanguageClient-neovim'
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['pyls']}
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Plug 'Shougo/neosnippet'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
