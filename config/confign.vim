@@ -14,6 +14,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'himkt/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'scrooloose/nerdtree'
@@ -38,10 +39,11 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'rust-lang/rust.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
+
 call plug#end()
 "}}}
 
-" plugin's configurations{{{
+" plugin's configurations {{{
 
 " Plug 'ryanoasis/vim-devicons'
 let g:webdevicons_conceal_nerdtree_brackets = 1
@@ -65,6 +67,18 @@ let g:deoplete#enable_at_startup = 1
 let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
 let g:deoplete#sources#rust#rust_source_path = $HOME . '/work'
 call deoplete#custom#source('_',  'max_menu_width', 0)
+
+" Plug 'autozimu/LanguageClient-neovim'
+set hidden
+let g:LanguageClient_serverCommands = {
+    \ 'c': ['clangd'],
+    \ 'cpp': ['clangd'],
+    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['/usr/local/bin/javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['tcp://127.0.0.1:2089'],
+    \ 'python': ['pyls']}
+nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Plug 'Shougo/neosnippet'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -159,8 +173,6 @@ endfunction
 "}}}
 
 
-
-
 " ----------- "
 " base config "
 " ----------- "
@@ -185,9 +197,6 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-
-" omni completion
-set completeopt=menuone,longest,preview
 
 " file encoding
 set encoding=utf-8
@@ -232,10 +241,9 @@ nnoremap <silent>zx  : set foldlevel=99<CR>
 nnoremap <silent>zc  : set foldlevel=0<CR>
 
 " completion configuration
+set completeopt=menuone,longest,preview
 autocmd CompleteDone *  pclose
 autocmd FileType *      setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType python setlocal omnifunc=python3complete#Complete
-autocmd FileType ruby   setlocal omnifunc=rubycomplete#Complete
 
 " tabstop configuraton
 autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
