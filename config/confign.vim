@@ -43,7 +43,7 @@ Plug 'tell-k/vim-autopep8'
 call plug#end()
 "}}}
 
-" plugin's configurations{{{
+" plugin's configurations {{{
 
 " Plug 'ryanoasis/vim-devicons'
 let g:webdevicons_conceal_nerdtree_brackets = 1
@@ -173,8 +173,6 @@ endfunction
 "}}}
 
 
-
-
 " ----------- "
 " base config "
 " ----------- "
@@ -199,9 +197,6 @@ augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
 augroup END
-
-" omni completion
-set completeopt=menuone,longest,preview
 
 " file encoding
 set encoding=utf-8
@@ -246,10 +241,9 @@ nnoremap <silent>zx  : set foldlevel=99<CR>
 nnoremap <silent>zc  : set foldlevel=0<CR>
 
 " completion configuration
+set completeopt=menuone,longest,preview
 autocmd CompleteDone *  pclose
 autocmd FileType *      setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType python setlocal omnifunc=python3complete#Complete
-autocmd FileType ruby   setlocal omnifunc=rubycomplete#Complete
 
 " tabstop configuraton
 autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
