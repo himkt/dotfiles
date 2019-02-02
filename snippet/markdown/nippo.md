@@ -7,5 +7,11 @@ snippet nippo
   ## Work in Progress
   - ${1:wip}
 
-  ## TODO
+  ## Todo
   - ${1:todo}
+
+  ## Trouble
+  - ${1:trouble}
+
+  ## Today I Learn
+  - ${1:til}
