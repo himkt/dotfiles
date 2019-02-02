@@ -7,9 +7,6 @@
 " base config "
 " ----------- "
 
-" set leader key
-let mapleader = ","
-
 " enable syntax support
 filetype plugin indent on
 
@@ -81,11 +78,6 @@ autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtab
 " tag hilighting
 autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\|BUG\|HACK\)')
 autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
-
-" executing script in vim
-autocmd FileType ruby nnoremap <C-p> :!ruby %:t<CR>
-autocmd FileType cpp nnoremap <C-p> :exec '!g++ --std=c++11 -I/opt/brew/include' shellescape(@%, 1) ' -o ' shellescape(@%, 1) . '.out' ' && ./' . shellescape(@%, 1) . '.out'<CR>
-autocmd FileType python nnoremap <C-p> :exec '!python' shellescape(@%, 1)<CR>
 
 " indent guide feature
 autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235

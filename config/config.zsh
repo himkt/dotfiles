@@ -27,6 +27,9 @@ case ${OSTYPE} in
   darwin*)
     # for brew
     export PATH=/opt/brew/bin:$PATH
+    export PATH=/opt/brew/opt/llvm/bin:$PATH
+    export LDFLAGS="-L/opt/brew/opt/llvm/lib"
+    export CPPFLAGS="-I/opt/brew/opt/llvm/include"
     ;;
 
   linux*)
@@ -84,7 +87,6 @@ alias vim="nvim"
 alias tmux="tmux -u"
 alias zmv="noglob zmv -W"
 alias bruby="bundle exec ruby"
-alias g++="g++ --std=c++11 -O3 -Wall -I$BREW_HOME/include"
 
 
 # zplug configurations
