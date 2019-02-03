@@ -8,7 +8,6 @@
 " vim-plug conf "
 " ------------- "
 
-" plugins{{{
 call plug#begin('~/.config/nvim/plugged')
 Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/denite.nvim'
@@ -41,9 +40,7 @@ Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
 
 call plug#end()
-"}}}
 
-" plugin's configurations {{{
 
 " Plug 'ryanoasis/vim-devicons'
 let g:webdevicons_conceal_nerdtree_brackets = 1
@@ -54,6 +51,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
 
 " Plug 'Shougo/denite.nvim'
+call denite#custom#source('file_rec', 'sorters', ['sorter/word'])
 call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>')
@@ -173,7 +171,7 @@ endfunction
 function! Autopep8()
   call Preserve(':silent %!autopep8 -')
 endfunction
-"}}}
+
 
 
 " ----------- "
