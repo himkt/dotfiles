@@ -17,12 +17,10 @@ build_zplug:
 config: build_vimplug build_zplug
 	echo 'mkdir'
 	mkdir -p $(HOME)/.config/nvim
-	mkdir -p $(HOME)/.config/fish
 	echo 'create symbolic links...'
 	ln -s $(HOME)/.dotfiles/config/config.vim $(HOME)/.vimrc
 	ln -s $(HOME)/.dotfiles/config/config.zsh $(HOME)/.zshrc
 	ln -s $(HOME)/.dotfiles/config/config.tmux $(HOME)/.tmux.conf
-	ln -s $(HOME)/.dotfiles/config/config.fish $(HOME)/.config/fish/config.fish
 	ln -s $(HOME)/.dotfiles/config/confign.vim $(HOME)/.config/nvim/init.vim
 	echo 'done'
 
@@ -34,7 +32,6 @@ clean:
 	rm -f $(HOME)/.latexmkrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
-	rm -rf $(HOME)/.config/fish
 	rm -rf $(HOME)/.config/zplug
 
 # if you have installed linuxbrew or homebrew,
