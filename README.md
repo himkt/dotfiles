@@ -8,6 +8,9 @@
 <a href="https://github.com/tmux/tmux"><img src="https://img.shields.io/badge/built%20with-tmux-green.svg" alt="tmux"></a>
 <a href="#"><img src="http://img.shields.io/badge/license-MIT-lightgray.svg?style=flat" alt="license"></a>
 
+This repository provides configs for some softwares.
+Currently, I support tmux, zsh, neovim and vim.
+
 ### Installation
 
 ```
@@ -20,11 +23,3 @@ bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/i
   + macOS >= 10.9
   + CentOS >= 6.4
   + Ubuntu >=14.0
-
-- config
-  + Zsh
-  + Fish
-  + Tmux
-  + NeoVim
-  + Vim (deprecated)
-
