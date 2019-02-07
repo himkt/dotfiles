@@ -17,4 +17,8 @@ echo "installing..."
 cd $HOME/.dotfiles && make
 
 
+echo "installing minimal packages..."
+cd $HOME/.dotfiles && make requirements
+
+
 echo "finished."
