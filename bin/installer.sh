@@ -10,7 +10,7 @@ echo ""
 
 
 echo "clone .dotfiles..."
-git clone https://github.com/himkt/dotfiles.git $HOME/.dotfiles
+git clone git@github.com:himkt/dotfiles.git $HOME/.dotfiles
 
 
 echo "installing..."
