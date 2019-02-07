@@ -9,7 +9,7 @@ jobs:
           name: test on installation
           command: |
             apt update -y && apt install -y curl git
-            mkdir -p $HOME/.ssh
+            mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
             bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
 workflows:
   version: 2
