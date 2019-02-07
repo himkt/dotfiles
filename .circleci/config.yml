@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  ubuntu1604:
+    docker:
+      - image: ubuntu:16.04
+    steps:
+      - checkout
+      - run:
+          name: test on installation
+          command: |
+            bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - ubuntu1604
