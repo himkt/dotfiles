@@ -1,8 +1,7 @@
 # Makefile for dotfile configs
-.PHONY: all config clean requirements reset
+.PHONY: all config clean requirements build_essential build_zplug build_vimplug
 
-
-all: clean config
+all: clean config build_zplug build_vimplug
 
 build_vimplug:
 	echo 'install vim-plug'
@@ -16,7 +15,7 @@ build_zplug:
 	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | \
 		ZPLUG_HOME=$(HOME)/.config/zplug zsh
 
-config: build_vimplug build_zplug
+link:
 	echo 'mkdir for config.d'
 	mkdir -p $(HOME)/.config/nvim
 	echo 'create symbolic links...'
@@ -25,6 +24,7 @@ config: build_vimplug build_zplug
 	ln -s $(HOME)/.dotfiles/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(HOME)/.dotfiles/config/confign.vim $(HOME)/.config/nvim/init.vim
 	echo 'done'
+	exec zsh
 
 clean:
 	rm -f $(HOME)/.vimrc
