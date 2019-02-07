@@ -8,6 +8,7 @@ jobs:
       - run:
           name: test on installation
           command: |
+            apt update -y && apt install -y curl git
             bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
 workflows:
   version: 2
