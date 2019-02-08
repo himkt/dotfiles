@@ -7,11 +7,17 @@ jobs:
     steps:
       - checkout
       - run:
+          name: set the name
+          command: |
+            export USER=circleci
+      - run:
           name: install requirements
           command: |
             sudo apt-get update -y
             sudo apt-get install -y curl git make zsh ruby tmux
-            sudo apt-get install -y neovim
+            wget https://github.com/neovim/neovim/releases/download/v0.3.4/nvim-linux64.tar.gz
+            tar zxvf nvim-linux64.tar.gz
+            sudo mv nvim-linux64/bin/nvim /usr/bin/
             pip install neovim --user
       - run:
           name: test installation
@@ -23,3 +29,5 @@ workflows:
   build_and_test:
     jobs:
       - debian
+
+
