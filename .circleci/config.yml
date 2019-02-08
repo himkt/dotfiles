@@ -1,20 +1,18 @@
 version: 2
 jobs:
-  ubuntu1604:
+  debian:
     docker:
-      - image: ubuntu:16.04
-        user: himkt
+      - image: circleci/python:3.6.5
+        user: circleci
     steps:
       - checkout
       - run:
           name: install requirements
           command: |
-            apt-get update -y && apt-get install -y curl git make zsh ruby language-pack-ja tmux
-            apt-get install -y software-properties-common python-software-properties
-            add-apt-repository -y ppa:neovim-ppa/stable
-            apt-get update -y
-            apt-get install -y neovim python-dev python-pip python3-dev python3-pip
-            pip3 install neovim
+            sudo apt-get update -y
+            sudo apt-get install -y curl git make zsh ruby tmux
+            sudo apt-get install -y neovim
+            pip install neovim --user
       - run:
           name: test installation
           command: |
@@ -24,4 +22,4 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      - ubuntu1604
+      - debian
