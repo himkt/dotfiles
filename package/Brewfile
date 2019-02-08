@@ -1,11 +1,12 @@
 # essential
 brew 'gcc'
 brew 'llvm'
+brew 'openssl'
+brew 'readline'
+brew 'xz'
 
 # natural language processing
 brew 'nkf'
-brew 'mecab'
-brew 'mecab-ipadic'
 
 # python development
 brew 'pyenv'
@@ -21,4 +22,3 @@ brew 'htop'
 
 brew 'tree'
 brew 'wget'
-brew 'sqlite'

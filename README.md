@@ -15,7 +15,7 @@ Currently, I support tmux, zsh, neovim and vim.
 ### Installation
 
 ```
-bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
 ```
 
 ### Requirements

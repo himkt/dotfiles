@@ -1,5 +1,5 @@
 #
-# .zshrc - Zsh configuration
+# .zshrc - The zsh configuration
 #
 
 
@@ -53,7 +53,10 @@ esac
 
 
 # home dirs
-export BREW_HOME=$(brew --prefix)
+if builtin command -v brew > /dev/null; then
+  export BREW_HOME=$(brew --prefix)
+fi
+
 export ZPLUG_HOME=$HOME/.config/zplug
 
 
@@ -84,27 +87,30 @@ alias l="ls"
 alias la="ls -a"
 alias lla="ls -la"
 alias vim="nvim"
-alias tmux="tmux -u"
 alias zmv="noglob zmv -W"
 alias bruby="bundle exec ruby"
 
 
-# zplug configurations
-source $ZPLUG_HOME/init.zsh
-zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "rupa/z", use:z.sh
-zplug "peco/peco", as:command, from:gh-r
-zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
-zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
-zplug "greymd/tmux-xpanes"
+if [ -e $ZPLUG_HOME/init.zsh ]; then
 
-if ! zplug check --verbose; then
-  zplug install
+  # zplug configurations
+  source $ZPLUG_HOME/init.zsh
+  zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
+  zplug "zsh-users/zsh-history-substring-search"
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "rupa/z", use:z.sh
+  zplug "peco/peco", as:command, from:gh-r
+  zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+  zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
+  zplug "greymd/tmux-xpanes"
+
+  # check whether if there are packages which it can install
+  if ! zplug check --verbose; then
+    zplug install
+  fi
+
+  zplug load
 fi
-
-zplug load
 
 
 # etc
@@ -124,12 +130,12 @@ if which ghq > /dev/null; then
   export GHQ_ROOT=$HOME/work
 fi
 
+
 # autoloads
 autoload -Uz zmv
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 autoload -U compinit; compinit
-
 
 
 # zstyles
@@ -170,7 +176,8 @@ fi
 
 
 # check whether tmux exists
-if builtin command -v tmux > /dev/null; then
+if which tmux > /dev/null; then
+  alias tmux="tmux -u"
   if [ -z $TMUX ]; then
     # check tmux sessions
     if $(tmux has-session); then
