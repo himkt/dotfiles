@@ -16,17 +16,10 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "`curl -fsSL $(BREW_SOURCE)`"
 endif
 
-.PHONY: all config clean build_brew build_zplug build_vimplug
+.PHONY: all config clean build_brew
 
-all: clean config link build_zplug build_vimplug build_brew
+all: clean config link
 bootstrap: requirements 
-
-build_vimplug:
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-build_zplug:
-	  git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
 
 link:
 	@echo 'mkdir for config.d'
@@ -51,10 +44,13 @@ clean:
 
 build_brew:
 	$(BREW_COMMAND)
+	brew bundle --file=package/Brewfile
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements: build_brew
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
-	brew bundle --file=package/Brewfile
