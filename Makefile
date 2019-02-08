@@ -5,7 +5,7 @@ TERM       := screen-256color
 
 .PHONY: all config clean build_essential build_zplug build_vimplug
 
-all: clean config link build_zplug build_vimplug
+all: clean config link build_essential build_zplug build_vimplug
 bootstrap: build_essential requirements
 
 build_vimplug:
