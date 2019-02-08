@@ -2,6 +2,13 @@
 ZPLUG_HOME := $(HOME)/.config/zplug
 TERM       := screen-256color
 
+ifeq (`uname`, Darwin)
+	BREW_COMPILER := /usr/bin/ruby -e
+	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/master/install
+else
+	BREW_COMPILER := sh -c
+	BREW_SOURCE := https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
+endif
 
 .PHONY: all config clean build_essential_linux build_zplug build_vimplug
 
@@ -40,11 +47,8 @@ clean:
 	rm -rf $(HOME)/.config/zplug
 	@echo 'done'
 
-build_essential_unix:
-	yes ' '| /usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
-
-build_essential_linux:
-	yes ' '| sh -c "`curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh`"
+build_brew:
+	$(BREW_COMPILER) "`curl -fsSL $(BREW_SOURCE)`"
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target

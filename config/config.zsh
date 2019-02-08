@@ -53,7 +53,10 @@ esac
 
 
 # home dirs
-export BREW_HOME=$(brew --prefix)
+if builtin command -v brew > /dev/null; then
+  export BREW_HOME=$(brew --prefix)
+fi
+
 export ZPLUG_HOME=$HOME/.config/zplug
 
 
@@ -89,22 +92,26 @@ alias zmv="noglob zmv -W"
 alias bruby="bundle exec ruby"
 
 
-# zplug configurations
-source $ZPLUG_HOME/init.zsh
-zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
-zplug "zsh-users/zsh-history-substring-search"
-zplug "zsh-users/zsh-syntax-highlighting", defer:2
-zplug "rupa/z", use:z.sh
-zplug "peco/peco", as:command, from:gh-r
-zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
-zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
-zplug "greymd/tmux-xpanes"
+if [ -e $ZPLUG_HOME/init.zsh ]; then
 
-if ! zplug check --verbose; then
-  zplug install
+  # zplug configurations
+  source $ZPLUG_HOME/init.zsh
+  zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
+  zplug "zsh-users/zsh-history-substring-search"
+  zplug "zsh-users/zsh-syntax-highlighting", defer:2
+  zplug "rupa/z", use:z.sh
+  zplug "peco/peco", as:command, from:gh-r
+  zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+  zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
+  zplug "greymd/tmux-xpanes"
+
+  # check whether if there are packages which it can install
+  if ! zplug check --verbose; then
+    zplug install
+  fi
+
+  zplug load
 fi
-
-zplug load
 
 
 # etc
