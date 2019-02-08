@@ -87,7 +87,6 @@ alias l="ls"
 alias la="ls -a"
 alias lla="ls -la"
 alias vim="nvim"
-alias tmux="tmux -u"
 alias zmv="noglob zmv -W"
 alias bruby="bundle exec ruby"
 
@@ -106,6 +105,10 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug "greymd/tmux-xpanes"
 
   # check whether if there are packages which it can install
+  if ! zplug check --verbose; then
+    zplug install
+  fi
+
   zplug load
 fi
 
@@ -127,12 +130,12 @@ if which ghq > /dev/null; then
   export GHQ_ROOT=$HOME/work
 fi
 
+
 # autoloads
 autoload -Uz zmv
 autoload -Uz add-zsh-hook
 autoload -Uz is-at-least
 autoload -U compinit; compinit
-
 
 
 # zstyles
@@ -173,7 +176,8 @@ fi
 
 
 # check whether tmux exists
-if builtin command -v tmux > /dev/null; then
+if which tmux > /dev/null; then
+  alias tmux="tmux -u"
   if [ -z $TMUX ]; then
     # check tmux sessions
     if $(tmux has-session); then

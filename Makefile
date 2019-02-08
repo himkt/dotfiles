@@ -18,8 +18,7 @@ endif
 
 .PHONY: all config clean build_brew
 
-all: clean config link
-bootstrap: requirements 
+all: clean config link build_brew
 
 link:
 	@echo 'mkdir for config.d'
@@ -29,6 +28,9 @@ link:
 	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
 	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(PWD)/config/confign.vim $(HOME)/.config/nvim/init.vim
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
 	@echo 'done'
 
 clean:
@@ -44,13 +46,12 @@ clean:
 
 build_brew:
 	$(BREW_COMMAND)
-	brew bundle --file=package/Brewfile
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
-requirements: build_brew
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	git clone https://github.com/zplug/zplug $(ZPLUG_HOME) && zplug install
+requirements:
+	brew bundle --file=package/Brewfile
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
+	pyenv install 3.6.5 && pyenv virtualenv 3.6.5 neovim
+	pyenv global neovim && pip install neovim

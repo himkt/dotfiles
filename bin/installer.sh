@@ -6,7 +6,6 @@ type git || {
   echo 'Please install git or update your path to include the git executable!'
   exit 1
 }
-echo ""
 
 
 echo "clone .dotfiles..."
@@ -18,4 +17,5 @@ echo "installing..."
 cd $HOME/.dotfiles && make
 
 
+source $HOME/.zshrc && make requirements
 echo "finished."

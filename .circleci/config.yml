@@ -10,7 +10,7 @@ jobs:
           name: install requirements
           command: |
             sudo apt-get update -y
-            sudo apt-get install -y curl git make zsh
+            sudo apt-get install -y curl git make zsh tmux
       - run:
           name: locale
           command: |
@@ -23,13 +23,12 @@ jobs:
           command: |
             export USER=circleci
             mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-            bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/build-automation/bin/installer.sh)"
+            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/build-automation/bin/installer.sh)"
       - run:
           name: brew
           shell: /usr/bin/zsh
           command: |
-            source $HOME/.zshrc
-            make bootstrap
+            echo "hello"
 workflows:
   version: 2
   build_and_test:
