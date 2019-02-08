@@ -11,7 +11,7 @@ echo ""
 
 echo "clone .dotfiles..."
 git clone git@github.com:himkt/dotfiles.git $HOME/.dotfiles
-git checkout build-automation
+cd $HOME/.dotfiles && git checkout build-automation
 
 
 echo "installing..."
