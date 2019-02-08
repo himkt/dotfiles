@@ -3,9 +3,9 @@ ZPLUG_HOME := $(HOME)/.config/zplug
 TERM       := screen-256color
 
 
-.PHONY: all config clean build_essential build_zplug build_vimplug
+.PHONY: all config clean build_essential_linux build_zplug build_vimplug
 
-all: clean config link build_essential build_zplug build_vimplug
+all: clean config link build_essential_linux build_zplug build_vimplug
 bootstrap: build_essential requirements
 
 build_vimplug:
@@ -40,8 +40,11 @@ clean:
 	rm -rf $(HOME)/.config/zplug
 	@echo 'done'
 
-build_essential:
+build_essential_unix:
 	yes ' '| /usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
+
+build_essential_linux:
+	yes ' '| sh -c "`curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh`"
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
