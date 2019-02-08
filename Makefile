@@ -12,7 +12,8 @@ build_vimplug:
 
 build_zplug:
 	echo 'install zplug'
-	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | TERM=screen-256color zsh
+	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | \
+		ZPLUG_HOME=$(HOME)/.config/zplug TERM=screen-256color zsh
 
 link:
 	echo 'mkdir for config.d'
