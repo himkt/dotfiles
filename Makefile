@@ -1,8 +1,9 @@
 # Makefile for dotfile configs
 ZPLUG_HOME := $(HOME)/.config/zplug
 TERM       := screen-256color
+UNAME_S    := $(shell uname -s)
 
-ifeq (`uname`, Darwin)
+ifeq ($(UNAME_S),Darwin)
 	BREW_COMPILER := /usr/bin/ruby -e
 	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/master/install
 else
@@ -12,7 +13,7 @@ endif
 
 .PHONY: all config clean build_brew build_zplug build_vimplug
 
-all: clean config link build_brew build_zplug build_vimplug
+all: clean config link build_zplug build_vimplug
 bootstrap: build_brew requirements
 
 build_vimplug:
@@ -30,7 +31,6 @@ link:
 	@echo 'create symbolic links...'
 	ln -s $(PWD)/config/config.vim $(HOME)/.vimrc
 	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
-	ln -s $(PWD)/config/config.bash $(HOME)/.bashrc
 	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(PWD)/config/confign.vim $(HOME)/.config/nvim/init.vim
 	@echo 'done'
@@ -39,7 +39,6 @@ clean:
 	@echo 'remove symbolic links'
 	rm -f $(HOME)/.vimrc
 	rm -f $(HOME)/.zshrc
-	rm -f $(HOME)/.bashrc
 	rm -f $(HOME)/.tmux.conf
 	rm -f $(HOME)/.latexmkrc
 	rm -rf $(HOME)/.vim
