@@ -41,7 +41,7 @@ clean:
 	@echo 'done'
 
 build_essential:
-	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	yes ' '| /usr/bin/ruby -e "`curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install`"
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
