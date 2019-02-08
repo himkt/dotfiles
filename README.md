@@ -24,3 +24,9 @@ bash -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/i
   + macOS >= 10.9
   + CentOS >= 6.4
   + Ubuntu >=14.0
+
+- software
+  + git
+  + make
+  + curl
+  + zsh

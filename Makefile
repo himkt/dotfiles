@@ -1,21 +1,23 @@
 # Makefile for dotfile configs
-.PHONY: all config clean requirements reset
+.PHONY: all config clean requirements build_essential build_zplug build_vimplug
 
-
-all: clean config
+all: clean config link
+bootstrrap: build_essential build_zplug build_vimplug
 
 build_vimplug:
 	echo 'install vim-plug'
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	nvim -u $(HOME)/.dotfiles/config/confign.tiny.vim +PlugInstall +qall
+	nvim -u $(HOME)/.dotfiles/config/confign.vim +UpdateRemotePlugins +qall
 
 build_zplug:
 	echo 'install zplug'
 	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | \
-		ZPLUG_HOME=$(HOME)/.config/zplug zsh
+		ZPLUG_HOME=$(HOME)/.config/zplug TERM=screen-256color zsh
 
-config: build_vimplug build_zplug
-	echo 'mkdir'
+link:
+	echo 'mkdir for config.d'
 	mkdir -p $(HOME)/.config/nvim
 	echo 'create symbolic links...'
 	ln -s $(HOME)/.dotfiles/config/config.vim $(HOME)/.vimrc
@@ -34,7 +36,10 @@ clean:
 	rm -rf $(HOME)/.config/nvim
 	rm -rf $(HOME)/.config/zplug
 
+build_essential:
+	/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+
 # if you have installed linuxbrew or homebrew,
 # you can use this target
-requirements:
+requirements: build_essential
 	brew bundle --file=package/Brewfile
