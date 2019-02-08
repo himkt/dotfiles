@@ -23,7 +23,7 @@ jobs:
           command: |
             export USER=circleci
             mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/build-automation/bin/installer.sh)"
+            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
       - run:
           name: brew
           shell: /usr/bin/zsh
