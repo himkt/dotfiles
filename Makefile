@@ -1,4 +1,7 @@
 # Makefile for dotfile configs
+ZPLUG_HOME := $(HOME)/.config/zplug
+TERM       := screen-256color
+
 
 .PHONY: all config clean build_essential build_zplug build_vimplug
 
@@ -12,7 +15,7 @@ build_vimplug:
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
 
 build_zplug:
-	ZPLUG_HOME=$(HOME)/.config/zplug TERM=screen-256color git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
+	  git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
 
 link:
 	@echo 'mkdir for config.d'
