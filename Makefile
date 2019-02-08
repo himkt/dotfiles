@@ -13,8 +13,8 @@ endif
 
 .PHONY: all config clean build_brew build_zplug build_vimplug
 
-all: clean config link build_zplug build_vimplug
-bootstrap: build_brew requirements
+all: clean config link build_brew
+bootstrap: requirements build_zplug build_vimplug
 
 build_vimplug:
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
