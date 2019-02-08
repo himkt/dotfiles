@@ -1,6 +1,6 @@
 # Makefile for dotfile configs
 
-.PHONY: all config clean requirements build_essential build_zplug build_vimplug
+.PHONY: all config clean build_essential build_zplug build_vimplug
 
 all: clean config link build_zplug build_vimplug
 bootstrap: build_essential requirements
@@ -21,6 +21,7 @@ link:
 	@echo 'create symbolic links...'
 	ln -s $(PWD)/config/config.vim $(HOME)/.vimrc
 	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
+	ln -s $(PWD)/config/config.bash $(HOME)/.bashrc
 	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(PWD)/config/confign.vim $(HOME)/.config/nvim/init.vim
 	@echo 'done'

@@ -1,5 +1,5 @@
 #
-# .zshrc - Zsh configuration
+# .zshrc - The zsh configuration
 #
 
 
