@@ -2,6 +2,7 @@
 ZPLUG_HOME := $(HOME)/.config/zplug
 TERM       := screen-256color
 UNAME_S    := $(shell uname -s)
+BREW       := $(shell which brew 2> /dev/null)
 
 ifeq ($(UNAME_S),Darwin)
 	BREW_COMPILER := /usr/bin/ruby -e
@@ -11,16 +12,18 @@ else
 	BREW_SOURCE := https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
 endif
 
+ifeq ($(BREW),)
+	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "`curl -fsSL $(BREW_SOURCE)`"
+endif
+
 .PHONY: all config clean build_brew build_zplug build_vimplug
 
-all: clean config link build_brew
-bootstrap: requirements build_zplug build_vimplug
+all: clean config link build_zplug build_vimplug build_brew
+bootstrap: requirements 
 
 build_vimplug:
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
-	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
 
 build_zplug:
 	  git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
@@ -47,9 +50,11 @@ clean:
 	@echo 'done'
 
 build_brew:
-	$(BREW_COMPILER) "`curl -fsSL $(BREW_SOURCE)`"
+	$(BREW_COMMAND)
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements: build_brew
+	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
+	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
 	brew bundle --file=package/Brewfile
