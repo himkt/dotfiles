@@ -1,7 +1,8 @@
 # Makefile for dotfile configs
 .PHONY: all config clean requirements build_essential build_zplug build_vimplug
 
-all: clean config build_zplug build_vimplug
+all: clean config link
+bootstrrap: build_essential build_zplug build_vimplug
 
 build_vimplug:
 	echo 'install vim-plug'
@@ -24,7 +25,6 @@ link:
 	ln -s $(HOME)/.dotfiles/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(HOME)/.dotfiles/config/confign.vim $(HOME)/.config/nvim/init.vim
 	echo 'done'
-	exec zsh
 
 clean:
 	rm -f $(HOME)/.vimrc
