@@ -106,10 +106,6 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug "greymd/tmux-xpanes"
 
   # check whether if there are packages which it can install
-  if ! zplug check --verbose; then
-    zplug install
-  fi
-
   zplug load
 fi
 

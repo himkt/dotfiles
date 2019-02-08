@@ -51,6 +51,6 @@ build_brew:
 requirements: build_brew
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
+	git clone https://github.com/zplug/zplug $(ZPLUG_HOME) && zplug install
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
