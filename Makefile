@@ -10,10 +10,10 @@ else
 	BREW_SOURCE := https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
 endif
 
-.PHONY: all config clean build_essential_linux build_zplug build_vimplug
+.PHONY: all config clean build_brew build_zplug build_vimplug
 
-all: clean config link build_essential_linux build_zplug build_vimplug
-bootstrap: build_essential requirements
+all: clean config link build_brew build_zplug build_vimplug
+bootstrap: build_brew requirements
 
 build_vimplug:
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -52,5 +52,5 @@ build_brew:
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
-requirements: build_essential
+requirements: build_brew
 	brew bundle --file=package/Brewfile
