@@ -12,8 +12,7 @@ build_vimplug:
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
 
 build_zplug:
-	curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | \
-		ZPLUG_HOME=$(HOME)/.config/zplug TERM=screen-256color zsh
+	ZPLUG_HOME=$(HOME)/.config/zplug TERM=screen-256color git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
 
 link:
 	@echo 'mkdir for config.d'
