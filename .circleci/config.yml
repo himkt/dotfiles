@@ -34,7 +34,7 @@ jobs:
           command: |
             wget https://github.com/zsh-users/zsh/archive/zsh-5.6.tar.gz
             tar zxvf zsh-5.6.tar.gz && cd zsh-zsh-5.6 && ./Util/preconfig
-            ./configure && make && make install
+            ./configure && make && sudo make install
       - run:
           name: test installation
           shell: /usr/bin/zsh
