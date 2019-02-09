@@ -47,8 +47,8 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	pyenv install 3.6.5 && pyenv virtualenv 3.6.5 neovim
-	pyenv global neovim && pyenv rehash && pip install neovim
+	pyenv install 3.6.3
+	pyenv global 3.6.3 && pyenv rehash && pip install neovim
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
 

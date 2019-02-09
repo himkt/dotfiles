@@ -177,7 +177,8 @@ endfunction
 " base config "
 " ----------- "
 
-let g:python3_host_prog = $PYENV_ROOT . '/versions/neovim/bin/python'
+" If you have an error, `cd $HOME/.dotfiles && make requirements` may solve it.
+let g:python3_host_prog = $PYENV_ROOT . '/versions/3.6.3/bin/python'
 
 if &compatible
   set nocompatible
