@@ -38,6 +38,7 @@ jobs:
           name: load zshrc
           shell: /usr/bin/zsh
           command: |
+            export TERM=screen-256color
             source $HOME/.zshrc
 workflows:
   version: 2
