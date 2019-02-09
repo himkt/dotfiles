@@ -34,12 +34,6 @@ jobs:
           shell: /usr/bin/zsh
           command: |
             zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
-      - run:
-          name: load zshrc
-          shell: /usr/bin/zsh
-          command: |
-            export TERM=screen-256color
-            source $HOME/.zshrc
 workflows:
   version: 2
   build_and_test:
