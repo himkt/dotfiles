@@ -6,7 +6,7 @@
 export LANG=ja_JP.UTF-8
 export LC_CTYPE=ja_JP.UTF-8
 
-export EDITOR=nvim
+export EDITOR=vim
 export XDG_CONFIG_HOME=$HOME/.config
 
 export PATH=$PATH:$HOME/.dotfiles/bin
@@ -83,12 +83,11 @@ case ${OSTYPE} in
     ;;
 esac
 
+
 alias l="ls"
 alias la="ls -a"
 alias lla="ls -la"
-alias vim="nvim"
 alias zmv="noglob zmv -W"
-alias bruby="bundle exec ruby"
 
 
 if [ -e $ZPLUG_HOME/init.zsh ]; then
