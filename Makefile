@@ -47,11 +47,14 @@ clean:
 build_brew:
 	$(BREW_COMMAND)
 
+brew_bundle:
+	brew bundle --file=package/Brewfile
+
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	brew bundle --file=package/Brewfile
+	brew bundle --file=package/Brewfile.tiny
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
 	pyenv install 3.6.5 && pyenv virtualenv 3.6.5 neovim
-	pyenv global neovim && pip install neovim
+	pyenv global neovim && pyenv rehash && pip install neovim

@@ -1,0 +1,14 @@
+# python development
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+
+# ruby development
+brew 'rbenv'
+brew 'ruby-build'
+
+brew 'tmux'
+brew 'neovim'
+brew 'htop'
+
+brew 'tree'
+brew 'wget'
