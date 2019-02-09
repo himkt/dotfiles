@@ -113,12 +113,16 @@ fi
 
 
 # etc
-if builtin command -v rbenv > /dev/null; then
+if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
 
-if builtin command -v pyenv > /dev/null; then
+if which pyenv > /dev/null; then
   eval "$(pyenv init -)"
+fi
+
+if which nvim > /dev/null; then
+  alias vim=nvim
 fi
 
 if which pyenv-virtualenv-init > /dev/null; then

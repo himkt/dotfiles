@@ -50,7 +50,7 @@ let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
 let g:DevIconsDefaultFolderOpenSymbol = ''
 
 " Plug 'Shougo/denite.nvim'
-call denite#custom#source('file_rec', 'sorters', ['sorter/word'])
+call denite#custom#source('file_rec', 'sorters', ['sorter/word', 'sorter/reverse'])
 call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>')
