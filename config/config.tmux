@@ -11,8 +11,12 @@ set -g status-justify left
 # enable mouse mode
 set-option -g mouse on
 setw -g mode-keys vi
-bind-key -T copy-mode-vi WheelUpPane send -X scroll-up
-bind-key -T copy-mode-vi WheelDownPane send -X scroll-down
+
+if-shell '[ $(echo "$(tmux -V | cut -d" " -f2) >= 2.4" | bc) -eq 1 ]' \
+    bind-key -T copy-mode-vi WheelUpPane send -X scroll-up
+
+if-shell '[ $(echo "$(tmux -V | cut -d" " -f2) >= 2.4" | bc) -eq 1 ]' \
+    bind-key -T copy-mode-vi WheelDownPane send -X scroll-down
 
 # color
 set -g status-fg colour231

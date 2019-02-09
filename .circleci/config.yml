@@ -10,10 +10,7 @@ jobs:
           name: install requirements
           command: |
             sudo apt-get update -y
-            sudo apt-get install -y curl git make zsh tmux
-            sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
-              libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
-              xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+            sudo apt-get install -y wget gcc tmux
       - run:
           name: locale
           command: |
@@ -21,11 +18,27 @@ jobs:
             sudo locale-gen ja_JP.UTF-8
             sudo update-locale
       - run:
-          name: test installation
-          shell: /usr/bin/zsh
+          name: configure
           command: |
             export USER=circleci
             mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
+      - run:
+          name: install neovim
+          command: |
+            cd /tmp
+            wget https://github.com/neovim/neovim/releases/download/v0.3.4/nvim-linux64.tar.gz
+            tar zxvf nvim-linux64.tar.gz
+            sudo mv nvim-linux64/bin/nvim /usr/bin/
+      - run:
+          name: install zsh
+          command: |
+            wget https://github.com/zsh-users/zsh/archive/zsh-5.6.tar.gz
+            tar zxvf zsh-5.6.tar.gz && cd zsh-zsh-5.6 && ./Util/preconfig
+            ./configure && make && make install
+      - run:
+          name: test installation
+          shell: /usr/bin/zsh
+          command: |
             zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
       - run:
           name: brew

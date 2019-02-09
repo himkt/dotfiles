@@ -18,7 +18,7 @@ endif
 
 .PHONY: all config clean build_brew
 
-all: clean config link build_brew
+all: clean config link
 
 link:
 	@echo 'mkdir for config.d'
@@ -47,13 +47,15 @@ clean:
 build_brew:
 	$(BREW_COMMAND)
 
-brew_bundle:
+brew_bundle_tiny: build_brew
+	brew bundle --file=package/Brewfile.tiny
+
+brew_bundle: build_brew
 	brew bundle --file=package/Brewfile
 
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	brew bundle --file=package/Brewfile.tiny
 	pyenv install 3.6.5 && pyenv virtualenv 3.6.5 neovim
 	pyenv global neovim && pyenv rehash && pip install neovim
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
