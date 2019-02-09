@@ -8,13 +8,21 @@ type git || {
 }
 
 
-echo "clone .dotfiles..."
+echo "Clone dotfiles..."
 git clone git@github.com:himkt/dotfiles.git $HOME/.dotfiles
 
 
-echo "installing..."
+echo "Installing dotfiles..."
 cd $HOME/.dotfiles && make
 
 
-source $HOME/.zshrc && make requirements
-echo "finished."
+source $HOME/.zshrc
+echo "Finished!"
+echo "- If you want to use neovim with extensions,"
+echo "  please run `make requirements`."
+echo "  (`make requirements` needs pyenv)"
+echo "--------------------------------------------"
+echo "- If you want to use linuxbrew/homebrew,"
+echo "  please run `make brew_bundle`."
+echo "  Please run `make build_brew` before"
+echo "  if you have not installed brew yet"

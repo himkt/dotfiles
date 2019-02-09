@@ -16,7 +16,7 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "`curl -fsSL $(BREW_SOURCE)`"
 endif
 
-.PHONY: all config clean build_brew
+.PHONY: all config clean build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean config link
 
@@ -44,15 +44,6 @@ clean:
 	rm -rf $(HOME)/.config/zplug
 	@echo 'done'
 
-build_brew:
-	$(BREW_COMMAND)
-
-brew_bundle_tiny: build_brew
-	brew bundle --file=package/Brewfile.tiny
-
-brew_bundle: build_brew
-	brew bundle --file=package/Brewfile
-
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
@@ -60,3 +51,9 @@ requirements:
 	pyenv global neovim && pyenv rehash && pip install neovim
 	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
 	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
+
+build_brew:
+	$(BREW_COMMAND)
+
+brew_bundle:
+	brew bundle --file=package/Brewfile
