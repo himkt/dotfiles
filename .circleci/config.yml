@@ -38,6 +38,7 @@ jobs:
           name: brew
           shell: /usr/bin/zsh
           command: |
+            source $HOME/.zshrc
             echo "hello"
 workflows:
   version: 2
