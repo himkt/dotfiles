@@ -1,3 +1,19 @@
 # essential
 brew 'gcc'
 brew 'llvm'
+
+# python development
+brew 'pyenv'
+brew 'pyenv-virtualenv'
+
+# ruby development
+brew 'rbenv'
+brew 'ruby-build'
+
+# latest tmux, neovim
+brew 'tmux'
+brew 'neovim'
+
+# useful tools
+brew 'htop'
+brew 'tree'

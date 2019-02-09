@@ -29,5 +29,6 @@ zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/in
   + make
   + curl
   + zsh
-  + tmux
-  + pyenv
+  + tmux (optional)
+  + neovim (optional)
+  + pyenv (optional)
