@@ -10,7 +10,7 @@ jobs:
           name: install requirements
           command: |
             sudo apt-get update -y
-            sudo apt-get install -y wget gcc tmux
+            sudo apt-get install -y wget gcc tmux zsh
       - run:
           name: locale
           command: |
@@ -29,12 +29,6 @@ jobs:
             wget https://github.com/neovim/neovim/releases/download/v0.3.4/nvim-linux64.tar.gz
             tar zxvf nvim-linux64.tar.gz
             sudo mv nvim-linux64/bin/nvim /usr/bin/
-      - run:
-          name: install zsh
-          command: |
-            wget https://github.com/zsh-users/zsh/archive/zsh-5.6.tar.gz
-            tar zxvf zsh-5.6.tar.gz && cd zsh-zsh-5.6 && ./Util/preconfig
-            ./configure && make && sudo make install
       - run:
           name: test installation
           shell: /usr/bin/zsh
