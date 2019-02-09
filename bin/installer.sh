@@ -18,7 +18,7 @@ cd $HOME/.dotfiles && make
 
 echo -e ""
 echo -e "### Finish installing dotfiles!"
-echo -e "Please run \e[31msource $HOME/.zshrc\e[0m to enable configures."
+echo -e "Please run \e[31msource $HOME/.zshrc\e[0m on zsh to enable configures."
 echo -e "- If you want to use neovim with extensions,"
 echo -e "  please run \e[31mmake requirements\e[0m (which needs pyenv)."
 echo -e ""
