@@ -1,0 +1,22 @@
+snippet prime_factorize
+  std::vector<std::pair<long long, int>> factor(long long base) {
+      long long ret = 1e18;
+      vector<pair<long long, int>> fs;
+
+      for (long long i=2; i*i < base; i++) {
+          if (base % i == 0) {
+              int cnt = 0;
+
+              while (base % i == 0) {
+                  base /= i;
+                  cnt++;
+                  fs.emplace_back(i, cnt);
+              }
+          }
+      }
+      if (base > 1) {
+          fs.emplace_back(base, 1);
+      }
+
+      return fs;
+  }
