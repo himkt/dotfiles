@@ -9,7 +9,6 @@
 " ------------- "
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -35,19 +34,12 @@ Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'rust-lang/rust.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
 call plug#end()
 
-
-" Plug 'ryanoasis/vim-devicons'
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsUnicodeDecorateFolderNodes = 1
-let g:DevIconsEnableFoldersOpenClose = 1
-let g:WebDevIconsUnicodeDecorateFolderNodesDefaultSymbol = ''
-let g:DevIconsDefaultFolderOpenSymbol = ''
 
 " Plug 'Shougo/denite.nvim'
 call denite#custom#source('file_rec', 'sorters', ['sorter/word', 'sorter/reverse'])
@@ -73,6 +65,7 @@ let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
+    \ 'ruby': ['solargraph', 'stdio'],
     \ 'javascript': ['javascript-typescript-stdio'],
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],

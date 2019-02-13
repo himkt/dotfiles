@@ -5,7 +5,6 @@
 
 
 call plug#begin('~/.config/nvim/plugged')
-Plug 'ryanoasis/vim-devicons'
 Plug 'Shougo/denite.nvim'
 Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -31,6 +30,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'lervag/vimtex'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'vim-ruby/vim-ruby'
+Plug 'tpope/vim-rails'
 Plug 'rust-lang/rust.vim'
 Plug 'hynek/vim-python-pep8-indent'
 Plug 'tell-k/vim-autopep8'
