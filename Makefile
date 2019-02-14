@@ -13,7 +13,7 @@ else
 endif
 
 ifeq ($(BREW),)
-	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "`curl -fsSL $(BREW_SOURCE)`"
+	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
 .PHONY: all config clean build_brew brew_bundle_tiny brew_bundle_tiny
@@ -47,12 +47,7 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	pyenv install --skip-existing 3.6.3
-	pyenv global 3.6.3 && pyenv rehash && pip install neovim
-	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
-	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
-	echo 'finish creating the neovim environment!'
-	echo 'pyenv global <your_using_python_version> to return your python'
+	bash $(PWD)/bin/python_setup_for_neovim.sh
 
 build_brew:
 	$(BREW_COMMAND)

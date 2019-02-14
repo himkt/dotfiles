@@ -33,7 +33,19 @@ jobs:
           name: test installation
           shell: /usr/bin/zsh
           command: |
-            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/.dotfiles/master/bin/installer.sh)"
+      - run:
+          name: build linuxbrew
+          shell: /usr/bin/zsh
+          command: |
+            cd $HOME/.dotfiles && USER=circleci make build_brew
+      - run:
+          name: install requirements
+          command: |
+            echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bashrc
+            eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+            cd $HOME/.dotfiles && make brew_bundle
+            cd $HOME/.dotfiles && make requirements
 workflows:
   version: 2
   build_and_test:
