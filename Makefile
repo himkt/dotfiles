@@ -47,12 +47,7 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	CFLAGS="-I$(brew --prefix openssl)/include" LDFLAGS="-L$(brew --prefix openssl)/lib" pyenv install --verbose --skip-existing 3.6.3
-	pyenv global 3.6.3 && pyenv rehash && pip install neovim
-	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
-	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
-	echo 'finish creating the neovim environment!'
-	echo 'pyenv global <your_using_python_version> to return your python'
+	bash $(PWD)/bin/python_setup_for_neovim.sh
 
 build_brew:
 	$(BREW_COMMAND)
