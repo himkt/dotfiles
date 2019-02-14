@@ -13,7 +13,7 @@ else
 endif
 
 ifeq ($(BREW),)
-	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "\$\(curl -fsSL $(BREW_SOURCE)\)"
+	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
 .PHONY: all config clean build_brew brew_bundle_tiny brew_bundle_tiny
