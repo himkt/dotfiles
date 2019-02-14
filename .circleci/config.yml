@@ -34,6 +34,11 @@ jobs:
           shell: /usr/bin/zsh
           command: |
             zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+      - run:
+          name: build linuxbrwe
+          shell: /usr/bin/zsh
+          command: |
+            cd $HOME/.dotfiles && USER=circleci make build_brew
 workflows:
   version: 2
   build_and_test:
