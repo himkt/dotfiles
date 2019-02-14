@@ -33,7 +33,7 @@ jobs:
           name: test installation
           shell: /usr/bin/zsh
           command: |
-            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/.dotfiles/himkt/use-openssl/bin/installer.sh)"
       - run:
           name: build linuxbrew
           shell: /usr/bin/zsh
@@ -43,6 +43,8 @@ jobs:
           name: install requirements
           shell: /usr/bin/zsh
           command: |
+            echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
+            eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             cd $HOME/.dotfiles && make requirements
 workflows:
   version: 2
