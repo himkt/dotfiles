@@ -41,9 +41,8 @@ jobs:
             cd $HOME/.dotfiles && USER=circleci make build_brew
       - run:
           name: install requirements
-          shell: /usr/bin/zsh
           command: |
-            echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >>~/.profile
+            echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bashrc
             eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             cd $HOME/.dotfiles && make requirements
 workflows:
