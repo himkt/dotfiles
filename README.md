@@ -2,7 +2,7 @@
 
 # .dotfiles : My configurations for command line tools
 
-<a href="https://circleci.com/gh/himkt/dotfiles"><img src="https://circleci.com/gh/himkt/dotfiles.svg?style=svg" alt="circleci"></a>
+[![CircleCI](https://circleci.com/gh/himkt/.dotfiles.svg?style=svg)](https://circleci.com/gh/himkt/.dotfiles)
 <a href="#"><img src="https://img.shields.io/github/stars/himkt/dotfiles.svg?maxAge=2592000&colorB=orange" alt="star"></a>
 <a href="https://github.com/neovim/neovim"><img src="https://img.shields.io/badge/built%20with-neovim-blue.svg" alt="neovim"></a>
 <a href="https://github.com/zsh-users/zsh"><img src="https://img.shields.io/badge/built%20with-zsh-red.svg" alt="zsh"></a>
