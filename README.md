@@ -10,13 +10,21 @@
 [![mit license](http://img.shields.io/badge/license-MIT-orange.svg?style=flat)](https://raw.githubusercontent.com/himkt/.dotfiles/master/license)
 
 
-### Operating Systems
+### Installation
+
+```
+zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+```
+
+
+### Requirements
+
+- Operating Systems
 
 ![macOS](https://img.shields.io/badge/macOS->=10.9-information.svg)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu->=14.0-information.svg)
 
-
-### Dependencies
+- Dependencies
 
 ![curl](https://img.shields.io/badge/require-curl-red.svg)
 ![git](https://img.shields.io/badge/require-git-red.svg)
@@ -25,13 +33,7 @@
 ![neovim](https://img.shields.io/badge/optional-neovim-9cf.svg)
 ![pyenv](https://img.shields.io/badge/optional-pyenv-9cf.svg)
 
-
-### Installation
-
-```
-zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
-```
-
+---
 
 ### Additional features
 
