@@ -1,84 +1,133 @@
 "
-" @author = himkt
+" ---------------------
+"
+" Vim configuration
+"
+" @author = 'himkt'
+"
+" ---------------------
 "
 
+if &compatible
+  set nocompatible
+endif
 
-" ----------- "
-" base config "
-" ----------- "
-
-" enable syntax support
 filetype plugin indent on
-
-" enable hilighting
 syntax on
 
-" color scheme
-colorscheme desert
+if exists('$SHELL')
+    set shell=$SHELL
+else
+    set shell=/bin/sh
+endif
 
-" omni completion
-set completeopt=menuone,longest,preview
+" open with the cursor in previous session
+augroup vimrcEx
+  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
+  \ exe "normal g`\"" | endif
+augroup END
 
-" file encoding
+"" File encodings
 set encoding=utf-8
-set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
-
+set fileencodings=utf-8,iso-2022-jp,euc-jp,ascii
 set fileformats=unix,mac,dos
-set wrap visualbell
-set nocompatible showcmd
-set autoindent smartindent expandtab
-set numberwidth=5 shiftwidth=2 tabstop=2
-set nowritebackup nobackup noswapfile
-set incsearch hlsearch
-set showmatch matchtime=1
+
+"" Japanese input (TODO check whether if I can remove them)
+set ttimeout
+set ttimeoutlen=50
+
+"" Enable cursor highlighting
+set cursorline
+set cursorcolumn
+
+"" Indent and tab
+set expandtab
+set nowrap
+set autoindent
+set smartindent
+set smarttab
+
+"" Show vim title for a window
+set title
+
+"" Show command in status line
+set showcmd
+
+"" shift and tab stop
+set tabstop=2
+set shiftwidth=2
+autocmd FileType python setl tabstop=8 shiftwidth=4 softtabstop=4
+autocmd FileType cpp    setl tabstop=4 shiftwidth=4 softtabstop=4
+
+"" Do not create backup and swap files
+set noswapfile
+set nobackup
+
+"" Enable incremental and hilighting search
+set incsearch
+set hlsearch
+
+"" Hilight a matched bracket
+set showmatch
+set matchtime=1
+
+"" Enable status line (it seems this does not have any effect)
+"" because vim-airline overwrite this config
 set laststatus=2
+
 set backspace=indent,eol,start
-set clipboard+=unnamed mouse=a
-set splitbelow splitright
-set foldmethod=marker foldlevel=99
-set list listchars=trail:-,extends:»,precedes:«,nbsp:%,tab:\ \ 
 
-" basic shortcuts
+"" Enable mouse
+set mouse=a
+
+"" If vertical split -> open a new pane to right,
+"" and if horizontal split -> open a new pane to below
+set splitbelow
+set splitright
+
+"" Folding config
+set foldmethod=marker
+set foldlevel=0
+
 map ; :
-map /  <Plug>(incsearch-forward)
+nnoremap x "_x
+vnoremap x "_x
 
-" rich hilighting
-map <C-i> <Plug>(quickhl-manual-this)
-map <C-m> <Plug>(quickhl-manual-reset)
- 
+" indent
+inoremap <Tab> <C-t>
+inoremap <S-Tab> <C-d>
 
 " tab shortcuts
-nnoremap <silent> <C-j> : <C-u>tabnew<CR>
-nnoremap <silent> <C-l> gt
+nnoremap <silent> <C-n> : <C-u>tabnew<CR>
 nnoremap <silent> <C-h> gT
+nnoremap <silent> <C-l> gt
 
 " window splitting
-nnoremap <silent>> <C-w>>
-nnoremap <silent>< <C-w><
 nnoremap <silent> vp : <C-u>vs<CR>
 nnoremap <silent> sp : <C-u>sp<CR>
 
-" paste mode
-nnoremap <silent> np : <C-u>set paste<CR>
-nnoremap <silent> nn : <C-u>set nopaste<CR>
-
-" folding
+" folding configuration
 nnoremap <silent>zx  : set foldlevel=99<CR>
 nnoremap <silent>zc  : set foldlevel=0<CR>
 
-" completion
+" completion configuration
+set completeopt=menuone,longest,preview
 autocmd CompleteDone *  pclose
 autocmd FileType *      setlocal omnifunc=syntaxcomplete#Complete
-autocmd FileType python setlocal omnifunc=python3complete#Complete
-autocmd FileType ruby   setlocal omnifunc=rubycomplete#Complete
 
-" python tab config
-autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
 
 " tag hilighting
-autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\|BUG\|HACK\)')
-autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\)')
+autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\)')
+autocmd Syntax * call matchadd('Todo',  '\W\zs\(BUG\|HACK\|NOTE\|INFO\|IDEA\)')
 
-" indent guide feature
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+" executing script in vim
+autocmd FileType cpp    nnoremap <C-p> :exec ':term g++ --std=c++11 % && ./a.out && rm a.out' <CR>
+autocmd FileType rust   nnoremap <C-p> :exec ':term rustc % -o a && ./a && rm ./a' <CR>
+autocmd FileType ruby   nnoremap <C-p> :exec ':term ruby %' <CR>
+autocmd FileType python nnoremap <C-p> :exec ':term python %' <CR>
+autocmd FileType python nnoremap <S-f> :call Autopep8() <CR>
+
+" templates
+autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.rs  0r $HOME/.dotfiles/template/rs/template.rs
