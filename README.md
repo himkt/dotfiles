@@ -2,14 +2,28 @@
 
 # .dotfiles : My configurations for command line tools
 
-[![CircleCI](https://circleci.com/gh/himkt/.dotfiles.svg?style=svg)](https://circleci.com/gh/himkt/.dotfiles)
-<a href="#"><img src="https://img.shields.io/github/stars/himkt/dotfiles.svg?maxAge=2592000&colorB=orange" alt="star"></a>
-<a href="https://github.com/neovim/neovim"><img src="https://img.shields.io/badge/built%20with-neovim-blue.svg" alt="neovim"></a>
-<a href="https://github.com/zsh-users/zsh"><img src="https://img.shields.io/badge/built%20with-zsh-red.svg" alt="zsh"></a>
-<a href="https://github.com/tmux/tmux"><img src="https://img.shields.io/badge/built%20with-tmux-green.svg" alt="tmux"></a>
-<a href="#"><img src="http://img.shields.io/badge/license-MIT-lightgray.svg?style=flat" alt="license"></a>
+[![circleci](https://circleci.com/gh/himkt/.dotfiles.svg?style=svg)](https://circleci.com/gh/himkt/.dotfiles)
+[![star](https://img.shields.io/github/stars/himkt/dotfiles.svg?maxage=2592000&colorB=yellow)](https://github.com/himkt/.dotfiles/stargazers)
+[![neovim](https://img.shields.io/badge/support-neovim-blue.svg)](https://neovim.io/)
+[![zsh](https://img.shields.io/badge/support-zsh-red.svg)](https://www.zsh.org/)
+[![tmux](https://img.shields.io/badge/support-tmux-green.svg)](https://github.com/tmux/tmux)
+[![mit license](http://img.shields.io/badge/license-MIT-orange.svg?style=flat)](https://raw.githubusercontent.com/himkt/.dotfiles/master/license)
 
-This repository provides configs for some softwares.
+
+### Operating Systems
+
+![macOS](https://img.shields.io/badge/macOS->=10.9-information.svg)
+![Ubuntu](https://img.shields.io/badge/Ubuntu->=14.0-information.svg)
+
+
+### Dependencies
+
+![curl](https://img.shields.io/badge/require-curl-red.svg)
+![git](https://img.shields.io/badge/require-git-red.svg)
+![sh](https://img.shields.io/badge/require-zsh-red.svg)
+![tmux](https://img.shields.io/badge/optional-tmux-9cf.svg)
+![neovim](https://img.shields.io/badge/optional-neovim-9cf.svg)
+![pyenv](https://img.shields.io/badge/optional-pyenv-9cf.svg)
 
 
 ### Installation
@@ -24,23 +38,8 @@ zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/in
 - `cd $HOME/.dotfiles && make requirements` does set-up NeoVim packages.
   - This command needs `pyenv`
 
-- `cd $HOME/.dotfiles && make build_brew` installs `linuxbrew` or `homebrew`
-  - If you want to use `brew` for package manager, please use.
+  - `cd $HOME/.dotfiles && make build_brew` installs `linuxbrew` or `homebrew`
+    - If you want to use `brew` for package manager, please use.
 
-- `cd $HOME/.dotfiles && make brew_bundle` installs some packages which I use.
+    - `cd $HOME/.dotfiles && make brew_bundle` installs some packages which I use.
 
-
-### Requirements
-
-- operating system
-  + macOS >= 10.9
-  + Ubuntu >=14.0
-
-- software
-  + curl
-  + git
-  + make
-  + zsh
-  + tmux (optional)
-  + neovim (optional)
-  + pyenv (optional)
