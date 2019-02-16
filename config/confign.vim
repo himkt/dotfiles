@@ -1,8 +1,15 @@
 "
-" author = 'himkt'
-" desc   = 'My neovim configuration'
+" ---------------------
+"
+" NeoVim configuration
+"
+" @author = 'himkt'
+"
+" ---------------------
 "
 
+"" load basic vim configuration
+source $HOME/.dotfiles/config/config.vim
 
 " ------------- "
 " vim-plug conf "
@@ -134,98 +141,3 @@ endfunction
 function! Autopep8()
   call Preserve(':silent %!autopep8 -')
 endfunction
-
-
-
-" ----------- "
-" base config "
-" ----------- "
-
-" If you have an error, `cd $HOME/.dotfiles && make requirements` may solve it.
-let g:python3_host_prog = $PYENV_ROOT . '/versions/3.6.3/bin/python'
-
-if &compatible
-  set nocompatible
-endif
-
-filetype plugin indent on
-syntax on
-
-if exists('$SHELL')
-    set shell=$SHELL
-else
-    set shell=/bin/sh
-endif
-
-" open with the cursor in previous session
-augroup vimrcEx
-  au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
-  \ exe "normal g`\"" | endif
-augroup END
-
-" file encoding
-set encoding=utf-8
-set fileencodings=utf-8,iso-2user_jp,euc-jp,ascii
-
-" for japanese input
-set ttimeout
-set ttimeoutlen=50
-
-set fileformats=unix,mac,dos
-set wrap visualbell ruler
-set showcmd
-set autoindent smartindent expandtab
-set numberwidth=5 shiftwidth=2 tabstop=2
-set nowritebackup nobackup noswapfile
-set incsearch hlsearch
-set showmatch matchtime=1
-set laststatus=2
-set backspace=indent,eol,start
-set mouse=a
-set splitbelow splitright
-set foldmethod=marker foldlevel=0
-map ; :
-nnoremap x "_x
-vnoremap x "_x
-
-" indent
-inoremap <Tab> <C-t>
-inoremap <S-Tab> <C-d>
-
-" tab shortcuts
-nnoremap <silent> <C-n> : <C-u>tabnew<CR>
-nnoremap <silent> <C-h> gT
-nnoremap <silent> <C-l> gt
-
-" window splitting
-nnoremap <silent> vp : <C-u>vs<CR>
-nnoremap <silent> sp : <C-u>sp<CR>
-
-" folding configuration
-nnoremap <silent>zx  : set foldlevel=99<CR>
-nnoremap <silent>zc  : set foldlevel=0<CR>
-
-" completion configuration
-set completeopt=menuone,longest,preview
-autocmd CompleteDone *  pclose
-autocmd FileType *      setlocal omnifunc=syntaxcomplete#Complete
-
-" tabstop configuraton
-autocmd FileType python setl autoindent tabstop=8 expandtab shiftwidth=4 softtabstop=4
-autocmd FileType cpp setl autoindent tabstop=4 expandtab shiftwidth=4 softtabstop=4
-
-" tag hilighting
-autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\|XXX\)')
-autocmd Syntax * call matchadd('Todo',  '\W\zs\(BUG\|HACK\|NOTE\|INFO\|IDEA\)')
-
-" executing script in vim
-autocmd FileType cpp    nnoremap <C-p> :exec ':term g++ --std=c++11 % && ./a.out && rm a.out' <CR>
-autocmd FileType rust   nnoremap <C-p> :exec ':term rustc % -o a && ./a && rm ./a' <CR>
-autocmd FileType ruby   nnoremap <C-p> :exec ':term ruby %' <CR>
-autocmd FileType python nnoremap <C-p> :exec ':term python %' <CR>
-autocmd FileType python nnoremap <S-f> :call Autopep8() <CR>
-
-" templates
-autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
-autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
-autocmd BufNewFile *.rs  0r $HOME/.dotfiles/template/rs/template.rs
