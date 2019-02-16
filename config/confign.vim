@@ -11,13 +11,11 @@
 "" load basic vim configuration
 source $HOME/.dotfiles/config/config.vim
 
-" ------------- "
-" vim-plug conf "
-" ------------- "
+"" If you have an error, `cd $HOME/.dotfiles && make requirements` may solve it.
+let g:python3_host_prog = $PYENV_ROOT . '/versions/3.6.3/bin/python'
 
 " load packages
 source $HOME/.dotfiles/config/confign.tiny.vim
-
 
 " Plug 'Shougo/denite.nvim'
 call denite#custom#source('file_rec', 'sorters', ['sorter/word', 'sorter/reverse'])
@@ -64,9 +62,6 @@ let g:NERDTreeShowHidden=1
 " Plug 'junegunn/seoul256.vim'
 colorscheme seoul256
 
-" Plug 'vim-airline/vim-airline-themes'
-let g:airline_theme='bubblegum'
-
 " Plug 'godlygeek/tabular'
 vnoremap tr : <C-u>Tabularize<Space>/
 
@@ -98,18 +93,11 @@ let g:syntastic_rust_checkers = ['rustc', 'cargo']
 " Plug 'haya14busa/incsearch.vim'
 map / <Plug>(incsearch-forward)
 
-" Plug 't9md/vim-quickhl'
-map <C-i> <Plug>(quickhl-manual-this)
-map <C-m> <Plug>(quickhl-manual-reset)
-
-" Plug 'osyo-manga/vim-over'
-nnoremap <silent><C-x> : OverCommandLine<CR>%s/
-
 " Plug 'sheerun/vim-polyglot'
 let g:polyglot_disabled = ['latex']
 
 " Plug 'lervag/vimtex'
-autocmd FileType tex    setlocal omnifunc=vimtex#complete#omnifunc
+autocmd FileType tex setlocal omnifunc=vimtex#complete#omnifunc
 let g:tex_flavor = "latex"
 let g:vimtex_quickfix_mode = 1
 let g:vimtex_quickfix_open_on_warning = 0
