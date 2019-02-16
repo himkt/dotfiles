@@ -1,6 +1,6 @@
 <div align="center"><img src='./assets/header.png' width=600></div>
 
-# .dotfiles : My configurations for command line tools
+# dotfiles : My configurations for command line tools
 
 [![circleci](https://circleci.com/gh/himkt/.dotfiles.svg?style=svg)](https://circleci.com/gh/himkt/.dotfiles)
 [![star](https://img.shields.io/github/stars/himkt/dotfiles.svg?maxage=2592000&colorB=yellow)](https://github.com/himkt/.dotfiles/stargazers)
