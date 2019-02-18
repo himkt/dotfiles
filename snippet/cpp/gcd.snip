@@ -1,0 +1,8 @@
+snippet gcd
+  template <typename integer>
+  integer gcd(integer a, integer b) {
+      integer c = max(a, b);
+      integer d = min(a, b);
+      if (d != 0) return gcd(d, d%c);
+      else return a;
+  }
