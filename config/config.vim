@@ -12,8 +12,11 @@ if &compatible
   set nocompatible
 endif
 
-filetype plugin indent on
-syntax on
+filetype    plugin indent on
+syntax      reset
+colorscheme default
+
+set background=dark
 
 if exists('$SHELL')
     set shell=$SHELL
@@ -32,6 +35,15 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,ascii
 set fileformats=unix,mac,dos
 
+"" Open a new buffer without saving
+set hidden
+
+"" Show vim title for a window
+set title
+
+"" Show command in status line
+set showcmd
+
 "" Japanese input (TODO check whether if I can remove them)
 set ttimeout
 set ttimeoutlen=50
@@ -39,6 +51,8 @@ set ttimeoutlen=50
 "" Enable cursor highlighting
 set cursorline
 set cursorcolumn
+hi CursorLine   cterm=None ctermbg=238 ctermfg=None
+hi CursorColumn cterm=None ctermbg=238 ctermfg=None
 
 "" Indent and tab
 set expandtab
@@ -46,12 +60,6 @@ set nowrap
 set autoindent
 set smartindent
 set smarttab
-
-"" Show vim title for a window
-set title
-
-"" Show command in status line
-set showcmd
 
 "" shift and tab stop
 set tabstop=2
@@ -121,7 +129,7 @@ autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|IMPORTANT\|CHANGED\
 autocmd Syntax * call matchadd('Todo',  '\W\zs\(BUG\|HACK\|NOTE\|INFO\|IDEA\)')
 
 " executing script in vim
-autocmd FileType cpp    nnoremap <C-p> :exec ':term g++ --std=c++11 % && ./a.out && rm a.out' <CR>
+autocmd FileType cpp    nnoremap <C-p> :exec ':term clang++ --std=c++11 % && ./a.out && rm a.out' <CR>
 autocmd FileType rust   nnoremap <C-p> :exec ':term rustc % -o a && ./a && rm ./a' <CR>
 autocmd FileType ruby   nnoremap <C-p> :exec ':term ruby %' <CR>
 autocmd FileType python nnoremap <C-p> :exec ':term python %' <CR>
