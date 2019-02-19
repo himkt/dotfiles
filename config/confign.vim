@@ -68,17 +68,16 @@ nnoremap <silent><C-t> : TagbarToggle<CR>
 " Plug 'osyo-manga/vim-anzu'
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
-nmap <Esc><Esc> <Plug>(anzu-clear-search-status)
 set statusline=%anzu#search_status()
 
 " Plug 'nathanaelkane/vim-indent-guides'
-let g:indent_guides_enable_on_vim_startup=1
 let g:indent_guides_start_level=2
 let g:indent_guides_auto_colors=0
-let g:indent_guides_color_change_percent = 30
 let g:indent_guides_guide_size = 1
-autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=235
-autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=234
+let g:indent_guides_enable_on_vim_startup=1
+let g:indent_guides_color_change_percent = 30
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=233
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=232
 
 " Plug 'scrooloose/syntastic'
 let g:syntastic_cpp_compiler = 'g++'
@@ -94,13 +93,11 @@ map / <Plug>(incsearch-forward)
 let g:polyglot_disabled = ['latex']
 
 " Plug 'lervag/vimtex'
-autocmd FileType tex setlocal omnifunc=vimtex#complete#omnifunc
 let g:tex_flavor = "latex"
 let g:vimtex_quickfix_mode = 1
 let g:vimtex_quickfix_open_on_warning = 0
-call deoplete#custom#var('omni', 'input_patterns', {
-      \ 'tex': g:vimtex#re#deoplete
-      \})
+autocmd FileType tex setlocal omnifunc=vimtex#complete#omnifunc
+call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})
 
 " Plug 'tell-k/vim-autopep8'
 function! Preserve(command)
