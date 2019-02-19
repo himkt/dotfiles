@@ -31,13 +31,10 @@ nnoremap <silent> fg :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
 nnoremap <silent> ff :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#sources#rust#racer_binary = $HOME . '/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path = $HOME . '/work'
 call deoplete#custom#source('_',  'max_menu_width', 0)
+let g:deoplete#enable_at_startup = 1
 
 " Plug 'autozimu/LanguageClient-neovim'
-set hidden
 set completefunc=LanguageClient#complete
 let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
@@ -49,7 +46,8 @@ let g:LanguageClient_serverCommands = {
     \ 'javascript.jsx': ['javascript-typescript-stdio'],
     \ 'typescript': ['javascript-typescript-stdio'],
     \ 'python': ['pyls']}
-nnoremap <silent> K :call LanguageClient#textDocument_hover()<CR>
+nnoremap <silent> H  :call LanguageClient_contextMenu()<CR>
+nnoremap <silent> K  :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 
 " Plug 'Shougo/neosnippet'
