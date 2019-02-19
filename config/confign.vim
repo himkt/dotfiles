@@ -17,6 +17,9 @@ let g:python3_host_prog = $PYENV_ROOT . '/versions/3.6.3/bin/python'
 " load packages
 source $HOME/.dotfiles/config/confign.tiny.vim
 
+" use custom colorscheme
+colorscheme iceberg
+
 " Plug 'Shougo/denite.nvim'
 call denite#custom#source('file_rec', 'sorters', ['sorter/word', 'sorter/reverse'])
 call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
@@ -57,10 +60,6 @@ let g:neosnippet#snippets_directory='~/.dotfiles/snippet'
 
 " Plug 'scrooloose/nerdtree'
 nnoremap <silent><C-e> : NERDTreeToggle<CR>
-let g:NERDTreeShowHidden=1
-
-" Plug 'junegunn/seoul256.vim'
-colorscheme seoul256
 
 " Plug 'godlygeek/tabular'
 vnoremap tr : <C-u>Tabularize<Space>/

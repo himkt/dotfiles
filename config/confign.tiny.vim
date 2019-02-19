@@ -32,8 +32,7 @@ Plug 'tpope/vim-rails'
 Plug 'rust-lang/rust.vim'
 Plug 'lervag/vimtex'
 
-" python specific
-Plug 'hynek/vim-python-pep8-indent'
-Plug 'tell-k/vim-autopep8'
+" colorscheme
+Plug 'cocopon/iceberg.vim'
 
 call plug#end()
