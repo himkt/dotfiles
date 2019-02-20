@@ -27,7 +27,7 @@ link:
 	ln -s $(PWD)/config/config.vim $(HOME)/.vimrc
 	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
 	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
-	ln -s $(PWD)/config/confign.vim $(HOME)/.config/nvim/init.vim
+	ln -s $(PWD)/config/config.nvim $(HOME)/.config/nvim/init.vim
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
@@ -49,8 +49,8 @@ clean:
 requirements:
 	bash $(PWD)/bin/python_setup_for_neovim.sh
 	pyenv global 3.6.3 && pyenv rehash && pip install neovim
-	nvim -u $(PWD)/config/confign.tiny.vim +PlugInstall +qall
-	nvim -u $(PWD)/config/confign.vim +UpdateRemotePlugins +qall
+	nvim -u $(PWD)/config/config.tiny.nvim +PlugInstall +qall
+	nvim -u $(PWD)/config/config.nvim +UpdateRemotePlugins +qall
 	echo 'finish creating the neovim environment!'
 	echo 'pyenv global <your_using_python_version> to return your python'
 

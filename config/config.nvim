@@ -1,3 +1,4 @@
+" vim: ft=vim
 "
 " ---------------------
 "
@@ -15,13 +16,13 @@ source $HOME/.dotfiles/config/config.vim
 let g:python3_host_prog = $PYENV_ROOT . '/versions/3.6.3/bin/python'
 
 " load packages
-source $HOME/.dotfiles/config/confign.tiny.vim
+source $HOME/.dotfiles/config/config.tiny.nvim
 
 " use custom colorscheme
 colorscheme iceberg
 
 " Plug 'Shougo/denite.nvim'
-call denite#custom#source('file_rec', 'sorters', ['sorter/word', 'sorter/reverse'])
+call denite#custom#source('file_rec', 'sorters', ['sorter/rank'])
 call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
 call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>')
