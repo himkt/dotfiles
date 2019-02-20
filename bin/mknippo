@@ -1,15 +1,21 @@
-#! env python3
+#! env python
+# vim ft: python
+
+from __future__ import print_function
+
 import datetime
-import pathlib
-import typing
+import os.path
 
 
 HEADINGS = ['Done', 'Work in Progress', 'Todo', 'Trouble', 'TIL']
 HEADINGS_NEEDED_TAKE_OVER = ['Work in Progress', 'Todo']
 
 
-def format_datetime(datetime: datetime.datetime,
-                    with_extension: bool = True):
+def format_datetime(datetime, with_extension=True):
+    '''
+    datetime: datetime.datetime
+    with_extension: bool
+    '''
     datetime_str = datetime.strftime('%Y:%m:%d')
     if with_extension:
         return datetime_str + '.md'
@@ -17,7 +23,11 @@ def format_datetime(datetime: datetime.datetime,
         return datetime_str
 
 
-def extract_previous_entries(nippo_text: str, entry: str):
+def extract_previous_entries(nippo_text, entry):
+    '''
+    nippo_text: str
+    entry: str
+    '''
     in_state = False
     previous_entries = ''
     entry_key = '## ' + entry
@@ -37,7 +47,11 @@ def extract_previous_entries(nippo_text: str, entry: str):
     return previous_entries
 
 
-def create_nippo(previous_entries: typing.Dict[str, str]):
+def create_nippo(previous_entries):
+    '''
+    previous_entries: Dict[str, str]
+    '''
+
     nippo_text = ''
     for heading in HEADINGS:
         nippo_text += '## ' + heading + '\n'
@@ -45,7 +59,7 @@ def create_nippo(previous_entries: typing.Dict[str, str]):
             previous_text = previous_entries[heading]
             nippo_text += previous_text + '\n'
 
-        nippo_text += '- \n'
+        nippo_text += '- <`1:`>\n'
         nippo_text += '\n'
 
     nippo_text = nippo_text.rstrip('\n')
@@ -55,9 +69,8 @@ def create_nippo(previous_entries: typing.Dict[str, str]):
 if __name__ == '__main__':
     today = datetime.datetime.now()
     today_string = format_datetime(today)
-    today_nippo_path = pathlib.Path(today_string)
 
-    if today_nippo_path.exists():
+    if os.path.exists(today_string):
         print('You have already written nippo!')
         exit()
 
@@ -67,11 +80,10 @@ if __name__ == '__main__':
         delta = datetime.timedelta(days=delta_)
         previous_day = today - delta
         previous_day_string = format_datetime(previous_day)
-        previous_day_path = pathlib.Path(previous_day_string)
-        if previous_day_path.exists():
+        if os.path.exists(previous_day_string):
             print('Found the previous nippo')
 
-            with open(previous_day_path) as previous_nippo_file:
+            with open(previous_day_string) as previous_nippo_file:
                 previous_nippo = previous_nippo_file.read()
                 for heading in HEADINGS_NEEDED_TAKE_OVER:
                     tmp_ = extract_previous_entries(previous_nippo, heading)
@@ -80,6 +92,6 @@ if __name__ == '__main__':
 
     today_nippo_text = '# ' + format_datetime(today) + '\n\n'
     today_nippo_text += create_nippo(previous_entries)
-    with open(today_nippo_path, 'w') as today_nippo:
+    with open(today_string, 'w') as today_nippo:
         print(today_nippo_text, file=today_nippo)
-    print('created: ' + today_nippo_path.as_posix())
+    print('created: ' + today_string)
