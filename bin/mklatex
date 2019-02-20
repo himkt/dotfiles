@@ -50,6 +50,6 @@ with open(makefile_fpath, 'w') as makefile_fp,\
      open(document_fpath, 'w') as document_fp,\
      open(reference_fpath, 'w') as reference_fp:
 
-    print(DOCUMENT, file=document_fp)
-    print(MAKEFILE, file=makefile_fp)
-    print(REFERENCE, file=reference_fp)
+    document_fp.write(DOCUMENT)
+    makefile_fp.write(MAKEFILE)
+    reference_fp.write(REFERENCE)
