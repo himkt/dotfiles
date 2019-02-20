@@ -42,8 +42,15 @@ $ mknippo
 Found the previous nippo
 created: 2019:02:20.md
 $
-$ cat 2019:02:20.md
+```
+
+I show the content of `2019:02:20.md`.
+
+> $ cat 2019:02:20.md
+
+```
 # 2019:02:20.md
+
 ## Done
 -
 

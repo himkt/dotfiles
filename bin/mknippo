@@ -78,7 +78,7 @@ if __name__ == '__main__':
                     previous_entries[heading] = tmp_
             break
 
-    today_nippo_text = '# ' + format_datetime(today) + '\n'
+    today_nippo_text = '# ' + format_datetime(today) + '\n\n'
     today_nippo_text += create_nippo(previous_entries)
     with open(today_nippo_path, 'w') as today_nippo:
         print(today_nippo_text, file=today_nippo)
