@@ -9,6 +9,7 @@ import os.path
 
 HEADINGS = ['Done', 'Work in Progress', 'Todo', 'Trouble', 'TIL']
 HEADINGS_NEEDED_TAKE_OVER = ['Work in Progress', 'Todo']
+EMPTY_ELEMENTS = ['-', '- <`1:`>']
 
 
 def format_datetime(datetime, with_extension=True):
@@ -35,6 +36,9 @@ def extract_previous_entries(nippo_text, entry):
     for line in nippo_text.split('\n'):
         if entry_key in line:
             in_state = True
+            continue
+
+        if line.strip() in EMPTY_ELEMENTS:
             continue
 
         if in_state:
@@ -87,6 +91,8 @@ if __name__ == '__main__':
                 previous_nippo = previous_nippo_file.read()
                 for heading in HEADINGS_NEEDED_TAKE_OVER:
                     tmp_ = extract_previous_entries(previous_nippo, heading)
+                    if tmp_ == '':
+                        continue
                     previous_entries[heading] = tmp_
             break
 
