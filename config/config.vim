@@ -13,7 +13,7 @@ if &compatible
 endif
 
 filetype    plugin indent on
-syntax      reset
+syntax      on
 colorscheme default
 
 set background=dark
