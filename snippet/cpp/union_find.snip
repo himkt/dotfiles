@@ -1,30 +1,48 @@
 snippet union_find
   class UnionFind {
-    public:
-      UnionFind(int x) {
-        par = vector<int>(x);
-        rep (i, par.size()) {
-          par[i] = i;
-        }
-      };
+      public:
+          // contain parent node_index
+          // if the node_id is root, -size(group)
+          vector<int> parent;
+          long long root(int);
+          long long size(int);
 
-      int  root(int);
-      void unite(int, int);
-      bool same(int, int);
-      vector<int> par;
+          // judging functions
+          bool join(int, int);
+          bool same(int, int);
+
+          UnionFind(int x) {
+              parent = vector<int>(x, -1);
+          };
+
   };
 
-  bool UnionFind::same(int x, int y) {
-    return root(x) == root(y);
+
+  long long UnionFind::root(int node_id) {
+      if (parent[node_id] < 0) return node_id;
+      else return parent[node_id] = UnionFind::root(parent[node_id]);
   }
 
-  void UnionFind::unite(int x, int y) {
-    x = root(x);
-    y = root(y);
-    if (x != y) par[x] = y;
+
+  long long UnionFind::size(int node_id) {
+      return -parent[UnionFind::root(node_id)];
   }
 
-  int UnionFind::root(int x) {
-    if (par[x] == x) return x;
-    else return par[x] = root(par[x]);
+
+  bool UnionFind::same(int source_node_id, int target_node_id) {
+      return UnionFind::root(source_node_id) == UnionFind::root(target_node_id);
   }
+
+
+  bool UnionFind::join(int source_node_id, int target_node_id) {
+      int a = UnionFind::root(source_node_id);
+      int b = UnionFind::root(target_node_id);
+      if (a == b) return false;
+
+      if (UnionFind::size(a) < UnionFind::size(b)) swap(a, b);
+      parent[a] += parent[b];
+      parent[b] = a;
+
+      return true;
+  }
+
