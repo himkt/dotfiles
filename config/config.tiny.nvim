@@ -20,7 +20,6 @@ Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
-Plug 'nathanaelkane/vim-indent-guides'
 
 " rich search
 Plug 'haya14busa/incsearch.vim'
