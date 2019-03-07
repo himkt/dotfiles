@@ -101,6 +101,7 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug "peco/peco", as:command, from:gh-r
   zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
   zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq
+  zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
   zplug "greymd/tmux-xpanes"
 
   # check whether if there are packages which it can install
