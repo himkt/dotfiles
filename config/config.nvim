@@ -22,16 +22,6 @@ source $HOME/.dotfiles/config/config.tiny.nvim
 syntax      reset
 colorscheme iceberg
 
-" Plug 'Shougo/denite.nvim'
-call denite#custom#source('file_rec', 'sorters', ['sorter/rank'])
-call denite#custom#map('normal', '<C-n>', '<denite:move_to_next_line>')
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>')
-call denite#custom#map('normal', '<C-p>', '<denite:move_to_previous_line>')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>')
-nnoremap <silent> fu :<C-U>Denite file_rec -highlight-mode-insert=Search<CR>
-nnoremap <silent> fg :<C-u>Denite grep -buffer-name=search-buffer-denite<CR>
-nnoremap <silent> ff :<C-u>Denite -resume -buffer-name=search-buffer-denite<CR>
-
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call deoplete#custom#source('_',  'max_menu_width', 0)
 let g:deoplete#enable_at_startup = 1
