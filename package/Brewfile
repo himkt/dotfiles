@@ -18,3 +18,4 @@ brew 'neovim'
 # useful tools
 brew 'htop'
 brew 'tree'
+brew 'the_silver_searcher'
