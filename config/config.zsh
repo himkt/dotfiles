@@ -193,69 +193,38 @@ if which tmux > /dev/null; then
 fi
 
 
-# peco
-function peco-history-selection() {
-    case ${OSTYPE} in
-      darwin*)
-        BUFFER=`history -n 1 | tail -r  | awk '!a[$0]++' | peco`
-        ;;
-      linux*)
-        BUFFER=`history -n 1 | tac  | awk '!a[$0]++' | peco`
-        ;;
-    esac
-    CURSOR=$#BUFFER
-    zle reset-prompt
+# custom functions using fzf
+zle -N fzf-change-dir
+zle -N fzf-select-history
+zle -N fzf-z-search
+
+function fzf-change-dir() {
+  local dir
+  dir=$(find ${1:-.} -path '*/\.*' -prune \
+                  -o -type d -print 2> /dev/null | fzf +m) &&
+  cd "$dir"
 }
 
+function fzf-select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
 
-function peco-change-dir() {
-    selected_dir=$(find . -type d | grep -v .git | peco --prompt "[Change dir]")
-    if [ -n "$selected_dir" ]; then
-        BUFFER="cd ${selected_dir}"
+function fzf-z-search() {
+    local res=$(z | sort -rn | cut -c 12- | fzf)
+    if [ -n "$res" ]; then
+        BUFFER+="cd $res"
         zle accept-line
+    else
+        return 1
     fi
-    zle redisplay
 }
-
-
-function peco-select-tmux-window()
-{
-  local window="$(tmux list-windows | peco | cut -d : -f 1)"
-  if [ -n "$window" ]; then
-    BUFFER="tmux select-window -t $window"
-    zle accept-line
-  fi
-}
-
-
-function tmux-command-prompt()
-{
-  BUFFER="tmux command-prompt"
-  zle accept-line
-}
-
-
-function peco-kill-process () {
-    ps -ef | peco | awk '{ print $2 }' | xargs kill
-    zle clear-screen
-}
-
-
-# register custom functions
-zle -N tmux-command-prompt
-zle -N peco-change-dir
-zle -N peco-history-selection
-zle -N peco-kill-process
-zle -N peco-select-tmux-window
-
 
 # bindkeys
 bindkey -e
-bindkey '^U' tmux-command-prompt
-bindkey "^R" peco-history-selection
-bindkey "^K" peco-change-dir
-bindkey '^Y' peco-select-tmux-window
-bindkey '^J' peco-kill-process
+bindkey '^t' fzf-change-dir
+bindkey '^r' fzf-select-history
+bindkey '^f' fzf-z-search
 
 
 # history
