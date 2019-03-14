@@ -198,10 +198,37 @@ zle -N fzf-change-dir
 zle -N fzf-select-history
 zle -N fzf-z-search
 
+
+# bindkeys
+bindkey '^t' fzf-change-dir
+bindkey '^r' fzf-select-history
+bindkey '^e' fzf-z-search
+
+
+# history
+HISTFILE=$HOME/.zsh-history
+HISTSIZE=100000
+SAVEHIST=100000
+
+
+# custom functions
+function cd() {
+  builtin cd $@ && ls;
+}
+
+function ssh() {
+  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
+    tmux rename-window ${@: -1}
+    command ssh "$@"
+    tmux set-window-option automatic-rename "on" 1>/dev/null
+  else
+    command ssh "$@"
+  fi
+}
+
 function fzf-change-dir() {
   local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune \
-                  -o -type d -print 2> /dev/null | fzf +m) &&
+  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&
   cd "$dir"
 }
 
@@ -218,33 +245,4 @@ function fzf-z-search() {
     else
         return 1
     fi
-}
-
-# bindkeys
-bindkey -e
-bindkey '^t' fzf-change-dir
-bindkey '^r' fzf-select-history
-bindkey '^f' fzf-z-search
-
-
-# history
-HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=100000
-
-
-# general purpose functions
-function cd() {
-  builtin cd $@ && ls;
-}
-
-
-function ssh() {
-  if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-    tmux rename-window ${@: -1}
-    command ssh "$@"
-    tmux set-window-option automatic-rename "on" 1>/dev/null
-  else
-    command ssh "$@"
-  fi
 }
