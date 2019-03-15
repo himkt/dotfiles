@@ -22,6 +22,13 @@ source $HOME/.dotfiles/config/config.tiny.nvim
 syntax      reset
 colorscheme iceberg
 
+" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+" Plug 'junegunn/fzf.vim'
+command! -bang -nargs=* GGrep
+      \ call fzf#vim#grep(
+      \   'git grep --line-number '.shellescape(<q-args>), 0,
+      \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call deoplete#custom#source('_',  'max_menu_width', 0)
 let g:deoplete#enable_at_startup = 1
