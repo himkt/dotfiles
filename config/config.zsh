@@ -200,9 +200,10 @@ zle -N fzf-z-search
 
 
 # bindkeys
+bindkey -e
 bindkey '^t' fzf-change-dir
 bindkey '^r' fzf-select-history
-bindkey '^e' fzf-z-search
+bindkey '^f' fzf-z-search
 
 
 # history
