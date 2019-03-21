@@ -16,6 +16,7 @@ brew 'tmux'
 brew 'neovim'
 
 # useful tools
+brew 'ghq'
 brew 'htop'
 brew 'tree'
 brew 'the_silver_searcher'
