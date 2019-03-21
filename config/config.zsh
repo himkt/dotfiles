@@ -3,8 +3,8 @@
 #
 
 
-export LANG=ja_JP.UTF-8
-export LC_CTYPE=ja_JP.UTF-8
+export LANG=en_US.UTF-8
+export LC_CTYPE=en_US.UTF-8
 
 export EDITOR=vim
 export XDG_CONFIG_HOME=$HOME/.config
@@ -35,6 +35,9 @@ case ${OSTYPE} in
   linux*)
     # for ipython
     export QT_QPA_PLATFORM="offscreen"
+
+    # for ssh-agent
+    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
 
     # for brew
     export PATH=$HOME/.linuxbrew/bin:$PATH
@@ -80,6 +83,8 @@ case ${OSTYPE} in
     ;;
   linux*)
     alias ls="ls --color=auto"
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
     ;;
 esac
 
