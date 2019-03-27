@@ -72,6 +72,8 @@ case ${OSTYPE} in
     if builtin command -v mecab-config > /dev/null; then
       export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
     fi
+
+    eval `ssh-agent` &> /dev/null
     ;;
 esac
 
