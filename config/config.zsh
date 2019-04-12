@@ -36,9 +36,6 @@ case ${OSTYPE} in
     # for ipython
     export QT_QPA_PLATFORM="offscreen"
 
-    # for ssh-agent
-    export SSH_AUTH_SOCK="$XDG_RUNTIME_DIR/ssh-agent.socket"
-
     # for brew
     export PATH=$HOME/.linuxbrew/bin:$PATH
     export PATH=$HOME/.linuxbrew/sbin:$PATH
