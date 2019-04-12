@@ -13,12 +13,10 @@ set-option -g mouse on
 setw -g mode-keys vi
 
 if-shell '[ $(echo "$(tmux -V | cut -d" " -f2) >= 2.4" | bc) -eq 1 ]' \
-    'bind-key -T copy-mode-vi WheelUpPane send -X scroll-up' \
-    'bind -temacs-copy C-Up scroll-up'
+    'bind-key -T copy-mode-vi WheelUpPane send -X scroll-up'
 
 if-shell '[ $(echo "$(tmux -V | cut -d" " -f2) >= 2.4" | bc) -eq 1 ]' \
-    'bind-key -T copy-mode-vi WheelDownPane send -X scroll-down' \
-    'bind -temacs-copy C-Down scroll-down'
+    'bind-key -T copy-mode-vi WheelDownPane send -X scroll-down'
 
 # color
 set -g status-fg colour231
