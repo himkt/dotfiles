@@ -70,7 +70,10 @@ case ${OSTYPE} in
       export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
     fi
 
-    eval `ssh-agent` &> /dev/null
+    if [ -z $SSH_CLIENT ]; then
+      echo 'Initializing ssh-agent...'
+      eval `ssh-agent` &> /dev/null
+    fi
     ;;
 esac
 
