@@ -63,7 +63,6 @@ def create_nippo(previous_entries):
             previous_text = previous_entries[heading]
             nippo_text += previous_text + '\n'
 
-        nippo_text += '- <`1:`>\n'
         nippo_text += '\n'
 
     nippo_text = nippo_text.rstrip('\n')
