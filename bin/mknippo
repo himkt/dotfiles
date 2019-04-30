@@ -7,8 +7,8 @@ import datetime
 import os.path
 
 
-HEADINGS = ['Done', 'Work in Progress', 'Todo', 'Trouble', 'TIL']
-HEADINGS_NEEDED_TAKE_OVER = ['Work in Progress', 'Todo']
+HEADINGS = ['Done', 'WIP', 'Todo', 'TIL']
+HEADINGS_NEEDED_TAKE_OVER = ['WIP', 'Todo']
 EMPTY_ELEMENTS = ['-', '- <`1:`>']
 
 
