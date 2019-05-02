@@ -120,6 +120,15 @@ fi
 
 
 # etc
+if which tmux > /dev/null; then
+  if [ -z $TMUX ]; then
+    if $(tmux has-session); then
+      tmux attach
+    fi
+  fi
+fi
+
+
 if which rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
@@ -182,20 +191,6 @@ if [ "$COLORTERM" = "gnome-terminal" ] || [ "$COLORTERM" = "xfce4-terminal" ]; t
   export TERM=xterm-256color
 elif [ "$COLORTERM" = "rxvt-xpm" ]; then
   export TERM=rxvt-256color
-fi
-
-
-# check whether tmux exists
-if which tmux > /dev/null; then
-  alias tmux="tmux -u"
-  if [ -z $TMUX ]; then
-    # check tmux sessions
-    if $(tmux has-session); then
-      tmux attach
-    else
-      tmux
-    fi
-  fi
 fi
 
 
