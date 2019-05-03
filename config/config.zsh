@@ -215,7 +215,17 @@ SAVEHIST=100000
 
 # custom functions
 function cd() {
-  builtin cd $@ && ls;
+  builtin cd $@
+
+  if [[ -d ./venv ]] ; then
+    . ./venv/bin/activate
+  fi
+
+  if [[ -n "$VIRTUAL_ENV" && ! -d ./venv ]]; then
+    deactivate
+  fi
+
+  ls
 }
 
 function ssh() {
