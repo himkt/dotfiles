@@ -47,7 +47,7 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	bash ./bin/python_setup_for_neovim.sh
+	bash ./bin/neovim.sh
 
 build_brew:
 	$(BREW_COMMAND)
