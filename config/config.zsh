@@ -69,12 +69,8 @@ case ${OSTYPE} in
     if builtin command -v mecab-config > /dev/null; then
       export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
     fi
-
-    # if [ -z $SSH_AGENT_PID ]; then
-    #   echo 'Initializing ssh-agent...'
-    #   eval `ssh-agent` &> /dev/null
-    # fi
     ;;
+
 esac
 
 
