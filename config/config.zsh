@@ -217,10 +217,6 @@ function cd() {
     . ./venv/bin/activate
   fi
 
-  if [[ -n "$VIRTUAL_ENV" && ! -d ./venv ]]; then
-    deactivate
-  fi
-
   ls
 }
 
@@ -254,3 +250,5 @@ function fzf-z-search() {
         return 1
     fi
 }
+
+cd .  # For venv, cd runs here
