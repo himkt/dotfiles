@@ -23,22 +23,16 @@ set -g status-fg colour231
 set -g status-bg colour234
 
 # window
-set -g window-status-format "#[fg=colour244,bg=colour234]  #I #[fg=colour240] #[default]#W"
 window_status_current_format1="#[fg=colour234,bg=colour31] #[fg=colour117,bg=colour31]"
 window_status_current_format2="#I #[fg=colour231]#W #[fg=colour31,bg=colour234,nobold]"
 window_status_current_format=$window_status_current_format1' '$window_status_current_format2
+set -g window-status-format "#[fg=colour244,bg=colour234]  #I #[fg=colour240] #[default]#W"
 set -g window-status-current-format $window_status_current_format
-setw -g window-status-fg colour249
-set -qg window-status-last-fg colour31
-setw -g window-status-activity-attr none
-setw -g window-status-activity-fg yellow
-setw -g window-status-bell-attr none
-setw -g window-status-bell-fg red
 
 # take over current directory path
-bind-key    '"' split-window -c "#{pane_current_path}"
-bind-key    %   split-window -h -c "#{pane_current_path}"
-bind-key    c   new-window -c "#{pane_current_path}"
+bind-key '"' split-window -c "#{pane_current_path}"
+bind-key %   split-window -h -c "#{pane_current_path}"
+bind-key c   new-window -c "#{pane_current_path}"
 
 # status bar
 set -g status-left-length 20
