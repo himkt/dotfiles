@@ -25,9 +25,9 @@ link:
 	mkdir -p $(HOME)/.config/nvim
 	@echo 'create symbolic links...'
 	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
+	ln -s $(PWD)/nvim/config.d/init.vim $(HOME)/.config/nvim/init.vim
 	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
 	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
-	ln -s $(PWD)/config/config.nvim $(HOME)/.config/nvim/init.vim
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
