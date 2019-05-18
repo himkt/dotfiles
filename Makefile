@@ -19,7 +19,7 @@ endif
 .PHONY: all mkdir plugins link clean \
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
-all: clean 
+all: clean mkdir plugins link
 
 mkdir:
 	@echo 'mkdir for config.d'
