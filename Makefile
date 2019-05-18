@@ -16,10 +16,10 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all mkdir plugins link clean \
+.PHONY: all mkdir plugins link clean done \
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
-all: clean mkdir plugins link
+all: clean mkdir plugins link done
 
 mkdir:
 	@echo 'mkdir for config.d'
@@ -36,7 +36,10 @@ link:
 	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
 	ln -s $(PWD)/nvim/config.d/init.vim $(HOME)/.config/nvim/init.vim
 	ln -s $(PWD)/zsh/config.d/zshrc $(HOME)/.zshrc
-	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.confg
+	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.conf
+
+done:
+	zsh $(PWD)/bin/done
 
 clean:
 	@echo 'remove symbolic links'
