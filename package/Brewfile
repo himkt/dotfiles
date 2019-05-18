@@ -1,14 +1,8 @@
 # essential
 brew 'gcc'
-brew 'llvm'
 
-# python development
-brew 'pyenv'
-brew 'openssl'  # for pyenv install
-
-# ruby development
-brew 'rbenv'
-brew 'ruby-build'
+# ruby and python
+brew 'python3'
 
 # latest tmux, neovim
 brew 'tmux'
@@ -16,6 +10,8 @@ brew 'neovim'
 
 # useful tools
 brew 'ghq'
+brew 'zsh'
 brew 'htop'
 brew 'tree'
+brew 'wget'
 brew 'the_silver_searcher'

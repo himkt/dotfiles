@@ -2,15 +2,10 @@ version: 2
 jobs:
   debian:
     docker:
-      - image: circleci/python:3.6.5
+      - image: circleci/buildpack-deps:xenial
         user: circleci
     steps:
       - checkout
-      - run:
-          name: install requirements
-          command: |
-            sudo apt-get update -y
-            sudo apt-get install -y build-essential wget tmux zsh python3 neovim
       - run:
           name: locale
           command: |
@@ -18,38 +13,33 @@ jobs:
             sudo locale-gen ja_JP.UTF-8
             sudo update-locale
       - run:
-          name: configure
+          name: configure to connect to github.com
           command: |
             mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
-          name: test installation
-          shell: /usr/bin/zsh
-          command: |
-            make
-      - run:
-          name: change dir and replace dotfiles
-          shell: /usr/bin/zsh
-          command: |
-            cd $HOME
-            mv project .dotfiles
-      - run:
           name: build linuxbrew
-          shell: /usr/bin/zsh
           command: |
-            cd $HOME/.dotfiles
             USER=circleci make build_brew
-      - run:
-          name: install requirements
-          command: |
-            cd $HOME/.dotfiles
             echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bashrc
             eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             make brew_bundle
+          no_output_timeout: 60m
+      - run:
+          name: test make
+          shell: /home/linuxbrew/.linuxbrew/bin/zsh
+          command: |
+            cd $HOME
+            mv project .dotfiles
+            cd $HOME/.dotfiles
+            make
+      - run:
+          name: test make requirements
+          shell: /home/linuxbrew/.linuxbrew/bin/zsh
+          command: |
+            cd $HOME/.dotfiles
             make requirements
 workflows:
   version: 2
   build_and_test:
     jobs:
       - debian
-
-
