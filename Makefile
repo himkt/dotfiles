@@ -47,7 +47,7 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	bash ./bin/neovim.sh
+	bash ./nvim/bin/setup.sh
 
 build_brew:
 	$(BREW_COMMAND)
