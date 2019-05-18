@@ -10,7 +10,7 @@ jobs:
           name: install requirements
           command: |
             sudo apt-get update -y
-            sudo apt-get install -y build-essential wget tmux zsh python3
+            sudo apt-get install -y build-essential wget tmux zsh python3 neovim
       - run:
           name: locale
           command: |
@@ -21,13 +21,6 @@ jobs:
           name: configure
           command: |
             mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
-      - run:
-          name: install neovim
-          command: |
-            cd /tmp
-            wget https://github.com/neovim/neovim/releases/download/v0.3.4/nvim-linux64.tar.gz
-            tar zxvf nvim-linux64.tar.gz
-            sudo mv nvim-linux64/bin/nvim /usr/bin/
       - run:
           name: test installation
           shell: /usr/bin/zsh
