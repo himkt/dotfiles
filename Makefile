@@ -39,7 +39,7 @@ link:
 	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.conf
 
 done:
-	zsh $(PWD)/bin/done
+	$(PWD)/bin/done
 
 clean:
 	@echo 'remove symbolic links'
@@ -55,10 +55,10 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	bash ./nvim/bin/setup.sh
+	$(PWD)/nvim/bin/setup.sh
 
 build_brew:
 	$(BREW_COMMAND)
 
 brew_bundle:
-	brew bundle --file=package/Brewfile.tiny
+	brew bundle --file=package/Brewfile
