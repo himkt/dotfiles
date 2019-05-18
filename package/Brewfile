@@ -4,7 +4,6 @@ brew 'llvm'
 
 # python development
 brew 'pyenv'
-brew 'pyenv-virtualenv'
 brew 'openssl'  # for pyenv install
 
 # ruby development
