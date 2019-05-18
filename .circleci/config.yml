@@ -33,7 +33,7 @@ jobs:
           name: test installation
           shell: /usr/bin/zsh
           command: |
-            zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/.dotfiles/master/bin/installer.sh)"
+            git clone https://github.com/himkt/dotfiles.git $HOME/.dotfiles && cd $HOME/.dotfiles && make
       - run:
           name: build linuxbrew
           shell: /usr/bin/zsh
