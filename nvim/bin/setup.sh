@@ -1,3 +1,4 @@
+#! /bin/sh
 
 pip3 install neovim --user
 nvim -u $(pwd)/nvim/config.d/tiny.init.vim +PlugInstall +qall
