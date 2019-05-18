@@ -61,4 +61,4 @@ build_brew:
 	$(BREW_COMMAND)
 
 brew_bundle:
-	brew bundle --file=package/Brewfile
+	brew bundle --file=package/Brewfile.tiny
