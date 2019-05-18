@@ -24,7 +24,7 @@ link:
 	@echo 'mkdir for config.d'
 	mkdir -p $(HOME)/.config/nvim
 	@echo 'create symbolic links...'
-	ln -s $(PWD)/config/config.vim $(HOME)/.vimrc
+	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
 	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
 	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
 	ln -s $(PWD)/config/config.nvim $(HOME)/.config/nvim/init.vim
