@@ -1,3 +1,2 @@
-# python development
-brew 'pyenv'
-brew 'openssl'  # for pyenv install
+
+brew 'python3'

@@ -12,9 +12,6 @@
 "" load basic vim configuration
 source $HOME/.dotfiles/vim/config.d/vimrc
 
-"" If you have an error, `cd $HOME/.dotfiles && make requirements` may solve it.
-let g:python3_host_prog = $PYENV_ROOT . '/shims/python'
-
 " load packages
 source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 
