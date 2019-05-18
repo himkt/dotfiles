@@ -13,7 +13,7 @@
 ### Installation
 
 ```
-zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/installer.sh)"
+git clone https://github.com/himkt/dotfiles.git $HOME/.dotfiles && cd $HOME/.dotfiles && make
 ```
 
 
@@ -42,6 +42,5 @@ zsh -c "$(curl -L https://raw.githubusercontent.com/himkt/dotfiles/master/bin/in
 
   - `cd $HOME/.dotfiles && make build_brew` installs `linuxbrew` or `homebrew`
     - If you want to use `brew` for package manager, please use.
-
     - `cd $HOME/.dotfiles && make brew_bundle` installs some packages which I use.
 

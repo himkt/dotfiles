@@ -16,22 +16,30 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all config clean build_brew brew_bundle_tiny brew_bundle_tiny
+.PHONY: all mkdir plugins link clean done \
+	build_brew brew_bundle_tiny brew_bundle_tiny
 
-all: clean config link
+all: clean mkdir plugins link done
 
-link:
+mkdir:
 	@echo 'mkdir for config.d'
 	mkdir -p $(HOME)/.config/nvim
-	@echo 'create symbolic links...'
-	ln -s $(PWD)/config/config.vim $(HOME)/.vimrc
-	ln -s $(PWD)/config/config.zsh $(HOME)/.zshrc
-	ln -s $(PWD)/config/config.tmux $(HOME)/.tmux.conf
-	ln -s $(PWD)/config/config.nvim $(HOME)/.config/nvim/init.vim
+
+plugins:
+	@echo 'download plugins'
 	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
-	@echo 'done'
+
+link:
+	@echo 'create symbolic links...'
+	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
+	ln -s $(PWD)/nvim/config.d/init.vim $(HOME)/.config/nvim/init.vim
+	ln -s $(PWD)/zsh/config.d/zshrc $(HOME)/.zshrc
+	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.conf
+
+done:
+	zsh $(PWD)/bin/done
 
 clean:
 	@echo 'remove symbolic links'
@@ -47,10 +55,10 @@ clean:
 # if you have installed linuxbrew or homebrew,
 # you can use this target
 requirements:
-	bash ./bin/neovim.sh
+	bash ./nvim/bin/setup.sh
 
 build_brew:
 	$(BREW_COMMAND)
 
 brew_bundle:
-	brew bundle --file=package/Brewfile
+	brew bundle --file=package/Brewfile.tiny

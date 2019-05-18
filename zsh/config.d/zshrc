@@ -3,6 +3,8 @@
 #
 
 
+export USER=$(whoami)
+
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
 
@@ -104,7 +106,6 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug "peco/peco", as:command, from:gh-r
   zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
   zplug "junegunn/fzf-bin", as:command, from:gh-r, rename-to:fzf
-  zplug "greymd/tmux-xpanes"
 
   # check whether if there are packages which it can install
   if ! zplug check --verbose; then
