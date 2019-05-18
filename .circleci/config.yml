@@ -10,7 +10,7 @@ jobs:
           name: install requirements
           command: |
             sudo apt-get update -y
-            sudo apt-get install -y wget gcc tmux zsh
+            sudo apt-get install -y build-essential wget tmux zsh
       - run:
           name: locale
           command: |
@@ -20,7 +20,6 @@ jobs:
       - run:
           name: configure
           command: |
-            export USER=circleci
             mkdir -p $HOME/.ssh && echo -e "Host github.com\n\tStrictHostKeyChecking no\n" > ~/.ssh/config
       - run:
           name: install neovim
@@ -35,13 +34,21 @@ jobs:
           command: |
             make
       - run:
+          name: change dir and replace dotfiles
+          shell: /usr/bin/zsh
+          command: |
+            cd $HOME
+            mv project .dotfiles
+      - run:
           name: build linuxbrew
           shell: /usr/bin/zsh
           command: |
+            cd $HOME/.dotfiles
             USER=circleci make build_brew
       - run:
           name: install requirements
           command: |
+            cd $HOME/.dotfiles
             echo 'eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)' >> ~/.bashrc
             eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             make brew_bundle
