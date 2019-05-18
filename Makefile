@@ -16,13 +16,22 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all config clean build_brew brew_bundle_tiny brew_bundle_tiny
+.PHONY: all mkdir plugins link clean \
+	build_brew brew_bundle_tiny brew_bundle_tiny
 
-all: clean config link
+all: clean 
 
-link:
+mkdir:
 	@echo 'mkdir for config.d'
 	mkdir -p $(HOME)/.config/nvim
+
+plugins:
+	@echo 'download plugins'
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
+
+link:
 	@echo 'create symbolic links...'
 	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
 	ln -s $(PWD)/nvim/config.d/init.vim $(HOME)/.config/nvim/init.vim
