@@ -36,6 +36,7 @@ jobs:
           name: test make requirements
           shell: /home/linuxbrew/.linuxbrew/bin/zsh
           command: |
+            eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             cd $HOME/.dotfiles
             make requirements
 workflows:
