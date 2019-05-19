@@ -216,6 +216,16 @@ function cd() {
 
   if [[ -d ./venv ]] ; then
     . ./venv/bin/activate
+    export VENV_ROOT=$(pwd)
+  else
+    if ! [[ -v VENV_ROOT ]] ; then
+      # noop
+    else
+      if ! [[ $(pwd) =~ $VENV_ROOT ]] ; then
+        deactivate
+        unset VENV_ROOT
+      fi
+    fi
   fi
 
   ls
