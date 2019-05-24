@@ -4,8 +4,8 @@
 
 [![CircleCI](https://circleci.com/gh/himkt/dotfiles.svg?style=svg)](https://circleci.com/gh/himkt/dotfiles)
 [![star](https://img.shields.io/github/stars/himkt/dotfiles.svg?maxage=2592000&colorB=yellow)](https://github.com/himkt/.dotfiles/stargazers)
-[![neovim](https://img.shields.io/badge/support-neovim-blue.svg)](https://neovim.io/)
-[![zsh](https://img.shields.io/badge/support-zsh-red.svg)](https://www.zsh.org/)
+[![neovim 0.3+](https://img.shields.io/badge/support-neovim-blue.svg)](https://neovim.io/)
+[![zsh 5.3+](https://img.shields.io/badge/support-zsh-red.svg)](https://www.zsh.org/)
 [![tmux](https://img.shields.io/badge/support-tmux-green.svg)](https://github.com/tmux/tmux)
 [![mit license](http://img.shields.io/badge/license-MIT-orange.svg?style=flat)](https://raw.githubusercontent.com/himkt/.dotfiles/master/license)
 
