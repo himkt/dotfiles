@@ -29,6 +29,10 @@ git clone https://github.com/himkt/dotfiles.git $HOME/.dotfiles && cd $HOME/.dot
 ![curl](https://img.shields.io/badge/require-curl-red.svg)
 ![git](https://img.shields.io/badge/require-git-red.svg)
 ![sh](https://img.shields.io/badge/require-zsh-red.svg)
+
+- Configurations
+
+![zsh](https://img.shields.io/badge/optional-zsh-9cf.svg)
 ![tmux](https://img.shields.io/badge/optional-tmux-9cf.svg)
 ![neovim](https://img.shields.io/badge/optional-neovim-9cf.svg)
 ![pyenv](https://img.shields.io/badge/optional-pyenv-9cf.svg)
