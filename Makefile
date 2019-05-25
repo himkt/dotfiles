@@ -3,6 +3,8 @@ ZPLUG_HOME := $(HOME)/.config/zplug
 TERM       := screen-256color
 UNAME_S    := $(shell uname -s)
 BREW       := $(shell which brew 2> /dev/null)
+RED        := $(shell tput setaf 1)
+NOCOLOR    := $(shell tput sgr0)
 
 ifeq ($(UNAME_S),Darwin)
 	BREW_COMPILER := /usr/bin/ruby -e
@@ -39,7 +41,26 @@ link:
 	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.conf
 
 done:
-	$(PWD)/bin/done
+	@echo ""
+	@echo "### Finish installing dotfiles!"
+	@echo "Please run $(RED)source $HOME/.zshrc$(NOCOLOR) on zsh to enable configures."
+	@echo "- If you want to use neovim with extensions,"
+	@echo "  please run $(RED)make requirements$(NOCOLOR) (which needs pyenv)."
+	@echo " If you want to install pyenv using brew, please read the Python section below."
+	@echo ""
+	@echo "---"
+	@echo ""
+	@echo "### Packages"
+	@echo "- If you want to use linuxbrew/homebrew,"
+	@echo "  please run $(RED)make brew_bundle$(NOCOLOR)."
+	@echo "  Please run $(RED)make build_brew$(NOCOLOR) before"
+	@echo "  if you have not installed brew yet"
+	@echo ""
+	@echo "---"
+	@echo "### Python"
+	@echo "- After $(RED)make build_brew, make brew_bundle, source $HOME/.zshrc$(NOCOLOR)"
+	@echo "  you can run $(RED)make requirements$(NOCOLOR) to install Python and the neovim library"
+	@echo ""
 
 clean:
 	@echo 'remove symbolic links'
@@ -52,8 +73,6 @@ clean:
 	rm -rf $(HOME)/.config/zplug
 	@echo 'done'
 
-# if you have installed linuxbrew or homebrew,
-# you can use this target
 requirements:
 	$(PWD)/nvim/bin/setup.sh
 
