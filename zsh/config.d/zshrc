@@ -23,6 +23,12 @@ export PYENV_ROOT=$HOME/.pyenv
 export PATH="$PYENV_ROOT/bin:$PATH"
 export PYTHONDONTWRITEBYTECODE=1
 
+# path to system python for NeoVim
+if ! [[ -v SYSTEM_PYTHON_PATH ]]; then
+  export SYSTEM_PYTHON_PATH=`which python3`
+fi
+
+
 
 # generals
 case ${OSTYPE} in
