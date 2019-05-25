@@ -9,6 +9,9 @@
 " ---------------------
 "
 
+"" use python3 installed globally
+let g:python3_host_prog=$SYSTEM_PYTHON_PATH
+
 "" load basic vim configuration
 source $HOME/.dotfiles/vim/config.d/vimrc
 
