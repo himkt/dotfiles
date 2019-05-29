@@ -1,9 +1,14 @@
 tap 'caskroom/cask'
 
 cask 'google-chrome'
+cask 'google-backup-and-sync'
+
+cask '1password'
+
 cask 'mendeley'
+
 cask 'slack'
 
-# following packages are very large
 cask 'microsoft-office'
+
 cask 'mactex'
