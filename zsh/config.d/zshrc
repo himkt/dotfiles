@@ -142,6 +142,7 @@ fi
 
 if which nvim > /dev/null; then
   alias vim=nvim
+  export EDITOR=nvim
 fi
 
 if which pyenv-virtualenv-init > /dev/null; then
