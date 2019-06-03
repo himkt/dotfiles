@@ -28,6 +28,7 @@ command! -bang -nargs=* GGrep
       \ call fzf#vim#grep(
       \   'git grep --line-number '.shellescape(<q-args>), 0,
       \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 call deoplete#custom#source('_',  'max_menu_width', 0)
