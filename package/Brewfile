@@ -1,17 +1,14 @@
-# essential
-brew 'gcc'
 
-# ruby and python
+brew 'gcc'
 brew 'python3'
 
-# latest tmux, neovim
-brew 'tmux'
 brew 'neovim'
+brew 'tmux'
 
-# useful tools
-brew 'ghq'
+brew 'wget'
 brew 'zsh'
+
+brew 'ghq'
 brew 'htop'
 brew 'tree'
-brew 'wget'
 brew 'the_silver_searcher'

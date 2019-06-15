@@ -1,15 +1,18 @@
+# use cask room
 tap 'caskroom/cask'
 
+# google products
 cask 'google-chrome'
 cask 'google-backup-and-sync'
 
-cask '1password'
-
-cask 'mendeley'
-
-cask 'slack'
-
+# microsoft products
 cask 'microsoft-office'
 cask 'visual-studio-code'
 
+# academic writing
 cask 'mactex'
+
+# essentials
+cask '1password'
+cask 'mendeley'
+cask 'slack'
