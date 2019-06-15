@@ -10,5 +10,6 @@ cask 'mendeley'
 cask 'slack'
 
 cask 'microsoft-office'
+cask 'visual-studio-code'
 
 cask 'mactex'
