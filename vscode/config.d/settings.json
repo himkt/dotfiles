@@ -15,5 +15,6 @@
     "python.linting.flake8Enabled": true,
     "solargraph.formatting": true,
     "solargraph.diagnostics": true,
-    "solargraph.folding": false
+    "solargraph.folding": false,
+    "workbench.sideBar.location": "left"
 }
