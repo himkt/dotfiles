@@ -1,4 +1,4 @@
-<div align="center"><img src='./assets/header.png' width=600></div>
+<div align="center"><img src='./.assets/header.png' width=600></div>
 
 # dotfiles : My configurations for command line tools
 
