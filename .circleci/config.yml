@@ -33,12 +33,12 @@ jobs:
             cd $HOME/.dotfiles
             make
       - run:
-          name: test make requirements
+          name: test make neovim_setup
           shell: /home/linuxbrew/.linuxbrew/bin/zsh
           command: |
             eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             cd $HOME/.dotfiles
-            make requirements
+            make neovim_setup
 workflows:
   version: 2
   build_and_test:
