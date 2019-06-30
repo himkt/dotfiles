@@ -54,7 +54,7 @@ nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
 smap <C-k> <Plug>(neosnippet_expand_or_jump)
 xmap <C-k> <Plug>(neosnippet_expand_target)
-let g:neosnippet#snippets_directory='~/.dotfiles/snippet'
+let g:neosnippet#snippets_directory='~/.dotfiles/snippets'
 
 " Plug 'scrooloose/nerdtree'
 nnoremap <silent><C-e> : NERDTreeToggle<CR>
