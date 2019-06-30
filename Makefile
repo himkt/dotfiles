@@ -75,6 +75,7 @@ clean:
 
 requirements:
 	$(PWD)/nvim/bin/setup.sh
+	$(PWD)/vscode/bin/setup.sh
 
 build_brew:
 	$(BREW_COMMAND)
