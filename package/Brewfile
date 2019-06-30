@@ -8,6 +8,7 @@ brew 'tmux'
 brew 'wget'
 brew 'zsh'
 
+brew 'coreutils'
 brew 'ghq'
 brew 'htop'
 brew 'tree'

@@ -16,5 +16,6 @@
     "solargraph.formatting": true,
     "solargraph.diagnostics": true,
     "solargraph.folding": false,
-    "workbench.sideBar.location": "left"
+    "workbench.sideBar.location": "left",
+    "workbench.startupEditor": "newUntitledFile"
 }
