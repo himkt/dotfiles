@@ -70,12 +70,23 @@ nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 set statusline=%anzu#search_status()
 
-" Plug 'scrooloose/syntastic'
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = '-std=c++11 -I' . $BREW_HOME . '/include'
-let g:syntastic_cpp_check_header = 1
-let g:syntastic_python_checkers = ['pyflakes', 'pep8']
-let g:syntastic_rust_checkers = ['rustc', 'cargo']
+" Plug 'w0rp/ale'
+let g:ale_sign_error = '*'
+let g:ale_sign_warning = '!'
+let g:ale_sign_column_always = 1
+let g:ale_lint_on_enter = 0
+let g:ale_lint_on_save = 1
+let g:ale_lint_on_text_changed = 'never'
+
+let g:ale_set_loclist = 0
+let g:ale_set_quickfix = 0
+let g:ale_open_list = 0
+let g:ale_keep_list_window_open = 0
+
+let g:ale_linters = {
+    \ 'python': ['pylint', 'flake8', 'pep8'],
+    \ 'cpp': ['clang']}
+
 
 " Plug 'haya14busa/incsearch.vim'
 map / <Plug>(incsearch-forward)

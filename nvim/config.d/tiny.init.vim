@@ -18,8 +18,8 @@ Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh
 Plug 'junegunn/seoul256.vim'
 Plug 'vim-airline/vim-airline'
 
+Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
 Plug 'godlygeek/tabular'
 
 " rich search
