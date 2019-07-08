@@ -85,7 +85,7 @@ let g:ale_keep_list_window_open = 0
 
 let g:ale_linters = {
     \ 'python': ['pylint', 'flake8', 'pep8'],
-    \ 'cpp': ['clang++']}
+    \ 'cpp': ['clang']}
 
 
 " Plug 'haya14busa/incsearch.vim'
