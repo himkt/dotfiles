@@ -35,9 +35,6 @@ case ${OSTYPE} in
   darwin*)
     # for brew
     export PATH=/opt/brew/bin:$PATH
-    export PATH=/opt/brew/opt/llvm/bin:$PATH
-    export LDFLAGS="-L/opt/brew/opt/llvm/lib"
-    export CPPFLAGS="-I/opt/brew/opt/llvm/include"
     ;;
 
   linux*)
@@ -65,9 +62,15 @@ if builtin command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
 fi
 
-export ZPLUG_HOME=$HOME/.config/zplug
+
+# llvm
+export PATH=$BREW_HOME/opt/llvm/bin:$PATH
+export PATH=$BREW_HOME/opt/llvm/bin:$PATH
+export LDFLAGS="-L$BREW_HOME/opt/llvm/lib"
+export CPPFLAGS="-I$BREW_HOME/opt/llvm/include"
 
 
+# mecab
 case ${OSTYPE} in
   darwin*)
     export MECAB_PATH=$BREW_HOME/lib/libmecab.dylib
@@ -101,9 +104,10 @@ alias lla="ls -la"
 alias zmv="noglob zmv -W"
 
 
-if [ -e $ZPLUG_HOME/init.zsh ]; then
+# zplug
+export ZPLUG_HOME=$HOME/.config/zplug
 
-  # zplug configurations
+if [ -e $ZPLUG_HOME/init.zsh ]; then
   source $ZPLUG_HOME/init.zsh
   zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
   zplug "zsh-users/zsh-history-substring-search"
