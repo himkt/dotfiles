@@ -1,11 +1,14 @@
 snippet prime_factorize
-  std::vector<std::pair<long long, int>> factor(long long base) {
+  // factor, times
+  typedef std::vector<std::pair<long long, long long>> factor_result;
+
+  factor_result factor(long long base) {
       long long ret = 1e18;
-      vector<pair<long long, int>> fs;
+      vector<pair<long long, long long>> fs;
 
       for (long long i=2; i*i < base; i++) {
           if (base % i == 0) {
-              int cnt = 0;
+              long long cnt = 0;
 
               while (base % i == 0) {
                   base /= i;
