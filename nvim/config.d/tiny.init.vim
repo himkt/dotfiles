@@ -36,4 +36,7 @@ Plug 'lervag/vimtex'
 " colorscheme
 Plug 'cocopon/iceberg.vim'
 
+" utility
+Plug 'himkt/docstring.nvim', { 'do': ':UpdateRemotePlugins' }
+
 call plug#end()
