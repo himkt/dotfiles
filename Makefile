@@ -18,27 +18,12 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all mkdir plugins link clean done \
+.PHONY: all vim_setup neovim_setup vscode_setup zsh_setup done \
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
-all: clean mkdir plugins link done
+all: clean setup done
 
-mkdir:
-	@echo 'mkdir for config.d'
-	mkdir -p $(HOME)/.config/nvim
-
-plugins:
-	@echo 'download plugins'
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
-
-link:
-	@echo 'create symbolic links...'
-	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
-	ln -s $(PWD)/nvim/config.d/init.vim $(HOME)/.config/nvim/init.vim
-	ln -s $(PWD)/zsh/config.d/zshrc $(HOME)/.zshrc
-	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.conf
+setup: neovim_setup vim_setup vscode_setup tmux_setup zsh_setup
 
 done:
 	@echo ""
@@ -73,11 +58,21 @@ clean:
 	rm -rf $(HOME)/.config/zplug
 	@echo 'done'
 
+
 neovim_setup:
 	$(PWD)/nvim/bin/setup.sh
 
+vim_setup:
+	$(PWD)/vim/bin/setup.sh
+
 vscode_setup:
 	$(PWD)/vscode/bin/setup.sh
+
+tmux_setup:
+	$(PWD)/tmux/bin/setup.sh
+
+zsh_setup:
+	$(PWD)/zsh/bin/setup.sh
 
 build_brew:
 	$(BREW_COMMAND)
