@@ -48,12 +48,6 @@ set showcmd
 set ttimeout
 set ttimeoutlen=50
 
-"" Enable cursor highlighting
-set cursorline
-set cursorcolumn
-hi CursorLine   cterm=None ctermbg=238 ctermfg=None
-hi CursorColumn cterm=None ctermbg=238 ctermfg=None
-
 "" Indent and tab
 set expandtab
 set nowrap
@@ -136,6 +130,4 @@ autocmd FileType python nnoremap <C-p> :exec ':term python %' <CR>
 autocmd FileType python nnoremap <S-f> :call Autopep8() <CR>
 
 " templates
-autocmd BufNewFile *.cpp 0r $HOME/.dotfiles/template/cc/template.cc
 autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
-autocmd BufNewFile *.rs  0r $HOME/.dotfiles/template/rs/template.rs
