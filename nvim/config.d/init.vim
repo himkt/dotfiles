@@ -20,7 +20,7 @@ source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 
 " use custom colorscheme
 syntax      reset
-colorscheme iceberg
+colorscheme harlequin
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -76,15 +76,16 @@ let g:ale_sign_warning = '*'
 let g:ale_lint_on_enter = 0
 let g:ale_lint_on_save = 1
 let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {'python': ['pylint', 'flake8', 'pep8'], 'cpp': ['clang']}
-let b:ale_fixers = {'python': ['black']}
+let g:ale_linters = {'python': ['flake8'], 'cpp': ['clang']}
+let b:ale_fixers = {'python': ['autopep8', 'black', 'isort']}
 
 let g:ale_set_loclist = 0
 let g:ale_set_quickfix = 0
 let g:ale_open_list = 0
 let g:ale_keep_list_window_open = 0
 
-
+" Plug 'vim-airline/vim-airline'
+let g:airline_theme= 'deus'
 
 " Plug 'haya14busa/incsearch.vim'
 map / <Plug>(incsearch-forward)
