@@ -22,8 +22,38 @@ endif
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
+setup: neovim_setup vim_setup tmux_setup zsh_setup
 
-setup: neovim_setup vim_setup vscode_setup tmux_setup zsh_setup
+build_brew:
+	$(BREW_COMMAND)
+brew_bundle:
+	brew bundle --file=package/Brewfile
+
+clean:
+	@echo 'remove symbolic links'
+	rm -f $(HOME)/.vimrc
+	rm -f $(HOME)/.zshrc
+	rm -f $(HOME)/.tmux.conf
+	rm -f $(HOME)/.latexmkrc
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.config/nvim
+	rm -rf $(HOME)/.config/zplug
+	@echo 'done'
+
+neovim_setup:
+	$(PWD)/nvim/bin/setup.sh
+
+vim_setup:
+	$(PWD)/vim/bin/setup.sh
+
+vscode_setup:
+	$(PWD)/vscode/bin/setup.sh
+
+tmux_setup:
+	$(PWD)/tmux/bin/setup.sh
+
+zsh_setup:
+	$(PWD)/zsh/bin/setup.sh
 
 done:
 	@echo ""
@@ -46,36 +76,3 @@ done:
 	@echo "- After $(RED)make build_brew, make brew_bundle, source $HOME/.zshrc$(NOCOLOR)"
 	@echo "  you can run $(RED)make neovim_setup$(NOCOLOR) to install Python and the neovim library"
 	@echo ""
-
-clean:
-	@echo 'remove symbolic links'
-	rm -f $(HOME)/.vimrc
-	rm -f $(HOME)/.zshrc
-	rm -f $(HOME)/.tmux.conf
-	rm -f $(HOME)/.latexmkrc
-	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.config/nvim
-	rm -rf $(HOME)/.config/zplug
-	@echo 'done'
-
-
-neovim_setup:
-	$(PWD)/nvim/bin/setup.sh
-
-vim_setup:
-	$(PWD)/vim/bin/setup.sh
-
-vscode_setup:
-	$(PWD)/vscode/bin/setup.sh
-
-tmux_setup:
-	$(PWD)/tmux/bin/setup.sh
-
-zsh_setup:
-	$(PWD)/zsh/bin/setup.sh
-
-build_brew:
-	$(BREW_COMMAND)
-
-brew_bundle:
-	brew bundle --file=package/Brewfile
