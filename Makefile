@@ -18,27 +18,42 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all mkdir plugins link clean done \
+.PHONY: all vim_setup neovim_setup vscode_setup zsh_setup done \
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
-all: clean mkdir plugins link done
+all: clean setup done
+setup: neovim_setup vim_setup tmux_setup zsh_setup
 
-mkdir:
-	@echo 'mkdir for config.d'
-	mkdir -p $(HOME)/.config/nvim
+build_brew:
+	$(BREW_COMMAND)
+brew_bundle:
+	brew bundle --file=package/Brewfile
 
-plugins:
-	@echo 'download plugins'
-	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-			https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	git clone https://github.com/zplug/zplug $(ZPLUG_HOME)
+clean:
+	@echo 'remove symbolic links'
+	rm -f $(HOME)/.vimrc
+	rm -f $(HOME)/.zshrc
+	rm -f $(HOME)/.tmux.conf
+	rm -f $(HOME)/.latexmkrc
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.config/nvim
+	rm -rf $(HOME)/.config/zplug
+	@echo 'done'
 
-link:
-	@echo 'create symbolic links...'
-	ln -s $(PWD)/vim/config.d/vimrc $(HOME)/.vimrc
-	ln -s $(PWD)/nvim/config.d/init.vim $(HOME)/.config/nvim/init.vim
-	ln -s $(PWD)/zsh/config.d/zshrc $(HOME)/.zshrc
-	ln -s $(PWD)/tmux/config.d/tmux.conf $(HOME)/.tmux.conf
+neovim_setup:
+	$(PWD)/nvim/bin/setup.sh
+
+vim_setup:
+	$(PWD)/vim/bin/setup.sh
+
+vscode_setup:
+	$(PWD)/vscode/bin/setup.sh
+
+tmux_setup:
+	$(PWD)/tmux/bin/setup.sh
+
+zsh_setup:
+	$(PWD)/zsh/bin/setup.sh
 
 done:
 	@echo ""
@@ -61,26 +76,3 @@ done:
 	@echo "- After $(RED)make build_brew, make brew_bundle, source $HOME/.zshrc$(NOCOLOR)"
 	@echo "  you can run $(RED)make neovim_setup$(NOCOLOR) to install Python and the neovim library"
 	@echo ""
-
-clean:
-	@echo 'remove symbolic links'
-	rm -f $(HOME)/.vimrc
-	rm -f $(HOME)/.zshrc
-	rm -f $(HOME)/.tmux.conf
-	rm -f $(HOME)/.latexmkrc
-	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.config/nvim
-	rm -rf $(HOME)/.config/zplug
-	@echo 'done'
-
-neovim_setup:
-	$(PWD)/nvim/bin/setup.sh
-
-vscode_setup:
-	$(PWD)/vscode/bin/setup.sh
-
-build_brew:
-	$(BREW_COMMAND)
-
-brew_bundle:
-	brew bundle --file=package/Brewfile
