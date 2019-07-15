@@ -73,14 +73,7 @@ set hlsearch
 set showmatch
 set matchtime=1
 
-"" Enable status line (it seems this does not have any effect)
-"" because vim-airline overwrite this config
-set laststatus=2
-
 set backspace=indent,eol,start
-
-"" Enable mouse
-set mouse=a
 
 "" If vertical split -> open a new pane to right,
 "" and if horizontal split -> open a new pane to below
