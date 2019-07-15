@@ -29,7 +29,6 @@ if ! [[ -v SYSTEM_PYTHON_PATH ]]; then
 fi
 
 
-
 # generals
 case ${OSTYPE} in
   darwin*)
@@ -131,6 +130,8 @@ if which tmux > /dev/null; then
   if [ -z $TMUX ]; then
     if $(tmux has-session); then
       tmux attach
+    else
+      tmux
     fi
   fi
 fi
