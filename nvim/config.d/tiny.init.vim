@@ -31,6 +31,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
 Plug 'rust-lang/rust.vim'
 Plug 'lervag/vimtex'
+Plug 'google/vim-jsonnet'
 
 " colorscheme
 Plug 'cocopon/iceberg.vim'
