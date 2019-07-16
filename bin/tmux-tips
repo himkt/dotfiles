@@ -1,0 +1,6 @@
+
+
+echo 'join-pane'
+echo 'next-layout C-b <space>'
+
+echo 'select-layout even-(horizontal|vertical)'
