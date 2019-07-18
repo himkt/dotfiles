@@ -58,6 +58,12 @@ let g:neosnippet#snippets_directory='~/.dotfiles/snippets'
 
 " Plug 'scrooloose/nerdtree'
 nnoremap <silent><C-e> : NERDTreeToggle<CR>
+augroup NerdCursor
+  autocmd!
+  autocmd BufEnter NERD_tree_* hi CursorLine gui=underline
+  autocmd BufLeave NERD_tree_* highlight clear CursorLine
+  autocmd BufAdd * highlight clear CursorLine
+augroup END
 
 " Plug 'godlygeek/tabular'
 vnoremap tr : <C-u>Tabularize<Space>/
