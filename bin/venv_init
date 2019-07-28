@@ -1,3 +1,8 @@
 
 
-pip3 install flake8 autopep8 black isort
+pip3 install \
+  flake8   \
+  autopep8 \
+  black    \
+  isort    \
+  pytest
