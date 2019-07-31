@@ -59,6 +59,8 @@ esac
 # home dirs
 if builtin command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
+  # NOTE: If brew is installed, we use Python installed by brew as a SYSTEM_PYTHON_PATH
+  export SYSTEM_PYTHON_PATH=$(brew --prefix)/bin/python3
 fi
 
 
