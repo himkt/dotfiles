@@ -47,11 +47,9 @@ case ${OSTYPE} in
     export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
 
     # for GPU
-    export PATH=$PATH:/usr/local/cuda/bin
-    export CPATH=$CPATH:/usr/local/include
-    export CPATH=$CPATH:/usr/local/cuda/include
-    export LIBRARY_PATH=/usr/local/cuda/lib64:$LIBRARY_PATH
-    export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
+    export LD_LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LD_LIBRARY_PATH
+    export CPATH=~/.cudnn/active/cuda/include:$CPATH
+    export LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LIBRARY_PATH
     ;;
 esac
 
@@ -97,7 +95,6 @@ case ${OSTYPE} in
     alias pbpaste='xsel --clipboard --output'
     ;;
 esac
-
 
 alias l="ls"
 alias la="ls -a"
