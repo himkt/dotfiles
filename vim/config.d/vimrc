@@ -124,3 +124,4 @@ autocmd FileType python nnoremap <C-t> :exec ':term python %' <CR>
 
 " templates
 autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.go  0r $HOME/.dotfiles/template/go/template.go
