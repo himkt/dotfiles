@@ -69,6 +69,11 @@ export LDFLAGS="-L$BREW_HOME/opt/llvm/lib"
 export CPPFLAGS="-I$BREW_HOME/opt/llvm/include"
 
 
+# golang
+export GOPATH=$HOME/go
+export PATH=$GOPATH/bin:$PATH
+
+
 # mecab
 case ${OSTYPE} in
   darwin*)
