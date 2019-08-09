@@ -1,6 +1,6 @@
 
-
-echo 'join-pane'
-echo 'next-layout C-b <space>'
-
-echo 'select-layout even-(horizontal|vertical)'
+echo '- join-pane'
+echo '- next-layout'
+echo '  - <prefix> <space>'
+echo '- select-layout even-(horizontal|vertical)'
+echo '- setw synchronize-panes (on|off)'
