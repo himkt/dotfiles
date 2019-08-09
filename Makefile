@@ -58,7 +58,7 @@ zsh_setup:
 done:
 	@echo ""
 	@echo "### Finish installing dotfiles!"
-	@echo "Please run $(RED)source $HOME/.zshrc$(NOCOLOR) on zsh to enable configures."
+	@echo "Please run $(RED)source $$HOME/.zshrc$(NOCOLOR) on zsh to enable configures."
 	@echo "- If you want to use neovim with extensions,"
 	@echo "  please run $(RED)make neovim_setup$(NOCOLOR) (which needs pyenv)."
 	@echo " If you want to install pyenv using brew, please read the Python section below."
@@ -73,6 +73,6 @@ done:
 	@echo ""
 	@echo "---"
 	@echo "### Python"
-	@echo "- After $(RED)make build_brew, make brew_bundle, source $HOME/.zshrc$(NOCOLOR)"
+	@echo "- After $(RED)make build_brew, make brew_bundle, source $$HOME/.zshrc$(NOCOLOR)"
 	@echo "  you can run $(RED)make neovim_setup$(NOCOLOR) to install Python and the neovim library"
 	@echo ""
