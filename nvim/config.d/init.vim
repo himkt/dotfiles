@@ -40,6 +40,7 @@ let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
+    \ 'go': ['gopls'],
     \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
     \ 'ruby': ['solargraph', 'stdio'],
     \ 'javascript': ['javascript-typescript-stdio'],
