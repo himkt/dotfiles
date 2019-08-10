@@ -1,7 +1,7 @@
 #!env bash
 
 
-if [ -x "$(command -v pip)" ]; then
+if [ -x "$(command -v pip3)" ]; then
   pip3 install 'python-language-server[all]'
 fi
 
