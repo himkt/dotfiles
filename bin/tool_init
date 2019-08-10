@@ -1,0 +1,16 @@
+#!env bash
+
+
+if [ -x "$(command -v pip3)" ]; then
+  pip3 install 'python-language-server[all]'
+fi
+
+
+if [ -x "$(command -v go)" ]; then
+  go get -u golang.org/x/lint/golint
+  go get -u golang.org/x/tools/cmd/gopls
+  go get -u golang.org/x/tools/cmd/goimports
+  echo 'Installed gopls'
+fi
+
+
