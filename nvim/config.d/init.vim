@@ -31,12 +31,11 @@ command! -bang -nargs=* GGrep
 nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-call deoplete#custom#source('_',  'max_menu_width', 0)
 let g:deoplete#enable_at_startup = 1
+call deoplete#custom#source('_',  'max_menu_width', 0)
 
 " Plug 'autozimu/LanguageClient-neovim'
 set completefunc=LanguageClient#complete
-let g:LanguageClient_diagnosticsEnable = 0
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
@@ -50,6 +49,7 @@ let g:LanguageClient_serverCommands = {
 nnoremap <silent> H  :call LanguageClient_contextMenu()<CR>
 nnoremap <silent> K  :call LanguageClient#textDocument_hover()<CR>
 nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+
 
 " Plug 'Shougo/neosnippet'
 imap <C-k> <Plug>(neosnippet_expand_or_jump)
@@ -78,18 +78,9 @@ nmap N <Plug>(anzu-N-with-echo)
 set statusline=%anzu#search_status()
 
 " Plug 'w0rp/ale'
-let g:ale_sign_error = 'x'
-let g:ale_sign_warning = '*'
-let g:ale_lint_on_enter = 0
-let g:ale_lint_on_save = 1
-let g:ale_lint_on_text_changed = 'never'
-let g:ale_linters = {'python': ['flake8'], 'cpp': ['clang'], 'go': ['golint']}
-let g:ale_fixers = {'python': ['black', 'isort'], 'go': ['gofmt', 'goimports']}
-
-let g:ale_set_loclist = 0
-let g:ale_set_quickfix = 0
-let g:ale_open_list = 0
-let g:ale_keep_list_window_open = 0
+let g:ale_fixers = {
+      \ 'python': ['black', 'isort'],
+      \ 'go': ['gofmt', 'goimports']}
 
 " Plug 'vim-airline/vim-airline'
 let g:airline_theme= 'deus'
