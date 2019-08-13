@@ -3,18 +3,18 @@ snippet prime_factorize
   typedef std::vector<std::pair<long long, long long>> factor_result;
 
   factor_result factor(long long base) {
-      long long ret = 1e18;
       vector<pair<long long, long long>> fs;
 
-      for (long long i=2; i*i < base; i++) {
+      for (long long i=2; i*i <= base; i++) {
           if (base % i == 0) {
               long long cnt = 0;
 
               while (base % i == 0) {
                   base /= i;
                   cnt++;
-                  fs.emplace_back(i, cnt);
               }
+
+              fs.emplace_back(i, cnt);
           }
       }
       if (base > 1) {
