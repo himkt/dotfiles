@@ -20,7 +20,7 @@ source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 
 " use custom colorscheme
 syntax      reset
-colorscheme harlequin
+colorscheme Benokai
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'

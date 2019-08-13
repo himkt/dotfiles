@@ -34,8 +34,7 @@ Plug 'lervag/vimtex'
 Plug 'google/vim-jsonnet'
 
 " colorscheme
-Plug 'cocopon/iceberg.vim'
-Plug 'nielsmadan/harlequin'
+Plug 'flazz/vim-colorschemes'
 
 " utility
 Plug 'himkt/docstring.nvim', { 'do': ':UpdateRemotePlugins' }
