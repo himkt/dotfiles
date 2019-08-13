@@ -1,0 +1,18 @@
+
+
+snippet gcd
+  func gcd (a, b float64) float64 {
+    if a > b {
+      return _gcd(a, b)
+    }
+    return _gcd(b, a)
+  }
+
+
+  func _gcd (a, b float64) float64 {
+    if b != 0 {
+      return _gcd(b, math.Mod(a, b))
+    }
+    return a
+  }
+

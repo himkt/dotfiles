@@ -1,0 +1,37 @@
+
+
+snippet prime_decomp
+  // PrimeFactorPair each factor and its frequency
+  type PrimeFactorPair struct {
+    f int
+    b int
+  }
+
+
+  // prime demonposition
+  func primeDecomp (base int) []PrimeFactorPair {
+    var result []PrimeFactorPair
+
+    for i := 2; i*i <= base; i++ {
+
+      if (base % i == 0) {
+        var cnt int
+
+        for base % i == 0 {
+          base /= i
+          cnt++
+        }
+
+        factor := PrimeFactorPair{i, cnt}
+        result = append(result, factor)
+      }
+
+    }
+
+    if (base > 1) {
+      factor := PrimeFactorPair{base, 1}
+      result = append(result, factor)
+    }
+
+    return result
+  }
