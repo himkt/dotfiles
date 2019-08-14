@@ -1,0 +1,16 @@
+
+
+font:
+  normal:
+    family: Source Code Pro for Powerline
+
+  bold:
+    family: Source Code Pro for Powerline
+    style: Bold
+
+  # The italic font face
+  italic:
+    family: Source Code Pro for Powerline
+    style: Italic
+  
+  size: 15.0
