@@ -121,6 +121,7 @@ autocmd FileType go     nnoremap <C-t> :sp <bar> :exec ':term go run %' <CR>
 autocmd FileType rust   nnoremap <C-t> :sp <bar> :exec ':term rustc % -o a && ./a && rm ./a' <CR>
 autocmd FileType ruby   nnoremap <C-t> :sp <bar> :exec ':term ruby %' <CR>
 autocmd FileType python nnoremap <C-t> :sp <bar> :exec ':term python %' <CR>
+autocmd FileType tex    nnoremap <C-t> :VimtexCompile <CR>
 
 " templates
 autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
