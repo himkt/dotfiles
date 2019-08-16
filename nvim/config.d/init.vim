@@ -79,8 +79,9 @@ set statusline=%anzu#search_status()
 
 " Plug 'w0rp/ale'
 let g:ale_fixers = {
+      \ 'go': ['gofmt', 'goimports'],
       \ 'python': ['black', 'isort'],
-      \ 'go': ['gofmt', 'goimports']}
+      \ 'ruby': ['rubocop']}
 
 " Plug 'vim-airline/vim-airline'
 let g:airline_theme= 'deus'
