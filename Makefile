@@ -22,7 +22,7 @@ endif
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
-setup: neovim_setup vim_setup tmux_setup zsh_setup
+setup: alacritty_setup neovim_setup vim_setup tmux_setup zsh_setup
 
 build_brew:
 	$(BREW_COMMAND)
@@ -31,14 +31,18 @@ brew_bundle:
 
 clean:
 	@echo 'remove symbolic links'
-	rm -f $(HOME)/.vimrc
-	rm -f $(HOME)/.zshrc
-	rm -f $(HOME)/.tmux.conf
-	rm -f $(HOME)/.latexmkrc
+	rm -rf $(HOME)/.vimrc
+	rm -rf $(HOME)/.zshrc
+	rm -rf $(HOME)/.tmux.conf
+	rm -rf $(HOME)/.latexmkrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
 	rm -rf $(HOME)/.config/zplug
+	rm -rf $(HOME)/.config/alacritty
 	@echo 'done'
+
+alacritty_setup:
+	$(PWD)/alacritty/bin/setup.sh
 
 neovim_setup:
 	$(PWD)/nvim/bin/setup.sh
