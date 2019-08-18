@@ -36,6 +36,7 @@ call deoplete#custom#source('_',  'max_menu_width', 0)
 
 " Plug 'autozimu/LanguageClient-neovim'
 set completefunc=LanguageClient#complete
+let g:LanguageClient_useVirtualText = 0
 let g:LanguageClient_serverCommands = {
     \ 'c': ['clangd'],
     \ 'cpp': ['clangd'],
