@@ -26,9 +26,19 @@ colorscheme Benokai
 " Plug 'junegunn/fzf.vim'
 command! -bang -nargs=* GGrep
       \ call fzf#vim#grep(
-      \   'git grep --line-number '.shellescape(<q-args>), 0,
-      \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+      \   'git grep --color --line-number '.shellescape(<q-args>),
+      \   <bang>0,
+      \   fzf#vim#with_preview('right'),
+      \   <bang>0)
 nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
+
+
+
+command! -bang -nargs=* Ag
+      \ call fzf#vim#ag(
+      \   <q-args>,
+      \   fzf#vim#with_preview('right'),
+      \   <bang>0)
 
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 let g:deoplete#enable_at_startup = 1
