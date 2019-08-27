@@ -12,4 +12,7 @@ brew 'coreutils'
 brew 'ghq'
 brew 'htop'
 brew 'tree'
+
+brew 'fzf'
 brew 'the_silver_searcher'
+brew 'bat'
