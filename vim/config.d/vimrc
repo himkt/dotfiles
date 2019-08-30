@@ -75,12 +75,6 @@ set matchtime=1
 
 set backspace=indent,eol,start
 
-set cursorcolumn cursorline
-augroup CustomCursorLine
-  au ColorScheme * :hi clear CursorLine
-  au ColorScheme * :hi! CursorLine gui=underline cterm=underline
-augroup END
-
 "" If vertical split -> open a new pane to right,
 "" and if horizontal split -> open a new pane to below
 set splitbelow
