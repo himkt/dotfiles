@@ -34,7 +34,11 @@ Plug 'lervag/vimtex'
 Plug 'google/vim-jsonnet'
 
 " colorscheme
-Plug 'flazz/vim-colorschemes'
+Plug 'vim-scripts/ScrollColors'
+Plug 'tomasiser/vim-code-dark'
+Plug 'ayu-theme/ayu-vim'
+Plug 'drewtempelmeyer/palenight.vim'
+Plug 'sickill/vim-monokai'
 
 " utility
 Plug 'himkt/docstring.nvim', { 'do': ':UpdateRemotePlugins' }
