@@ -28,6 +28,8 @@ build_brew:
 	$(BREW_COMMAND)
 brew_bundle:
 	brew bundle --file=package/Brewfile
+brew_bundle_opt:
+	brew bundle --file=package/Brewfile.optional
 
 clean:
 	@echo 'remove symbolic links'
@@ -74,6 +76,7 @@ done:
 	@echo "  please run $(RED)make brew_bundle$(NOCOLOR)."
 	@echo "  Please run $(RED)make build_brew$(NOCOLOR) before"
 	@echo "  if you have not installed brew yet"
+	@echo "  $(RED)make brew_bundle_opt$(NOCOLOR) installs optional packages"
 	@echo ""
 	@echo "---"
 	@echo "### Python"
