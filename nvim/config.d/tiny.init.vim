@@ -36,9 +36,7 @@ Plug 'google/vim-jsonnet'
 " colorscheme
 Plug 'vim-scripts/ScrollColors'
 Plug 'tomasiser/vim-code-dark'
-Plug 'ayu-theme/ayu-vim'
-Plug 'drewtempelmeyer/palenight.vim'
-Plug 'sickill/vim-monokai'
+Plug 'ntk148v/vim-horizon'
 
 " utility
 Plug 'himkt/docstring.nvim', { 'do': ':UpdateRemotePlugins' }
