@@ -127,5 +127,6 @@ autocmd FileType python nnoremap <C-t> :sp <bar> :exec ':term python %' <CR>
 autocmd FileType tex    nnoremap <C-t> :VimtexCompile <CR>
 
 " templates
-autocmd BufNewFile *.cc  0r $HOME/.dotfiles/template/cc/template.cc
-autocmd BufNewFile *.go  0r $HOME/.dotfiles/template/go/template.go
+autocmd BufNewFile *.cc    0r $HOME/.dotfiles/template/cc/template.cc
+autocmd BufNewFile *.go    0r $HOME/.dotfiles/template/go/template.go
+autocmd BufNewFile Pipfile 0r $HOME/.dotfiles/template/pipenv/Pipfile
