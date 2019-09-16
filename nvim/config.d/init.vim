@@ -69,6 +69,7 @@ xmap <C-k> <Plug>(neosnippet_expand_target)
 let g:neosnippet#snippets_directory='~/.dotfiles/snippets'
 
 " Plug 'scrooloose/nerdtree'
+let g:NERDTreeMouseMode=3
 nnoremap <silent><C-e> : NERDTreeToggle<CR>
 augroup NerdCursor
   autocmd!
