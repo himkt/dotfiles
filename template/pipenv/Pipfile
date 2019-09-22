@@ -11,6 +11,7 @@ autopep8 = "*"
 black = "==19.3b0"
 flake8 = "*"
 isort = "*"
+mypy = "*"
 pytest = "*"
 python-language-server = "*"
 
