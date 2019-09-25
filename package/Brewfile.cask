@@ -15,3 +15,7 @@ cask 'iterm2'
 # research
 cask 'mendeley'
 cask 'mactex'
+
+# development
+cask 'postman'
+cask 'tableplus'
