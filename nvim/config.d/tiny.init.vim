@@ -9,15 +9,11 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-Plug 'autozimu/LanguageClient-neovim', {'branch': 'next', 'do': 'bash install.sh'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-Plug 'w0rp/ale'
 Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 
@@ -29,16 +25,11 @@ Plug 'osyo-manga/vim-anzu'
 Plug 'sheerun/vim-polyglot'
 Plug 'vim-ruby/vim-ruby'
 Plug 'tpope/vim-rails'
-Plug 'rust-lang/rust.vim'
-Plug 'lervag/vimtex'
 Plug 'google/vim-jsonnet'
 
 " colorscheme
 Plug 'vim-scripts/ScrollColors'
 Plug 'tomasiser/vim-code-dark'
 Plug 'ntk148v/vim-horizon'
-
-" utility
-Plug 'himkt/docstring.nvim', { 'do': ':UpdateRemotePlugins' }
 
 call plug#end()
