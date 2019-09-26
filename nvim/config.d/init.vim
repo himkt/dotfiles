@@ -32,41 +32,36 @@ command! -bang -nargs=* GGrep
       \   <bang>0)
 nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 
-
-
 command! -bang -nargs=* Ag
       \ call fzf#vim#ag(
       \   <q-args>,
       \   fzf#vim#with_preview('right'),
       \   <bang>0)
 
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-let g:deoplete#enable_at_startup = 1
-call deoplete#custom#source('_',  'max_menu_width', 0)
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
-" Plug 'autozimu/LanguageClient-neovim'
-set completefunc=LanguageClient#complete
-let g:LanguageClient_useVirtualText = 0
-let g:LanguageClient_serverCommands = {
-    \ 'c': ['clangd'],
-    \ 'cpp': ['clangd'],
-    \ 'go': ['gopls'],
-    \ 'rust': ['~/.cargo/bin/rustup', 'run', 'stable', 'rls'],
-    \ 'ruby': ['solargraph', 'stdio'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'typescript': ['javascript-typescript-stdio'],
-    \ 'python': ['pipenv', 'run', 'pyls']}
-nnoremap <silent> H  :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K  :call LanguageClient#textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient#textDocument_definition()<CR>
+nmap csetup <CR> :CocInstall coc-go coc-python coc-solargraph coc-snippets coc-json <CR>
+nmap <silent> cd <Plug>(coc-definition)
+nmap <silent> cy <Plug>(coc-type-definition)
+nmap <silent> ci <Plug>(coc-implementation)
+nmap <silent> cr <Plug>(coc-references)
+nmap <silent> cn <Plug>(coc-rename)
+nmap <silent> cf <Plug>(coc-fix-current)
+nmap <silent> K :call <SID>show_documentation()<CR>
+imap <C-k> <Plug>(coc-snippets-expand)
+vmap <C-j> <Plug>(coc-snippets-select)
+let g:coc_snippet_next = '<c-n>'
+let g:coc_snippet_prev = '<c-p>'
 
-
-" Plug 'Shougo/neosnippet'
-imap <C-k> <Plug>(neosnippet_expand_or_jump)
-smap <C-k> <Plug>(neosnippet_expand_or_jump)
-xmap <C-k> <Plug>(neosnippet_expand_target)
-let g:neosnippet#snippets_directory='~/.dotfiles/snippets'
+" Use <C-j> for both expand and jump (make expand higher priority.)
+imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Plug 'scrooloose/nerdtree'
 let g:NERDTreeMouseMode=3
@@ -89,24 +84,8 @@ nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
 set statusline=%anzu#search_status()
 
-" Plug 'w0rp/ale'
-let g:ale_fixers = {
-      \ 'go': ['gofmt', 'goimports'],
-      \ 'python': ['black', 'isort'],
-      \ 'ruby': ['rubocop']}
-
 " Plug 'vim-airline/vim-airline'
 let g:airline_theme= 'deus'
 
 " Plug 'haya14busa/incsearch.vim'
 map / <Plug>(incsearch-forward)
-
-" Plug 'sheerun/vim-polyglot'
-let g:polyglot_disabled = ['latex']
-
-" Plug 'lervag/vimtex'
-let g:tex_flavor = "latex"
-let g:vimtex_quickfix_mode = 1
-let g:vimtex_quickfix_open_on_warning = 0
-autocmd FileType tex setlocal omnifunc=vimtex#complete#omnifunc
-call deoplete#custom#var('omni', 'input_patterns', {'tex': g:vimtex#re#deoplete})

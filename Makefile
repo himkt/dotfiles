@@ -39,6 +39,7 @@ clean:
 	rm -rf $(HOME)/.latexmkrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
+	rm -rf $(HOME)/.config/coc
 	rm -rf $(HOME)/.config/zplug
 	rm -rf $(HOME)/.config/alacritty
 	@echo 'done'
