@@ -236,6 +236,10 @@ function detect_pipenv() {
     alias  python="pipenv run python"
     alias  pip="pipenv run pip"
     export PIPENV_ROOT=$(pwd)
+
+    if [[ $PROMPT =~ "pipenv" ]] ; then
+      return
+    fi
     export PROMPT=`echo $PROMPT| sed "s/$normal_pattern/$pipenv_pattern/g"`
   else
     if ! [[ -v PIPENV_ROOT ]] ; then
