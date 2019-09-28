@@ -39,6 +39,11 @@ command! -bang -nargs=* Ag
       \   <bang>0)
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
+command! CocSetup
+      \ CocInstall
+      \ coc-go coc-python coc-solargraph
+      \ coc-snippets coc-json coc-texlab
+
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
     execute 'h '.expand('<cword>')
@@ -47,7 +52,6 @@ function! s:show_documentation()
   endif
 endfunction
 
-nmap csetup <CR> :CocInstall coc-go coc-python coc-solargraph coc-snippets coc-json <CR>
 nmap <silent> cd <Plug>(coc-definition)
 nmap <silent> cy <Plug>(coc-type-definition)
 nmap <silent> ci <Plug>(coc-implementation)
