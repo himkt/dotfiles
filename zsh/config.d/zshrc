@@ -219,7 +219,6 @@ bindkey -e
 bindkey '^t' fzf-change-dir
 bindkey '^r' fzf-select-history
 bindkey '^s' fzf-z-search
-bindkey '^p' fzf-open-editor
 
 
 # history
@@ -260,15 +259,8 @@ function ssh() {
 }
 
 function fzf-change-dir() {
-  local dir
-  dir=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) &&
-  cd "$dir"
-}
-
-function fzf-open-editor() {
-  local file
-  file=$(find ${1:-.} -path '*/\.*' -prune -o -type f -print 2> /dev/null | fzf +m) &&
-  $EDITOR "$file"
+  local target
+  target=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m) && cd $target
 }
 
 function fzf-select-history() {
