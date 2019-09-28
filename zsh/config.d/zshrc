@@ -227,24 +227,33 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 
-# custom functions
-function cd() {
-  builtin cd $@
+# pipenv
+function detect_pipenv() {
+  local pipenv_pattern="(pipenv) \\$ "
+  local normal_pattern="\\$ "
 
-  if [[ -d ./venv ]] ; then
-    . ./venv/bin/activate
-    export VENV_ROOT=$(pwd)
+  if [[ -f ./Pipfile ]] ; then
+    alias  python="pipenv run python"
+    alias  pip="pipenv run pip"
+    export PIPENV_ROOT=$(pwd)
+    export PROMPT=`echo $PROMPT| sed "s/$normal_pattern/$pipenv_pattern/g"`
   else
-    if ! [[ -v VENV_ROOT ]] ; then
+    if ! [[ -v PIPENV_ROOT ]] ; then
       # noop
     else
-      if ! [[ $(pwd) =~ $VENV_ROOT ]] ; then
-        deactivate
-        unset VENV_ROOT
+      if ! [[ $(pwd) =~ $PIPENV_ROOT ]] ; then
+        unalias python
+        unalias pip
+        unset   PIPENV_ROOT
+        export  PROMPT=`echo $PROMPT| sed "s/$pipenv_pattern/$normal_pattern/g"`
       fi
     fi
   fi
+}
 
+function cd() {
+  builtin cd $@
+  detect_pipenv
   ls
 }
 
