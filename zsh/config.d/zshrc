@@ -97,8 +97,10 @@ case ${OSTYPE} in
     ;;
   linux*)
     alias ls="ls --color=auto"
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
+    if builtin command -v xsel > /dev/null; then
+      alias pbcopy='xsel --clipboard --input'
+      alias pbpaste='xsel --clipboard --output'
+    fi
     ;;
 esac
 
