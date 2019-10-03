@@ -16,3 +16,4 @@ pytest = "*"
 python-language-server = "*"
 
 [packages]
+click = "*"
