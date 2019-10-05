@@ -18,7 +18,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'godlygeek/tabular'
 
 " rich search
-Plug 'haya14busa/incsearch.vim'
 Plug 'osyo-manga/vim-anzu'
 
 " language supports

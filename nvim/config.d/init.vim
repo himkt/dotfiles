@@ -90,6 +90,3 @@ set statusline=%anzu#search_status()
 
 " Plug 'vim-airline/vim-airline'
 let g:airline_theme= 'deus'
-
-" Plug 'haya14busa/incsearch.vim'
-map / <Plug>(incsearch-forward)
