@@ -22,9 +22,8 @@ Plug 'osyo-manga/vim-anzu'
 
 " language supports
 Plug 'sheerun/vim-polyglot'
-Plug 'vim-ruby/vim-ruby'
-Plug 'tpope/vim-rails'
 Plug 'google/vim-jsonnet'
+Plug 'tpope/vim-rails'
 
 " colorscheme
 Plug 'vim-scripts/ScrollColors'
