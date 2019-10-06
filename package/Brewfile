@@ -1,9 +1,0 @@
-
-brew 'gcc'
-brew 'python3'
-
-brew 'neovim'
-brew 'tmux'
-
-brew 'wget'
-brew 'zsh'

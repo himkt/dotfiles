@@ -1,8 +1,0 @@
-
-brew 'coreutils'
-brew 'htop'
-brew 'tree'
-brew 'fzf'
-brew 'the_silver_searcher'
-brew 'bat'
-brew 'ghq'
