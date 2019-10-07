@@ -48,3 +48,36 @@ git clone https://github.com/himkt/dotfiles.git $HOME/.dotfiles && cd $HOME/.dot
     - If you want to use `brew` for package manager, please use.
     - `cd $HOME/.dotfiles && make brew_bundle` installs some packages which I use.
 
+### Packages
+
+<details>
+
+- gcc
+- python3
+- neovim
+- tmux
+- wget
+- zsh
+
+- google-chrome
+- google-backup-and-sync (macOS)
+- microsoft-office (macOS)
+- 1password (macOS)
+- iterm2 (macOS)
+- mendeley
+- mactex (macOS)
+- postman (macOS?)
+- tableplus (macOS)
+
+- coreutils
+- htop
+- tree
+- the_silver_searcher
+- bat
+- ghq
+
+</details>
+
+
+
+
