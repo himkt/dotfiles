@@ -1,7 +1,7 @@
 {
   "python.linting.enabled": true,
   "python.linting.pep8Enabled": true,
-  "python.linting.pylintEnabled": true,
+  "python.linting.pylintEnabled": false,
   "python.linting.flake8Enabled": true,
   "solargraph.formatting": true,
   "solargraph.diagnostics": true,
