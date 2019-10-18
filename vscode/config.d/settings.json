@@ -2,21 +2,42 @@
     "workbench.tree.indent": 4,
     "C_Cpp.default.cppStandard": "c++17",
     "C_Cpp.default.cStandard": "c11",
-    "C_Cpp.updateChannel": "Insiders",
     "editor.fontSize": 18,
     "files.eol": "\n",
     "files.insertFinalNewline": true,
-    "latex-workshop.view.pdf.viewer": "tab",
-    "window.zoomLevel": -1,
+    "window.zoomLevel": -5,
     "python.venvPath": "./venv",
     "python.testing.nosetestsEnabled": true,
     "python.linting.pylamaEnabled": true,
     "python.linting.pydocstyleEnabled": true,
-    "python.linting.pep8Enabled": true,
+    "python.linting.pycodestyleEnabled": true,
     "python.linting.flake8Enabled": true,
     "solargraph.formatting": true,
     "solargraph.diagnostics": true,
     "solargraph.folding": false,
     "workbench.sideBar.location": "left",
-    "workbench.startupEditor": "newUntitledFile"
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.fontWeight": "bold",
+    "autoDocstring.docstringFormat": "google",
+    "C_Cpp.updateChannel": "Insiders",
+    "latex-workshop.latex.recipes": [
+        {
+            "name": "latexmk",
+            "tools": [
+                "latexmk"
+            ]
+        }
+    ],
+    "latex-workshop.latex.tools": [
+        {
+            "name": "latexmk",
+            "command": "latexmk",
+            "args": [
+                "--synctex=1",
+                "--interaction=nonstopmode",
+                "%DOC%"
+            ]
+        }
+    ],
+    "latex-workshop.view.pdf.viewer": "tab"
 }
