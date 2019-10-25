@@ -39,5 +39,6 @@
             ]
         }
     ],
-    "latex-workshop.view.pdf.viewer": "tab"
+    "latex-workshop.view.pdf.viewer": "tab",
+    "workbench.colorTheme": "Visual Studio Dark"
 }
