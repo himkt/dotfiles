@@ -1,12 +1,4 @@
 {
-  "python.linting.enabled": true,
-  "python.linting.pep8Enabled": true,
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Enabled": true,
-  "solargraph.formatting": true,
-  "solargraph.diagnostics": true,
-  "solargraph.definitions": true,
-  "solargraph.folding": false,
   "languageserver": {
     "clangd": {
       "command": "clangd",
@@ -14,5 +6,22 @@
       "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
       "filetypes": ["c", "cpp", "objc", "objcpp"]
     }
-  }
+  },
+  "python.venvPath": "./venv",
+  "python.formatting.provider": "black",
+  "python.linting.enabled": true,
+  "python.linting.lintOnSave": true,
+  "python.linting.mypyEnabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pydocstyleEnabled": false,
+  "python.linting.flake8Args": [
+    "--max-line-length",
+    "88",
+    "--ignore==E203,W503,W504"
+  ],
+  "solargraph.formatting": true,
+  "solargraph.definitions": true,
+  "solargraph.diagnostics": true,
+  "solargraph.folding": false
 }
