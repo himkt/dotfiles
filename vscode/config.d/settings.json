@@ -31,7 +31,7 @@
         }
     ],
     "latex-workshop.view.pdf.viewer": "tab",
-    "C_Cpp.default.cppStandard": "c++17",
+    "C_Cpp.default.cppStandard": "c++11",
     "C_Cpp.default.cStandard": "c11",
     "C_Cpp.updateChannel": "Insiders",
     "python.venvPath": "./venv",
