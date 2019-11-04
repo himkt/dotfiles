@@ -31,9 +31,12 @@
         }
     ],
     "latex-workshop.view.pdf.viewer": "tab",
+    "C_Cpp.clang_format_fallbackStyle": "{ BasedOnStyle: LLVM, IndentWidth: 4, BreakBeforeBraces: Attach }",
     "C_Cpp.default.cppStandard": "c++11",
     "C_Cpp.default.cStandard": "c11",
+    "C_Cpp.default.intelliSenseMode": "clang-x64",
     "C_Cpp.updateChannel": "Insiders",
+    "C_Cpp.workspaceSymbols": "All",
     "python.venvPath": "./venv",
     "python.formatting.provider": "black",
     "python.testing.nosetestsEnabled": false,
