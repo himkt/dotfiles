@@ -68,6 +68,7 @@ export PATH=$BREW_HOME/opt/llvm/bin:$PATH
 export PATH=$BREW_HOME/opt/llvm/bin:$PATH
 export LDFLAGS="-L$BREW_HOME/opt/llvm/lib"
 export CPPFLAGS="-I$BREW_HOME/opt/llvm/include"
+export CPATH=$(brew --prefix)/include:$CPATH
 
 
 # golang
