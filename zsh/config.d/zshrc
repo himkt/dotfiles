@@ -65,6 +65,10 @@ if builtin command -v brew > /dev/null; then
 fi
 
 
+# llvm
+export PATH=$BREW_HOME/opt/llvm/bin:$PATH
+
+
 # golang
 export GOPATH=$HOME/go
 export PATH=$GOPATH/bin:$PATH
