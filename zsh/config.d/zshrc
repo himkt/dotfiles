@@ -45,6 +45,8 @@ case ${OSTYPE} in
     export PATH=$HOME/.linuxbrew/sbin:$PATH
     export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
     export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
+    export PATH=/opt/brew/bin:$PATH
+    export PATH=/opt/brew/sbin:$PATH
 
     # for GPU
     export PATH=/usr/local/cuda/bin:$PATH
@@ -65,10 +67,6 @@ fi
 
 # llvm
 export PATH=$BREW_HOME/opt/llvm/bin:$PATH
-export PATH=$BREW_HOME/opt/llvm/bin:$PATH
-export LDFLAGS="-L$BREW_HOME/opt/llvm/lib"
-export CPPFLAGS="-I$BREW_HOME/opt/llvm/include"
-export CPATH=$(brew --prefix)/include:$CPATH
 
 
 # golang
