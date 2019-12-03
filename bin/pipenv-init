@@ -2,6 +2,6 @@
 
 pipenv install -dev \
   python-language-server mypy \
-  pytest flake8 rope
+  pytest flake8 rope pydocstyle
 pipenv install -dev --pre \
   black
