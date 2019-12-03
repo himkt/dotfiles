@@ -33,24 +33,11 @@ command! -bang -nargs=* GGrep
 nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 
 command! -bang -nargs=* Ag
-      \ call fzf#vim#ag(
-      \   <q-args>,
-      \   fzf#vim#with_preview('right'),
-      \   <bang>0)
+      \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'), <bang>0)
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-command! CocSetup
-      \ CocInstall
-      \ coc-go coc-python coc-solargraph
-      \ coc-snippets coc-json coc-texlab
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
+command! CocInit CocInstall
+      \ coc-go coc-python coc-solargraph coc-snippets coc-json
 
 nmap <silent> cd <Plug>(coc-definition)
 nmap <silent> cy <Plug>(coc-type-definition)
