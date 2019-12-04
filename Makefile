@@ -27,9 +27,9 @@ setup: alacritty_setup neovim_setup vim_setup tmux_setup zsh_setup
 build_brew:
 	$(BREW_COMMAND)
 brew_bundle:
-	brew install gcc python3 neovim tmux wget zsh
+	brew install gcc python3 neovim tmux wget zsh node
 brew_bundle_opt:
-	brew install coreutils htop tree the_silver_searcher bat ghq node
+	brew install coreutils htop tree the_silver_searcher bat ghq
 brew_bundle_cask:
 	brew cask install google-chrome mendeley mactex
 	brew cask install google-backup-and-sync microsoft-office 1password iterm2 tableplus postman
