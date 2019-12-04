@@ -11,3 +11,5 @@ curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 
 nvim -u $(pwd)/nvim/config.d/tiny.init.vim +PlugInstall +qall
 echo 'finish creating the neovim environment!'
+
+npm i -g neovim eslint
