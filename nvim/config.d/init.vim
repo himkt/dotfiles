@@ -37,7 +37,8 @@ command! -bang -nargs=* Ag
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 command! CocInit CocInstall
-      \ coc-go coc-python coc-solargraph coc-snippets coc-json
+      \ coc-go coc-python coc-solargraph
+      \ coc-snippets coc-json coc-tsserver coc-eslint
 
 nmap <silent> cd <Plug>(coc-definition)
 nmap <silent> cy <Plug>(coc-type-definition)
@@ -56,7 +57,6 @@ imap <C-j> <Plug>(coc-snippets-expand-jump)
 
 " Plug 'scrooloose/nerdtree'
 let g:NERDTreeMouseMode=3
-let g:NERDTreeMapOpenInTab='<ENTER>'
 nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
 augroup NerdCursor
   autocmd!
