@@ -22,12 +22,12 @@ endif
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
-setup: alacritty_setup neovim_setup vim_setup tmux_setup zsh_setup
+setup: zsh_setup tmux_setup vim_setup neovim_setup
 
 build_brew:
 	$(BREW_COMMAND)
 brew_bundle:
-	brew install gcc python3 neovim tmux wget zsh
+	brew install gcc python3 neovim tmux wget zsh node
 brew_bundle_opt:
 	brew install coreutils htop tree the_silver_searcher bat ghq
 brew_bundle_cask:
