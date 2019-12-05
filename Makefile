@@ -22,7 +22,7 @@ endif
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
-setup: alacritty_setup neovim_setup vim_setup tmux_setup zsh_setup
+setup: zsh_setup tmux_setup vim_setup neovim_setup
 
 build_brew:
 	$(BREW_COMMAND)
