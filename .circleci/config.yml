@@ -29,16 +29,10 @@ jobs:
           shell: /home/linuxbrew/.linuxbrew/bin/zsh
           command: |
             cd $HOME
+            eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
             mv project .dotfiles
             cd $HOME/.dotfiles
             make
-      - run:
-          name: test make neovim_setup
-          shell: /home/linuxbrew/.linuxbrew/bin/zsh
-          command: |
-            eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
-            cd $HOME/.dotfiles
-            make neovim_setup
 workflows:
   version: 2
   build_and_test:
