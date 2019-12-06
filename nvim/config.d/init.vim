@@ -20,7 +20,10 @@ source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 
 " use custom colorscheme
 syntax      reset
-colorscheme codedark
+colorscheme onehalfdark
+
+set fillchars+=vert:│
+hi  VertSplit ctermbg=None ctermfg=Yellow
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -64,7 +67,6 @@ augroup NerdCursor
   autocmd BufLeave NERD_tree_* highlight clear CursorLine
   autocmd BufAdd * highlight clear CursorLine
 augroup END
-
 " Plug 'godlygeek/tabular'
 vnoremap tr : <C-u>Tabularize<Space>/
 
