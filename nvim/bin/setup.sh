@@ -1,7 +1,8 @@
 #! /bin/sh
 
-mkdir -p $HOME/.config/nvim
-mkdir -p $HOME/.config/coc
+rm   -rf $HOME/.config/nvim $HOME/.config/coc
+mkdir -p $HOME/.config/nvim $HOME/.config/coc
+
 ln -s $HOME/.dotfiles/nvim/config.d/init.vim $HOME/.config/nvim/init.vim
 ln -s $HOME/.dotfiles/nvim/config.d/coc-settings.json $HOME/.config/nvim/coc-settings.json
 ln -s $HOME/.dotfiles/nvim/snippets.d $HOME/.config/coc/ultisnips
