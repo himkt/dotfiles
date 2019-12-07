@@ -30,6 +30,6 @@ Plug 'tpope/vim-rails'
 " colorscheme
 Plug 'vim-scripts/ScrollColors'
 Plug 'tomasiser/vim-code-dark'
-Plug 'ntk148v/vim-horizon'
+Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 call plug#end()
