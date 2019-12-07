@@ -22,6 +22,7 @@ source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 syntax      reset
 colorscheme onehalfdark
 
+" custom vertsplit
 set fillchars+=vert:│
 hi  VertSplit ctermbg=None ctermfg=Yellow
 
@@ -79,4 +80,4 @@ nmap N <Plug>(anzu-N-with-echo)
 set statusline=%anzu#search_status()
 
 " Plug 'vim-airline/vim-airline'
-let g:airline_theme= 'deus'
+let g:airline_theme = 'ayu_dark'
