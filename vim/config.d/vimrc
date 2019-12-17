@@ -44,6 +44,9 @@ set hidden
 "" Show vim title for a window
 set title
 
+set number relativenumber
+set nuw=5
+
 "" Show command in status line
 set showcmd
 
