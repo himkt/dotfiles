@@ -22,9 +22,8 @@ source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 syntax      reset
 colorscheme onehalfdark
 
-" custom vertsplit
 set fillchars+=vert:│
-hi  VertSplit ctermbg=None ctermfg=Yellow
+hi  VertSplit ctermbg=None ctermfg=Blue
 
 " Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 " Plug 'junegunn/fzf.vim'
@@ -40,8 +39,7 @@ command! -bang -nargs=* Ag
       \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'), <bang>0)
 
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
-command! CocInit CocInstall
-      \ coc-go coc-python coc-solargraph
+command! CocInit CocInstall coc-go coc-python coc-solargraph
       \ coc-snippets coc-json coc-tsserver coc-eslint
 
 nmap <silent> cd <Plug>(coc-definition)
@@ -75,9 +73,9 @@ vnoremap tr : <C-u>Tabularize<Space>/
 nnoremap <silent><C-t> : TagbarToggle<CR>
 
 " Plug 'osyo-manga/vim-anzu'
+set statusline=%anzu#search_status()
 nmap n <Plug>(anzu-n-with-echo)
 nmap N <Plug>(anzu-N-with-echo)
-set statusline=%anzu#search_status()
 
 " Plug 'vim-airline/vim-airline'
 let g:airline_theme = 'ayu_dark'
