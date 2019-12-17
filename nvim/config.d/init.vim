@@ -81,3 +81,5 @@ set statusline=%anzu#search_status()
 
 " Plug 'vim-airline/vim-airline'
 let g:airline_theme = 'ayu_dark'
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'default'
