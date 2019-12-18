@@ -50,22 +50,27 @@ nmap <silent> cn <Plug>(coc-rename)
 nmap <silent> cf <Plug>(coc-fix-current)
 nmap <silent> K :call <SID>show_documentation()<CR>
 imap <C-k> <Plug>(coc-snippets-expand)
-vmap <C-j> <Plug>(coc-snippets-select)
+
 let g:coc_snippet_next = '<c-n>'
 let g:coc_snippet_prev = '<c-p>'
 
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-j> <Plug>(coc-snippets-expand-jump)
+hi default link CocFloating CocListBlueGrey
 
 " Plug 'scrooloose/nerdtree'
-let g:NERDTreeMouseMode=3
-nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
 augroup NerdCursor
   autocmd!
   autocmd BufEnter NERD_tree_* hi CursorLine gui=underline
   autocmd BufLeave NERD_tree_* highlight clear CursorLine
   autocmd BufAdd * highlight clear CursorLine
 augroup END
+
+nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
+
+let g:NERDTreeMouseMode=3  " open file with one click
+let g:NERDTreeDirArrowExpandable = "\u00a0"
+let g:NERDTreeDirArrowCollapsible = "\u00a0"
+let g:NERDTreeWinSize = 40
+
 " Plug 'godlygeek/tabular'
 vnoremap tr : <C-u>Tabularize<Space>/
 
