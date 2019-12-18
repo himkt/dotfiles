@@ -77,7 +77,3 @@ git clone https://github.com/himkt/dotfiles.git $HOME/.dotfiles && cd $HOME/.dot
 - ghq
 
 </details>
-
-
-
-
