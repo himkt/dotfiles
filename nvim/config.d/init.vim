@@ -64,12 +64,15 @@ augroup NerdCursor
   autocmd BufAdd * highlight clear CursorLine
 augroup END
 
-nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
-
 let g:NERDTreeMouseMode=3  " open file with one click
 let g:NERDTreeDirArrowExpandable = "\u00a0"
 let g:NERDTreeDirArrowCollapsible = "\u00a0"
 let g:NERDTreeWinSize = 40
+
+" Plug 'jistr/vim-nerdtree-tabs'
+nnoremap <silent><C-e> : NERDTreeTabsToggle<CR>
+map      <C-l>         :tabn<CR>
+map      <C-h>         :tabp<CR>
 
 " Plug 'godlygeek/tabular'
 vnoremap tr : <C-u>Tabularize<Space>/
