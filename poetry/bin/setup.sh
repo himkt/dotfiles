@@ -1,3 +1,15 @@
 
-mkdir -p $XDG_CONFIG_HOME/pypoetry
-ln -s `pwd`/poetry/config.d/config.toml $XDG_CONFIG_HOME/pypoetry/config.toml
+
+case ${OSTYPE} in
+  darwin*)
+    POETRY_HOME=$HOME/Library/ApplicationSupport/pypoetry
+    ;;
+  linux*)
+    POETRY_HOME=$HOME/.config/pypoetry
+    ;;
+esac
+
+
+mkdir -p $POETRY_HOME
+rm -f $POETRY_HOME/config.toml
+ln -s `pwd`/poetry/config.d/config.toml $POETRY_HOME/config.toml
