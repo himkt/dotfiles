@@ -3,7 +3,7 @@
 
 case ${OSTYPE} in
   darwin*)
-    POETRY_HOME="$HOME/Library/Application\\ Support/pypoetry"
+    POETRY_HOME="$HOME/Library/Application Support/pypoetry"
     ;;
   linux*)
     POETRY_HOME="$HOME/.config/pypoetry"
