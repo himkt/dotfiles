@@ -45,6 +45,7 @@ clean:
 	rm -rf $(HOME)/.config/coc
 	rm -rf $(HOME)/.config/zplug
 	rm -rf $(HOME)/.config/alacritty
+	rm -rf $(HOME)/.config/pypoetry
 	@echo 'done'
 
 alacritty_setup:
@@ -64,6 +65,9 @@ tmux_setup:
 
 zsh_setup:
 	$(PWD)/zsh/bin/setup.sh
+
+poetry_setup:
+	$(PWD)/poetry/bin/setup.sh
 
 done:
 	@echo ""
