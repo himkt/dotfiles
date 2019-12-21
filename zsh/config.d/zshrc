@@ -228,37 +228,38 @@ HISTSIZE=100000
 SAVEHIST=100000
 
 
-# pipenv
-function detect_pipenv() {
-  local pipenv_pattern="(pipenv) \\$ "
+# venv
+function detect_venv() {
+  local venv_pattern="(venv) \\$ "
   local normal_pattern="\\$ "
 
-  if [[ -f ./Pipfile ]] ; then
-    alias  python="pipenv run python"
-    alias  pip="pipenv run pip"
-    export PIPENV_ROOT=$(pwd)
+  if [[ -d ./.venv ]] ; then
+    alias  python="poetry run python"
+    alias  pip="poetry run pip"
+    export VENV_ROOT=$(pwd)
 
-    if [[ $PROMPT =~ "pipenv" ]] ; then
+    if [[ $PROMPT =~ "venv" ]] ; then
       return
     fi
-    export PROMPT=`echo $PROMPT| sed "s/$normal_pattern/$pipenv_pattern/g"`
+    export PROMPT=`echo $PROMPT| sed "s/$normal_pattern/$venv_pattern/g"`
   else
-    if ! [[ -v PIPENV_ROOT ]] ; then
+    if ! [[ -v VENV_ROOT ]] ; then
       # noop
     else
-      if ! [[ $(pwd) =~ $PIPENV_ROOT ]] ; then
+      if ! [[ $(pwd) =~ $VENV_ROOT ]] ; then
         unalias python
         unalias pip
-        unset   PIPENV_ROOT
-        export  PROMPT=`echo $PROMPT| sed "s/$pipenv_pattern/$normal_pattern/g"`
+        unset   VENV_ROOT
+        export  PROMPT=`echo $PROMPT| sed "s/$venv_pattern/$normal_pattern/g"`
       fi
     fi
   fi
 }
 
+
 function cd() {
   builtin cd $@
-  detect_pipenv
+  detect_venv
   ls
 }
 
@@ -293,3 +294,6 @@ function fzf-z-search() {
 }
 
 cd .  # For venv, cd runs here
+
+
+source "/home/ubuntu/.local/share/dephell/_dephell_zsh_autocomplete"
