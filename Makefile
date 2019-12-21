@@ -22,7 +22,7 @@ endif
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
-setup: zsh_setup tmux_setup vim_setup neovim_setup
+setup: zsh_setup tmux_setup vim_setup neovim_setup poetry_setup
 
 build_brew:
 	$(BREW_COMMAND)
@@ -46,6 +46,7 @@ clean:
 	rm -rf $(HOME)/.config/zplug
 	rm -rf $(HOME)/.config/alacritty
 	rm -rf $(HOME)/.config/pypoetry
+	rm -rf $(HOME)/Library/Application\ Support/pypoetry
 	@echo 'done'
 
 alacritty_setup:
