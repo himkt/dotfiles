@@ -1,7 +1,0 @@
-
-
-pipenv install -dev \
-  python-language-server \
-  pytest flake8 rope mypy
-pipenv install -dev --pre \
-  black
