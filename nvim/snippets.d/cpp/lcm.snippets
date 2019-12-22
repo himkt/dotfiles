@@ -1,12 +1,4 @@
 snippet lcm
-template <typename integer>
-integer gcd(integer a, integer b) {
-	integer c = max(a, b);
-	integer d = min(a, b);
-if (d != 0) return gcd(d, d%c);
-	else return a;
-}
-
 template<typename integer>
 integer lcm(integer a, integer b) {
 	return (a * b) / gcd(a, b);
