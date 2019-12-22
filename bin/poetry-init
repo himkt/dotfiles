@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# # initialize
+poetry init
+ 
+poetry add --dev \
+         python-language-server \
+         pytest flake8 rope mypy black

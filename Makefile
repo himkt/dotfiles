@@ -22,7 +22,7 @@ endif
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
-setup: zsh_setup tmux_setup vim_setup neovim_setup
+setup: zsh_setup tmux_setup vim_setup neovim_setup poetry_setup
 
 build_brew:
 	$(BREW_COMMAND)
@@ -36,15 +36,17 @@ brew_bundle_cask:
 
 clean:
 	@echo 'remove symbolic links'
-	rm -rf $(HOME)/.vimrc
-	rm -rf $(HOME)/.zshrc
-	rm -rf $(HOME)/.tmux.conf
-	rm -rf $(HOME)/.latexmkrc
-	rm -rf $(HOME)/.vim
-	rm -rf $(HOME)/.config/nvim
-	rm -rf $(HOME)/.config/coc
-	rm -rf $(HOME)/.config/zplug
-	rm -rf $(HOME)/.config/alacritty
+	rm -rf "$(HOME)/.vimrc"
+	rm -rf "$(HOME)/.zshrc"
+	rm -rf "$(HOME)/.tmux.conf"
+	rm -rf "$(HOME)/.latexmkrc"
+	rm -rf "$(HOME)/.vim"
+	rm -rf "$(HOME)/.config/nvim"
+	rm -rf "$(HOME)/.config/coc"
+	rm -rf "$(HOME)/.config/zplug"
+	rm -rf "$(HOME)/.config/alacritty"
+	rm -rf "$(HOME)/.config/pypoetry"
+	rm -rf "$(HOME)/Library/Application Support/pypoetry"
 	@echo 'done'
 
 alacritty_setup:
@@ -64,6 +66,9 @@ tmux_setup:
 
 zsh_setup:
 	$(PWD)/zsh/bin/setup.sh
+
+poetry_setup:
+	$(PWD)/poetry/bin/setup.sh
 
 done:
 	@echo ""
