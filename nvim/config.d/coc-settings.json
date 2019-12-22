@@ -1,4 +1,5 @@
 {
+  "coc.preferences.jumpCommand": "tab drop",
   "languageserver": {
     "clangd": {
       "command": "clangd",
