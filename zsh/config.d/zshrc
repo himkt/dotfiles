@@ -294,6 +294,3 @@ function fzf-z-search() {
 }
 
 cd .  # For venv, cd runs here
-
-
-source "/home/ubuntu/.local/share/dephell/_dephell_zsh_autocomplete"
