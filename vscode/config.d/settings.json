@@ -1,7 +1,6 @@
 {
     "editor.fontSize": 14,
     "editor.formatOnPaste": false,
-    "editor.formatOnSave": true,
     "editor.fontWeight": "bold",
     "files.eol": "\n",
     "files.insertFinalNewline": true,
