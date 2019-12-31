@@ -234,21 +234,21 @@ function detect_venv() {
   local normal_pattern="\\$ "
 
   if [[ -d ./.venv ]] ; then
-    alias  python="poetry run python"
-    alias  pip="poetry run pip"
     export VENV_ROOT=$(pwd)
 
-    if [[ $PROMPT =~ "venv" ]] ; then
+    if [[ $PROMPT =~ ".venv" ]] ; then
       return
     fi
+    alias python="poetry run python"
+    alias pip="poetry run pip"
     export PROMPT=`echo $PROMPT| sed "s/$normal_pattern/$venv_pattern/g"`
+    # source $VENV_ROOT/.venv/bin/activate
+    # export PROMPT=`echo $PROMPT| sed "s/(.venv) //g"`
   else
-    if ! [[ -v VENV_ROOT ]] ; then
-      # noop
-    else
+    if [[ -v VENV_ROOT ]] ; then
       if ! [[ $(pwd) =~ $VENV_ROOT ]] ; then
-        unalias python
-        unalias pip
+        unalias python pip
+        # deactivate
         unset   VENV_ROOT
         export  PROMPT=`echo $PROMPT| sed "s/$venv_pattern/$normal_pattern/g"`
       fi
