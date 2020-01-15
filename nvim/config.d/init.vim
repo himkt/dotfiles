@@ -49,10 +49,11 @@ nmap <silent> cr <Plug>(coc-references)
 nmap <silent> cn <Plug>(coc-rename)
 nmap <silent> cf <Plug>(coc-fix-current)
 nmap <silent> K :call <SID>show_documentation()<CR>
+nmap <silent> <S-f> :call CocAction('format')<CR>
 imap <C-k> <Plug>(coc-snippets-expand)
 
-let g:coc_snippet_next = '<c-n>'
-let g:coc_snippet_prev = '<c-p>'
+" Note: <C-j> and <C-k> jump next/previous arguments
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 
 hi default link CocFloating CocListBlueGrey
 
