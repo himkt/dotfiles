@@ -31,8 +31,8 @@ brew_bundle:
 brew_bundle_opt:
 	brew install coreutils htop tree the_silver_searcher bat ghq
 brew_bundle_cask:
-	brew cask install google-chrome mendeley mactex
-	brew cask install google-backup-and-sync microsoft-office 1password iterm2 tableplus postman
+	brew cask install google-chrome google-backup-and-sync mendeley microsoft-office
+	brew cask install 1password iterm2 postico visual-studio-code
 
 clean:
 	@echo 'remove symbolic links'
