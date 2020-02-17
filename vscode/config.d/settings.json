@@ -52,5 +52,6 @@
     ],
     "solargraph.formatting": true,
     "solargraph.diagnostics": true,
+    "solargraph.definitions": true,
     "solargraph.folding": false
 }
