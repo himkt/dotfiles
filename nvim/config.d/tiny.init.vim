@@ -23,7 +23,6 @@ Plug 'godlygeek/tabular'
 Plug 'osyo-manga/vim-anzu'
 
 " language supports
-Plug 'sheerun/vim-polyglot'
 Plug 'google/vim-jsonnet'
 Plug 'tpope/vim-rails'
 
