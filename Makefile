@@ -18,16 +18,16 @@ ifeq ($(BREW),)
 	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
 endif
 
-.PHONY: all vim_setup neovim_setup vscode_setup zsh_setup done \
+.PHONY: all nvim_setup vscode_setup zsh_setup done \
 	build_brew brew_bundle_tiny brew_bundle_tiny
 
 all: clean setup done
-setup: zsh_setup tmux_setup vim_setup neovim_setup poetry_setup
+setup: zsh_setup tmux_setup nvim_setup poetry_setup
 
 build_brew:
 	$(BREW_COMMAND)
 brew_bundle:
-	brew install gcc python3 neovim tmux wget zsh node
+	brew install gcc python3 nvim tmux wget zsh node
 brew_bundle_opt:
 	brew install coreutils htop tree the_silver_searcher bat ghq
 brew_bundle_cask:
@@ -52,7 +52,7 @@ clean:
 alacritty_setup:
 	$(PWD)/alacritty/bin/setup.sh
 
-neovim_setup:
+nvim_setup:
 	$(PWD)/nvim/bin/setup.sh
 
 vim_setup:
@@ -74,8 +74,8 @@ done:
 	@echo ""
 	@echo "### Finish installing dotfiles!"
 	@echo "Please run $(RED)source $$HOME/.zshrc$(NOCOLOR) on zsh to enable configures."
-	@echo "- If you want to use neovim with extensions,"
-	@echo "  please run $(RED)make neovim_setup$(NOCOLOR) (which needs pyenv)."
+	@echo "- If you want to use nvim with extensions,"
+	@echo "  please run $(RED)make nvim_setup$(NOCOLOR) (which needs pyenv)."
 	@echo " If you want to install pyenv using brew, please read the Python section below."
 	@echo ""
 	@echo "---"
@@ -90,5 +90,5 @@ done:
 	@echo "---"
 	@echo "### Python"
 	@echo "- After $(RED)make build_brew, make brew_bundle, source $$HOME/.zshrc$(NOCOLOR)"
-	@echo "  you can run $(RED)make neovim_setup$(NOCOLOR) to install Python and the neovim library"
+	@echo "  you can run $(RED)make nvim_setup$(NOCOLOR) to install Python and the nvim library"
 	@echo ""
