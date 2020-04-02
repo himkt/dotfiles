@@ -44,13 +44,9 @@ clean:
 	rm -rf "$(HOME)/.config/nvim"
 	rm -rf "$(HOME)/.config/coc"
 	rm -rf "$(HOME)/.config/zplug"
-	rm -rf "$(HOME)/.config/alacritty"
 	rm -rf "$(HOME)/.config/pypoetry"
 	rm -rf "$(HOME)/Library/Application Support/pypoetry"
 	@echo 'done'
-
-alacritty_setup:
-	$(PWD)/alacritty/bin/setup.sh
 
 nvim_setup:
 	$(PWD)/nvim/bin/setup.sh
