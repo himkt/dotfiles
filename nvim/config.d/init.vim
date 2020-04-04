@@ -90,3 +90,6 @@ nmap N <Plug>(anzu-N-with-echo)
 let g:airline_theme = 'ayu_dark'
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#formatter = 'default'
+
+" Plug 'google/vim-jsonnet'
+let g:jsonnet_fmt_on_save = 0
