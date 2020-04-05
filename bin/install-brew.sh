@@ -3,7 +3,7 @@
 if !(type "brew" > /dev/null 2>&1); then
   case ${OSTYPE} in
     darwin*)
-      yes ' '| /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+      /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
       ;;
     linux*)
       yes ' '| sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
@@ -16,3 +16,4 @@ if !(type "brew" > /dev/null 2>&1); then
       ;;
   esac
 fi
+

@@ -13,7 +13,7 @@ setup: zsh_setup tmux_setup nvim_setup poetry_setup
 build_brew:
 	$(PWD)/bin/install-brew.sh
 brew_bundle:
-	brew install gcc python3 nvim tmux wget zsh node
+	$(PWD)/bin/install-brew-bundle.sh
 brew_bundle_opt:
 	brew install coreutils htop tree the_silver_searcher bat ghq
 brew_bundle_cask:
