@@ -1,22 +1,8 @@
 # Makefile for dotfile configs
-ZPLUG_HOME := $(HOME)/.config/zplug
 TERM       := screen-256color
-UNAME_S    := $(shell uname -s)
-BREW       := $(shell which brew 2> /dev/null)
+ZPLUG_HOME := $(HOME)/.config/zplug
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
-
-ifeq ($(UNAME_S),Darwin)
-	BREW_COMPILER := /usr/bin/ruby -e
-	BREW_SOURCE := https://raw.githubusercontent.com/Homebrew/install/master/install
-else
-	BREW_COMPILER := sh -c
-	BREW_SOURCE := https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh
-endif
-
-ifeq ($(BREW),)
-	BREW_COMMAND := yes ' '| $(BREW_COMPILER) "$$(curl -fsSL $(BREW_SOURCE))"
-endif
 
 .PHONY: all nvim_setup vscode_setup zsh_setup done \
 	build_brew brew_bundle_tiny brew_bundle_tiny
@@ -25,7 +11,7 @@ all: clean setup done
 setup: zsh_setup tmux_setup nvim_setup poetry_setup
 
 build_brew:
-	$(BREW_COMMAND)
+	$(PWD)/bin/install-brew.sh
 brew_bundle:
 	brew install gcc python3 nvim tmux wget zsh node
 brew_bundle_opt:
@@ -33,19 +19,6 @@ brew_bundle_opt:
 brew_bundle_cask:
 	brew cask install google-chrome google-backup-and-sync mendeley microsoft-office
 	brew cask install 1password iterm2 postico visual-studio-code
-
-clean:
-	@echo 'remove symbolic links'
-	rm -rf "$(HOME)/.vimrc"
-	rm -rf "$(HOME)/.zshrc"
-	rm -rf "$(HOME)/.tmux.conf"
-	rm -rf "$(HOME)/.vim"
-	rm -rf "$(HOME)/.config/nvim"
-	rm -rf "$(HOME)/.config/coc"
-	rm -rf "$(HOME)/.config/zplug"
-	rm -rf "$(HOME)/.config/pypoetry"
-	rm -rf "$(HOME)/Library/Application Support/pypoetry"
-	@echo 'done'
 
 nvim_setup:
 	$(PWD)/nvim/bin/setup.sh
@@ -64,6 +37,19 @@ zsh_setup:
 
 poetry_setup:
 	$(PWD)/poetry/bin/setup.sh
+
+clean:
+	@echo 'remove symbolic links'
+	rm -rf "$(HOME)/.vimrc"
+	rm -rf "$(HOME)/.zshrc"
+	rm -rf "$(HOME)/.tmux.conf"
+	rm -rf "$(HOME)/.vim"
+	rm -rf "$(HOME)/.config/nvim"
+	rm -rf "$(HOME)/.config/coc"
+	rm -rf "$(HOME)/.config/zplug"
+	rm -rf "$(HOME)/.config/pypoetry"
+	rm -rf "$(HOME)/Library/Application Support/pypoetry"
+	@echo 'done'
 
 done:
 	@echo ""
