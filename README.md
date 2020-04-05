@@ -1,5 +1,3 @@
-<div align="center"><img src='./.assets/header.png' width=600></div>
-
 # dotfiles : My configurations for command line tools
 
 [![CircleCI](https://circleci.com/gh/himkt/dotfiles.svg?style=svg)](https://circleci.com/gh/himkt/dotfiles)
