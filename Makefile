@@ -14,8 +14,8 @@ build_brew:
 	$(PWD)/bin/install-brew.sh
 brew_bundle:
 	$(PWD)/bin/install-brew-bundle.sh
-brew_bundle_opt:
-	brew install coreutils htop tree the_silver_searcher bat ghq
+brew_bundle_cli:
+	$(PWD)/bin/install-brew-bundle-cli.sh
 brew_bundle_cask:
 	brew cask install google-chrome google-backup-and-sync mendeley microsoft-office
 	brew cask install 1password iterm2 postico visual-studio-code
