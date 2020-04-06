@@ -1,0 +1,24 @@
+
+
+name: "build"
+
+on: [push]
+
+jobs:
+  check_pr:
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build linuxbrew
+      run: |
+        make build_brew
+        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+        make brew_bundle
+        make
