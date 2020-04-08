@@ -6,7 +6,7 @@
     "files.insertFinalNewline": true,
     "window.zoomLevel": -1,
     "workbench.tree.indent": 4,
-    "workbench.colorTheme": "Visual Studio Dark",
+    "workbench.colorTheme": "Default High Contrast",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
     "autoDocstring.docstringFormat": "google",
