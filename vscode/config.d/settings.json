@@ -9,7 +9,10 @@
     "files.eol": "\n",
     "files.insertFinalNewline": true,
     "window.zoomLevel": -1,
-    "workbench.tree.indent": 4,
+    "workbench.tree.indent": 15,
+    "workbench.colorCustomizations": {
+      "tree.indentGuidesStroke": "#ff0000"
+    },
     "workbench.colorTheme": "Default High Contrast",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
