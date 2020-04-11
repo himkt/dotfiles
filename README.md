@@ -12,4 +12,8 @@ git clone git@github.com:himkt/dotfiles $HOME/.dotfiles
 cd $HOME/.dotfiles && make
 ```
 
+### Homebrew/Linuxbrew
+
 If you don't have `brew`, you have to run `make build_brew` in advance.
+`make brew_bundle` and `make brew_bundle_cli` builds some essential softwares for me.
+`make brew_bundle_cask` is only available on macOS, which builds GUI applications.
