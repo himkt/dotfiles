@@ -1,6 +1,4 @@
 # Makefile for dotfile configs
-TERM       := screen-256color
-ZPLUG_HOME := $(HOME)/.config/zplug
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
