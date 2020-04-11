@@ -11,7 +11,7 @@ ln -s $HOME/.dotfiles/nvim/snippets.d $HOME/.config/coc/ultisnips
 curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 	https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-nvim -u $(pwd)/nvim/config.d/tiny.init.vim +PlugInstall +qall
+nvim -u $PWD/nvim/config.d/tiny.init.vim +PlugInstall +qall
 echo 'finish creating the neovim environment!'
 
 npm i -g neovim eslint
