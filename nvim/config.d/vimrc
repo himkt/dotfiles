@@ -66,6 +66,7 @@ set tabstop=2
 set shiftwidth=2
 autocmd FileType python setl tabstop=8 shiftwidth=4 softtabstop=4
 autocmd FileType cpp    setl tabstop=4 shiftwidth=4 softtabstop=4
+autocmd FileType sql    setl tabstop=4 shiftwidth=4 softtabstop=4
 
 "" Do not create backup and swap files
 set noswapfile
