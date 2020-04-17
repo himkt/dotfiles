@@ -60,5 +60,7 @@
     "solargraph.formatting": true,
     "solargraph.diagnostics": true,
     "solargraph.definitions": true,
-    "solargraph.folding": false
+    "solargraph.folding": false,
+    "rust-client.rls-name": "rls",
+    "rust-client.channel": "stable"
 }
