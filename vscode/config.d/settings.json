@@ -62,5 +62,7 @@
     "solargraph.definitions": true,
     "solargraph.folding": false,
     "rust-client.rls-name": "rls",
-    "rust-client.channel": "stable"
+    "rust-client.channel": "stable",
+    "go.formatTool": "goimports",
+    "go.useLanguageServer": true
 }
