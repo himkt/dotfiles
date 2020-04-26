@@ -14,12 +14,13 @@ ms-vscode-remote.remote-wsl
 ms-vscode-remote.vscode-remote-extensionpack
 ms-vscode.cpptools
 ms-vscode.Go
+ms-vsliveshare.vsliveshare
 njpwerner.autodocstring
-octref.vetur
 oderwat.indent-rainbow
 PKief.material-icon-theme
 rebornix.ruby
 rust-lang.rust
+shardulm94.trailing-spaces
 sianglim.slim
 vayan.haml
 wingrunr21.vscode-ruby

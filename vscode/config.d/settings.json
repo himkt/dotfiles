@@ -85,5 +85,6 @@
     "rust-client.rls-name": "rls",
     "rust-client.channel": "stable",
     "go.formatTool": "goimports",
-    "go.useLanguageServer": true
+    "go.useLanguageServer": true,
+    "trailing-spaces.trimOnSave": true
 }
