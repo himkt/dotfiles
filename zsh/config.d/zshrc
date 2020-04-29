@@ -264,3 +264,14 @@ function fzf-z-search() {
         return 1
     fi
 }
+
+function waiton() {
+  local pid=$1
+
+  if [[ -v pid ]]; then
+    echo "wait for pid=$pid..."
+    while ps -p $pid > /dev/null; do sleep 1; done;
+  else
+    echo "pid is not specified."
+  fi
+}
