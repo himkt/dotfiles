@@ -1,0 +1,7 @@
+brew 'bat'
+brew 'coreutils'
+brew 'tree'
+brew 'htop'
+
+brew 'the_silver_searcher'
+brew 'ghq'

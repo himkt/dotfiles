@@ -1,0 +1,6 @@
+cask 'slack'
+cask 'visual-studio-code'
+cask 'iterm2'
+cask 'postico'
+cask '1password'
+cask 'docker'
