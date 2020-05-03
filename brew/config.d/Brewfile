@@ -1,0 +1,8 @@
+brew 'gcc'
+brew 'python3'
+
+brew 'tmux'
+brew 'zsh'
+
+brew 'nvim'
+brew 'node'
