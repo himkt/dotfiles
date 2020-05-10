@@ -2,11 +2,12 @@
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
-.PHONY: all nvim_setup vscode_setup zsh_setup done \
-	build_brew brew_bundle_tiny brew_bundle_tiny
+.PHONY: all done build_brew brew_bundle brew_bundle_cli brew_bundle_gui \
+	nvim_setup vscode_setup tmux_setup zsh_setup poetry_setup
 
-all: clean setup done
-setup: zsh_setup tmux_setup nvim_setup poetry_setup
+all: clean setup_cui done
+setup_cui: zsh_setup tmux_setup nvim_setup poetry_setup
+setup_gui: zsh_setup tmux_setup nvim_setup poetry_setup vscode_setup
 
 build_brew:
 	$(PWD)/brew/bin/install-brew.sh
@@ -22,9 +23,6 @@ brew_bundle_gui:
 
 nvim_setup:
 	$(PWD)/nvim/bin/setup.sh
-
-vim_setup:
-	$(PWD)/vim/bin/setup.sh
 
 vscode_setup:
 	$(PWD)/vscode/bin/setup.sh
