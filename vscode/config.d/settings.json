@@ -34,7 +34,9 @@
       "terminal.ansiWhite":"#A5A2A2",
       "terminal.ansiYellow":"#FDED02"
     },
-    "workbench.colorTheme": "Default High Contrast",
+    "terminal.integrated.fontSize": 15,
+    "terminal.integrated.fontWeight": "bold",
+    "workbench.colorTheme": "Monokai Dimmed",
     "workbench.sideBar.location": "left",
     "workbench.startupEditor": "newUntitledFile",
     "autoDocstring.docstringFormat": "google",
