@@ -56,10 +56,13 @@
     "python.linting.pydocstyleEnabled": false,
     "python.linting.pycodestyleEnabled": false,
     "python.linting.flake8Args": [
-      "--max-line-length",
-      "88",
+      "--max-line-length=99",
       "--ignore==E203,W503,W504"
     ],
+    "[ruby]": {
+      "editor.tabSize": 2
+    },
+    "ruby.format": "rubocop",
     "solargraph.formatting": true,
     "solargraph.diagnostics": true,
     "solargraph.definitions": true,
