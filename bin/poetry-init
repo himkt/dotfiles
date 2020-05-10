@@ -5,4 +5,4 @@ poetry init
  
 poetry add --dev \
          python-language-server ipython \
-         pytest flake8 flake8-import-order rope mypy black
+         pytest flake8 flake8-import-order rope mypy black hacking
