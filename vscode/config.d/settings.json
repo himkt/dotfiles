@@ -1,6 +1,6 @@
 {
   "editor.fontFamily": "JetBrains Mono",
-  "editor.fontSize": 12,
+  "editor.fontSize": 13,
   "editor.fontWeight": "bold",
   "editor.formatOnPaste": false,
   "editor.minimap.enabled": true,
@@ -8,11 +8,11 @@
   "editor.minimap.maxColumn": 120,
   "editor.minimap.scale": 2,
   "editor.snippetSuggestions": "none",
-  "debug.console.fontSize": 14,
   "debug.console.fontFamily": "JetBrains Mono",
+  "debug.console.fontSize": 13,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 1,
   "workbench.tree.indent": 15,
   "workbench.colorCustomizations": {
     "tree.indentGuidesStroke": "#ff0000",
@@ -37,9 +37,9 @@
     "terminal.ansiWhite": "#A5A2A2",
     "terminal.ansiYellow": "#FDED02"
   },
-  "terminal.integrated.fontSize": 2,
   "terminal.integrated.fontWeight": "bold",
-  "workbench.colorTheme": "Monokai Dimmed",
+  "terminal.integrated.fontSize": 13,
+  "workbench.colorTheme": "Dark+ Material",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "autoDocstring.docstringFormat": "google",
@@ -73,5 +73,6 @@
   "rust-client.channel": "stable",
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
+  "markdown.preview.fontSize": 13,
   "trailing-spaces.trimOnSave": true
 }
