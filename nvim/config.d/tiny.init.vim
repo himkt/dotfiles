@@ -9,7 +9,6 @@ call plug#begin('~/.config/nvim/plugged')
 
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
@@ -25,10 +24,5 @@ Plug 'osyo-manga/vim-anzu'
 " language supports
 Plug 'google/vim-jsonnet'
 Plug 'tpope/vim-rails'
-
-" colorscheme
-Plug 'vim-scripts/ScrollColors'
-Plug 'tomasiser/vim-code-dark'
-Plug 'sonph/onehalf', {'rtp': 'vim/'}
 
 call plug#end()

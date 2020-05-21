@@ -20,7 +20,7 @@ source $HOME/.dotfiles/nvim/config.d/tiny.init.vim
 
 " use custom colorscheme
 syntax      reset
-colorscheme onehalfdark
+colorscheme darkblue
 
 set fillchars+=vert:│
 hi  VertSplit ctermbg=None ctermfg=Blue
@@ -37,25 +37,6 @@ nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<
 
 command! -bang -nargs=* Ag
       \ call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'), <bang>0)
-
-" Plug 'neoclide/coc.nvim', {'branch': 'release'}
-command! CocInit CocInstall coc-go coc-python coc-solargraph
-      \ coc-snippets coc-json coc-tsserver coc-eslint
-
-nmap <silent> cd <Plug>(coc-definition)
-nmap <silent> cy <Plug>(coc-type-definition)
-nmap <silent> ci <Plug>(coc-implementation)
-nmap <silent> cr <Plug>(coc-references)
-nmap <silent> cn <Plug>(coc-rename)
-nmap <silent> cf <Plug>(coc-fix-current)
-nmap <silent> K :call <SID>show_documentation()<CR>
-nmap <silent> <S-f> :call CocAction('format')<CR>
-imap <C-k> <Plug>(coc-snippets-expand)
-
-" Note: <C-j> and <C-k> jump next/previous arguments
-inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
-
-hi default link CocFloating CocListBlueGrey
 
 " Plug 'scrooloose/nerdtree'
 augroup NerdCursor
