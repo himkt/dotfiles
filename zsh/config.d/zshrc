@@ -130,7 +130,10 @@ fi
 
 # etc
 if which tmux > /dev/null; then
-  if [ -z $TMUX ] && [[ $TERM_PROGRAM != "vscode" ]]; then
+  if [ -z $TMUX ] && \
+    [[ $TERM_PROGRAM != "vscode" ]] && \
+    [[ $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]];
+  then
     if $(tmux has-session); then
       tmux attach
     else
