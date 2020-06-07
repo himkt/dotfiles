@@ -12,10 +12,10 @@
   "debug.console.fontFamily": "JetBrains Mono",
   "debug.console.fontSize": 13,
   "files.eol": "\n",
+  "files.hotExit": "off",
   "files.insertFinalNewline": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "window.zoomLevel": 0,
-  "window.restoreWindows": "none",
   "workbench.tree.indent": 15,
   "workbench.colorCustomizations": {
     "tree.indentGuidesStroke": "#ff0000",
