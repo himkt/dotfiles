@@ -8,11 +8,14 @@
   "editor.minimap.maxColumn": 120,
   "editor.minimap.scale": 2,
   "editor.snippetSuggestions": "none",
+  "editor.suggestSelection": "first",
   "debug.console.fontFamily": "JetBrains Mono",
   "debug.console.fontSize": 13,
   "files.eol": "\n",
   "files.insertFinalNewline": true,
-  "window.zoomLevel": 1,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.zoomLevel": 0,
+  "window.restoreWindows": "none",
   "workbench.tree.indent": 15,
   "workbench.colorCustomizations": {
     "tree.indentGuidesStroke": "#ff0000",
@@ -49,9 +52,10 @@
   "C_Cpp.default.intelliSenseMode": "clang-x64",
   "C_Cpp.updateChannel": "Insiders",
   "C_Cpp.workspaceSymbols": "All",
+  "java.configuration.checkProjectSettingsExclusions": false,
   "python.venvPath": "./venv",
   "python.formatting.provider": "black",
-  "python.testing.nosetestsEnabled": false,
+  "python.jediEnabled": false,
   "python.linting.lintOnSave": true,
   "python.linting.mypyEnabled": true,
   "python.linting.pylintEnabled": false,
@@ -62,6 +66,7 @@
     "--max-line-length=99",
     "--ignore==E203,W503,W504"
   ],
+  "python.testing.nosetestsEnabled": false,
   "[ruby]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "castwide.solargraph"
