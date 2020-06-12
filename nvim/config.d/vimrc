@@ -82,6 +82,10 @@ set matchtime=1
 
 set backspace=indent,eol,start
 
+"" colorize pane partition
+set fillchars+=vert:│
+hi  VertSplit ctermbg=None ctermfg=Blue
+
 "" If vertical split -> open a new pane to right,
 "" and if horizontal split -> open a new pane to below
 set splitbelow
