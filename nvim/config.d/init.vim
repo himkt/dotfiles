@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jistr/vim-nerdtree-tabs'
   Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
   Plug 'junegunn/fzf.vim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'osyo-manga/vim-anzu'
   Plug 'scrooloose/nerdtree'
   Plug 'tpope/vim-rails'
