@@ -15,6 +15,7 @@
   "files.hotExit": "off",
   "files.insertFinalNewline": true,
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "window.restoreWindows": "none",
   "window.zoomLevel": 0,
   "workbench.tree.indent": 15,
   "workbench.colorCustomizations": {
