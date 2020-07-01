@@ -41,9 +41,10 @@
     "terminal.ansiWhite": "#A5A2A2",
     "terminal.ansiYellow": "#FDED02"
   },
+  "workbench.iconTheme": "Monokai Pro Icons",
+  "workbench.colorTheme": "Monokai Dimmed",
   "terminal.integrated.fontWeight": "bold",
   "terminal.integrated.fontSize": 13,
-  "workbench.colorTheme": "Dark+ Material",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "autoDocstring.docstringFormat": "google",
