@@ -1,4 +1,5 @@
 {
+  "editor.cursorStyle": "underline",
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontSize": 13,
   "editor.fontWeight": "bold",
