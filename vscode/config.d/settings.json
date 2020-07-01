@@ -83,5 +83,6 @@
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "markdown.preview.fontSize": 13,
-  "trailing-spaces.trimOnSave": true
+  "trailing-spaces.trimOnSave": true,
+  "files.trimTrailingWhitespace": true
 }
