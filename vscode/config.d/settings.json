@@ -33,6 +33,7 @@
   "markdown.preview.fontSize": 13,
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
+  "python.languageServer": "Pylance",
   "python.linting.flake8Args": [
     "--max-line-length=99",
     "--ignore=E203,W503,W504"
@@ -84,6 +85,5 @@
   "workbench.iconTheme": "Monokai Pro Icons",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
-"workbench.tree.indent": 15,
-"python.languageServer": "Microsoft"
+  "workbench.tree.indent": 15
 }
