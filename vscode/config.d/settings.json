@@ -17,7 +17,7 @@
   "editor.fontSize": 13,
   "editor.fontWeight": "bold",
   "editor.formatOnPaste": false,
-  "editor.minimap.enabled": true,
+  "editor.minimap.enabled": false,
   "editor.minimap.maxColumn": 120,
   "editor.minimap.renderCharacters": false,
   "editor.minimap.scale": 2,
