@@ -3,11 +3,12 @@ RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
 .PHONY: all done build_brew brew_bundle brew_bundle_cli brew_bundle_gui \
-	nvim_setup vscode_setup tmux_setup zsh_setup poetry_setup
+	fish_setup nvim_setup vscode_setup tmux_setup zsh_setup poetry_setup
 
 all: clean setup_cui done
-setup_cui: zsh_setup tmux_setup nvim_setup poetry_setup
-setup_gui: zsh_setup tmux_setup nvim_setup poetry_setup vscode_setup
+setup_cui: fish_setup zsh_setup tmux_setup nvim_setup poetry_setup
+setup_gui: setup_cui vscode_setup
+clean: fish_clean zsh_clean tmux_clean nvim_clean poetry_clean vscode_clean
 
 build_brew:
 	$(PWD)/brew/bin/install-brew.sh
@@ -21,33 +22,51 @@ brew_bundle_cli:
 brew_bundle_gui:
 	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
+# setup
+
+fish_setup:
+	$(PWD)/fish/bin/setup.sh
+
 nvim_setup:
 	$(PWD)/nvim/bin/setup.sh
-
-vscode_setup:
-	$(PWD)/vscode/bin/setup.sh
-
-tmux_setup:
-	$(PWD)/tmux/bin/setup.sh
-
-zsh_setup:
-	$(PWD)/zsh/bin/setup.sh
 
 poetry_setup:
 	$(PWD)/poetry/bin/setup.sh
 
-clean:
-	@echo 'remove symbolic links'
-	rm -rf "$(HOME)/.vimrc"
-	rm -rf "$(HOME)/.zshrc"
-	rm -rf "$(HOME)/.tmux.conf"
-	rm -rf "$(HOME)/.vim"
-	rm -rf "$(HOME)/.config/nvim"
-	rm -rf "$(HOME)/.config/coc"
-	rm -rf "$(HOME)/.config/zplug"
-	rm -rf "$(HOME)/.config/pypoetry"
+tmux_setup:
+	$(PWD)/tmux/bin/setup.sh
+
+vscode_setup:
+	$(PWD)/vscode/bin/setup.sh
+
+zsh_setup:
+	$(PWD)/zsh/bin/setup.sh
+
+# clean
+
+fish_clean:
+	rm -rf $(HOME)/.config/fish
+
+nvim_clean:
+	rm -rf $(HOME)/.vimrc
+	rm -rf $(HOME)/.vim
+	rm -rf $(HOME)/.config/nvim
+	rm -rf $(HOME)/.config/coc
+
+poetry_clean:
+	rm -rf $(HOME)/.config/pypoetry
 	rm -rf "$(HOME)/Library/Application Support/pypoetry"
-	@echo 'done'
+
+tmux_clean:
+	rm -rf $(HOME)/.tmux.conf
+
+vscode_clean:
+	echo "not implemented"
+
+zsh_clean:
+	rm -rf $(HOME)/.zshrc
+	rm -rf "$(HOME)/.config/zplug"
+
 
 done:
 	@echo ""
