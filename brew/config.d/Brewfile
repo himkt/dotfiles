@@ -6,3 +6,5 @@ brew 'zsh'
 
 brew 'nvim'
 brew 'node'
+
+brew 'fzf'
