@@ -3,6 +3,7 @@ brew 'python3'
 
 brew 'tmux'
 brew 'zsh'
+brew 'fish'
 
 brew 'nvim'
 brew 'node'
