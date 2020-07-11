@@ -13,7 +13,7 @@ set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux PYTHONDONTWRITEBYTECODE 1
 
 # brew
-for brew_prefix in "/opt/brew" "$HOME/.linuxbrew" "$HOME/linuxbrew/.linuxbrew"
+for brew_prefix in "/opt/brew" "$HOME/.linuxbrew" "/home/linuxbrew/.linuxbrew"
   set -ax PATH $brew_prefix/bin
   set -ax PATH $brew_prefix/sbin
 end
