@@ -40,7 +40,7 @@ end
 
 # Tmux
 if type -q tmux
-  if set -q TERM_PROGRAM; and test $TERM_PROGRAM != "vscode"; and ! set -q DISABLE_TMUX
+  if set -q TERM_PROGRAM; and test $TERM_PROGRAM != "vscode"; and ! set -q DISABLE_TMUX; or set -q SSH_CLIENT
     if tmux has-session
       tmux attach
     else
