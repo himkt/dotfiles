@@ -4,6 +4,36 @@
 # @author: himkt
 #
 
+set -g __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_hide_untrackedfiles 1
+
+set -g __fish_git_prompt_color_branch magenta
+set -g __fish_git_prompt_showupstream "informative"
+set -g __fish_git_prompt_char_upstream_ahead "↑"
+set -g __fish_git_prompt_char_upstream_behind "↓"
+set -g __fish_git_prompt_char_upstream_prefix ""
+
+set -g __fish_git_prompt_char_stagedstate " ● "
+set -g __fish_git_prompt_char_dirtystate " ● "
+set -g __fish_git_prompt_char_untrackedfiles " ● "
+set -g __fish_git_prompt_char_conflictedstate " ✖ "
+set -g __fish_git_prompt_char_cleanstate " ✔ "
+
+set -g __fish_git_prompt_color_dirtystate $fish_color_param
+set -g __fish_git_prompt_color_stagedstate $fish_color_host_remote
+set -g __fish_git_prompt_color_invalidstate $fish_color_root
+set -g __fish_git_prompt_color_untrackedfiles $fish_color_cwd_root
+set -g __fish_git_prompt_color_cleanstate $fish_color_cwd
+
+function fish_prompt
+  printf '%s[ %s ]%s @ %s%s%s %s\n%s%s> ' \
+    (set_color $fish_color_cwd) (prompt_pwd) (set_color $fish_color_host_remote) \
+    (hostname| cut -d . -f1) (set_color $fish_color_host_remote) (set_color $fish_color_operator) (date '+%m/%d %H:%M:%S') (set_color normal)
+end
+
+function fish_right_prompt
+  echo -n (fish_git_prompt)
+end
 
 # env
 set -Ux EDITOR emacs
