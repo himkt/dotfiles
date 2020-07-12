@@ -1,11 +1,7 @@
+brew 'fish'
 brew 'gcc'
+brew 'node'
+brew 'nvim'
 brew 'python3'
-
 brew 'tmux'
 brew 'zsh'
-brew 'fish'
-
-brew 'nvim'
-brew 'node'
-
-brew 'fzf'
