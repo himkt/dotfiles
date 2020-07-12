@@ -2,47 +2,45 @@
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
-.PHONY: all done build_brew brew_bundle brew_bundle_cli brew_bundle_gui \
-	fish_setup nvim_setup vscode_setup tmux_setup zsh_setup poetry_setup
+:PHONY: all docs brew cui cli gui fish nvim vscode tmux zsh poetry
 
-all: clean setup_cui done
-setup_cui: fish_setup zsh_setup tmux_setup nvim_setup poetry_setup
-setup_gui: setup_cui vscode_setup
-clean: fish_clean zsh_clean tmux_clean nvim_clean poetry_clean vscode_clean
+all: clean_all cui gui docs
+cui: fish zsh tmux nvim poetry
+gui: cui vscode
+clean_all: fish_clean zsh_clean tmux_clean nvim_clean poetry_clean vscode_clean
 
-build_brew:
+
+brew:
 	$(PWD)/brew/bin/install-brew.sh
 
-brew_bundle:
+brew_cui:
 	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile
 
-brew_bundle_cli:
+brew_cli:
 	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile.cli
 
-brew_bundle_gui:
+brew_gui:
 	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
-# setup
 
-fish_setup:
+fish:
 	$(PWD)/fish/bin/setup.sh
 
-nvim_setup:
+nvim:
 	$(PWD)/nvim/bin/setup.sh
 
-poetry_setup:
+poetry:
 	$(PWD)/poetry/bin/setup.sh
 
-tmux_setup:
+tmux:
 	$(PWD)/tmux/bin/setup.sh
 
-vscode_setup:
+vscode:
 	$(PWD)/vscode/bin/setup.sh
 
-zsh_setup:
+zsh:
 	$(PWD)/zsh/bin/setup.sh
 
-# clean
 
 fish_clean:
 	rm -rf $(HOME)/.config/fish
@@ -68,25 +66,23 @@ zsh_clean:
 	rm -rf "$(HOME)/.config/zplug"
 
 
-done:
+docs:
 	@echo ""
 	@echo "### Finish installing dotfiles!"
 	@echo "Please run $(RED)source $$HOME/.zshrc$(NOCOLOR) on zsh to enable configures."
-	@echo "- If you want to use nvim with extensions,"
-	@echo "  please run $(RED)make nvim_setup$(NOCOLOR) (which needs pyenv)."
-	@echo " If you want to install pyenv using brew, please read the Python section below."
+	@echo "- If you want to use nvim with extensions, please run $(RED)make nvim$(NOCOLOR) (which needs pyenv)."
+	@echo "- If you want to install pyenv using brew, please read the Python section below."
 	@echo ""
 	@echo "---"
 	@echo ""
 	@echo "### Packages"
-	@echo "- If you want to use linuxbrew/homebrew,"
-	@echo "  please run $(RED)make brew_bundle$(NOCOLOR)."
-	@echo "  Please run $(RED)make build_brew$(NOCOLOR) before"
-	@echo "  if you have not installed brew yet"
-	@echo "  $(RED)make brew_bundle_opt$(NOCOLOR) installs optional packages"
+	@echo "- If you want to use linuxbrew/homebrew, please run $(RED)make brew_cui$(NOCOLOR)."
+	@echo "- Please run $(RED)make brew$(NOCOLOR) before if you have not installed brew yet"
+	@echo "- Additionally, $(RED)make brew_cli$(NOCOLOR) installs optional packages"
 	@echo ""
 	@echo "---"
+	@echo ""
 	@echo "### Python"
-	@echo "- After $(RED)make build_brew, make brew_bundle, source $$HOME/.zshrc$(NOCOLOR)"
-	@echo "  you can run $(RED)make nvim_setup$(NOCOLOR) to install Python and the nvim library"
+	@echo "- After $(RED)make brew, make brew_cui, source $$HOME/.zshrc$(NOCOLOR),"
+	@echo "  you can run $(RED)make nvim$(NOCOLOR) to install Python and the nvim library"
 	@echo ""
