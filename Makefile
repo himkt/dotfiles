@@ -4,7 +4,7 @@ NOCOLOR    := $(shell tput sgr0)
 
 :PHONY: all docs brew cui cli gui fish nvim vscode tmux zsh poetry
 
-all: clean_all cui gui docs
+all: clean cui gui docs
 clean: fish_clean nvim_clean poetry_clean tmux_clean vscode_clean zsh_clean
 
 cui: fish nvim poetry tmux zsh
