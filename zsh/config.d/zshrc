@@ -2,105 +2,72 @@
 # .zshrc - The zsh configuration
 #
 
+autoload -Uz zmv
+autoload -U compinit; compinit
 
+bindkey -e
+bindkey '^t' fzf-change-dir
+bindkey '^r' fzf-select-history
+bindkey '^s' fzf-z-search
+
+setopt auto_cd correct
+setopt extended_history share_history
+setopt auto_param_slash
+setopt mark_dirs
+setopt auto_param_keys
+setopt magic_equal_subst
+setopt complete_in_word
+setopt no_beep
+
+zstyle ':completion:*:default' menu select=1
+zle -N fzf-change-dir
+zle -N fzf-select-history
+zle -N fzf-z-search
+zle -N fzf-open-editor
+
+export EDITOR=vim
 export LANG=en_US.UTF-8
 export LC_CTYPE=en_US.UTF-8
-export USER=$(whoami)
-export EDITOR=vim
 export XDG_CONFIG_HOME=$HOME/.config
 
-export PATH=$PATH:$HOME/.dotfiles/bin
-export PATH=$HOME/.local/bin:$PATH
-
-export PATH=/usr/local/bin:$PATH
-export PATH=/usr/local/sbin:$PATH
-
-# suppress creating .pyc
 export PYTHONDONTWRITEBYTECODE=1
+export GOPATH=$HOME/go
+export ZPLUG_HOME=$HOME/.config/zplug
+export GHQ_ROOT=$HOME/work
 
+for brew_prefix in /usr/local $HOME/.linuxbrew /home/linuxbrew/.linuxbrew /opt/brew; do
+  export PATH=$brew_prefix/bin:$PATH
+  export PATH=$brew_prefix/sbin:$PATH
+done
 
-# path to system python for NeoVim
-if ! [[ -v SYSTEM_PYTHON_PATH ]]; then
-  export SYSTEM_PYTHON_PATH=`which python3`
-fi
-
-
-# generals
-case ${OSTYPE} in
-  darwin*)
-    # for brew
-    export PATH=/opt/brew/bin:$PATH
-    ;;
-
-  linux*)
-    # for ipython
-    export QT_QPA_PLATFORM="offscreen"
-
-    # for brew
-    export PATH=$HOME/.linuxbrew/bin:$PATH
-    export PATH=$HOME/.linuxbrew/sbin:$PATH
-    export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
-    export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
-    export PATH=/opt/brew/bin:$PATH
-    export PATH=/opt/brew/sbin:$PATH
-
-    # for GPU
-    export PATH=/usr/local/cuda/bin:$PATH
-    export LD_LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LD_LIBRARY_PATH
-    export CPATH=~/.cudnn/active/cuda/include:$CPATH
-    export LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LIBRARY_PATH
-    ;;
-esac
-
-
-# home dirs
 if builtin command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
-  # NOTE: If brew is installed, we use Python installed by brew as a SYSTEM_PYTHON_PATH
-  export SYSTEM_PYTHON_PATH=$(brew --prefix)/bin/python3
+  export SYSTEM_PYTHON_PATH=$BREW_HOME/bin/python3
+else
+  export SYSTEM_PYTHON_PATH=$(which python3)
 fi
 
+for executable_prefix in $HOME/.local $HOME/.dotfiles $BREW_HOME/opt/llvm $GOPATH; do
+  export PATH=$PATH:$executable_prefix/bin
+done
 
-# llvm
-export PATH=$BREW_HOME/opt/llvm/bin:$PATH
+if builtin command -v nvim > /dev/null; then
+  alias vim=nvim
+  export EDITOR=nvim
+fi
 
+if builtin command -v nvidia-smi > /dev/null; then
+  export PATH=/usr/local/cuda/bin:$PATH
+  export LD_LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LD_LIBRARY_PATH
+  export CPATH=~/.cudnn/active/cuda/include:$CPATH
+  export LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LIBRARY_PATH
+fi
 
-# golang
-export PATH=$GOPATH/bin:$PATH
-export GOPATH=$HOME/go
-
-
-# zplug
-export ZPLUG_HOME=$HOME/.config/zplug
-
-
-# mecab
-case ${OSTYPE} in
-  darwin*)
-    export MECAB_PATH=$BREW_HOME/lib/libmecab.dylib
+case $(uname) in
+  Darwin)
+    alias ls="ls -GF"
     ;;
-
-  linux*)
-    if builtin command -v mecab-config > /dev/null; then
-      export MECAB_PATH=`mecab-config --libs-only-L`/libmecab.so.2
-    fi
-    ;;
-
-esac
-
-
-# aliases
-alias l="ls"
-alias la="ls -a"
-alias lla="ls -la"
-alias zmv="noglob zmv -W"
-
-
-case ${OSTYPE} in
-  darwin*)
-    alias ls="ls -G -F"
-    ;;
-  linux*)
+  Linux)
     alias ls="ls --color=auto"
     if builtin command -v xsel > /dev/null; then
       alias pbcopy='xsel --clipboard --input'
@@ -109,14 +76,18 @@ case ${OSTYPE} in
     ;;
 esac
 
+alias l="ls"
+alias la="ls -a"
+alias lla="ls -la"
+alias zmv="noglob zmv -W"
 
 if [ -e $ZPLUG_HOME/init.zsh ]; then
   source $ZPLUG_HOME/init.zsh
   zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
+  zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
+  zplug "tarruda/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
   zplug "zsh-users/zsh-history-substring-search"
   zplug "zsh-users/zsh-syntax-highlighting", defer:2
-  zplug "rupa/z", use:z.sh
-  zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
 
   # check whether if there are packages which it can install
   if ! zplug check --verbose; then
@@ -136,96 +107,17 @@ if builtin command -v tmux > /dev/null; then
   fi
 fi
 
-
-if which rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-
-if which pyenv > /dev/null; then
-  eval "$(pyenv init -)"
-fi
-
-
-if which nvim > /dev/null; then
-  alias vim=nvim
-  export EDITOR=nvim
-fi
-
-
-if which pyenv-virtualenv-init > /dev/null; then
-  eval "$(pyenv virtualenv-init -)"
-fi
-
-
-if which ghq > /dev/null; then
-  export GHQ_ROOT=$HOME/work
-fi
-
-
-# autoloads
-autoload -Uz zmv
-autoload -Uz add-zsh-hook
-autoload -Uz is-at-least
-autoload -U compinit; compinit
-
-
-# zstyles
-zstyle ":completion:*" matcher-list "m:{a-z}={A-Z}"
-zstyle ":completion:*:default" menu select=1
-
-
-# options
-setopt auto_cd correct
-setopt APPEND_HISTORY INC_APPEND_HISTORY SHARE_HISTORY
-setopt extended_history share_history
-setopt hist_ignore_all_dups HIST_IGNORE_SPACE
-setopt auto_param_slash
-setopt mark_dirs
-setopt list_types
-setopt auto_menu
-setopt auto_param_keys
-setopt interactive_comments
-setopt magic_equal_subst
-setopt complete_in_word
-setopt print_eight_bit
-setopt extended_glob
-setopt globdots
-setopt auto_list
-setopt no_beep
-setopt no_flow_control
-setopt magic_equal_subst
-setopt auto_menu
-setopt extended_glob
-
-
 # colorscheme
-if [ "$COLORTERM" = "gnome-terminal" ] || [ "$COLORTERM" = "xfce4-terminal" ]; then
+if [ $COLORTERM = "gnome-terminal" ] || [ $COLORTERM = "xfce4-terminal" ] ; then
   export TERM=xterm-256color
-elif [ "$COLORTERM" = "rxvt-xpm" ]; then
+elif [ $COLORTERM = "rxvt-xpm" ]; then
   export TERM=rxvt-256color
 fi
 
-
-# custom functions using fzf
-zle -N fzf-change-dir
-zle -N fzf-select-history
-zle -N fzf-z-search
-zle -N fzf-open-editor
-
-
-# bindkeys
-bindkey -e
-bindkey '^t' fzf-change-dir
-bindkey '^r' fzf-select-history
-bindkey '^s' fzf-z-search
-
-
 # history
-HISTFILE=$HOME/.zsh-history
-HISTSIZE=100000
-SAVEHIST=100000
-
+export HISTFILE=$HOME/.zsh-history
+export HISTSIZE=100000
+export SAVEHIST=100000
 
 function cd() {
   builtin cd $@
@@ -260,15 +152,4 @@ function fzf-z-search() {
     else
         return 1
     fi
-}
-
-function waiton() {
-  local pid=$1
-
-  if [[ -v pid ]]; then
-    echo "wait for pid=$pid..."
-    while ps -p $pid > /dev/null; do sleep 1; done;
-  else
-    echo "pid is not specified."
-  fi
 }
