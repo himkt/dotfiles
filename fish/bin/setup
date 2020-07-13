@@ -1,8 +1,0 @@
-#!/bin/bash
-
-mkdir -p $HOME/.config/fish
-ln -s $PWD/fish/config.d/config.fish $HOME/.config/fish/config.fish
-
-curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-FISH_BIN=ENABLE fish -c "fisher add jethrokuan/z"
-FISH_BIN=ENABLE fish -c "fisher add jethrokuan/fzf"

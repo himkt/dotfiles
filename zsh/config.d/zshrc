@@ -126,13 +126,8 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug load
 fi
 
-
-# etc
-if which tmux > /dev/null; then
-  if [ -z $TMUX ] && \
-    [[ $TERM_PROGRAM != "vscode" ]] && \
-    [[ $TERMINAL_EMULATOR != "JetBrains-JediTerm" ]];
-  then
+if builtin command -v tmux > /dev/null; then
+  if [ -z $DISABLE_TMUX ] && [ $TERM_PROGRAM != "vscode" ]; then
     if $(tmux has-session); then
       tmux attach
     else
