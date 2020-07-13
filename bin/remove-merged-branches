@@ -1,3 +1,3 @@
-#!env sh
+#!/bin/bash
 
 git branch --merged| grep -v master| xargs git branch -d
