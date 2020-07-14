@@ -69,14 +69,31 @@ if type -q nvidia-smi
 end
 
 # Tmux
-if type -q tmux
-  if set -q TERM_PROGRAM; and test $TERM_PROGRAM != "vscode"; and ! set -q DISABLE_TMUX; or set -q SSH_CLIENT
-    if tmux has-session
-      tmux attach
-    else
-      tmux
-    end
+function attach_or_create_tmux_session
+  if set -q TERM_PROGRAM; and test $TERM_PROGRAM = "vscode"
+    return
   end
+  echo "not vscode"
+
+  if set -q DISABLE_TMUX
+    return
+  end
+  echo "not disabled"
+
+  if set -q TMUX_PANE
+    return
+  end
+  echo "not tmux_pane"
+
+  if tmux has-session
+    tmux attach
+  else
+    tmux
+  end
+end
+
+if type -q tmux
+  attach_or_create_tmux_session
 end
 
 # NeoVim
