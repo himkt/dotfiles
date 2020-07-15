@@ -123,3 +123,13 @@ function ssh
     command ssh "$argv"
   end
 end
+
+# fzf z search
+function fzf-z-search
+  set res (z --list | sort -rn | cut -c 12- | fzf)
+  if set -q res
+    cd $res
+    ls
+  end
+  commandline -f repaint
+end
