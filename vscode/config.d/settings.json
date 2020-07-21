@@ -84,7 +84,7 @@
   },
   "workbench.colorTheme": "Monokai Dimmed",
   "workbench.editor.showTabs": true,
-  "workbench.iconTheme": "Monokai Pro Icons",
+  "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
   "workbench.tree.indent": 15
