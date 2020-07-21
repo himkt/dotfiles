@@ -44,6 +44,7 @@
   "python.linting.pycodestyleEnabled": false,
   "python.linting.pydocstyleEnabled": false,
   "python.linting.pylintEnabled": false,
+  "python.terminal.activateEnvironment": false,
   "python.testing.nosetestsEnabled": false,
   "python.venvPath": "./venv",
   "ruby.format": "rubocop",
@@ -82,6 +83,7 @@
     "terminal.ansiYellow": "#FDED02"
   },
   "workbench.colorTheme": "Monokai Dimmed",
+  "workbench.editor.showTabs": true,
   "workbench.iconTheme": "Monokai Pro Icons",
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
