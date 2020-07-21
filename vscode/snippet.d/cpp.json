@@ -1,5 +1,5 @@
 {
-	"greatest common divisor": {
+	"gcd calculation": {
 		"prefix": "gcd",
 		"body": [
 			"template <typename integer>",
@@ -7,8 +7,11 @@
 			"    integer c = max(a, b);",
 			"    integer d = min(a, b);",
 			"    if (d != 0) return gcd(d, c % d);",
-			"    else return a;"
-		]
+			"    else return a;",
+			"}",
+			""
+		],
+		"description": "gcd calculation"
 	},
 	"least common divisor": {
 		"prefix": "lcm",

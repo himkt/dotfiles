@@ -1,0 +1,7 @@
+#!/bin/bash
+
+for extension in $(code --list-extensions); do
+  code --uninstall-extension $extension
+done
+
+rm -rf $HOME/Library/Application\ Support/Code/User/*

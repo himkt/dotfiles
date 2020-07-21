@@ -11,7 +11,7 @@ unlink ~/Library/Application\ Support/Code/User/keybindings.json &> /dev/null
 ln -sf $PWD/vscode/config.d/keybindings.json ~/Library/Application\ Support/Code/User/keybindings.json
 
 unlink ~/Library/Application Support/Code/User/snippets &> /dev/null
-ln -sf $PWD/vscode/config.d/snippets ~/Library/Application\ Support/Code/User/snippets
+ln -sf $PWD/vscode/snippet.d ~/Library/Application\ Support/Code/User/snippets
 
 echo 'Install extensions'
 EXTENSIONS=$(cat ./vscode/config.d/extensions.list)
