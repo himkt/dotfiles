@@ -4,10 +4,10 @@
 # @author: himkt
 #
 
-bind \cs 'fzf-z-search'
+bind \cx 'fzf-z-search'
 
 # env
-set -Ux EDITOR emacs
+set -Ux EDITOR vim
 set -Ux GOPATH $HOME/go
 set -Ux LANG en_US.UTF-8
 set -Ux XDG_CONFIG_HOME $HOME/.config
@@ -89,6 +89,8 @@ end
 
 # NeoVim
 if type -q nvim
+  set -Ux EDITOR nvim
+
   function vim
     nvim $argv
   end
