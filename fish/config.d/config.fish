@@ -64,6 +64,10 @@ function attach_or_create_tmux_session
     return
   end
 
+  if set -q TERMINAL_EMULATOR; and test $TERMINAL_EMULATOR = "JetBrains-JediTerm"
+    return
+  end
+
   if set -q DISABLE_TMUX
     return
   end
