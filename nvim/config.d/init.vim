@@ -29,6 +29,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
 call plug#end()
 
+" coc.nvim
+imap <C-j> <Plug>(coc-snippets-expand)
+
 " fzf, fzf.vim
 command! -bang -nargs=* GGrep
       \ call fzf#vim#grep(
