@@ -9,7 +9,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest]
+        os: [ubuntu-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}
 
@@ -19,6 +19,5 @@ jobs:
     - name: Build linuxbrew
       run: |
         make brew
-        eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
         make brew_cui
         make
