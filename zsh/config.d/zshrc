@@ -27,6 +27,7 @@ export PYTHONDONTWRITEBYTECODE=1
 export SAVEHIST=100000
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$HOME/.config/zplug
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 
 if [ ! -z $COLORTERM]; then
   if [ $COLORTERM = "gnome-terminal" ] || [ $COLORTERM = "xfce4-terminal" ]; then
