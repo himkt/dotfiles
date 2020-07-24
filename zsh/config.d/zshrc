@@ -28,10 +28,12 @@ export SAVEHIST=100000
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$HOME/.config/zplug
 
-if [ $COLORTERM = "gnome-terminal" ] || [ $COLORTERM = "xfce4-terminal" ] ; then
-  export TERM=xterm-256color
-elif [ $COLORTERM = "rxvt-xpm" ]; then
-  export TERM=rxvt-256color
+if [ ! -z $COLORTERM]; then
+  if [ $COLORTERM = "gnome-terminal" ] || [ $COLORTERM = "xfce4-terminal" ]; then
+    export TERM=xterm-256color
+  elif [ $COLORTERM = "rxvt-xpm" ]; then
+    export TERM=rxvt-256color
+  fi
 fi
 
 for brew_prefix in /usr/local $HOME/.linuxbrew /home/linuxbrew/.linuxbrew /opt/brew; do
@@ -85,7 +87,7 @@ function attach_or_create_tmux_session() {
     return
   fi
 
-  if [ $TERM_PROGRAM = "vscode" ]; then
+  if [ ! -z $TERM_PROGRAM] && [ $TERM_PROGRAM = "vscode" ]; then
     return
   fi
 
