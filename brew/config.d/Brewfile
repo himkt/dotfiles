@@ -1,6 +1,6 @@
 brew 'fish'
 brew 'gcc'
-brew 'node'
+brew 'node@12'
 brew 'nvim'
 brew 'python3'
 brew 'tmux'
