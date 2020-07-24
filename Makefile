@@ -2,7 +2,7 @@
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
-.PHONY: all docs brew cui cli gui fish nvim vscode tmux zsh poetry
+.PHONY: all docs brew cui cli gui emacs fish nvim vscode tmux zsh poetry
 
 all: clean cui docs
 clean: fish_clean nvim_clean poetry_clean tmux_clean vscode_clean zsh_clean
@@ -24,6 +24,9 @@ brew_gui:
 	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
 
+emacs:
+	$(PWD)/emacs/bin/setup.sh
+
 fish:
 	$(PWD)/fish/bin/setup.sh
 
@@ -42,6 +45,8 @@ vscode:
 zsh:
 	$(PWD)/zsh/bin/setup.sh
 
+emacs_clean:
+	rm -rf $(HOME)/.emacs.d
 
 fish_clean:
 	rm -rf $(HOME)/.config/fish
