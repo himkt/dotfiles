@@ -24,25 +24,25 @@ brew_gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
 
-emacs:
+emacs: emacs_clean
 	$(PWD)/emacs/bin/setup.sh
 
-fish:
+fish: fish_clean
 	$(PWD)/fish/bin/setup.sh
 
-nvim:
+nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
-poetry:
+poetry: poetry_clean
 	$(PWD)/poetry/bin/setup.sh
 
-tmux:
+tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
-vscode:
+vscode: vscode_clean
 	$(PWD)/vscode/bin/setup.sh
 
-zsh:
+zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
 
 emacs_clean:
