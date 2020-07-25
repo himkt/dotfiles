@@ -12,16 +12,16 @@ gui: vscode
 
 
 brew:
-	$(PWD)/brew/bin/install-brew.sh
+	$(PWD)/brew/bin/setup.sh
 
 brew_cui:
-	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile
 
 brew_cli:
-	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile.cli
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.cli
 
 brew_gui:
-	brew bundle --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
 
 emacs:
@@ -65,7 +65,9 @@ tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
 
 vscode_clean:
-	echo "not implemented"
+	rm -rf $(HOME)/Library/Application\ Support/Code/User/keybindings.json
+	rm -rf $(HOME)/Library/Application\ Support/Code/User/settings.json
+	rm -rf $(HOME)/Library/Application\ Support/Code/User/snippets
 
 zsh_clean:
 	rm -rf $(HOME)/.zshrc

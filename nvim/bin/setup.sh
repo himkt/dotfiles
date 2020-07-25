@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 if type "pip3" > /dev/null 2>&1; then
   pip3 install neovim

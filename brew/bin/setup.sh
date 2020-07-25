@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 test -d /usr/local && eval $(/usr/local/bin/brew shellenv)

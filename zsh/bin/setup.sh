@@ -1,4 +1,4 @@
-
+#!/bin/bash
 
 git clone https://github.com/zplug/zplug $HOME/.config/zplug
 

@@ -1,6 +1,5 @@
 #!/bin/bash
 
-
 case ${OSTYPE} in
   darwin*)
     POETRY_HOME="$HOME/Library/Application Support/pypoetry"
@@ -9,7 +8,6 @@ case ${OSTYPE} in
     POETRY_HOME="$HOME/.config/pypoetry"
     ;;
 esac
-
 
 mkdir -p "$POETRY_HOME"
 rm -f "$POETRY_HOME/config.toml"
