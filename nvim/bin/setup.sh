@@ -16,5 +16,6 @@ if type "nvim" > /dev/null 2>&1; then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
   nvim -u $PWD/nvim/config.d/init.vim +PlugInstall +qall
+  nvim -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
   echo 'finish creating the neovim environment!'
 fi
