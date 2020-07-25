@@ -47,7 +47,7 @@ else
 end
 
 # other executable
-for additional_executable_prefix in "$HOME/.local" "$HOME/.dotfiles" "$HOME/.cargo" "$BREW_HOME/opt/llvm" "/usr/local/cuda"
+for additional_executable_prefix in "$HOME/.local" "$HOME/dotfiles" "$HOME/.cargo" "$BREW_HOME/opt/llvm" "/usr/local/cuda"
   set -ax PATH $additional_executable_prefix/bin
 end
 
