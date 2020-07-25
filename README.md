@@ -8,8 +8,8 @@ My configurations for zsh, tmux, neovim, vim and visual studio code.
 ## Installation
 
 ```
-git clone git@github.com:himkt/dotfiles $HOME/.dotfiles
-cd $HOME/.dotfiles && make
+git clone git@github.com:himkt/dotfiles $HOME/dotfiles
+cd $HOME/dotfiles && make
 ```
 
 ### Homebrew/Linuxbrew

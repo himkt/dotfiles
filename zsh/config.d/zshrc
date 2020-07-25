@@ -49,7 +49,7 @@ else
   export SYSTEM_PYTHON_PATH=$(which python3)
 fi
 
-for executable_prefix in $HOME/.local $HOME/.dotfiles $BREW_HOME/opt/llvm $GOPATH; do
+for executable_prefix in $HOME/.local $HOME/dotfiles $BREW_HOME/opt/llvm $GOPATH; do
   export PATH=$PATH:$executable_prefix/bin
 done
 
