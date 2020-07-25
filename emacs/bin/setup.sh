@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 
 rm -rf $HOME/.emacs.d/init.el
 mkdir -p $HOME/.emacs.d

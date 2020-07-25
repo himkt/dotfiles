@@ -1,5 +1,4 @@
-#! /bin/bash
-
+#!/bin/bash
 
 echo 'Deploy settings'
 LINK_FILE=settings.json
