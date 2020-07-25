@@ -19,3 +19,9 @@ if type "nvim" > /dev/null 2>&1; then
   nvim -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
   echo 'finish creating the neovim environment!'
 fi
+
+mkdir -p /tmp/coc-setup
+pushd /tmp/coc-setup
+cp $HOME/.dotfiles/nvim/config.d/coc-package.json .
+npm install --no-package-lock
+popd
