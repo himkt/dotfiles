@@ -122,11 +122,11 @@ end
 function ssh
   set ps_res (ps -p (ps -p %self -o ppid= | xargs) -o comm=)
   if [ "$ps_res" = "tmux" ]
-    tmux rename-window (echo $argv | cut -d . -f 1)
-    command ssh "$argv"
+    tmux rename-window (echo $argv[-1] | cut -d . -f 1)
+    command ssh $argv
     tmux set-window-option automatic-rename "on" 1>/dev/null
   else
-    command ssh "$argv"
+    command ssh $argv
   end
 end
 
