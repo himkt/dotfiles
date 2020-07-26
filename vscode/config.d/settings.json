@@ -30,6 +30,7 @@
   "go.formatTool": "goimports",
   "go.useLanguageServer": true,
   "java.configuration.checkProjectSettingsExclusions": false,
+  "jsonnet.executablePath": "dummyjsonnet",
   "markdown.preview.fontSize": 13,
   "python.formatting.provider": "black",
   "python.jediEnabled": false,
@@ -86,6 +87,6 @@
   "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.tree.indent": 15
+  "workbench.tree.indent": 15,
+  "workbench.startupEditor": "welcomePageInEmptyWorkbench"
 }
