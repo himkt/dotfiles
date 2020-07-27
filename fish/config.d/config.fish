@@ -4,7 +4,7 @@
 # @author: himkt
 #
 
-bind \cx 'fzf-z-search'
+bind \cs 'fzf-z-search'
 
 # env
 set -Ux EDITOR vim
