@@ -19,12 +19,13 @@ if type "nvim" > /dev/null 2>&1; then
   echo 'Plugin installed'
 
   if type "npm" > /dev/null 2>&1; then
-    mkdir -p /tmp/coc-setup
-    pushd /tmp/coc-setup
+    mkdir -p ~/.config/coc/extensions
+    pushd $HOME/.config/coc/extensions
     cp $HOME/dotfiles/nvim/config.d/coc-package.json package.json
-    npm install --no-package-lock
-    nvim -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
+    npm install --global-style --ignore-scripts --no-bin-links --no-package-lock --only=prod
     popd
+
+    nvim -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
   fi
 
   echo 'Finish creating the neovim environment!'
