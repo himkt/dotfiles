@@ -136,4 +136,4 @@ autocmd FileType tex    nnoremap <C-t> :VimtexCompile <CR>
 " templates
 autocmd BufNewFile *.cc    0r $HOME/dotfiles/nvim/template.d/cc/template.cc
 autocmd BufNewFile *.go    0r $HOME/dotfiles/nvim/template.d/go/template.go
-autocmd BufNewFile Pipfile 0r $HOME/dotfiles/nvim/template.d/pipenv/Pipfile
+autocmd BufNewFile *.rs    0r $HOME/dotfiles/nvim/template.d/rs/template.rs
