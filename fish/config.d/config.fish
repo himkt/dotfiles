@@ -13,6 +13,7 @@ set -Ux LANG en_US.UTF-8
 set -Ux XDG_CONFIG_HOME $HOME/.config
 set -Ux PYTHONDONTWRITEBYTECODE 1
 set -Ux fish_color_search_match --background=$fish_color_selection
+set -Ux fish_prompt_pwd_dir_length 80
 
 set -g __fish_git_prompt_show_informative_status 1
 set -g __fish_git_prompt_hide_untrackedfiles 1
