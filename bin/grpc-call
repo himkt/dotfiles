@@ -1,0 +1,62 @@
+#!/usr/bin/env python3
+# vi: set filetype=python
+
+import argparse
+import logging
+import os
+import sys
+
+
+logging.basicConfig(level=logging.DEBUG)
+polyglot_path = os.getenv("POLYGLOT_PATH", "$HOME/.polyglot/polyglot.jar")
+
+
+def main(args):
+    proto_root = args.proto_root
+    host = args.host
+    authority = args.authority
+    package = args.package
+    service = args.service
+    method = args.method
+    meta = args.meta
+    message = args.message
+
+    cmd = "echo \"{}\" | java -jar".format(message)
+    cmd += " -Dorg.slf4j.simpleLogger.defaultLogLevel=error"
+    cmd += " -Djava.util.logging.ConsoleHandler.level=error"
+    cmd += " \"{}\"".format(polyglot_path)
+    cmd += " --proto_discovery_root=\"{}\"".format(proto_root)
+    cmd += " --use_reflection=false"
+    cmd += " call"
+    cmd += " --endpoint=\"{}\"".format(host)
+    cmd += " --tls_client_override_authority=\"{}\"".format(authority)
+    cmd += " --metadata=\"{}\"".format(meta)
+    cmd += " --full_method=\"{}.{}/{}\"".format(package, service, method)
+
+    if args.verbose:
+        logging.debug("proto_root: {}".format(proto_root))
+        logging.debug("host: {}".format(host))
+        logging.debug("authority: {}".format(authority))
+        logging.debug("package: {}".format(package))
+        logging.debug("service: {}".format(service))
+        logging.debug("method: {}".format(method))
+        logging.debug("meta: {}".format(meta))
+        logging.debug("message: {}".format(message))
+        logging.debug(cmd)
+
+    os.system(cmd)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--proto-root", required=True)
+    parser.add_argument("--host", required=True)
+    parser.add_argument("--authority", default="")
+    parser.add_argument("--package", required=True)
+    parser.add_argument("--service", required=True)
+    parser.add_argument("--method", required=True)
+    parser.add_argument("--meta", default="")
+    parser.add_argument("--message", required=True)
+    parser.add_argument("--verbose", action="store_true")
+
+    main(parser.parse_args())
