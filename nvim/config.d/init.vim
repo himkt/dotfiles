@@ -22,6 +22,7 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'jistr/vim-nerdtree-tabs'
   Plug 'junegunn/fzf'
   Plug 'junegunn/fzf.vim'
+  Plug 'nathanaelkane/vim-indent-guides'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'osyo-manga/vim-anzu'
   Plug 'scrooloose/nerdtree'
@@ -78,3 +79,9 @@ map      <C-h>         :tabp<CR>
 
 " vim-jsonnet
 let g:jsonnet_fmt_on_save = 0
+
+" vim-indent-guide
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_auto_colors = 0
+hi IndentGuidesOdd  ctermbg=black
+hi IndentGuidesEven ctermbg=233
