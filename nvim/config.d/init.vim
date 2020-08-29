@@ -48,7 +48,6 @@ command! -bang -nargs=* GGrep
       \   fzf#vim#with_preview('right'),
       \   <bang>0)
 
-command! -bang -nargs=* Ag call fzf#vim#ag(<q-args>, fzf#vim#with_preview('right'), <bang>0)
 nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
 
 " nardtree
