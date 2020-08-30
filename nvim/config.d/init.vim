@@ -10,7 +10,7 @@
 "
 
 "" use python3 installed globally
-let g:python3_host_prog=$SYSTEM_PYTHON_PATH
+let g:python3_host_prog=$PYTHONSYSTEMPATH
 
 "" load basic vim configuration
 source $HOME/dotfiles/nvim/config.d/vimrc

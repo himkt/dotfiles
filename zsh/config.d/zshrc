@@ -44,9 +44,9 @@ done
 
 if builtin command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
-  export SYSTEM_PYTHON_PATH=$BREW_HOME/bin/python3
+  export PYTHONSYSTEMPATH=$BREW_HOME/bin/python3
 else
-  export SYSTEM_PYTHON_PATH=$(which python3)
+  export PYTHONSYSTEMPATH=$(which python3)
 fi
 
 for executable_prefix in $HOME/.local $HOME/dotfiles $BREW_HOME/opt/llvm $GOPATH; do
