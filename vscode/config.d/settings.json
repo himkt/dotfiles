@@ -52,8 +52,13 @@
   "rust-client.channel": "stable",
   "solargraph.definitions": true,
   "solargraph.diagnostics": true,
+  "solargraph.externalServer": {
+    "host": "localhost",
+    "port": 7658
+  },
   "solargraph.folding": false,
   "solargraph.formatting": true,
+  "solargraph.transport": "external",
   "terminal.integrated.fontSize": 13,
   "terminal.integrated.fontWeight": "bold",
   "trailing-spaces.trimOnSave": true,
