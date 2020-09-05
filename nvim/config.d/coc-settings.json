@@ -36,6 +36,10 @@
     "88",
     "--ignore==E203,W503,W504"
   ],
-  "solargraph.diagnostics": true,
+  "solargraph.transport": "external",
+  "solargraph.externalServer": {
+    "host": "localhost",
+    "port": 7658
+  },
   "tsserver.enableJavascript": true
 }
