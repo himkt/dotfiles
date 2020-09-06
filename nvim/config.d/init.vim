@@ -17,6 +17,7 @@ source $HOME/dotfiles/nvim/config.d/vimrc
 
 " load packages
 call plug#begin('~/.config/nvim/plugged')
+  Plug 'easymotion/vim-easymotion'
   Plug 'godlygeek/tabular'
   Plug 'google/vim-jsonnet'
   Plug 'jistr/vim-nerdtree-tabs'
