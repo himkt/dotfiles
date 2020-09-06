@@ -10,6 +10,7 @@ if type "nvim" > /dev/null 2>&1; then
 
   ln -s $HOME/dotfiles/nvim/config.d/vimrc $HOME/.vimrc
   ln -s $HOME/dotfiles/nvim/config.d/init.vim $HOME/.config/nvim/init.vim
+  ln -s $HOME/dotfiles/nvim/config.d/coc-settings.json $HOME/.config/nvim/coc-settings.json
   ln -s $HOME/dotfiles/nvim/snippet.d $HOME/.config/coc/ultisnips
 
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \

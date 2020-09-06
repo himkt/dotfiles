@@ -3,6 +3,7 @@
     "coc-clangd": "latest",
     "coc-go": "latest",
     "coc-python": "latest",
-    "coc-snippets": "latest"
+    "coc-snippets": "latest",
+    "coc-solargraph": "latest"
   }
 }
