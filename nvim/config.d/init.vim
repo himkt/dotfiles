@@ -42,6 +42,10 @@ nmap <silent> cr <Plug>(coc-references)
 nmap <silent> cd : call CocAction('jumpDefinition', 'tabe') <CR>
 nmap <silent> cv : call CocAction('jumpDefinition', 'vsplit') <CR>
 
+" vim-easymotion
+let g:EasyMotion_do_mapping = 0
+nmap <Leader>s <Plug>(easymotion-sn)
+
 
 " fzf, fzf.vim
 command! -bang -nargs=* GGrep
