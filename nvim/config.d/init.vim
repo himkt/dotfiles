@@ -32,8 +32,6 @@ call plug#begin('~/.config/nvim/plugged')
 call plug#end()
 
 " coc.nvim
-hi Pmenu           ctermbg=235  ctermfg=228
-hi PmenuSel        ctermbg=253  ctermfg=232
 hi CocErrorFloat   ctermbg=235  ctermfg=210
 hi CocInfoFloat    ctermbg=235  ctermfg=249
 hi CocWarningFloat ctermbg=235  ctermfg=208

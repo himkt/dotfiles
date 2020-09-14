@@ -86,6 +86,10 @@ set backspace=indent,eol,start
 set fillchars+=vert:│
 hi  VertSplit ctermbg=None ctermfg=Blue
 
+"" Popup color
+hi Pmenu           ctermbg=235  ctermfg=228
+hi PmenuSel        ctermbg=253  ctermfg=232
+
 "" If vertical split -> open a new pane to right,
 "" and if horizontal split -> open a new pane to below
 set splitbelow
