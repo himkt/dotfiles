@@ -15,7 +15,6 @@
   "editor.cursorStyle": "underline",
   "editor.fontFamily": "JetBrains Mono",
   "editor.fontSize": 13,
-  "editor.fontWeight": "bold",
   "editor.formatOnPaste": false,
   "editor.minimap.enabled": false,
   "editor.minimap.maxColumn": 120,
@@ -88,7 +87,7 @@
     "terminal.ansiWhite": "#A5A2A2",
     "terminal.ansiYellow": "#FDED02"
   },
-  "workbench.colorTheme": "Monokai Dimmed",
+  "workbench.colorTheme": "Dark+ Material",
   "workbench.editor.showTabs": true,
   "workbench.iconTheme": "material-icon-theme",
   "workbench.sideBar.location": "left",
