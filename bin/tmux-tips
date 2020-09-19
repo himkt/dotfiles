@@ -1,6 +1,11 @@
+#!/usr/bin/env python3
 
-echo '- join-pane'
-echo '- next-layout'
-echo '  - <prefix> <space>'
-echo '- select-layout even-(horizontal|vertical)'
-echo '- setw synchronize-panes (on|off)'
+message = """
+- join-pane
+- next-layout: <prefix> <space>
+- select-layout even-(horizontal|vertical)
+- setw synchronize-panes (on|off)
+- q: quit mode
+"""
+
+print(message)
