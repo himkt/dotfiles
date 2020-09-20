@@ -17,7 +17,12 @@ setopt mark_dirs
 setopt no_beep
 
 function ls () {
-  command ls -G $@
+  case ${OSTYPE} in
+    darwin*)
+      command ls -G $@ ;;
+    linux*)
+      command ls --color $@ ;;
+  esac
 }
 
 function cd () {
