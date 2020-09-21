@@ -17,7 +17,12 @@ setopt mark_dirs
 setopt no_beep
 
 function ls () {
-  command ls -G $@
+  case ${OSTYPE} in
+    darwin*)
+      command ls -G $@ ;;
+    linux*)
+      command ls --color $@ ;;
+  esac
 }
 
 function cd () {
@@ -41,13 +46,13 @@ if [ "$COLORTERM" = "gnome-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "xfce4-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "rxvt-xpm" ]; then export TERM=rxvt-256color; fi
 
-for brew_prefix in /usr/local $HOME/.linuxbrew /home/linuxbrew/.linuxbrew /opt/brew; do
-  export PATH=$brew_prefix/bin:$PATH
-  export PATH=$brew_prefix/sbin:$PATH
+for prefix in /usr/local $HOME/.linuxbrew /home/linuxbrew/.linuxbrew /opt/brew; do
+  export PATH=$prefix/bin:$PATH
+  export PATH=$prefix/sbin:$PATH
 done
 
-for executable_prefix in $HOME/.local $HOME/dotfiles $BREW_HOME/opt/llvm $GOPATH; do
-  export PATH=$PATH:$executable_prefix/bin
+for prefix in $HOME/.local $HOME/dotfiles $BREW_HOME/opt/llvm $GOPATH; do
+  export PATH=$PATH:$prefix/bin
 done
 
 if command -v brew > /dev/null; then
