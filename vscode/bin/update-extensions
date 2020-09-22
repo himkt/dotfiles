@@ -1,3 +1,0 @@
-#!/bin/bash
-
-code --list-extensions > vscode/config.d/extensions.list
