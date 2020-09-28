@@ -30,6 +30,9 @@ emacs: emacs_clean
 fish: fish_clean
 	$(PWD)/fish/bin/setup.sh
 
+git: git_clean
+	$(PWD)/git/bin/setup.sh
+
 nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
@@ -50,6 +53,9 @@ emacs_clean:
 
 fish_clean:
 	rm -rf $(HOME)/.config/fish
+
+git_clean:
+	rm -rf $(HOME)/.config/git
 
 nvim_clean:
 	rm -rf $(HOME)/.vimrc
