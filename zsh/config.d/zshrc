@@ -62,6 +62,10 @@ else
   export PYTHONSYSTEMPATH=$(which python3)
 fi
 
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
 if command -v nvidia-smi > /dev/null; then
   export PATH=/usr/local/cuda/bin:$PATH
   export LD_LIBRARY_PATH=~/.cudnn/active/cuda/lib64:$LD_LIBRARY_PATH
