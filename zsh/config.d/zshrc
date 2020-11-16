@@ -119,7 +119,7 @@ if command -v fzf > /dev/null; then
   }
 
   bindkey '^t' fzf-change-dir
-  bindkey '^f' fzf-z-search
+  bindkey '^j' fzf-z-search
   bindkey '^r' fzf-select-history
 
   zle -N fzf-change-dir
