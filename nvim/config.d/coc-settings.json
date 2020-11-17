@@ -31,10 +31,5 @@
   "python.linting.pylintEnabled": false,
   "python.linting.mypyEnabled": true,
   "python.linting.flake8Enabled": true,
-  "solargraph.transport": "external",
-  "solargraph.externalServer": {
-    "host": "localhost",
-    "port": 7658
-  },
   "tsserver.enableJavascript": true
 }
