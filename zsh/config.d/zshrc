@@ -5,6 +5,7 @@
 bindkey -e
 
 autoload -U compinit
+autoload -U colors; colors
 zstyle ':completion:*:default' menu select=1
 
 setopt auto_cd correct
@@ -15,6 +16,7 @@ setopt extended_history share_history
 setopt magic_equal_subst
 setopt mark_dirs
 setopt no_beep
+setopt prompt_subst
 
 function ls () {
   case ${OSTYPE} in
@@ -28,6 +30,16 @@ function ls () {
 function cd () {
   builtin cd $@ && ls
 }
+
+function date () {
+  case ${OSTYPE} in
+    darwin*)
+      command gdate $@ ;;
+    linux*)
+      command date $@;;
+  esac
+}
+
 
 export EDITOR=vim
 export GHQ_ROOT=$HOME/work
@@ -127,10 +139,51 @@ if command -v fzf > /dev/null; then
   zle -N fzf-z-search
 fi
 
+function parse_git_branch() {
+  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
+}
+
+function git_prompt_string() {
+  local git_branch="$(parse_git_branch)"
+  if [ -n "$git_branch" ]; then
+    STATUS=" @ $fg[red]${${git_branch}#(refs/heads/|tags/)}${reset_color}"
+
+    if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+      STATUS+=" %{$fg[red]%}●%{$reset_color%}"
+    fi
+
+    if ! git diff --quiet 2> /dev/null; then
+      STATUS+=" %{$fg[yellow]%}●%{$reset_color%}"
+    fi
+
+    if ! git diff --cached --quiet 2> /dev/null; then
+      STATUS+="%{$fg[green]%} ● %{$reset_color%}"
+    fi
+
+    echo $STATUS
+  fi
+}
+
+function current_path () {
+  echo "%{${fg[yellow]}%}[%~]%{${reset_color}%}"
+}
+
+function current_timestamp () {
+  echo "%{$fg_bold[blue]%}$(date +'%Y-%m-%d %H:%M:%S')%{${reset_color}%}"
+}
+
+PROMPT=''
+PROMPT+='$(current_timestamp)'
+PROMPT+=' '
+PROMPT+='$(current_path)'
+PROMPT+='$(git_prompt_string)'
+PROMPT+=$'\n'
+PROMPT+='> '
+SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
+
 if [ -e $ZPLUG_HOME/init.zsh ]; then
   source $ZPLUG_HOME/init.zsh
 
-  zplug "himkt/zsh-git-prompt", use:"zsh-git-prompt.zsh"
   zplug "rupa/z", use:"z.sh"
   zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
   zplug "tarruda/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
