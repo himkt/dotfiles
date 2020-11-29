@@ -27,8 +27,8 @@ function ls () {
   esac
 }
 
-function cd () {
-  builtin cd $@ && ls
+function chpwd () {
+  ls
 }
 
 function date () {
