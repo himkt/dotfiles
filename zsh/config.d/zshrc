@@ -44,6 +44,7 @@ function date () {
 export EDITOR=vim
 export GHQ_ROOT=$HOME/work
 export GOPATH=$HOME/go
+export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=100000
 export LANG=en_US.UTF-8
