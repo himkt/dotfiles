@@ -118,12 +118,14 @@ fi
 if command -v fzf > /dev/null; then
   function fzf-change-dir () {
     local target=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)
-    if [ "$target" != "" ]; then cd $target; fi
+    if [ "$target" != "" ]; then BUFFER="cd $target"; fi
+    zle accept-line
   }
 
   function fzf-z-search () {
     local target=$(z | sort -rn | cut -c 12- | fzf)
-    if [ "$target" != "" ]; then cd $target; fi
+    if [ "$target" != "" ]; then BUFFER="cd $target"; fi
+    zle accept-line
   }
 
   function fzf-select-history () {
