@@ -7,10 +7,20 @@ from typing import Any
 from typing import Dict
 from typing import Optional
 
-import boto3
+try:
+    import boto3
+except ModuleNotFoundError:
+    raise ImportError("Please install boto3: `pip install boto3`.")
 
 
 def assume_role(arn: str, mfa_token: Optional[str]):
+    """Assume role
+
+    Args:
+    - arn (str): AWS ARN of IAM
+    - mfa_token (Optional[str]): MFA token
+
+    """
     client = boto3.client("sts")
 
     args = {
@@ -38,6 +48,12 @@ def assume_role(arn: str, mfa_token: Optional[str]):
 
 
 def get_mfa_token(mfa: bool):
+    """Get MFA token if it is needed.
+
+    Args:
+    - mfa (bool)
+
+    """
     if mfa:
         return input("MFA: ")
     return None
