@@ -20,5 +20,3 @@ jobs:
       run: |
         cp -r $GITHUB_WORKSPACE $HOME/dotfiles && cd $HOME/dotfiles
         make brew
-        make brew_cui
-        make
