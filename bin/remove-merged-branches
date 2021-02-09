@@ -1,3 +1,5 @@
 #!/bin/bash
 
-git branch --merged| grep -v master| xargs git branch -d
+BRANCH=${BRANCH:-master}
+
+git branch --merged $BRANCH | grep -v $BRANCH | xargs git branch -d
