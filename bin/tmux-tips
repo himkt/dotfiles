@@ -2,6 +2,7 @@
 
 message = """
 - join-pane
+- break-window
 - next-layout: <prefix> <space>
 - select-layout even-(horizontal|vertical)
 - setw synchronize-panes (on|off)
