@@ -29,7 +29,23 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'scrooloose/nerdtree'
   Plug 'tpope/vim-rails'
   Plug 'vim-airline/vim-airline'
+  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
+  Plug 'sheerun/vim-polyglot'
 call plug#end()
+
+
+" material.vim
+if (has('nvim'))
+  let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
+endif
+
+if (has('termguicolors'))
+  set termguicolors
+endif
+
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'darker'
+colorscheme material
 
 " coc.nvim
 hi CocErrorFloat   ctermbg=235  ctermfg=210
