@@ -33,6 +33,9 @@ fish: fish_clean
 git: git_clean
 	$(PWD)/git/bin/setup.sh
 
+hyper: hyper_clean
+	$(PWD)/hyper/bin/setup.sh
+
 nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
@@ -56,6 +59,9 @@ fish_clean:
 
 git_clean:
 	rm -rf $(HOME)/.config/git
+
+hyper_clean:
+	rm -rf $(HOME)/.hyper.js
 
 nvim_clean:
 	rm -rf $(HOME)/.vimrc
