@@ -46,6 +46,7 @@ endif
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
 colorscheme material
+hi Normal guibg=NONE ctermbg=NONE
 
 " coc.nvim
 hi CocErrorFloat   ctermbg=235  ctermfg=210
