@@ -67,7 +67,6 @@ nvim_clean:
 	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
-	rm -rf $(HOME)/.config/coc
 
 poetry_clean:
 	rm -rf $(HOME)/.config/pypoetry
