@@ -122,7 +122,10 @@ if command -v tmux > /dev/null; then
     fi
   }
 
-  attach_or_create_tmux_session
+  # auto launch happens only on remote host
+  if [[ $(hostname) != *.local ]]; then
+    attach_or_create_tmux_session
+  fi
 fi
 
 if command -v fzf > /dev/null; then
