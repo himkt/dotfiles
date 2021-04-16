@@ -14,3 +14,8 @@
 
 *private*
 *secret*
+
+# https://github.com/himkt/omoide
+/bin/omoide
+# https://github.com/himkt/auto-release
+/bin/auto-release
