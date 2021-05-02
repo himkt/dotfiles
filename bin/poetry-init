@@ -1,8 +1,24 @@
 #!/usr/bin/env bash
 
-# # initialize
-poetry init
- 
-poetry add --dev \
-         python-language-server ipython \
-         pytest flake8 flake8-import-order rope mypy black hacking
+if [ "$SKIP_POETRY_INIT" != "1" ]; then
+    echo "poetry init"
+    poetry init
+
+    poetry add --dev \
+        python-language-server ipython \
+        pytest flake8 flake8-import-order rope mypy black hacking
+fi
+
+cat > setup.cfg << EOS
+[isort]
+force_single_line=true
+
+[flake8]
+max-line-length=119
+EOS
+
+cat >> pyproject.toml << EOS
+
+[tool.black]
+line-length = 119
+EOS
