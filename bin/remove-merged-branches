@@ -1,5 +1,23 @@
 #!/bin/bash
 
-BRANCH=${BRANCH:-master}
 
+# Step1: find base branch. "main" or "master" is accepted.
+if $(git show-ref refs/heads/master --quiet); then
+  BRANCH=master
+  echo Log: found branch "master"
+fi
+
+if $(git show-ref refs/heads/main --quiet); then
+  BRANCH=main
+  echo Log: found branch "main"
+fi
+
+if [ -z $BRANCH ]; then
+  echo Log: Base branch is not fonud: you have to have a branch "master" or "main"
+  exit
+fi
+
+
+# Step2: delete branches that have been already merged.
+echo "Log: base branch: $BRANCH"
 git branch --merged $BRANCH | grep -v $BRANCH | xargs git branch -d
