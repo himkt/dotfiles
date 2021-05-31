@@ -23,6 +23,8 @@ brew_cli:
 brew_gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
+cargo-atcoder: cargo-atcoder_clean
+	$(PWD)/cargo-atcoder/bin/setup.sh
 
 emacs: emacs_clean
 	$(PWD)/emacs/bin/setup.sh
@@ -50,6 +52,10 @@ vscode: vscode_clean
 
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
+
+cargo-atcoder_clean:
+	rm -rf $(HOME)/Library/ApplicationSupport/cargo-atcoder.toml
+	rm -rf $(HOME)/.config/cargo-atcoder.toml
 
 emacs_clean:
 	rm -rf $(HOME)/.emacs.d
