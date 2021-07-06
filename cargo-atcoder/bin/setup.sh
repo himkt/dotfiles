@@ -9,3 +9,4 @@ Linux*)
   ;;
 esac
 
+cargo install cargo-atcoder
