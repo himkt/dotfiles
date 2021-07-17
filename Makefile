@@ -2,7 +2,7 @@
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
-.PHONY: all docs brew cui cli gui emacs fish nvim vscode tmux zsh poetry
+.PHONY: all docs autohotkey brew cui cli gui emacs fish nvim vscode tmux zsh poetry
 
 all: clean cui docs
 clean: fish_clean nvim_clean poetry_clean tmux_clean vscode_clean zsh_clean
@@ -22,6 +22,9 @@ brew_cli:
 
 brew_gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
+
+autohotkey:
+	$(PWD)/autohotkey/bin/setup.sh
 
 cargo-atcoder: cargo-atcoder_clean
 	$(PWD)/cargo-atcoder/bin/setup.sh
