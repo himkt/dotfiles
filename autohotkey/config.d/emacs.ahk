@@ -51,6 +51,13 @@ SetKeyDelay 0
     send {Right}
   return
 
+^+f::
+  if is_target()
+    send %A_ThisHotKey%
+  else
+    send ^f
+  return
+
 ^b::
   if is_target()
     send %A_ThisHotKey%
