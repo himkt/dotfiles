@@ -4,11 +4,10 @@
 
 is_target()
 {
-  IfWinActive,ahk_class Vim ; GVIM
-    Return 1
-  IfWinActive,ahk_class Emacs ; NTEmacs
-    Return 1
-  Return 0
+  ; In terminal app, I disable AHK
+  ifWinActive,ahk_exe WindowsTerminal.exe
+    return 1
+  return 0
 }
 
 
@@ -18,25 +17,61 @@ SetKeyDelay 0
 ; Cursor
 
 ^a::
-  If is_target()
-    Send %A_ThisHotkey%
-  Else
-    Send {HOME}
-  Return
+  if is_target()
+    send %A_ThisHotkey%
+  else
+    send {HOME}
+  return
 
 ^e::
-  If is_target()
-    Send %A_ThisHotkey%
-  Else
-    Send {END}
-  Return
+  if is_target()
+    send %A_ThisHotkey%
+  else
+    send {END}
+  return
+
+^p::
+  if is_target()
+    send %A_ThisHotkey%
+  else
+    send {Up}
+  return
+
+^n::
+  if is_target()
+    send %A_ThisHotkey%
+  else
+    send {Down}
+  return
+
+^f::
+  if is_target()
+    send %A_ThisHotKey%
+  else
+    send {Right}
+  return
+
+^+f::
+  if is_target()
+    send %A_ThisHotKey%
+  else
+    send ^f
+  return
+
+^b::
+  if is_target()
+    send %A_ThisHotKey%
+  else
+    send {Left}
+  return
+
 
 ; Mac-style commands
 
 <#a::
-  If is_target()
-    Send %A_ThisHotkey%
-  Else
-    Send ^a
-  Return
+  if is_target()
+    send %A_ThisHotkey%
+  else
+    send ^a
+  return
 
