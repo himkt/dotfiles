@@ -2,12 +2,18 @@
 #UseHook
 
 
-is_target()
+is_not_terminal()
 {
-  ; In terminal app, I disable AHK
   ifWinActive,ahk_exe WindowsTerminal.exe
     return 1
   return 0
+}
+
+is_vscode()
+{
+  ifWinActive,ahk_exe Code.exe
+    return 0
+  return 1
 }
 
 
@@ -17,49 +23,49 @@ SetKeyDelay 0
 ; Cursor
 
 ^a::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotkey%
   else
     send {HOME}
   return
 
 ^e::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotkey%
   else
     send {END}
   return
 
 ^p::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotkey%
   else
     send {Up}
   return
 
 ^n::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotkey%
   else
     send {Down}
   return
 
 ^f::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotKey%
   else
     send {Right}
   return
 
 ^+f::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotKey%
   else
     send ^f
   return
 
 ^b::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotKey%
   else
     send {Left}
@@ -69,9 +75,23 @@ SetKeyDelay 0
 ; Mac-style commands
 
 <#a::
-  if is_target()
+  if is_not_terminal()
     send %A_ThisHotkey%
   else
     send ^a
+  return
+
+<#b::
+  if is_vscode()
+    send %A_ThisHotKey%
+  else
+    send ^b
+  return
+
+<#j::
+  if is_vscode()
+    send %A_ThisHotKey%
+  else
+    send ^j
   return
 
