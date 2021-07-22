@@ -24,28 +24,28 @@ SetKeyDelay 0
 
 ^a::
   if is_not_terminal()
-    send %A_ThisHotkey%
+    send %A_ThisHotKey%
   else
     send {HOME}
   return
 
 ^e::
   if is_not_terminal()
-    send %A_ThisHotkey%
+    send %A_ThisHotKey%
   else
     send {END}
   return
 
 ^p::
   if is_not_terminal()
-    send %A_ThisHotkey%
+    send %A_ThisHotKey%
   else
     send {Up}
   return
 
 ^n::
   if is_not_terminal()
-    send %A_ThisHotkey%
+    send %A_ThisHotKey%
   else
     send {Down}
   return
@@ -76,7 +76,7 @@ SetKeyDelay 0
 
 <#a::
   if is_not_terminal()
-    send %A_ThisHotkey%
+    send %A_ThisHotKey%
   else
     send ^a
   return
@@ -95,3 +95,9 @@ SetKeyDelay 0
     send ^j
   return
 
+  <#n::
+  if is_vscode()
+    send %A_ThisHotKey%
+  else
+    send ^n
+  return
