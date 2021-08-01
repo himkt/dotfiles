@@ -4,6 +4,10 @@
 
 bindkey -e
 
+# For Zsh on Windows WSL
+bindkey  "^[[H"   beginning-of-line
+bindkey  "^[[F"   end-of-line
+
 autoload -U compinit
 autoload -U colors; colors
 zstyle ':completion:*:default' menu select=1
