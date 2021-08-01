@@ -95,7 +95,7 @@ SetKeyDelay 0
     send ^j
   return
 
-  <#n::
+<#n::
   if is_vscode()
     send %A_ThisHotKey%
   else
