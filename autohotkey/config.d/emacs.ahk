@@ -75,10 +75,7 @@ SetKeyDelay 0
 ; Mac-style commands (Win + {key})
 
 <#a::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^a
+  send ^a
   return
 
 <#b::
@@ -89,17 +86,11 @@ SetKeyDelay 0
   return
 
 <#c::
-  if is_vscode()
-    send %A_ThisHotKey%
-  else
-    send ^c
+  send ^c
   return
 
 <#f::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^f
+  send ^f
   return
 
 <#j::
@@ -117,29 +108,25 @@ SetKeyDelay 0
   return
 
 <#s::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^s
+  send ^s
+  return
+
+<#t::
+  send ^t
+  return
+
+<#w::
+  send ^w
   return
 
 <#x::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^x
+  send ^x
   return
 
 <#+z::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^Z
+  send ^Z
   return
 
 <#z::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^z
+  send ^z
   return
