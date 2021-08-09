@@ -29,6 +29,13 @@ SetKeyDelay 0
     send {HOME}
   return
 
+^d::
+  if is_not_terminal()
+    send %A_ThisHotKey%
+  else
+    send {DEL}
+  return
+
 ^e::
   if is_not_terminal()
     send %A_ThisHotKey%
@@ -89,6 +96,15 @@ SetKeyDelay 0
   send ^c
   return
 
+<#d::
+  send ^d
+  return
+
+; win+d -> win+m
+<#m::
+  send #d
+  return
+
 <#f::
   send ^f
   return
@@ -107,12 +123,32 @@ SetKeyDelay 0
     send ^n
   return
 
+<^n::
+  send #n
+  return
+
+<#r::
+  send ^r
+  return
+
+<^r::
+  send #r
+  return
+
 <#s::
   send ^s
   return
 
 <#t::
   send ^t
+  return
+
+<#v::
+  send ^+v
+  return
+
+<^+v::
+  send #v
   return
 
 <#w::
@@ -123,10 +159,54 @@ SetKeyDelay 0
   send ^x
   return
 
+<^x::
+  send #x
+  return
+
 <#+z::
   send ^Z
   return
 
 <#z::
   send ^z
+  return
+
+<#/::
+  send ^/
+  return
+
+<#Space::
+  send ^{Space}
+  return
+
+<#Left::
+  send ^{Left}
+  return
+
+<^Left::
+  send #{Left}
+  return
+
+<#Right::
+  send ^{Right}
+  return
+
+<^Right::
+  send #{Right}
+  return
+
+<#Up::
+  send ^{Up}
+  return
+
+<^Up::
+  send #{Up}
+  return
+
+<#Down::
+  send ^{Down}
+  return
+
+<^Down::
+  send #{Down}
   return
