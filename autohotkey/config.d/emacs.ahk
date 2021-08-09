@@ -183,12 +183,20 @@ SetKeyDelay 0
   send ^{Left}
   return
 
+<#+Left::
+  send ^+{Left}
+  return
+
 <^Left::
   send #{Left}
   return
 
 <#Right::
   send ^{Right}
+  return
+
+<#+Right::
+  send ^+{Right}
   return
 
 <^Right::
@@ -209,4 +217,8 @@ SetKeyDelay 0
 
 <^Down::
   send #{Down}
+  return
+
+<#Backspace::
+  send ^{BS}
   return
