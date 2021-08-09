@@ -222,3 +222,7 @@ SetKeyDelay 0
 <#Backspace::
   send ^{BS}
   return
+
+<#Enter::
+  send ^{Enter}
+  return
