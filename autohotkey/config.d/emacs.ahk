@@ -2,7 +2,7 @@
 #UseHook
 
 
-is_not_terminal()
+is_terminal()
 {
   ifWinActive,ahk_exe WindowsTerminal.exe
     return 1
@@ -20,69 +20,25 @@ is_vscode()
 SetKeyDelay 0
 
 
-; Cursor
+; Mac-style commands (Win + {key})
 
+; cursor
 ^a::
-  if is_not_terminal()
+  if is_terminal()
     send %A_ThisHotKey%
   else
     send {HOME}
   return
 
-^d::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send {DEL}
-  return
-
-^e::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send {END}
-  return
-
-^p::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send {Up}
-  return
-
-^n::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send {Down}
-  return
-
-^f::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send {Right}
-  return
-
-^+f::
-  if is_not_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^f
+<#a::
+  send ^a
   return
 
 ^b::
-  if is_not_terminal()
+  if is_terminal()
     send %A_ThisHotKey%
   else
     send {Left}
-  return
-
-
-; Mac-style commands (Win + {key})
-
-<#a::
-  send ^a
   return
 
 <#b::
@@ -98,6 +54,37 @@ SetKeyDelay 0
 
 <#d::
   send ^d
+  return
+
+; cursor
+^d::
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send {DEL}
+  return
+
+; cursor
+^e::
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send {END}
+  return
+
+; cursor
+^f::
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send {Right}
+  return
+
+^+f::
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send ^f
   return
 
 ; win+d -> win+m
@@ -124,7 +111,19 @@ SetKeyDelay 0
   return
 
 <^n::
-  send #n
+  ; vim: c-{p,n}
+  if is_terminal()
+    send ^n
+  else
+    send #n
+  return
+
+^p::
+  ; vim: c-{p,n}
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send {Up}
   return
 
 <#r::
@@ -132,7 +131,12 @@ SetKeyDelay 0
   return
 
 <^r::
-  send #r
+  ; vim: redo
+  if is_terminal()
+    ; FIXME (himkt): %A_ThisHotKey%
+    send ^r
+  else
+    send #r
   return
 
 <#s::
@@ -160,7 +164,11 @@ SetKeyDelay 0
   return
 
 <^x::
-  send #x
+  if is_terminal()
+    ; FIXME (himkt): %A_ThisHotKey%
+    send ^x
+  else
+    send #x
   return
 
 <#+z::
