@@ -215,12 +215,20 @@ SetKeyDelay 0
   send ^{Up}
   return
 
+<#+Up::
+  send ^+{Up}
+  return
+
 <^Up::
   send #{Up}
   return
 
 <#Down::
   send ^{Down}
+  return
+
+<#+Down::
+  send ^+{Down}
   return
 
 <^Down::
