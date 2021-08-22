@@ -23,7 +23,7 @@ brew_cli:
 brew_gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
 
-autohotkey:
+autohotkey: autohotkey_clean
 	$(PWD)/autohotkey/bin/setup.sh
 
 cargo-atcoder: cargo-atcoder_clean
@@ -55,6 +55,9 @@ vscode: vscode_clean
 
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
+
+autohotkey_clean:
+	$(PWD)/autohotkey/bin/clean.sh
 
 cargo-atcoder_clean:
 	rm -rf $(HOME)/Library/ApplicationSupport/cargo-atcoder.toml
