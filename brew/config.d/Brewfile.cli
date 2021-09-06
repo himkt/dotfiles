@@ -1,5 +1,8 @@
+tap 'ktr0731/evans'
+
 brew 'bat'
 brew 'coreutils'
+brew 'evans'
 brew 'fzf'
 brew 'ghq'
 brew 'gh'
