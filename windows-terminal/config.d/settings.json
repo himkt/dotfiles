@@ -12,11 +12,11 @@
         },
         {
             "command": "find",
-            "keys": "ctrl+shift+f"
+            "keys": "ctrl+f"
         },
         {
             "command": "paste",
-            "keys": "ctrl+shift+v"
+            "keys": "ctrl+v"
         },
         {
             "command":
