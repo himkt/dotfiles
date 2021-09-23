@@ -53,6 +53,9 @@ tmux: tmux_clean
 vscode: vscode_clean
 	$(PWD)/vscode/bin/setup.sh
 
+windows_terminal: windows_terminal_clean
+	$(PWD)/windows-terminal/bin/setup.sh
+
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
 
@@ -91,6 +94,9 @@ vscode_clean:
 	rm -rf $(HOME)/Library/Application\ Support/Code/User/keybindings.json
 	rm -rf $(HOME)/Library/Application\ Support/Code/User/settings.json
 	rm -rf $(HOME)/Library/Application\ Support/Code/User/snippets
+
+windows_terminal_clean:
+	$(PWD)/windows-terminal/bin/clean.sh
 
 zsh_clean:
 	rm -rf $(HOME)/.zshrc
