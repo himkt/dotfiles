@@ -31,10 +31,6 @@ function ls () {
   esac
 }
 
-function chpwd () {
-  ls
-}
-
 function date () {
   case ${OSTYPE} in
     darwin*)
@@ -44,6 +40,8 @@ function date () {
   esac
 }
 
+alias chpwd=ls
+alias ghome='git rev-parse --show-toplevel | xargs --no-run-if-empty cd'
 
 export EDITOR=vim
 export GHQ_ROOT=$HOME/work
