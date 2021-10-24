@@ -9,236 +9,272 @@ is_terminal()
   return 0
 }
 
-is_vscode()
-{
-  ifWinActive,ahk_exe Code.exe
-    return 0
-  return 1
-}
 
+; windows shortcut
 
-SetKeyDelay 0
+  #+a::
+    send #a
+    return
 
+  #+b::
+    send #b
+    return
 
-; Mac-style commands (Win + {key})
+  #+c::
+    send #c
+    return
 
-; cursor
-^a::
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send {HOME}
-  return
+  #+d::
+    send #d
+    return
 
-<#a::
-  send ^a
-  return
+  #+e::
+    send #e
+    return
 
-^b::
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send {Left}
-  return
+  #+f::
+    send #f
+    return
 
-<#b::
-  if is_vscode()
-    send %A_ThisHotKey%
-  else
-    send ^b
-  return
+  #+g::
+    send #g
+    return
 
-<#c::
-  send ^c
-  return
+  #+h::
+    send #h
+    return
 
-<#d::
-  send ^d
-  return
+  #+i::
+    send #i
+    return
 
-; cursor
-^d::
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send {DEL}
-  return
+  #+j::
+    send #j
+    return
 
-; cursor
-^e::
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send {END}
-  return
+  #+k::
+    send #k
+    return
 
-; cursor
-^f::
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send {Right}
-  return
+  #+l::
+    send #l
+    return
 
-^+f::
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send ^f
-  return
+  #+m::
+    send #m
+    return
 
-; win+d -> win+m
-<#m::
-  send #d
-  return
-
-<#f::
-  send ^f
-  return
-
-<#j::
-  if is_vscode()
-    send %A_ThisHotKey%
-  else
-    send ^j
-  return
-
-<#n::
-  if is_vscode()
-    send %A_ThisHotKey%
-  else
-    send ^n
-  return
-
-<^n::
-  ; vim: c-{p,n}
-  if is_terminal()
-    send ^n
-  else
+  #+n::
     send #n
-  return
+    return
 
-^p::
-  ; vim: c-{p,n}
-  if is_terminal()
-    send %A_ThisHotKey%
-  else
-    send {Up}
-  return
+  #+o::
+    send #o
+    return
 
-<#r::
-  send ^r
-  return
+  #+p::
+    send #p
+    return
 
-<^r::
-  ; vim: redo
-  if is_terminal()
-    ; FIXME (himkt): %A_ThisHotKey%
-    send ^r
-  else
+  #+q::
+    send #q
+    return
+
+  #+r::
     send #r
-  return
+    return
 
-<#s::
-  send ^s
-  return
+  #+s::
+    send #s
+    return
 
-<#t::
-  send ^t
-  return
+  #+t::
+    send #t
+    return
 
-<#v::
-  send ^+v
-  return
+  #+u::
+    send #u
+    return
 
-<^+v::
-  send #v
-  return
+  #+v::
+    send #v
+    return
 
-<#w::
-  send ^w
-  return
+  #+w::
+    send #w
+    return
 
-<#x::
-  send ^x
-  return
-
-<^x::
-  if is_terminal()
-    ; FIXME (himkt): %A_ThisHotKey%
-    send ^x
-  else
+  #+x::
     send #x
-  return
+    return
 
-<#+z::
-  send ^Z
-  return
+  #+y::
+    send #y
+    return
 
-<#z::
-  send ^z
-  return
+  #+z::
+    send #z
+    return
 
-<#/::
-  send ^/
-  return
+; emacs binding
+  ^a::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {HOME}
+    }
+    return
 
-<#Space::
-  send ^{Space}
-  return
+  ^b::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {Left}
+    }
+    return
 
-<#Left::
-  send ^{Left}
-  return
+  ^d::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {DEL}
+    }
+    return
 
-<#+Left::
-  send ^+{Left}
-  return
+  ^e::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {END}
+    }
+    return
 
-<^Left::
-  send #{Left}
-  return
+  ^f::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {Right}
+    }
+    return
 
-<#Right::
-  send ^{Right}
-  return
+  ^n::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {Down}
+    }
+    return
 
-<#+Right::
-  send ^+{Right}
-  return
+  ^p::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {Up}
+    }
+    return
 
-<^Right::
-  send #{Right}
-  return
+; mac-style shortcut
 
-<#Up::
-  send ^{Up}
-  return
+  #a::
+    send ^a
+    return
 
-<#+Up::
-  send ^+{Up}
-  return
+  #b::
+    send ^b
+    return
 
-<^Up::
-  send #{Up}
-  return
+  #c::
+    send ^c
+    return
 
-<#Down::
-  send ^{Down}
-  return
+  #d::
+    send ^d
+    return
 
-<#+Down::
-  send ^+{Down}
-  return
+  #e::
+    send ^e
+    return
 
-<^Down::
-  send #{Down}
-  return
+  #f::
+    send ^f
+    return
 
-<#Backspace::
-  send ^{BS}
-  return
+  #g::
+    send ^g
+    return
 
-<#Enter::
-  send ^{Enter}
-  return
+  #h::
+    send ^h
+    return
+
+  #i::
+    send ^i
+    return
+
+  #j::
+    send ^j
+    return
+
+  #k::
+    send ^k
+    return
+
+  #l::
+    send ^l
+    return
+
+  #m::
+    send ^m
+    return
+
+  #n::
+    send ^n
+    return
+
+  #o::
+    send ^o
+    return
+
+  #p::
+    send ^p
+    return
+
+  #q::
+    send ^q
+    return
+
+  #r::
+    send ^r
+    return
+
+  #s::
+    send ^s
+    return
+
+  #t::
+    send ^t
+    return
+
+  #u::
+    send ^u
+    return
+
+  #v::
+    send ^v
+    return
+
+  #w::
+    send ^w
+    return
+
+  #x::
+    send ^x
+    return
+
+  #y::
+    send ^y
+    return
+
+  #z::
+    send ^z
+    return

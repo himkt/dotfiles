@@ -2,12 +2,26 @@
 #UseHook
 
 
+is_terminal()
+{
+  ifWinActive,ahk_exe WindowsTerminal.exe
+    return 1
+  return 0
+}
+
+
 ^a::
-  send {HOME}
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send {HOME}
   return
 
 ^e::
-  send {END}
+  if is_terminal()
+    send %A_ThisHotKey%
+  else
+    send {END}
   return
 
 #+a::
@@ -16,4 +30,4 @@
 
 #a::
   send ^a
-return
+  return
