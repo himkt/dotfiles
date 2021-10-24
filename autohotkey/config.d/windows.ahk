@@ -83,9 +83,12 @@ is_terminal()
     send #r
     return
 
-  #+s::
-    send #s
-    return
+  ; disable #s because I prefer using
+  ; the original #+s (screenshot)
+  ;
+  ; #+s::
+  ;   send #s
+  ;   return
 
   #+t::
     send #t
