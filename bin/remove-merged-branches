@@ -16,4 +16,4 @@ fi
 
 
 echo "Log: base branch: $BRANCH"
-git branch --merged $BRANCH | grep -v $BRANCH | xargs --no-run-if-empty git branch -d
+git branch --merged $BRANCH | grep -v $BRANCH | xargs -r git branch -d
