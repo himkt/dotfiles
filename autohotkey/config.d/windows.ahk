@@ -118,7 +118,24 @@ is_terminal()
     send #z
     return
 
+  <#+Up::
+    send ^+{Up}
+    return
+
+  <#+Down::
+    send ^+{Down}
+    return
+
+  <#+Left::
+    send ^+{Left}
+    return
+
+  <#+Right::
+    send ^+{Right}
+    return
+
 ; emacs binding
+
   ^a::
     if is_terminal() {
       send %A_ThisHotKey%
