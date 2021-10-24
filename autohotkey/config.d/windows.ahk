@@ -9,7 +9,6 @@ is_terminal()
   return 0
 }
 
-
 ; windows shortcut
 
   #+a::
@@ -154,6 +153,14 @@ is_terminal()
       send %A_ThisHotKey%
     } else {
       send {Right}
+    }
+    return
+
+  ^h::
+    if is_terminal() {
+      send %A_ThisHotKey%
+    } else {
+      send {BackSpace}
     }
     return
 
