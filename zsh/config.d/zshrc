@@ -40,6 +40,17 @@ function date () {
   esac
 }
 
+if type wslvar > /dev/null 2>&1; then
+  export CLIPBOARD_APP=clip.exe
+else
+  case ${OSTYPE} in
+    darwin*)
+      export CLIPBOARD_APP=pbcopy;;
+    linux*)
+      export CLIPBOARD_APP="xsel --clipboard --input";;
+  esac
+fi
+
 alias chpwd=ls
 alias ghome='git rev-parse --show-toplevel | xargs --no-run-if-empty cd'
 
