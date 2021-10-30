@@ -6,4 +6,4 @@ gcloud compute config-ssh --ssh-key-file=~/.ssh/id_rsa
 cp $HOME/.ssh/config $WINPATH/.ssh
 
 echo Launch vim and delete IdentitiesOnly and add User
-echo vim $WINPATH/.ssh/config
+echo $EDITOR $WINPATH/.ssh/config
