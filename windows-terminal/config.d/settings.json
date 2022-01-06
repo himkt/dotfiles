@@ -15,10 +15,6 @@
             "keys": "ctrl+f"
         },
         {
-            "command": "paste",
-            "keys": "ctrl+v"
-        },
-        {
             "command":
             {
                 "action": "splitPane",
