@@ -1,5 +1,4 @@
 brew 'gcc@9'
-brew 'node@12'
 brew 'python@3.9'
 brew 'nvim'
 brew 'tmux'
