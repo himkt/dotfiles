@@ -26,6 +26,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'sheerun/vim-polyglot'
+
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -55,3 +57,10 @@ vnoremap tr : <C-u>Tabularize<Space>/
 
 " vim-indent-guide
 let g:indent_guides_enable_on_vim_startup = 1
+
+" coc.nvim
+let g:coc_global_extensions = ['coc-pyright']
+nmap <silent> cd <Plug>(coc-definition)
+nmap <silent> cy <Plug>(coc-type-definition)
+nmap <silent> ci <Plug>(coc-implementation)
+nmap <silent> cr <Plug>(coc-references)
