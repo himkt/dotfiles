@@ -59,8 +59,12 @@ vnoremap tr : <C-u>Tabularize<Space>/
 let g:indent_guides_enable_on_vim_startup = 1
 
 " coc.nvim
-let g:coc_global_extensions = ['coc-pyright']
-nmap <silent> cd <Plug>(coc-definition)
+let g:coc_global_extensions = ['coc-pyright', 'coc-rust-analyzer']
+nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')<CR>
+nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit')<CR>
 nmap <silent> cy <Plug>(coc-type-definition)
 nmap <silent> ci <Plug>(coc-implementation)
 nmap <silent> cr <Plug>(coc-references)
+nmap <silent> ch :call CocAction('doHover')<CR>
+nmap <silent> rn <Plug>(coc-rename)
+nmap <silent> fm <Plug>(coc-format)
