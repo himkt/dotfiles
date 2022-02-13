@@ -26,6 +26,8 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'sheerun/vim-polyglot'
+
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -38,10 +40,12 @@ if (has('termguicolors'))
   set termguicolors
 endif
 
-colorscheme material
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'darker'
+colorscheme material
+
 hi Normal guibg=NONE ctermbg=NONE
+hi Visual guibg=gray
 
 " vim-easymotion
 let g:EasyMotion_do_mapping = 0
@@ -55,3 +59,17 @@ vnoremap tr : <C-u>Tabularize<Space>/
 
 " vim-indent-guide
 let g:indent_guides_enable_on_vim_startup = 1
+
+" coc.nvim
+let g:coc_global_extensions = ['coc-pyright', 'coc-rust-analyzer']
+let cy = "\<C-y>"
+let cr = "\<C-g>u\<CR>"
+inoremap <expr> <CR> pumvisible() ? cy : cr
+nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')<CR>
+nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit')<CR>
+nmap <silent> cy <Plug>(coc-type-definition)
+nmap <silent> ci <Plug>(coc-implementation)
+nmap <silent> cr <Plug>(coc-references)
+nmap <silent> ch :call CocAction('doHover')<CR>
+nmap <silent> rn <Plug>(coc-rename)
+nmap <silent> fm <Plug>(coc-format)
