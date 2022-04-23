@@ -15,6 +15,7 @@ zstyle ':completion:*:default' menu select=1
 setopt auto_cd correct
 setopt auto_param_keys
 setopt auto_param_slash
+setopt complete_aliases
 setopt complete_in_word
 setopt extended_history share_history
 setopt magic_equal_subst
@@ -76,13 +77,17 @@ case `uname -s` in
 Darwin*)
   if [ `uname -m` = "arm64" ]; then
     export PATH=/opt/homebrew/bin:$PATH
+    export PATH=/opt/homebrew/sbin:$PATH
   else
     export PATH=/opt/homebrew-x86_64/bin:$PATH
+    export PATH=/opt/homebrew-x86_64/sbin:$PATH
   fi
   ;;
 Linux*)
   export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
+  export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
   export PATH=$HOME/.linuxbrew/bin:$PATH
+  export PATH=$HOME/.linuxbrew/sbin:$PATH
   ;;
 esac
 
@@ -90,11 +95,17 @@ for prefix in $HOME/.local $HOME/dotfiles $BREW_HOME/opt/llvm $GOPATH; do
   export PATH=$PATH:$prefix/bin
 done
 
+export PATH=$HOME/bin:$PATH
+
 if command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
   export PYTHONSYSTEMPATH=$BREW_HOME/bin/python3
 else
   export PYTHONSYSTEMPATH=$(which python3)
+fi
+
+if command -v brew > /dev/null; then
+  export PATH=$BREW_HOME/opt/openjdk/bin:$PATH
 fi
 
 if command -v rbenv > /dev/null; then
@@ -157,30 +168,30 @@ if command -v tmux > /dev/null; then
 fi
 
 if command -v fzf > /dev/null; then
-  function fzf-change-dir () {
-    local target=$(find ${1:-.} -path '*/\.*' -prune -o -type d -print 2> /dev/null | fzf +m)
-    if [ "$target" != "" ]; then BUFFER="cd $target"; fi
+  function cd-f () {
+    cd $(find . -type d -print 2> /dev/null | fzf --prompt ">>> ")
+  }
+
+  function cd-z () {
+    if [ -z "$1" ]; then
+      cd $(z | sort -rh | awk '{print $2}' | fzf --prompt ">>> ")
+    else
+      _z $1
+    fi
+  }
+
+  function hist-f () {
+    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt=">>> ")
     zle accept-line
   }
 
-  function fzf-z-search () {
-    local target=$(z | sort -rn | cut -c 12- | fzf)
-    if [ "$target" != "" ]; then BUFFER="cd $target"; fi
-    zle accept-line
-  }
+  bindkey '^t' cd-f
+  bindkey '^y' cd-z
+  bindkey '^r' hist-f
 
-  function fzf-select-history () {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
-    CURSOR=$#BUFFER
-  }
-
-  bindkey '^t' fzf-change-dir
-  bindkey '^y' fzf-z-search
-  bindkey '^r' fzf-select-history
-
-  zle -N fzf-change-dir
-  zle -N fzf-select-history
-  zle -N fzf-z-search
+  zle -N cd-f
+  zle -N cd-z
+  zle -N hist-f
 fi
 
 function parse_git_branch() {
@@ -216,13 +227,23 @@ function current_timestamp () {
   echo "%{$fg_bold[blue]%}$(date +'%Y-%m-%d %H:%M:%S')%{${reset_color}%}"
 }
 
+function architecture () {
+  local architecture="$(uname -m)"
+
+  if [ "$architecture" = "x86_64" ] ; then
+    echo "\033[1;32m$architecture\033[0m"
+  elif [ "$architecture" = "arm64" ]; then
+    echo "\033[1;31m$architecture\033[0m"
+  fi
+}
+
 PROMPT=''
-PROMPT+='$(current_timestamp)'
-PROMPT+=' '
-PROMPT+='$(current_path)'
+PROMPT+='[$(architecture)]'
+PROMPT+=' $(current_path)'
 PROMPT+='$(git_prompt_string)'
 PROMPT+=$'\n'
 PROMPT+='> '
+RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 if [ -e $ZPLUG_HOME/init.zsh ]; then
@@ -241,3 +262,8 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
 
   zplug load
 fi
+
+for completion_source in $HOME/.config/zsh-completion/*.zsh
+do
+  source $completion_source
+done

@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ `uname -m` = 'x86_64' ]; then
+    if type deactivate > /dev/null 2>&1; then
+        deactivate
+    fi
+
+    arch -arm64 zsh
+fi
