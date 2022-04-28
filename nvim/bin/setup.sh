@@ -14,9 +14,9 @@ if type "nvim" > /dev/null 2>&1; then
   curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-  nvim -u $PWD/nvim/config.d/init.vim +PlugInstall +qall
+  nvim --headless -u $PWD/nvim/config.d/init.vim +PlugInstall +qall
   echo 'Plugin installed'
-  nvim -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
+  nvim --headless -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
 
   echo 'Finish creating the neovim environment!'
 fi
