@@ -13,3 +13,5 @@
 
 # jetbrains
 .idea
+
+.DS_Store

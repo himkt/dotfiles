@@ -73,7 +73,7 @@ fish_clean:
 	rm -rf $(HOME)/.config/fish
 
 git_clean:
-	rm -rf $(HOME)/.config/git
+	rm -rf $(HOME)/.config/git/ignore
 
 hyper_clean:
 	rm -rf $(HOME)/.hyper.js
