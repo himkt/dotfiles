@@ -41,6 +41,35 @@ function date () {
   esac
 }
 
+function amd64 () {
+  if [ `uname -m` = 'arm64' ]; then
+    if type deactivate > /dev/null 2>&1; then
+      echo "Automatically deactivate virtualenv"
+      deactivate
+    fi
+
+    arch -x86_64 zsh
+  fi
+}
+
+function arm64 () {
+  if [ `uname -m` = 'x86_64' ]; then
+    if type deactivate > /dev/null 2>&1; then
+      echo "Automatically deactivate virtualenv"
+      deactivate
+    fi
+
+    arch -arm64 zsh
+  fi
+}
+
+function cargo-atcoder-code () {
+  competition_name=$1
+  cargo atcoder new $competition_name
+  cd $competition_name
+  code .
+}
+
 if type wslvar > /dev/null 2>&1; then
   export CLIPBOARD_APP=clip.exe
 else

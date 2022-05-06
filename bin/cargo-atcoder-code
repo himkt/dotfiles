@@ -1,6 +1,0 @@
-#!/bin/bash
-
-
-competition_name=$1
-cargo atcoder new $competition_name
-code $competition_name
