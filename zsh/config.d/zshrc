@@ -128,6 +128,7 @@ export PATH=$HOME/bin:$PATH
 
 if command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
+  export HOMEBREW_NO_AUTO_UPDATE=1
   export PYTHONSYSTEMPATH=$BREW_HOME/bin/python3
 else
   export PYTHONSYSTEMPATH=$(which python3)
