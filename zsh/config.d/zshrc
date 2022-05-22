@@ -300,3 +300,8 @@ for completion_source in $HOME/.config/zsh-completion/*.zsh
 do
   source $completion_source
 done
+
+for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
+do
+  source $source
+done
