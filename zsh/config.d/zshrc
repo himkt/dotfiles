@@ -128,6 +128,7 @@ export PATH=$HOME/bin:$PATH
 
 if command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
+  export HOMEBREW_NO_AUTO_UPDATE=1
   export PYTHONSYSTEMPATH=$BREW_HOME/bin/python3
 else
   export PYTHONSYSTEMPATH=$(which python3)
@@ -296,7 +297,12 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug load
 fi
 
-for completion_source in $HOME/.config/zsh-completion/*.zsh
+for completion_source in $XDG_CONFIG_HOME/zsh-completion/*.zsh
 do
   source $completion_source
+done
+
+for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
+do
+  source $source
 done
