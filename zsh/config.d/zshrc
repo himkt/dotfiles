@@ -48,6 +48,8 @@ function amd64 () {
       deactivate
     fi
 
+    export PATH=`echo $PATH | sed -E "s|$HOMEBREW_ARM64/[^:]*:?||g"`
+    export PATH=`echo $PATH | sed -E "s|:$HOMEBREW_ARM64/.*||g"`
     arch -x86_64 zsh
   fi
 }
@@ -59,6 +61,8 @@ function arm64 () {
       deactivate
     fi
 
+    export PATH=`echo $PATH | sed -E "s|$HOMEBREW_AMD64/[^:]*:?||g"`
+    export PATH=`echo $PATH | sed -E "s|:$HOMEBREW_AMD64/.*||g"`
     arch -arm64 zsh
   fi
 }
@@ -102,14 +106,17 @@ if [ "$COLORTERM" = "gnome-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "xfce4-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "rxvt-xpm" ]; then export TERM=rxvt-256color; fi
 
+export HOMEBREW_ARM64=/opt/homebrew
+export HOMEBREW_AMD64=/opt/homebrew-x86_64
+
 case `uname -s` in
 Darwin*)
   if [ `uname -m` = "arm64" ]; then
-    export PATH=/opt/homebrew/bin:$PATH
-    export PATH=/opt/homebrew/sbin:$PATH
+    export PATH=$HOMEBREW_ARM64/bin:$PATH
+    export PATH=$HOMEBREW_ARM64/sbin:$PATH
   else
-    export PATH=/opt/homebrew-x86_64/bin:$PATH
-    export PATH=/opt/homebrew-x86_64/sbin:$PATH
+    export PATH=$HOMEBREW_AMD64/bin:$PATH
+    export PATH=$HOMEBREW_AMD64/sbin:$PATH
   fi
   ;;
 Linux*)
@@ -120,7 +127,7 @@ Linux*)
   ;;
 esac
 
-for prefix in $HOME/.local $HOME/dotfiles $BREW_HOME/opt/llvm $GOPATH; do
+for prefix in $HOME/.local $HOME/dotfiles $GOPATH; do
   export PATH=$PATH:$prefix/bin
 done
 
