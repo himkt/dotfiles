@@ -12,3 +12,6 @@ brew 'htop'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'z'
+
+tap 'himkt/himkt'
+brew 'omoide'
