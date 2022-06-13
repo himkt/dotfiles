@@ -1,5 +1,11 @@
 #!/bin/bash
 
 BRANCH=`git branch| awk '{print $NF}' | fzf --prompt '(base branch) > '`
+
+if [ -z $BRANCH ]; then
+  echo "Select valid branch"
+  exit 1
+fi
+
 echo "Log: base branch: $BRANCH"
 git branch --merged $BRANCH | grep -v $BRANCH | xargs -r git branch -d
