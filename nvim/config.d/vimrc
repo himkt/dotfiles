@@ -138,7 +138,6 @@ autocmd FileType cpp    nnoremap <C-t> :sp <bar> :exec ':term clang++ --std=c++1
 autocmd FileType go     nnoremap <C-t> :sp <bar> :exec ':term go run %' <CR>
 autocmd FileType ruby   nnoremap <C-t> :sp <bar> :exec ':term ruby %' <CR>
 autocmd FileType python nnoremap <C-t> :sp <bar> :exec ':term if [ -e ./.venv ] ; then; poetry run python %; else python3 %; fi' <CR>
-autocmd FileType tex    nnoremap <C-t> :VimtexCompile <CR>
 
 " templates
 autocmd BufNewFile *.cc      0r $HOME/dotfiles/nvim/template.d/cc/template.cc

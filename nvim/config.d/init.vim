@@ -74,3 +74,6 @@ nmap <silent> cr <Plug>(coc-references)
 nmap <silent> ch :call CocAction('doHover')<CR>
 nmap <silent> rn <Plug>(coc-rename)
 nmap <silent> fm <Plug>(coc-format)
+
+" cargo-atcoder.nvim
+autocmd FileType rust   nnoremap <C-t> :CargoAtcoderRun <CR>
