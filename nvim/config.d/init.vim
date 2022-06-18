@@ -26,8 +26,9 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'vim-airline/vim-airline'
   Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'sheerun/vim-polyglot'
-
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  Plug 'himkt/cargo-atcoder.nvim'
 call plug#end()
 
 
