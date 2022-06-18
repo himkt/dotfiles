@@ -63,7 +63,7 @@ autohotkey_clean:
 	$(PWD)/autohotkey/bin/clean.sh
 
 cargo-atcoder_clean:
-	rm -rf $(HOME)/Library/ApplicationSupport/cargo-atcoder.toml
+	rm -rf $(HOME)/Library/Application\ Support/cargo-atcoder.toml
 	rm -rf $(HOME)/.config/cargo-atcoder.toml
 
 emacs_clean:
