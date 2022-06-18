@@ -53,25 +53,24 @@ let g:EasyMotion_do_mapping = 0
 nmap <Leader>s <Plug>(easymotion-sn)
  
 " fzf
-nnoremap <silent> <C-p> : call fzf#vim#files('', fzf#vim#with_preview('right'))<CR>
+nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right')) <CR>
+nnoremap <silent> <C-e> :Commands <CR>
 
 " tabular
-vnoremap tr : <C-u>Tabularize<Space>/
+vnoremap tr :<C-u> Tabularize /
 
 " vim-indent-guide
 let g:indent_guides_enable_on_vim_startup = 1
 
 " coc.nvim
 let g:coc_global_extensions = ['coc-pyright', 'coc-rust-analyzer']
-let cy = "\<C-y>"
-let cr = "\<C-g>u\<CR>"
-inoremap <expr> <CR> pumvisible() ? cy : cr
-nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')<CR>
-nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit')<CR>
+inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
+nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')   <CR>
+nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit') <CR>
+nmap <silent> ch :call CocAction('doHover') <CR>
 nmap <silent> cy <Plug>(coc-type-definition)
 nmap <silent> ci <Plug>(coc-implementation)
 nmap <silent> cr <Plug>(coc-references)
-nmap <silent> ch :call CocAction('doHover')<CR>
 nmap <silent> rn <Plug>(coc-rename)
 nmap <silent> fm <Plug>(coc-format)
 
