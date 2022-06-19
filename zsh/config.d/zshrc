@@ -304,11 +304,7 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug load
 fi
 
-for completion_source in $XDG_CONFIG_HOME/zsh-completion/*.zsh
-do
-  source $completion_source
-done
-
+# custom zsh script
 for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
 do
   source $source
