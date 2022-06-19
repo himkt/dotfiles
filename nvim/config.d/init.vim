@@ -54,7 +54,7 @@ nmap <Leader>s <Plug>(easymotion-sn)
  
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right')) <CR>
-nnoremap <silent> <C-e> :Commands <CR>
+nnoremap <silent> <C-x> :Commands <CR>
 
 " tabular
 vnoremap tr :<C-u> Tabularize /
