@@ -17,6 +17,8 @@ if type "nvim" > /dev/null 2>&1; then
   nvim --headless -u $PWD/nvim/config.d/init.vim +PlugInstall +qall
   echo 'Plugin installed'
   nvim --headless -u $PWD/nvim/config.d/init.vim +CocUpdateSync +qall
+  echo 'Update remote plugins'
+  nvim --headless -u $PWD/nvim/config.d/init.vim +UpdateRemotePlugins +qall
 
   echo 'Finish creating the neovim environment!'
 fi
