@@ -5,10 +5,9 @@ NOCOLOR    := $(shell tput sgr0)
 .PHONY: all docs autohotkey brew cui cli gui emacs fish nvim vscode tmux zsh poetry
 
 all: clean cui docs
-clean: fish_clean nvim_clean poetry_clean tmux_clean vscode_clean zsh_clean
+clean: fish_clean nvim_clean poetry_clean tmux_clean zsh_clean
 
 cui: fish nvim poetry tmux zsh
-gui: vscode
 
 
 brew:
@@ -50,9 +49,6 @@ poetry: poetry_clean
 tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
-vscode: vscode_clean
-	$(PWD)/vscode/bin/setup.sh
-
 windows_terminal: windows_terminal_clean
 	$(PWD)/windows-terminal/bin/setup.sh
 
@@ -89,11 +85,6 @@ poetry_clean:
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
-
-vscode_clean:
-	rm -rf $(HOME)/Library/Application\ Support/Code/User/keybindings.json
-	rm -rf $(HOME)/Library/Application\ Support/Code/User/settings.json
-	rm -rf $(HOME)/Library/Application\ Support/Code/User/snippets
 
 windows_terminal_clean:
 	$(PWD)/windows-terminal/bin/clean.sh
