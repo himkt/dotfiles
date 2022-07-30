@@ -25,6 +25,9 @@ brew_gui:
 autohotkey: autohotkey_clean
 	$(PWD)/autohotkey/bin/setup.sh
 
+cargo: cargo_clean
+	$(PWD)/cargo/bin/setup.sh
+
 cargo-atcoder: cargo-atcoder_clean
 	$(PWD)/cargo-atcoder/bin/setup.sh
 
@@ -57,6 +60,9 @@ zsh: zsh_clean
 
 autohotkey_clean:
 	$(PWD)/autohotkey/bin/clean.sh
+
+cargo_clean:
+	rm -rf $(HOME)/.cargo/config.toml
 
 cargo-atcoder_clean:
 	rm -rf $(HOME)/Library/Application\ Support/cargo-atcoder.toml
