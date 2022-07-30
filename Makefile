@@ -2,7 +2,10 @@
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
-.PHONY: all docs autohotkey brew cui cli gui emacs fish nvim vscode tmux zsh poetry
+.PHONY: \
+	all docs autohotkey brew \
+	cargo cargo-atcoder cui cli gui \
+	emacs fish nvim tmux zsh poetry
 
 all: clean cui docs
 clean: fish_clean nvim_clean poetry_clean tmux_clean zsh_clean
@@ -98,7 +101,6 @@ windows_terminal_clean:
 zsh_clean:
 	rm -rf $(HOME)/.zshrc
 	rm -rf $(HOME)/.config/zplug
-	rm -rf $(HOME)/.config/dotfiles
 
 
 docs:
