@@ -8,16 +8,18 @@ bindkey -e
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
 
-autoload -U compinit
-autoload -U colors; colors
+autoload -Uz compinit && compinit
+autoload -U colors && colors
 zstyle ':completion:*:default' menu select=1
 
-setopt auto_cd correct
+setopt auto_cd
+setopt correct
 setopt auto_param_keys
 setopt auto_param_slash
 setopt complete_aliases
 setopt complete_in_word
-setopt extended_history share_history
+setopt extended_history
+setopt share_history
 setopt magic_equal_subst
 setopt mark_dirs
 setopt no_beep
