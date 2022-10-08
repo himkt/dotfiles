@@ -306,6 +306,16 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   zplug load
 fi
 
+# Auto completion
+# NOTE:
+# It needs to source after loading zplug
+# since zplug invoke compinit inside the init script.
+if command -v kubectl > /dev/null; then
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  compdef _kubectl k
+fi
+
 # custom zsh script
 for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
 do
