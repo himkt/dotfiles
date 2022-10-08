@@ -61,4 +61,16 @@ impl Scanner {
         std::io::stdout().flush().unwrap();
     }
 }
+
+#[macro_export]
+macro_rules! debug {
+    () => {
+        #[cfg(debug_assertions)]
+        println!();
+    };
+    ($($arg:tt)*) => {
+        #[cfg(debug_assertions)]
+        println!($($arg)*);
+    };
+}
 """
