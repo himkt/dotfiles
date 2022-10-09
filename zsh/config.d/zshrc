@@ -83,9 +83,9 @@ fi
 alias ghome='git rev-parse --show-toplevel | xargs --no-run-if-empty cd'
 
 export EDITOR=vim
-export GHQ_ROOT=$HOME/work
-export GOPATH=$HOME/go
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
+export GOPATH=$HOME/go
+export GHQ_ROOT=$HOME/work
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=100000
 export LANG=en_US.UTF-8
@@ -148,10 +148,7 @@ if command -v nodebrew > /dev/null; then
 fi
 
 if command -v nvim > /dev/null; then
-  function vim () {
-    nvim $@
-  }
-
+  alias vim=nvim
   export EDITOR=nvim
 fi
 
@@ -251,12 +248,8 @@ function architecture () {
   fi
 }
 
-PROMPT=''
-PROMPT+='[$(architecture)]'
-PROMPT+=' $(current_path)'
-PROMPT+='$(git_prompt_string)'
-PROMPT+=$'\n'
-PROMPT+='> '
+LF=$'\n'
+PROMPT='[$(architecture)] $(current_path)$(git_prompt_string)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
