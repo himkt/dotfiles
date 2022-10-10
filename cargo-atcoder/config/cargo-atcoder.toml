@@ -73,4 +73,12 @@ macro_rules! debug {
         println!($($arg)*);
     };
 }
+
+#[macro_export]
+macro_rules! ndarray {
+    ($x:expr;) => { $x };
+    ($x:expr; $size:expr $( , $rest:expr )*) => {
+        vec![ndarray!($x; $($rest),*); $size]
+    };
+}
 """
