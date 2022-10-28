@@ -231,7 +231,7 @@ function git_prompt_string() {
 }
 
 function current_path () {
-  echo "%{${fg[yellow]}%}[%~]%{${reset_color}%}"
+  echo "%{${fg[yellow]}%}%~%{${reset_color}%}"
 }
 
 function current_timestamp () {
@@ -248,9 +248,19 @@ function architecture () {
   fi
 }
 
+function current_context () {
+  echo "%{$fg[blue]%}$(kubectl config current-context)%{${reset_color}%}"
+}
+
 LF=$'\n'
-PROMPT='[$(architecture)] $(current_path)$(git_prompt_string)${LF}> '
-RPROMPT='$(current_timestamp)'
+PROMPT=''
+PROMPT+='[$(architecture)] '
+if command -v kubectl > /dev/null; then
+  PROMPT+='[$(current_context)] '
+fi
+PROMPT+='[$(current_path)] '
+PROMPT+='$(git_prompt_string)${LF}> '
+RPROMPT='[$(current_timestamp)]'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 if [ -e $ZPLUG_HOME/init.zsh ]; then
