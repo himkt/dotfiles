@@ -143,5 +143,8 @@ autocmd FileType rust   nnoremap <C-t> :sp <bar> :exec ':term cargo run --bin ' 
 " templates
 autocmd BufNewFile *.cc      0r $HOME/dotfiles/nvim/template.d/cc/template.cc
 autocmd BufNewFile *.go      0r $HOME/dotfiles/nvim/template.d/go/template.go
-autocmd BufNewFile *.rs      0r $HOME/dotfiles/nvim/template.d/rs/template.rs
 autocmd BufNewFile setup.cfg 0r $HOME/dotfiles/nvim/template.d/python/setup.cfg
+
+if $ATC != ""
+  autocmd BufNewFile *.rs      0r $HOME/dotfiles/nvim/template.d/rs/atcoder.rs
+endif
