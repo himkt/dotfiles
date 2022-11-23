@@ -108,6 +108,7 @@ Darwin*)
   if [ `uname -m` = "arm64" ]; then
     export PATH=$HOMEBREW_ARM64/bin:$PATH
     export PATH=$HOMEBREW_ARM64/sbin:$PATH
+    export PYENV_ROOT=$HOME/.pyenv-arm64
   else
     export PATH=$HOMEBREW_AMD64/bin:$PATH
     export PATH=$HOMEBREW_AMD64/sbin:$PATH
