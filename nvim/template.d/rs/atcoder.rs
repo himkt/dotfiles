@@ -47,14 +47,3 @@ macro_rules! debug {
         println!($($arg)*);
     };
 }
-
-#[macro_export]
-// ndarray!(val; *shape)
-// ndarray!(val; 1) => [val]
-// ndarray!(val; 1, 2) => [[val, val]]
-macro_rules! ndarray {
-    ($x:expr;) => { $x };
-    ($x:expr; $size:expr $( , $rest:expr )*) => {
-        vec![ndarray!($x; $($rest),*); $size]
-    };
-}
