@@ -123,11 +123,9 @@ Linux*)
   ;;
 esac
 
-for prefix in $HOME/.local $HOME/dotfiles $GOPATH; do
+for prefix in $HOME $HOME/.local $HOME/dotfiles $GOPATH; do
   export PATH=$PATH:$prefix/bin
 done
-
-export PATH=$HOME/bin:$PATH
 
 if command -v brew > /dev/null; then
   export BREW_HOME=$(brew --prefix)
