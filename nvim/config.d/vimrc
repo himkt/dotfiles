@@ -147,5 +147,5 @@ autocmd BufNewFile setup.cfg 0r $HOME/dotfiles/nvim/template.d/python/setup.cfg
 
 if $ATC != ""
   autocmd BufNewFile *.rs 0r $HOME/dotfiles/nvim/template.d/rs/atcoder.rs
-  autocmd FileType rust   nnoremap <C-t> :sp <bar> :exec ':term rustc % && ./' . expand('%:t:r') <CR>
+  autocmd FileType rust   nnoremap <C-t> :sp <bar> :exec ':term rustc % && ./' . expand('%:t:r') . ' && rm ' . expand('%:t:r') <CR>
 endif
