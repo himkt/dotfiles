@@ -90,7 +90,7 @@ nvim_clean:
 
 poetry_clean:
 	rm -rf $(HOME)/.config/pypoetry
-	rm -rf "$(HOME)/Library/Application Support/pypoetry"
+	rm -rf $(HOME)/Library/Preferences/pypoetry
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
