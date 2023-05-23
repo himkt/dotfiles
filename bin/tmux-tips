@@ -7,6 +7,7 @@ message = """
 - select-layout even-(horizontal|vertical)
 - setw synchronize-panes (on|off)
 - q: quit mode
+- resize-pane -[RURL] <line>
 """
 
 print(message)
