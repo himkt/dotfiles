@@ -24,7 +24,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'nathanaelkane/vim-indent-guides'
   Plug 'osyo-manga/vim-anzu'
   Plug 'vim-airline/vim-airline'
-  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'sheerun/vim-polyglot'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
@@ -40,14 +39,6 @@ endif
 if (has('termguicolors'))
   set termguicolors
 endif
-
-try
-  let g:material_terminal_italics = 1
-  let g:material_theme_style = 'darker'
-  colorscheme material
-catch /^Vim\%((\a\+)\)\=:E185/
-  colorscheme default
-endtry
 
 hi Normal guibg=NONE ctermbg=NONE
 hi Visual guibg=gray
