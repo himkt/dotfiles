@@ -58,8 +58,15 @@ vnoremap tr :<C-u> Tabularize /
 let g:indent_guides_enable_on_vim_startup = 1
 
 " coc.nvim
+inoremap <silent><expr> <TAB>
+      \ coc#pum#visible() ? coc#pum#next(1) :
+      \ CheckBackspace() ? "\<Tab>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() :
+      \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+
 let g:coc_global_extensions = ['coc-pyright', 'coc-rust-analyzer']
-inoremap <expr> <CR> pumvisible() ? "<C-y>" : "<CR>"
 nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')   <CR>
 nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit') <CR>
 nmap <silent> ch :call CocAction('doHover') <CR>
