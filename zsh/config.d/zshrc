@@ -110,11 +110,13 @@ Darwin*)
     export PATH=$HOMEBREW_ARM64/sbin:$PATH
     export PYENV_ROOT=$HOME/.pyenv-arm64
     export NODENV_ROOT=$HOME/.nodenv-arm64
+    export RYE_HOME=$HOME/.rye-arm64
   else
     export PATH=$HOMEBREW_AMD64/bin:$PATH
     export PATH=$HOMEBREW_AMD64/sbin:$PATH
     export PYENV_ROOT=$HOME/.pyenv
     export NODENV_ROOT=$HOME/.nodenv
+    export RYE_HOME=$HOME/.rye
   fi
   ;;
 Linux*)
@@ -122,6 +124,7 @@ Linux*)
   export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
   export PATH=$HOME/.linuxbrew/bin:$PATH
   export PATH=$HOME/.linuxbrew/sbin:$PATH
+  export RYE_HOME=$HOME/.rye
   ;;
 esac
 
@@ -209,6 +212,10 @@ if command -v fzf > /dev/null; then
   zle -N cd-f
   zle -N cd-z
   zle -N hist-f
+fi
+
+if command -v rye > /dev/null; then
+  source $RYE_HOME/env
 fi
 
 function parse_git_branch() {
