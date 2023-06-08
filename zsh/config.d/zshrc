@@ -148,6 +148,11 @@ if command -v pyenv > /dev/null; then
   eval "$(pyenv init -)"
 fi
 
+if command -v rye > /dev/null; then
+  # TODO: it gets stuck with pyenv init
+  # source $RYE_HOME/env
+fi
+
 if command -v nodenv > /dev/null; then
   eval "$(nodenv init -)"
 fi
@@ -212,10 +217,6 @@ if command -v fzf > /dev/null; then
   zle -N cd-f
   zle -N cd-z
   zle -N hist-f
-fi
-
-if command -v rye > /dev/null; then
-  source $RYE_HOME/env
 fi
 
 function parse_git_branch() {
