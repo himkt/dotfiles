@@ -235,7 +235,13 @@ function current_architecture () {
 
 function current_context () {
   if command -v kubectl > /dev/null; then
-    echo "[%{$fg[blue]%}$(kubectl config current-context)%{${reset_color}%}] "
+    kubectl config current-context &> /dev/null
+    kubectl_exit_code=$?
+    if [ "$kubectl_exit_code" -eq 0 ]; then
+      echo "[%{$fg[blue]%}$(kubectl config current-context)%{${reset_color}%}] "
+    else
+      echo ""
+    fi
   else
     echo ""
   fi
@@ -284,7 +290,6 @@ if [ -e $ZPLUG_HOME/init.zsh ]; then
   source $ZPLUG_HOME/init.zsh
 
   zplug "rupa/z", use:"z.sh"
-  zplug "stedolan/jq", from:gh-r, as:command, rename-to:jq
   zplug "tarruda/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
   zplug "zsh-users/zsh-history-substring-search"
   zplug "zsh-users/zsh-syntax-highlighting", defer:2
