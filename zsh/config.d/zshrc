@@ -105,6 +105,8 @@ export HOMEBREW_AMD64=/opt/homebrew-x86_64
 
 case `uname -s` in
 Darwin*)
+  ssh-add --apple-load-keychain -q
+
   if [ `uname -m` = "arm64" ]; then
     export PATH=$HOMEBREW_ARM64/bin:$PATH
     export PATH=$HOMEBREW_ARM64/sbin:$PATH
