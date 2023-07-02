@@ -88,8 +88,6 @@ export GOPATH=$HOME/go
 export GHQ_ROOT=$HOME/work
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=100000
-export LANG=en_US.UTF-8
-export LC_CTYPE=en_US.UTF-8
 export PYTHONDONTWRITEBYTECODE=1
 export SAVEHIST=100000
 export XDG_CONFIG_HOME=$HOME/.config
@@ -99,6 +97,15 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
 if [ "$COLORTERM" = "gnome-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "xfce4-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "rxvt-xpm" ]; then export TERM=rxvt-256color; fi
+
+language=en_US.UTF-8
+if [ "`locale -a | grep $language`" = $language ]; then
+  echo "supported"
+  export LANG=$language
+  export LC_CTYPE=$language
+else
+  echo "not supported"
+fi
 
 export HOMEBREW_ARM64=/opt/homebrew
 export HOMEBREW_AMD64=/opt/homebrew-x86_64
