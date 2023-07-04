@@ -30,7 +30,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'himkt/cargo-atcoder.nvim'
 call plug#end()
 
-
 " material.vim
 if (has('nvim'))
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
@@ -46,7 +45,7 @@ hi Visual guibg=gray
 " vim-easymotion
 let g:EasyMotion_do_mapping = 0
 nmap <Leader>s <Plug>(easymotion-sn)
- 
+
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right')) <CR>
 nnoremap <silent> <C-x> :Commands <CR>
@@ -58,14 +57,7 @@ vnoremap tr :<C-u> Tabularize /
 let g:indent_guides_enable_on_vim_startup = 1
 
 " coc.nvim
-inoremap <silent><expr> <TAB>
-      \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() :
-      \ "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
-
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
 let g:coc_global_extensions = ['coc-pyright', 'coc-rust-analyzer']
 nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')   <CR>
 nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit') <CR>
