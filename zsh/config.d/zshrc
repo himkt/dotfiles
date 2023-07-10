@@ -128,6 +128,8 @@ Darwin*)
   fi
   ;;
 Linux*)
+  eval `ssh-agent -s`
+
   export PATH=/home/linuxbrew/.linuxbrew/bin:$PATH
   export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
   export PATH=$HOME/.linuxbrew/bin:$PATH
