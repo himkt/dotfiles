@@ -4,8 +4,8 @@ NOCOLOR    := $(shell tput sgr0)
 
 .PHONY: \
 	all docs autohotkey brew \
-	cargo cargo-atcoder cui cli gui \
-	emacs fish nvim tmux zsh poetry
+	cargo cui cli gui \
+	fish nvim tmux zsh poetry
 
 all: clean cui docs
 clean: fish_clean nvim_clean poetry_clean tmux_clean zsh_clean
@@ -30,12 +30,6 @@ autohotkey: autohotkey_clean
 
 cargo: cargo_clean
 	$(PWD)/cargo/bin/setup.sh
-
-cargo-atcoder: cargo-atcoder_clean
-	$(PWD)/cargo-atcoder/bin/setup.sh
-
-emacs: emacs_clean
-	$(PWD)/emacs/bin/setup.sh
 
 fish: fish_clean
 	$(PWD)/fish/bin/setup.sh
@@ -66,13 +60,6 @@ autohotkey_clean:
 
 cargo_clean:
 	rm -rf $(HOME)/.cargo/config.toml
-
-cargo-atcoder_clean:
-	rm -rf $(HOME)/Library/Application\ Support/cargo-atcoder.toml
-	rm -rf $(HOME)/.config/cargo-atcoder.toml
-
-emacs_clean:
-	rm -rf $(HOME)/.emacs.d
 
 fish_clean:
 	rm -rf $(HOME)/.config/fish
