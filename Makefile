@@ -3,15 +3,15 @@ RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
 .PHONY: \
-	all docs autohotkey brew \
-	cargo cui cli gui \
-	fish nvim tmux zsh poetry
+	all docs brew \
+	cui cli gui \
+	autohotkey_clean cargo \
+	fish git hyper \
+	nvim poetry tmux windows_terminal zsh
 
 all: clean cui docs
-clean: fish_clean nvim_clean poetry_clean tmux_clean zsh_clean
 
-cui: fish nvim poetry tmux zsh
-
+# =========================
 
 brew:
 	$(PWD)/brew/bin/setup.sh
@@ -24,6 +24,10 @@ brew_cli:
 
 brew_gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
+
+# =========================
+
+cui: cargo fish git nvim poetry tmux zsh
 
 autohotkey: autohotkey_clean
 	$(PWD)/autohotkey/bin/setup.sh
@@ -54,6 +58,13 @@ windows_terminal: windows_terminal_clean
 
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
+
+# =========================
+
+clean: \
+	cargo_clean fish_clean \
+	git_clean nvim_clean poetry_clean \
+	tmux_clean zsh_clean
 
 autohotkey_clean:
 	$(PWD)/autohotkey/bin/clean.sh
@@ -89,6 +100,7 @@ zsh_clean:
 	rm -rf $(HOME)/.zshrc
 	rm -rf $(HOME)/.config/zplug
 
+# =========================
 
 docs:
 	@echo ""
