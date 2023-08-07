@@ -120,12 +120,10 @@ Darwin*)
     export HOMEBREW_ROOT=/opt/homebrew
     export PYENV_ROOT=$HOME/.pyenv-arm64
     export NODENV_ROOT=$HOME/.nodenv-arm64
-    export RYE_HOME=$HOME/.rye-arm64
   else
     export HOMEBREW_ROOT=/opt/homebrew-x86_64
     export PYENV_ROOT=$HOME/.pyenv
     export NODENV_ROOT=$HOME/.nodenv
-    export RYE_HOME=$HOME/.rye
   fi
 
   export PATH=$HOMEBREW_ROOT/sbin:$PATH
@@ -138,7 +136,6 @@ Linux*)
   export PATH=/home/linuxbrew/.linuxbrew/sbin:$PATH
   export PATH=$HOME/.linuxbrew/bin:$PATH
   export PATH=$HOME/.linuxbrew/sbin:$PATH
-  export RYE_HOME=$HOME/.rye
   ;;
 esac
 
@@ -161,11 +158,6 @@ fi
 
 if command -v pyenv > /dev/null; then
   eval "$(pyenv init -)"
-fi
-
-if command -v rye > /dev/null; then
-  # TODO: it gets stuck with pyenv init
-  # source $RYE_HOME/env
 fi
 
 if command -v nodenv > /dev/null; then
