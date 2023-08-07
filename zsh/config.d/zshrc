@@ -43,6 +43,14 @@ function date () {
   esac
 }
 
+function retcode () {
+  echo $?
+}
+
+function clean_platform_specific_env () {
+    export PATH=`clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT`
+}
+
 function amd64 () {
   if [ `uname -m` = 'arm64' ]; then
     if type deactivate > /dev/null 2>&1; then
@@ -50,8 +58,7 @@ function amd64 () {
       deactivate
     fi
 
-    export PATH=`echo $PATH | sed -E "s|$HOMEBREW_ARM64/[^:]*:?||g"`
-    export PATH=`echo $PATH | sed -E "s|:$HOMEBREW_ARM64/.*||g"`
+    clean_platform_specific_env
     arch -x86_64 zsh
   fi
 }
@@ -63,8 +70,7 @@ function arm64 () {
       deactivate
     fi
 
-    export PATH=`echo $PATH | sed -E "s|$HOMEBREW_AMD64/[^:]*:?||g"`
-    export PATH=`echo $PATH | sed -E "s|:$HOMEBREW_AMD64/.*||g"`
+    clean_platform_specific_env
     arch -arm64 zsh
   fi
 }
@@ -106,26 +112,24 @@ fi
 export LANG=$language
 export LC_CTYPE=$language
 
-export HOMEBREW_ARM64=/opt/homebrew
-export HOMEBREW_AMD64=/opt/homebrew-x86_64
-
 case `uname -s` in
 Darwin*)
   ssh-add --apple-load-keychain -q
 
   if [ `uname -m` = "arm64" ]; then
-    export PATH=$HOMEBREW_ARM64/bin:$PATH
-    export PATH=$HOMEBREW_ARM64/sbin:$PATH
+    export HOMEBREW_ROOT=/opt/homebrew
     export PYENV_ROOT=$HOME/.pyenv-arm64
     export NODENV_ROOT=$HOME/.nodenv-arm64
     export RYE_HOME=$HOME/.rye-arm64
   else
-    export PATH=$HOMEBREW_AMD64/bin:$PATH
-    export PATH=$HOMEBREW_AMD64/sbin:$PATH
+    export HOMEBREW_ROOT=/opt/homebrew-x86_64
     export PYENV_ROOT=$HOME/.pyenv
     export NODENV_ROOT=$HOME/.nodenv
     export RYE_HOME=$HOME/.rye
   fi
+
+  export PATH=$HOMEBREW_ROOT/sbin:$PATH
+  export PATH=$HOMEBREW_ROOT/bin:$PATH
   ;;
 Linux*)
   eval `ssh-agent -s`
