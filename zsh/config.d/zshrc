@@ -43,6 +43,10 @@ function date () {
   esac
 }
 
+function retcode () {
+  echo $?
+}
+
 function amd64 () {
   if [ `uname -m` = 'arm64' ]; then
     if type deactivate > /dev/null 2>&1; then
