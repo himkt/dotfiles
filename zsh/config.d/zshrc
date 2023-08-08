@@ -48,7 +48,7 @@ function retcode () {
 }
 
 function clean_platform_specific_env () {
-    export PATH=`clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT`
+  export PATH=`clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT`
 }
 
 function amd64 () {
