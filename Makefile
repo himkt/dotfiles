@@ -6,7 +6,7 @@ NOCOLOR    := $(shell tput sgr0)
 	all docs brew \
 	cui cli gui \
 	autohotkey_clean cargo \
-	fish git hyper \
+	fish git \
 	nvim poetry tmux windows_terminal zsh
 
 all: clean cui docs
@@ -41,9 +41,6 @@ fish: fish_clean
 git: git_clean
 	$(PWD)/git/bin/setup.sh
 
-hyper: hyper_clean
-	$(PWD)/hyper/bin/setup.sh
-
 nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
@@ -77,9 +74,6 @@ fish_clean:
 
 git_clean:
 	rm -rf $(HOME)/.config/git/ignore
-
-hyper_clean:
-	rm -rf $(HOME)/.hyper.js
 
 nvim_clean:
 	rm -rf $(HOME)/.vimrc
