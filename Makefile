@@ -5,8 +5,7 @@ NOCOLOR    := $(shell tput sgr0)
 .PHONY: \
 	all docs brew \
 	cui cli gui \
-	autohotkey_clean cargo \
-	fish git \
+	autohotkey_clean cargo git \
 	nvim poetry tmux windows_terminal zsh
 
 all: clean cui docs
@@ -27,16 +26,13 @@ brew_gui:
 
 # =========================
 
-cui: cargo fish git nvim poetry tmux zsh
+cui: cargo git nvim poetry tmux zsh
 
 autohotkey: autohotkey_clean
 	$(PWD)/autohotkey/bin/setup.sh
 
 cargo: cargo_clean
 	$(PWD)/cargo/bin/setup.sh
-
-fish: fish_clean
-	$(PWD)/fish/bin/setup.sh
 
 git: git_clean
 	$(PWD)/git/bin/setup.sh
@@ -59,7 +55,7 @@ zsh: zsh_clean
 # =========================
 
 clean: \
-	cargo_clean fish_clean \
+	cargo_clean \
 	git_clean nvim_clean poetry_clean \
 	tmux_clean zsh_clean
 
@@ -68,9 +64,6 @@ autohotkey_clean:
 
 cargo_clean:
 	rm -rf $(HOME)/.cargo/config.toml
-
-fish_clean:
-	rm -rf $(HOME)/.config/fish
 
 git_clean:
 	rm -rf $(HOME)/.config/git/ignore
