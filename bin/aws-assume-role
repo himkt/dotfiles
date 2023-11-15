@@ -2,38 +2,45 @@
 
 import argparse
 import datetime
+import json
 import os
-from typing import Any
+import subprocess
 from typing import Dict
 from typing import Optional
 
-try:
-    import boto3
-except ModuleNotFoundError:
-    raise ImportError("Please install boto3: `pip install boto3`.")
 
-
-def assume_role(arn: str, mfa_token: Optional[str]):
+def assume_role(arn: str, role_session_name: str, mfa_token: Optional[str]):
     """Assume role
 
     Args:
     - arn (str): AWS ARN of IAM
+    - role_session_name (str): Name of session
     - mfa_token (Optional[str]): MFA token
 
     """
-    client = boto3.client("sts")
 
-    args = {
-        "RoleArn": arn,
-        "RoleSessionName": "tmp-himkt",
-    }
-
+    cmd = [
+        "aws",
+        "sts",
+        "assume-role",
+        "--role-arn",
+        arn,
+        "--role-session-name",
+        role_session_name,
+    ]
     if mfa_token is not None:
-        args["TokenCode"] = mfa_token
+        cmd.extend([
+            "--token-code",
+            mfa_token,
+        ])
 
-    credentials: Dict[str, Any] = client.assume_role(**args)["Credentials"]
+    output = subprocess.check_output(cmd).decode("utf-8")
+    session_info = json.loads(output)
+    credentials: Dict[str, str] = session_info["Credentials"]
 
-    expiration_dt: datetime.datetime = credentials["Expiration"]
+    expiration_dt: datetime.datetime = datetime.datetime.fromisoformat(
+        credentials["Expiration"],
+    )
     current_dt = datetime.datetime.now(tz=expiration_dt.tzinfo)
     print(f"Expires in {(expiration_dt - current_dt).seconds}sec")
 
@@ -62,7 +69,8 @@ def get_mfa_token(mfa: bool):
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--role-arn", type=str, required=True)
+    parser.add_argument("--role-session-name", default="cli")
     parser.add_argument("--mfa", action="store_true")
     args = parser.parse_args()
     mfa_token = get_mfa_token(args.mfa)
-    assume_role(args.role_arn, mfa_token)
+    assume_role(args.role_arn, args.role_session_name, mfa_token)
