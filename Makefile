@@ -43,6 +43,9 @@ nvim: nvim_clean
 poetry: poetry_clean
 	$(PWD)/poetry/bin/setup.sh
 
+sheldon: sheldon_clean
+	$(PWD)/sheldon/bin/setup.sh
+
 tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
@@ -76,6 +79,9 @@ nvim_clean:
 poetry_clean:
 	rm -rf $(HOME)/.config/pypoetry
 	rm -rf $(HOME)/Library/Application\ Support/pypoetry
+
+sheldon_clean:
+	rm -rf $(HOME)/.config/sheldon
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf

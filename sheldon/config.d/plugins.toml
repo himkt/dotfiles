@@ -1,0 +1,13 @@
+[plugins]
+
+[plugins.zsh-autosuggestions]
+github = 'zsh-users/zsh-autosuggestions'
+apply = ['source']
+
+[plugins.zsh-syntax-highlighting]
+github = 'zsh-users/zsh-syntax-highlighting'
+apply = ['source']
+
+[plugins.z]
+github = 'rupa/z'
+apply = ['source']

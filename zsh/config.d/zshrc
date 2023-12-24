@@ -156,6 +156,10 @@ else
   export PYTHONSYSTEMPATH=$(which python3)
 fi
 
+if command -v sheldon > /dev/null; then
+  eval "$(sheldon source)"
+fi
+
 if command -v rbenv > /dev/null; then
   eval "$(rbenv init -)"
 fi
