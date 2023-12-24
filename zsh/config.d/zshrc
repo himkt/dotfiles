@@ -114,8 +114,6 @@ export LC_CTYPE=$language
 
 case `uname -s` in
 Darwin*)
-  ssh-add --apple-load-keychain -q
-
   if [ `uname -m` = "arm64" ]; then
     export HOMEBREW_ROOT=/opt/homebrew
     export PYENV_ROOT=$HOME/.pyenv-arm64
@@ -149,13 +147,17 @@ if command -v brew > /dev/null; then
   export PYTHONSYSTEMPATH=$BREW_HOME/bin/python3
   eval $(brew shellenv)
 
-  if [ "$(brew ls xz 2> /dev/null)" != "" ]; then
+  if [ "$(brew --prefix xz 2> /dev/null)" != "" ]; then
     export CONFIGURE_OPTS="--enable-shared"
     export CPPFLAGS="-I$(brew --prefix xz)/include"
     export LDFLAGS="-L$(brew --prefix xz)/lib"
   fi
 else
   export PYTHONSYSTEMPATH=$(which python3)
+fi
+
+if command -v sheldon > /dev/null; then
+  eval "$(sheldon source)"
 fi
 
 if command -v rbenv > /dev/null; then
@@ -299,26 +301,6 @@ PROMPT+='${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
-if [ -e $ZPLUG_HOME/init.zsh ]; then
-  source $ZPLUG_HOME/init.zsh
-
-  zplug "rupa/z", use:"z.sh"
-  zplug "tarruda/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
-  zplug "zsh-users/zsh-history-substring-search"
-  zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-  # check whether if there are packages which it can install
-  if ! zplug check --verbose; then
-    zplug install
-  fi
-
-  zplug load
-fi
-
-# Auto completion
-# NOTE:
-# It needs to source after loading zplug
-# since zplug invoke compinit inside the init script.
 if command -v kubectl > /dev/null; then
   source <(kubectl completion zsh)
   alias k=kubectl
