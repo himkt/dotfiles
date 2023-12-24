@@ -301,26 +301,6 @@ PROMPT+='${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
-if [ -e $ZPLUG_HOME/init.zsh ]; then
-  source $ZPLUG_HOME/init.zsh
-
-  zplug "rupa/z", use:"z.sh"
-  zplug "tarruda/zsh-autosuggestions", use:"zsh-autosuggestions.zsh"
-  zplug "zsh-users/zsh-history-substring-search"
-  zplug "zsh-users/zsh-syntax-highlighting", defer:2
-
-  # check whether if there are packages which it can install
-  if ! zplug check --verbose; then
-    zplug install
-  fi
-
-  zplug load
-fi
-
-# Auto completion
-# NOTE:
-# It needs to source after loading zplug
-# since zplug invoke compinit inside the init script.
 if command -v kubectl > /dev/null; then
   source <(kubectl completion zsh)
   alias k=kubectl
