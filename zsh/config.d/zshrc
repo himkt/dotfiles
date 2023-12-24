@@ -114,8 +114,6 @@ export LC_CTYPE=$language
 
 case `uname -s` in
 Darwin*)
-  ssh-add --apple-load-keychain -q
-
   if [ `uname -m` = "arm64" ]; then
     export HOMEBREW_ROOT=/opt/homebrew
     export PYENV_ROOT=$HOME/.pyenv-arm64
