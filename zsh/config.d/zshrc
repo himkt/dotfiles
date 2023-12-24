@@ -147,7 +147,7 @@ if command -v brew > /dev/null; then
   export PYTHONSYSTEMPATH=$BREW_HOME/bin/python3
   eval $(brew shellenv)
 
-  if [ "$(brew ls xz 2> /dev/null)" != "" ]; then
+  if [ "$(brew --prefix xz 2> /dev/null)" != "" ]; then
     export CONFIGURE_OPTS="--enable-shared"
     export CPPFLAGS="-I$(brew --prefix xz)/include"
     export LDFLAGS="-L$(brew --prefix xz)/lib"
