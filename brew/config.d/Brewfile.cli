@@ -20,3 +20,5 @@ brew 'z'
 
 tap 'himkt/himkt'
 brew 'omoide'
+
+brew 'nextdns/tap/nextdns'
