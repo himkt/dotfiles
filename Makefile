@@ -69,6 +69,7 @@ cargo_clean:
 	rm -rf $(HOME)/.cargo/config.toml
 
 git_clean:
+	rm -rf $(HOME)/.config/git/config
 	rm -rf $(HOME)/.config/git/ignore
 
 nvim_clean:
