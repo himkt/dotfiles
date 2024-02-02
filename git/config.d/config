@@ -1,0 +1,9 @@
+[user]
+	email = himkt@klis.tsukuba.ac.jp
+	name = himkt
+
+[pull]
+	rebase = false
+
+[alias]
+	remove-merged = !remove-merged-branches
