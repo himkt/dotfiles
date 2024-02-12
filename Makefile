@@ -6,7 +6,7 @@ NOCOLOR    := $(shell tput sgr0)
 	all docs brew \
 	cui cli gui \
 	autohotkey_clean cargo git \
-	nvim poetry tmux windows_terminal zsh
+	nvim poetry tmux zsh
 
 all: clean cui docs
 
@@ -49,9 +49,6 @@ sheldon: sheldon_clean
 tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
-windows_terminal: windows_terminal_clean
-	$(PWD)/windows-terminal/bin/setup.sh
-
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
 
@@ -86,9 +83,6 @@ sheldon_clean:
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
-
-windows_terminal_clean:
-	$(PWD)/windows-terminal/bin/clean.sh
 
 zsh_clean:
 	rm -rf $(HOME)/.zshrc
