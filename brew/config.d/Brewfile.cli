@@ -1,5 +1,3 @@
-tap 'ktr0731/evans'
-
 brew 'bat'
 brew 'cookiecutter'
 brew 'coreutils'
@@ -10,15 +8,12 @@ brew 'ghq'
 brew 'gh'
 brew 'htop'
 brew 'jq'
+brew 'ktr0731/evans/evans'
 brew 'krew'
 brew 'kubectx'
 brew 'kubernetes-cli'
+brew 'nextdns/tap/nextdns'
 brew 'sheldon'
 brew 'the_silver_searcher'
 brew 'tree'
 brew 'z'
-
-tap 'himkt/himkt'
-brew 'omoide'
-
-brew 'nextdns/tap/nextdns'
