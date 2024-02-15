@@ -1,6 +1,3 @@
-brew 'gcc@9'
-brew 'python@3.9'
+brew 'gcc'
 brew 'nvim'
-brew 'tmux'
-brew 'reattach-to-user-namespace'
 brew 'zsh'
