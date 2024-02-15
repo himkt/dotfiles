@@ -15,14 +15,14 @@ all: clean cui docs
 brew:
 	$(PWD)/brew/bin/setup.sh
 
-brew_cui:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile
+brew-cui:
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/base/Brewfile
 
-brew_cli:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.cli
+brew-optional:
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/optional/Brewfile
 
-brew_gui:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/Brewfile.gui
+brew-gui:
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/gui/Brewfile
 
 # =========================
 
@@ -94,13 +94,13 @@ docs:
 	@echo "---"
 	@echo ""
 	@echo "### Packages"
-	@echo "- If you want to use linuxbrew/homebrew, please run $(RED)make brew_cui$(NOCOLOR)."
+	@echo "- If you want to use linuxbrew/homebrew, please run $(RED)make brew-cui$(NOCOLOR)."
 	@echo "- Please run $(RED)make brew$(NOCOLOR) before if you have not installed brew yet"
-	@echo "- Additionally, $(RED)make brew_cli$(NOCOLOR) installs optional packages"
+	@echo "- Additionally, $(RED)make brew-optional$(NOCOLOR) installs optional packages"
 	@echo ""
 	@echo "---"
 	@echo ""
 	@echo "### Python"
-	@echo "- After $(RED)make brew, make brew_cui, source $$HOME/.zshrc$(NOCOLOR),"
+	@echo "- After $(RED)make brew, make brew-cui, source $$HOME/.zshrc$(NOCOLOR),"
 	@echo "  you can run $(RED)make nvim$(NOCOLOR) to install Python and the nvim library"
 	@echo ""
