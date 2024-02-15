@@ -15,7 +15,7 @@ all: clean cui docs
 brew:
 	$(PWD)/brew/bin/setup.sh
 
-brew-cui:
+brew-base:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/base/Brewfile
 
 brew-optional:
