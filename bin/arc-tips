@@ -3,6 +3,7 @@
 
 message = """
 - C-d: toggle developer mode
+- C-shift-d: toggle toolbar
 - cmd-E: open 1password prompt
 """
 
