@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+
+import argparse
+import pathlib
+import os
+
+
+def tips_home() -> pathlib.Path:
+    default = pathlib.Path.home() / "dotfiles" / "tips" / "tips.d"
+    return pathlib.Path(os.getenv("TIPS_HOME", default))
+
+
+def list_tips() -> list[pathlib.Path]:
+    return [name.name for name in tips_home().iterdir()]
+
+
+def show_tips(name: str) -> None:
+    tips_file = tips_home() / name / "tips"
+    if not tips_file.exists():
+        print(f"No tips available for {name}")
+    with open(tips_file) as f:
+        print(f.read())
+
+
+def main(args: argparse.Namespace) -> None:
+    if not tips_home().exists():
+        print(f"No tips.d found on {tips_home().parent}")
+        return
+    if args.list:
+        for name in list_tips():
+            print(name)
+        return
+    if args.name is None:
+        print("[name] is required if --list is not specified.")
+
+    show_tips(args.name)
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--list", "-l", action="store_true")
+    parser.add_argument("--name")
+    args = parser.parse_args()
+
+    main(args)
