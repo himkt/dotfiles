@@ -1,9 +1,0 @@
-#!/usr/bin/env python3
-
-
-message = """
-- C-v: go to the next page
-- M-v: go to the previous page
-"""
-
-print(message)

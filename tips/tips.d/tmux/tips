@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-
-message = """
 - join-pane
 - break-window
 - next-layout: <prefix> <space>
@@ -8,6 +5,3 @@ message = """
 - setw synchronize-panes (on|off)
 - q: quit mode
 - resize-pane -[RURL] <line>
-"""
-
-print(message)
