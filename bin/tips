@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 
 import argparse
-import pathlib
 import os
+import pathlib
+from subprocess import call
 
 
 def tips_home() -> pathlib.Path:
@@ -10,7 +11,7 @@ def tips_home() -> pathlib.Path:
     return pathlib.Path(os.getenv("TIPS_HOME", default))
 
 
-def list_tips() -> list[pathlib.Path]:
+def list_tips() -> list[str]:
     return [name.name for name in tips_home().iterdir()]
 
 
@@ -20,6 +21,12 @@ def show_tips(name: str) -> None:
         print(f"No tips available for {name}")
     with open(tips_file) as f:
         print(f.read())
+
+
+def edit_tips(name: str) -> None:
+    tips_file = tips_home() / name / "tips"
+    EDITOR = os.environ.get("EDITOR", "vim")
+    call([EDITOR, tips_file.as_posix()])
 
 
 def main(args: argparse.Namespace) -> None:
@@ -32,14 +39,18 @@ def main(args: argparse.Namespace) -> None:
         return
     if args.name is None:
         print("[name] is required if --list is not specified.")
-
+    if args.edit:
+        edit_tips(args.name)
+        print(f"Tips for {args.name} updated.")
+        return
     show_tips(args.name)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--list", "-l", action="store_true")
-    parser.add_argument("--name")
+    parser.add_argument("--name", type=str)
+    parser.add_argument("--edit", action="store_true")
     args = parser.parse_args()
 
     main(args)
