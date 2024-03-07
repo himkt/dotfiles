@@ -7,8 +7,8 @@ from subprocess import call
 
 
 def tips_home() -> pathlib.Path:
-    default = pathlib.Path.home() / "dotfiles" / "tips" / "tips.d"
-    return pathlib.Path(os.getenv("TIPS_HOME", default))
+    default = pathlib.Path.home() / "dotfiles" / "tips"
+    return pathlib.Path(os.getenv("TIPS_HOME", default)) / "tips.d"
 
 
 def list_tips() -> list[str]:
