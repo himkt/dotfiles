@@ -39,6 +39,7 @@ def main(args: argparse.Namespace) -> None:
         return
     if args.name is None:
         print("[name] is required if --list is not specified.")
+        return
     if args.edit:
         edit_tips(args.name)
         print(f"Tips for {args.name} updated.")
