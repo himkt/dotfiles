@@ -1,3 +1,6 @@
+tap 'ktr0731/evans'
+tap 'nextdns/tap'
+
 brew 'bat'
 brew 'coreutils'
 brew 'envchain'

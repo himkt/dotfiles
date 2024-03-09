@@ -80,7 +80,6 @@ tmux_clean:
 
 zsh_clean:
 	rm -rf $(HOME)/.zshrc
-	rm -rf $(HOME)/.config/zplug
 
 # =========================
 
