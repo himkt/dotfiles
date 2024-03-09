@@ -9,16 +9,25 @@ jobs:
 
     strategy:
       matrix:
-        # os: [ubuntu-latest, macos-latest]
         os: [macos-latest]
 
     runs-on: ${{ matrix.os }}
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Build linuxbrew
-      run: |
-        cp -r $GITHUB_WORKSPACE $HOME/dotfiles && cd $HOME/dotfiles
-        make
-        make brew
-        make brew-optional
+      - uses: actions/checkout@v4
+
+      - name: setup
+        run: |
+          cp -r $GITHUB_WORKSPACE $HOME/dotfiles && cd $HOME/dotfiles
+          make
+
+      - name: make {brew,brew-optional}
+        run: |
+          make brew
+          make brew-base
+          make brew-optional
+
+      - name: zsh
+        run: |
+          make zsh
+          make sheldon
