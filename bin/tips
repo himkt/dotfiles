@@ -15,12 +15,16 @@ def list_tips() -> list[str]:
     return [name.name for name in tips_home().iterdir()]
 
 
-def show_tips(name: str) -> None:
+def show_tips(name: str, query: str | None) -> None:
     tips_file = tips_home() / name / "tips"
     if not tips_file.exists():
         print(f"No tips available for {name}")
     with open(tips_file) as f:
-        print(f.read())
+        for tip in f.readlines():
+            tip = tip.rstrip()
+            if query is not None and query not in tip:
+                continue
+            print(tip)
 
 
 def edit_tips(name: str) -> None:
@@ -44,7 +48,7 @@ def main(args: argparse.Namespace) -> None:
         edit_tips(args.name)
         print(f"Tips for {args.name} updated.")
         return
-    show_tips(args.name)
+    show_tips(args.name, args.query)
 
 
 if __name__ == "__main__":
@@ -52,6 +56,7 @@ if __name__ == "__main__":
     parser.add_argument("--list", "-l", action="store_true")
     parser.add_argument("--name", type=str)
     parser.add_argument("--edit", action="store_true")
+    parser.add_argument("--query", "-q")
     args = parser.parse_args()
 
     main(args)
