@@ -35,9 +35,6 @@ set encoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,euc-jp,ascii
 set fileformats=unix,mac,dos
 
-"" Use mouse
-set mouse=a
-
 "" Open a new buffer without saving
 set hidden
 

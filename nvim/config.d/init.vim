@@ -9,6 +9,9 @@
 " ---------------------
 "
 
+"" disable mouse
+set mouse=
+
 "" use python3 installed globally
 let g:python3_host_prog=$PYTHONSYSTEMPATH
 
