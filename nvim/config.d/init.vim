@@ -47,7 +47,7 @@ hi Visual guibg=gray
 
 " vim-easymotion
 let g:EasyMotion_do_mapping = 0
-nmap <Leader>s <Plug>(easymotion-sn)
+nmap // <Plug>(easymotion-sn)
 
 " fzf
 nnoremap <silent> <C-p> :call fzf#vim#files('', fzf#vim#with_preview('right')) <CR>
