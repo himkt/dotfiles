@@ -37,26 +37,31 @@ def main(args: argparse.Namespace) -> None:
     if not tips_home().exists():
         print(f"No tips.d found on {tips_home().parent}")
         return
-    if args.list:
+
+    if args.sub_parser == "list":
         for name in list_tips():
             print(name)
-        return
-    if args.name is None:
-        print("[name] is required if --list is not specified.")
-        return
-    if args.edit:
+
+    elif args.sub_parser == "show":
+        show_tips(args.name, args.query)
+
+    elif args.sub_parser == "edit":
         edit_tips(args.name)
         print(f"Tips for {args.name} updated.")
-        return
-    show_tips(args.name, args.query)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--list", "-l", action="store_true")
-    parser.add_argument("--name", type=str)
-    parser.add_argument("--edit", action="store_true")
-    parser.add_argument("--query", "-q")
-    args = parser.parse_args()
+    sub_parsers = parser.add_subparsers(help="sub command help", dest="sub_parser")
 
+    show_parser = sub_parsers.add_parser("show")
+    show_parser.add_argument("name", type=str, default=None)
+    show_parser.add_argument("--query", "-q")
+
+    edit_parser = sub_parsers.add_parser("edit")
+    edit_parser.add_argument("name", type=str, default=None)
+
+    list_parser = sub_parsers.add_parser("list")
+
+    args = parser.parse_args()
     main(args)
