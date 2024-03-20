@@ -42,16 +42,21 @@ def main(args: argparse.Namespace) -> None:
         return
 
     actions = {
-        None: lambda _: ...,
         "list": list_tips,
         "show": show_tips,
         "edit": edit_tips,
     }
+    if args.sub_parser is None:
+        commands = ", ".join(actions.keys())
+        print(f"Available commands: {commands}")
+        return
+
     actions[args.sub_parser](args)
 
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
+    parser.add_argument("--version", "-v", action="version", version="0.0.1")
     sub_parsers = parser.add_subparsers(help="sub command help", dest="sub_parser")
 
     show_parser = sub_parsers.add_parser("show")
