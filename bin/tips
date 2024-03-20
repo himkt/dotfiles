@@ -11,26 +11,29 @@ def tips_home() -> pathlib.Path:
     return pathlib.Path(os.getenv("TIPS_HOME", default)) / "tips.d"
 
 
-def list_tips() -> list[str]:
-    return [name.name for name in tips_home().iterdir()]
+def list_tips(_: argparse.Namespace) -> list[str]:
+    for name in tips_home().iterdir():
+        print(name.name)
 
 
-def show_tips(name: str, query: str | None) -> None:
-    tips_file = tips_home() / name / "tips"
+def show_tips(args: argparse.Namespace) -> None:
+    tips_file = tips_home() / args.name / "tips"
     if not tips_file.exists():
-        print(f"No tips available for {name}")
+        print(f"No tips available for {args.name}")
+        return
     with open(tips_file) as f:
         for tip in f.readlines():
             tip = tip.rstrip()
-            if query is not None and query not in tip:
+            if args.query is not None and args.query not in tip:
                 continue
             print(tip)
 
 
-def edit_tips(name: str) -> None:
-    tips_file = tips_home() / name / "tips"
+def edit_tips(args: argparse.Namespace) -> None:
+    tips_file = tips_home() / args.name / "tips"
     EDITOR = os.environ.get("EDITOR", "vim")
     call([EDITOR, tips_file.as_posix()])
+    print(f"Tips for {args.name} updated.")
 
 
 def main(args: argparse.Namespace) -> None:
@@ -38,16 +41,13 @@ def main(args: argparse.Namespace) -> None:
         print(f"No tips.d found on {tips_home().parent}")
         return
 
-    if args.sub_parser == "list":
-        for name in list_tips():
-            print(name)
-
-    elif args.sub_parser == "show":
-        show_tips(args.name, args.query)
-
-    elif args.sub_parser == "edit":
-        edit_tips(args.name)
-        print(f"Tips for {args.name} updated.")
+    actions = {
+        None: lambda _: ...,
+        "list": list_tips,
+        "show": show_tips,
+        "edit": edit_tips,
+    }
+    actions[args.sub_parser](args)
 
 
 if __name__ == "__main__":
