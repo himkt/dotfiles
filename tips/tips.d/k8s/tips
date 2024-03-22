@@ -1,0 +1,1 @@
+- kubectl hns tree [namespace]: see the hierarchy of sub namespaces
