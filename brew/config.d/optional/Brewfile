@@ -1,5 +1,6 @@
 tap 'ktr0731/evans'
 tap 'nextdns/tap'
+tap 'ynqa/tap'
 
 brew 'bat'
 brew 'coreutils'
@@ -19,4 +20,5 @@ brew 'sheldon'
 brew 'the_silver_searcher'
 brew 'tmux'
 brew 'tree'
+brew 'ynqa/tap/jnv'
 brew 'z'
