@@ -304,6 +304,7 @@ RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 if command -v kubectl > /dev/null; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
   source <(kubectl completion zsh)
   alias k=kubectl
   compdef _kubectl k
