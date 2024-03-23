@@ -87,6 +87,7 @@ else
 fi
 
 alias ghome='cd `git rev-parse --show-toplevel`'
+alias t='tips'
 
 export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
