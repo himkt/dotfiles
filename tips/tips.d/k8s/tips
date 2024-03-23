@@ -1,1 +1,5 @@
 - kubectl hns tree [namespace]: see the hierarchy of sub namespaces
+- kubectl oidc-login: signing in via OIDC
+- kubectx ctx: changing context
+- kubectx ns: changing namespace
+- kubectl images: list images of pod
