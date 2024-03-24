@@ -253,10 +253,10 @@ function current_architecture () {
 
 function current_context () {
   if command -v kubectl > /dev/null; then
-    kubectl config current-context &> /dev/null
+    command kubectl config current-context &> /dev/null
     kubectl_exit_code=$?
     if [ "$kubectl_exit_code" -eq 0 ]; then
-      echo "[%{$fg[blue]%}$(kubectl config current-context)%{${reset_color}%}] "
+      echo "[%{$fg[blue]%}$(command kubectl config current-context)%{${reset_color}%}] "
     else
       echo ""
     fi
