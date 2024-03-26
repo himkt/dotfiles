@@ -41,6 +41,9 @@ def init_tips(args: argparse.Namespace) -> None:
 
 def edit_tips(args: argparse.Namespace) -> None:
     tips_file = tips_home() / args.name / "tips"
+    if not tips_file.exists():
+        print(f"No tips available for {args.name}")
+        return
     EDITOR = os.environ.get("EDITOR", "vim")
     call([EDITOR, tips_file.as_posix()])
     print(f"Tips for {args.name} updated.")
@@ -48,7 +51,7 @@ def edit_tips(args: argparse.Namespace) -> None:
 
 def main(args: argparse.Namespace) -> None:
     if not tips_home().exists():
-        print(f"No tips.d found on {tips_home().parent}")
+        print(f"No tips.d found on {tips_home().parent}.")
         return
 
     actions = {
