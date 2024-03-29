@@ -40,6 +40,9 @@ nvim: nvim_clean
 poetry: poetry_clean
 	$(PWD)/poetry/bin/setup.sh
 
+rye: rye_clean
+	curl -sSf https://rye-up.com/get | bash
+
 sheldon: sheldon_clean
 	$(PWD)/sheldon/bin/setup.sh
 
@@ -71,6 +74,9 @@ nvim_clean:
 poetry_clean:
 	rm -rf $(HOME)/.config/pypoetry
 	rm -rf $(HOME)/Library/Application\ Support/pypoetry
+
+rye_clean:
+	./rye/bin/clean.sh
 
 sheldon_clean:
 	rm -rf $(HOME)/.config/sheldon

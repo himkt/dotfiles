@@ -120,11 +120,13 @@ Darwin*)
     export HOMEBREW_CACHE=$HOME/.cache/Homebrew
     export PYENV_ROOT=$HOME/.pyenv-arm64
     export NODENV_ROOT=$HOME/.nodenv-arm64
+    export RYE_HOME=$HOME/.rye-arm64
   else
     export HOMEBREW_ROOT=/opt/homebrew-x86_64
     export HOMEBREW_CACHE=$HOME/.cache/Homebrew-x86_64
     export PYENV_ROOT=$HOME/.pyenv
     export NODENV_ROOT=$HOME/.nodenv
+    export RYE_HOME=$HOME/.rye-x86_64
   fi
 
   export PATH=$HOMEBREW_ROOT/sbin:$PATH
@@ -182,6 +184,10 @@ fi
 if command -v nvim > /dev/null; then
   alias vim=nvim
   export EDITOR=nvim
+fi
+
+if [ -f $RYE_HOME/env ] ; then
+  source $RYE_HOME/env
 fi
 
 if command -v tmux > /dev/null; then
