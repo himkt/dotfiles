@@ -24,6 +24,9 @@ brew-optional:
 brew-gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/gui/Brewfile
 
+krew-base:
+	kubectl krew install open-svc oidc-login ns images ctx hns
+
 # =========================
 
 cui: cargo git nvim poetry tmux zsh
