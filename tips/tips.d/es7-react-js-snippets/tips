@@ -1,0 +1,2 @@
+- rafc: export const app = () => {}
+- rafce: export const app = () => {} with export
