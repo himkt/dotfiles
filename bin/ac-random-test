@@ -1,13 +1,20 @@
 #!env python3
+# -*- mode: python; tab-width: 4 -*-
 import argparse
 import os
+import shutil
 import subprocess
+import sys
 
 """
-Example of gen-input-program:
+Example of `--gen-input-cmd gen.py`
 
+> file gen.py
+gen.py: Python script text executable, ASCII text
+
+> cat gen.py
 ```python3
-#!env python3
+#!/usr/bin/python3
 import random
 n = random.randint(1, 5)
 a = [str(random.randint(0, 10)) for _ in range(n)]
@@ -17,30 +24,75 @@ with open("in.txt", "w") as f:
 ```
 """
 
+class bcolors:
+    OKBLUE = '\033[94m'
+    OKGREEN = '\033[92m'
+    FAIL = '\033[91m'
+    ENDC = '\033[0m'
+    BOLD = '\033[1m'
+
+devnull = open(os.devnull, "w")
+
+
 def run_and_decode(args: list[str]) -> str:
-    ret = subprocess.check_output(args, stdin=open("in.txt"))
+    ret = subprocess.check_output(args, stdin=open("in.txt"), stderr=devnull)
     return ret.decode("utf-8").rstrip()
 
-def verify(name: str, gen_input_program: str):
-    python_exec_cmd = os.getenv("AC_STRESS_TEST_PYTHON", "python3")
-    gen_cmd = [python_exec_cmd, gen_input_program]
-    subprocess.check_call(gen_cmd)
 
-    ret_lazy = run_and_decode(["cargo", "run", "--bin", f"{name}_lazy"])
-    ret = run_and_decode(["cargo", "run", "--bin", name])
-    assert ret_lazy == ret, f"lazy={ret_lazy}, ans={ret}"
+def verify(args: argparse.Namespace):
+    name: str = args.name
+
+    if shutil.which(args.gen_input_cmd) is not None:
+        gen_input_cmd = args.gen_input_cmd
+    else:
+        gen_input_cmd = [os.path.abspath(args.gen_input_cmd)]
+    subprocess.check_call(gen_input_cmd, stdout=devnull, stderr=devnull)
+
+    run_cmd: list[str] = args.run_cmd.split(" ")
+    ret_cmd = [s.format(argv0=name) for s in run_cmd]
+    ret_lazy_cmd = [s.format(argv0=f"{name}_lazy") for s in run_cmd]
+
+    ret = run_and_decode(ret_cmd)
+    ret_lazy = run_and_decode(ret_lazy_cmd)
+
+    if ret_lazy == ret:
+        print("Check: " + bcolors.OKGREEN + "passed" + bcolors.ENDC)
+    else:
+        print("Check: " + bcolors.FAIL + "failed" + bcolors.ENDC)
+        print("Found the edge case and stored in in.txt.", end="")
+        print(" (output: expected=" + bcolors.OKGREEN + ret_lazy + bcolors.ENDC, end="")
+        print(", got=" + bcolors.FAIL + ret + bcolors.ENDC + ")")
+        sys.exit(1)
+
 
 if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("name")
+    parser = argparse.ArgumentParser(formatter_class=argparse.RawTextHelpFormatter)
+    parser.add_argument("name", help="Name to be passed to `--run-cmd`.")
     parser.add_argument(
-        "--gen-input-program",
+        "--gen-input-cmd",
         help=(
-            "Path to Python script. "
-            "A given program must create `in.txt` on a current directory."
+            "Command or executable file. "
+            "A given command/executable file must create\n"
+            "`in.txt` on a current directory.\n"
+            "(default: gen.py)"
         ),
         default="gen.py",
     )
-    args = parser.parse_args()
+    parser.add_argument(
+        "--run-cmd",
+        help=(
+            "Command to run a program that solves a problem.\n"
+            "Must contains special string \"{argv0}\", which will be "
+            "replaced with the positional argument you provide.\n"
+            "(default: \"cargo run --bin {argv0}\")\n"
+            "Command will be executed twice, \n"
+            "one is with ${name} (you provide as positional argument)\n"
+            "and another is with ${name}_lazy.\n"
+            "(i.e. {argv0} will be replaced by {argv0}_lazy).\n"
+            "ac-random-test will continue to run these commands\n"
+            "until outputs become different (=find WA in your program)."
+        ),
+        default="cargo run --bin {argv0}",
+    )
     while 1:
-        verify(args.name, args.gen_input_program)
+        verify(parser.parse_args())
