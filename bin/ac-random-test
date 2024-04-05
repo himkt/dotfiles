@@ -1,0 +1,46 @@
+#!env python3
+import argparse
+import os
+import subprocess
+
+"""
+Example of gen-input-program:
+
+```python3
+#!env python3
+import random
+n = random.randint(1, 5)
+a = [str(random.randint(0, 10)) for _ in range(n)]
+with open("in.txt", "w") as f:
+    print(n, file=f)
+    print(" ".join(a), file=f)
+```
+"""
+
+def run_and_decode(args: list[str]) -> str:
+    ret = subprocess.check_output(args, stdin=open("in.txt"))
+    return ret.decode("utf-8").rstrip()
+
+def verify(name: str, gen_input_program: str):
+    python_exec_cmd = os.getenv("AC_STRESS_TEST_PYTHON", "python3")
+    gen_cmd = [python_exec_cmd, gen_input_program]
+    subprocess.check_call(gen_cmd)
+
+    ret_lazy = run_and_decode(["cargo", "run", "--bin", f"{name}_lazy"])
+    ret = run_and_decode(["cargo", "run", "--bin", name])
+    assert ret_lazy == ret, f"lazy={ret_lazy}, ans={ret}"
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("name")
+    parser.add_argument(
+        "--gen-input-program",
+        help=(
+            "Path to Python script. "
+            "A given program must create `in.txt` on a current directory."
+        ),
+        default="gen.py",
+    )
+    args = parser.parse_args()
+    while 1:
+        verify(args.name, args.gen_input_program)
