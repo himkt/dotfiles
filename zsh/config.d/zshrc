@@ -258,7 +258,7 @@ function current_architecture () {
 }
 
 function current_context () {
-  if [ ! -z "$KUBECTL_HIDE_CURRENT_CONTEXT" ]; then
+  if test -f ~/.kubectl-hide-current-ctx; then
     echo ""
     return
   fi
@@ -272,14 +272,6 @@ function current_context () {
     fi
   else
     echo ""
-  fi
-}
-
-function toggle-ctx () {
-  if [ -z "$KUBECTL_HIDE_CURRENT_CONTEXT" ]; then
-    export KUBECTL_HIDE_CURRENT_CONTEXT=1
-  else
-    unset KUBECTL_HIDE_CURRENT_CONTEXT
   fi
 }
 
