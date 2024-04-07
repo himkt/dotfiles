@@ -251,32 +251,31 @@ function current_architecture () {
   local architecture="$(uname -m)"
 
   if [ "$architecture" = "x86_64" ] ; then
-    echo "[\033[1;32m$architecture\033[0m] "
+    echo "[\033[1;32m$architecture\033[0m]"
   elif [ "$architecture" = "arm64" ]; then
-    echo "[\033[1;31m$architecture\033[0m] "
+    echo "[\033[1;31m$architecture\033[0m]"
   fi
 }
 
 function current_context () {
   if test -f ~/.kubectl-hide-current-ctx; then
-    echo ""
     return
   fi
-  if command -v kubectl > /dev/null; then
-    command kubectl config current-context &> /dev/null
-    kubectl_exit_code=$?
-    if [ "$kubectl_exit_code" -eq 0 ]; then
-      echo "[%{$fg[blue]%}$(command kubectl config current-context)%{${reset_color}%}] "
-    else
-      echo ""
-    fi
-  else
-    echo ""
+
+  if ! command -v kubectl > /dev/null; then
+    return
   fi
+
+  current_context=$(command kubectl config current-context) &> /dev/null
+  if [ "$?" -ne 0 ]; then
+    return
+  fi
+
+  echo "[%{$fg[blue]%}$current_context%{${reset_color}%}]"
 }
 
 function current_path () {
-  echo "[%{${fg[yellow]}%}%~%{${reset_color}%}] "
+  echo "[%{${fg[yellow]}%}%~%{${reset_color}%}]"
 }
 
 function current_timestamp () {
@@ -286,18 +285,18 @@ function current_timestamp () {
 function current_git_status () {
   local git_branch="$(parse_git_branch)"
   if [ -n "$git_branch" ]; then
-    STATUS="@ $fg[red]${${git_branch}#(refs/heads/|tags/)}${reset_color} "
+    STATUS="@ $fg[red]${${git_branch}#(refs/heads/|tags/)}${reset_color}"
 
     if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-      STATUS+="%{$fg[red]%}●%{$reset_color%} "
+      STATUS+=" %{$fg[red]%}●%{$reset_color%} "
     fi
 
     if ! git diff --quiet 2> /dev/null; then
-      STATUS+="%{$fg[yellow]%}●%{$reset_color%} "
+      STATUS+=" %{$fg[yellow]%}●%{$reset_color%} "
     fi
 
     if ! git diff --cached --quiet 2> /dev/null; then
-      STATUS+="%{$fg[green]%}●%{$reset_color%} "
+      STATUS+=" %{$fg[green]%}●%{$reset_color%}"
     fi
 
     echo $STATUS
@@ -305,12 +304,7 @@ function current_git_status () {
 }
 
 LF=$'\n'
-PROMPT=''
-PROMPT+='$(current_architecture)'
-PROMPT+='$(current_context)'
-PROMPT+='$(current_path)'
-PROMPT+='$(current_git_status)'
-PROMPT+='${LF}> '
+PROMPT='$(current_architecture)$(current_context)$(current_git_status)$(current_path)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
