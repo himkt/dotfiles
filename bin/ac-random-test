@@ -72,9 +72,9 @@ if __name__ == "__main__":
         "--gen-input-cmd",
         help=(
             "Command or executable file. "
-            "A given command/executable file must create\n"
-            "`in.txt` on a current directory.\n"
-            "(default: gen.py)"
+            "Given command or executable\n"
+            "file must create `in.txt` on a current directory.\n"
+            "(default: gen.py)\n\n"
         ),
         default="gen.py",
     )
@@ -82,15 +82,15 @@ if __name__ == "__main__":
         "--run-cmd",
         help=(
             "Command to run a program that solves a problem.\n"
-            "Must contains special string \"{argv0}\", which will be "
-            "replaced with the positional argument you provide.\n"
-            "(default: \"cargo run --bin {argv0}\")\n"
+            "Must contains special string \"{argv0}\", which will be\n"
+            "replaced with the positional argument you provide.\n\n"
             "Command will be executed twice, \n"
-            "one is with ${name} (you provide as positional argument)\n"
+            "one is with ${name} you provide as positional argument\n"
             "and another is with ${name}_lazy.\n"
-            "(i.e. {argv0} will be replaced by {argv0}_lazy).\n"
+            "(i.e. {argv0} will be replaced by {argv0}_lazy).\n\n"
             "ac-random-test will continue to run these commands\n"
-            "until outputs become different (=find WA in your program)."
+            "until outputs become different (i.e. find a corner case).\n"
+            "(default: \"cargo run --bin {argv0}\")\n\n"
         ),
         default="cargo run --bin {argv0}",
     )
