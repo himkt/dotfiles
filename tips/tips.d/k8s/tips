@@ -3,3 +3,4 @@
 - kubectx ctx: changing context
 - kubectx ns: changing namespace
 - kubectl images: list images of pod
+- kubectl stern: show multiple pod logs at the same time with regexp (e.g. k stern 'pod-*')
