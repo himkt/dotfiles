@@ -25,7 +25,7 @@ brew-gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/gui/Brewfile
 
 krew-base:
-	kubectl krew install open-svc oidc-login ns images ctx hns
+	kubectl krew install open-svc oidc-login ns images ctx hns stern neat
 
 # =========================
 
