@@ -52,6 +52,9 @@ sheldon: sheldon_clean
 tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
+wezterm: wezterm_clean
+	$(PWD)/wezterm/bin/setup.sh
+
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
 
@@ -86,6 +89,9 @@ sheldon_clean:
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
+
+wezterm_clean:
+	rm -rf $(HOME)/.wezterm.lua
 
 zsh_clean:
 	rm -rf $(HOME)/.zshrc
