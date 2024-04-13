@@ -288,7 +288,7 @@ function current_git_status () {
   local git_branch="$(parse_git_branch)"
 
   if [ -n "$git_branch" ]; then
-    STATUS="[$fg[red]@${${git_branch}#(refs/heads/|tags/)}${reset_color}"
+    STATUS="$fg[red]@${${git_branch}#(refs/heads/|tags/)}${reset_color}"
 
     UNTRACK_STATUS=""
     if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
@@ -303,11 +303,12 @@ function current_git_status () {
       UNTRACK_STATUS+="%{$fg[green]%}●%{$reset_color%}"
     fi
 
+    STATUS="["$STATUS"]"
+
     if [ -n "$UNTRACK_STATUS" ]; then
-      STATUS+=" $UNTRACK_STATUS"
+      STATUS=$STATUS"["$UNTRACK_STATUS"]"
     fi
 
-    STATUS+="]"
     echo $STATUS
   fi
 }
