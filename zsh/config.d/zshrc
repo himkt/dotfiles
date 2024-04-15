@@ -255,6 +255,42 @@ function current_architecture () {
   fi
 }
 
+function switch_architecture () {
+  if [[ $(pwd) != "$PLATFORM_PWD"* ]] ; then
+    case ${PREV_PLATFORM} in
+      arm64*)
+        arm64 ;;
+      amd64*)
+        amd64 ;;
+    esac
+
+    unset PLATFORM_PWD
+    unset CURR_PLATFORM
+    unset PREV_PLATFORM
+  fi
+
+  if test -f ./.platform; then
+    if [[ $(pwd) == "$PLATFORM_PWD" ]] ; then
+      return
+    fi
+
+    export PREV_PLATFORM=$(uname -m)
+    export CURR_PLATFORM=$(cat .platform)
+    export PLATFORM_PWD=$(pwd)
+
+    case ${CURR_PLATFORM} in
+      arm64*)
+        arm64 ;;
+      amd64*)
+        amd64 ;;
+    esac
+  fi
+}
+
+function precmd () {
+  switch_architecture
+}
+
 function current_context () {
   if test -f ~/.kubectl-hide-current-ctx; then
     return
