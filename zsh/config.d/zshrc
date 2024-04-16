@@ -51,7 +51,7 @@ function clean_platform_specific_env () {
   export PATH=`clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT`
 }
 
-function amd64 () {
+function x86_64 () {
   if [ `uname -m` = 'arm64' ]; then
     if type deactivate > /dev/null 2>&1; then
       echo "Automatically deactivate virtualenv"
@@ -74,6 +74,54 @@ function arm64 () {
     arch -arm64 zsh
   fi
 }
+
+function current_platform () {
+  local platform="$(uname -m)"
+
+  if [ "$platform" = "x86_64" ] ; then
+    echo "[\033[1;32m$platform\033[0m]"
+  elif [ "$platform" = "arm64" ]; then
+    echo "[\033[1;31m$platform\033[0m]"
+  fi
+}
+
+function switch_platform () {
+  local platform_file=.apple-silicon-platform
+
+  if [[ $(pwd) != "$PLATFORM_PWD"* ]] ; then
+    case ${PREV_PLATFORM} in
+      arm64*)
+        arm64 ;;
+      x86_64*)
+        x86_64 ;;
+    esac
+
+    unset PLATFORM_PWD
+    unset CURR_PLATFORM
+    unset PREV_PLATFORM
+  fi
+
+  if test -f $platform_file ; then
+    if [[ $(pwd) == "$PLATFORM_PWD" ]] ; then
+      return
+    fi
+
+    export PREV_PLATFORM=$(uname -m)
+    export CURR_PLATFORM=$(cat $platform_file)
+    export PLATFORM_PWD=$(pwd)
+
+    case ${CURR_PLATFORM} in
+      arm64*)
+        arm64 ;;
+      x86_64*)
+        x86_64 ;;
+    esac
+  fi
+}
+
+typeset -a precmd_functions
+precmd_functions+=(switch_platform)
+
 
 if type wslvar > /dev/null 2>&1; then
   export CLIPBOARD_APP=clip.exe
@@ -245,16 +293,6 @@ if command -v fzf > /dev/null; then
   zle -N hist-f
 fi
 
-function current_architecture () {
-  local architecture="$(uname -m)"
-
-  if [ "$architecture" = "x86_64" ] ; then
-    echo "[\033[1;32m$architecture\033[0m]"
-  elif [ "$architecture" = "arm64" ]; then
-    echo "[\033[1;31m$architecture\033[0m]"
-  fi
-}
-
 function current_context () {
   if test -f ~/.kubectl-hide-current-ctx; then
     return
@@ -314,7 +352,7 @@ function current_git_status () {
 }
 
 LF=$'\n'
-PROMPT='$(current_architecture)$(current_context)$(current_path)$(current_git_status)${LF}> '
+PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
