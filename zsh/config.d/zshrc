@@ -245,17 +245,19 @@ if command -v fzf > /dev/null; then
   zle -N hist-f
 fi
 
-function current_architecture () {
-  local architecture="$(uname -m)"
+function current_platform () {
+  local platform="$(uname -m)"
 
-  if [ "$architecture" = "x86_64" ] ; then
-    echo "[\033[1;32m$architecture\033[0m]"
-  elif [ "$architecture" = "arm64" ]; then
-    echo "[\033[1;31m$architecture\033[0m]"
+  if [ "$platform" = "x86_64" ] ; then
+    echo "[\033[1;32m$platform\033[0m]"
+  elif [ "$platform" = "arm64" ]; then
+    echo "[\033[1;31m$platform\033[0m]"
   fi
 }
 
-function switch_architecture () {
+function switch_platform () {
+  local platform_file=.apple-silicon-platform
+
   if [[ $(pwd) != "$PLATFORM_PWD"* ]] ; then
     case ${PREV_PLATFORM} in
       arm64*)
@@ -269,13 +271,13 @@ function switch_architecture () {
     unset PREV_PLATFORM
   fi
 
-  if test -f ./.platform; then
+  if test -f $platform_file ; then
     if [[ $(pwd) == "$PLATFORM_PWD" ]] ; then
       return
     fi
 
     export PREV_PLATFORM=$(uname -m)
-    export CURR_PLATFORM=$(cat .platform)
+    export CURR_PLATFORM=$(cat $platform_file)
     export PLATFORM_PWD=$(pwd)
 
     case ${CURR_PLATFORM} in
@@ -287,9 +289,8 @@ function switch_architecture () {
   fi
 }
 
-function precmd () {
-  switch_architecture
-}
+typeset -a precmd_functions
+precmd_functions+=(switch_platform)
 
 function current_context () {
   if test -f ~/.kubectl-hide-current-ctx; then
@@ -350,7 +351,7 @@ function current_git_status () {
 }
 
 LF=$'\n'
-PROMPT='$(current_architecture)$(current_context)$(current_path)$(current_git_status)${LF}> '
+PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
