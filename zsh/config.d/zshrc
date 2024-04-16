@@ -85,38 +85,67 @@ function current_platform () {
   fi
 }
 
+push_front() {
+  if [ -z "$PATH_HIST" ]; then
+    PATH_HIST="$1"
+    PLATFORM_HIST="$2"
+  else
+    PATH_HIST="$1,$PATH_HIST"
+    PLATFORM_HIST="$2,$PLATFORM_HIST"
+  fi
+}
+
+pop_front() {
+  if [ -z "$PATH_HIST" ]; then
+    echo ""
+  else
+    PATH_HIST=$(echo "$PATH_HIST" | awk '{
+      sub(/^[^,]*,?/, "")
+      print
+    }')
+    PLATFORM_HIST=$(echo "$PLATFORM_HIST" | awk '{
+      sub(/^[^,]*,?/, "")
+      print
+    }')
+  fi
+}
+
+get_front_platform() {
+  echo "$PLATFORM_HIST" | awk -F, '{print $1}'
+}
+
+get_front_path() {
+  echo "$PATH_HIST" | awk -F, '{print $1}'
+}
+
 function switch_platform () {
   local platform_file=.apple-silicon-platform
 
-  if [[ $(pwd) != "$PLATFORM_PWD"* ]] ; then
-    case ${PREV_PLATFORM} in
-      arm64*)
-        arm64 ;;
-      x86_64*)
-        x86_64 ;;
-    esac
-
-    unset PLATFORM_PWD
-    unset CURR_PLATFORM
-    unset PREV_PLATFORM
-  fi
+  while [[ $(pwd) != "$(get_front_path)"* ]] ; do
+    pop_front
+  done
 
   if test -f $platform_file ; then
-    if [[ $(pwd) == "$PLATFORM_PWD" ]] ; then
-      return
+    if [[ $(pwd) != "$(get_front_path)" ]] ; then
+      push_front "$(PWD)" "$(cat $platform_file)"
     fi
 
-    export PREV_PLATFORM=$(uname -m)
-    export CURR_PLATFORM=$(cat $platform_file)
-    export PLATFORM_PWD=$(pwd)
-
-    case ${CURR_PLATFORM} in
+    case "$(get_front_platform)" in
       arm64*)
         arm64 ;;
       x86_64*)
         x86_64 ;;
     esac
   fi
+
+  case "$(get_front_platform)" in
+    arm64*)
+      arm64 ;;
+    x86_64*)
+      x86_64 ;;
+    *)
+      arm64 ;;  # default to arm64
+  esac
 }
 
 typeset -a precmd_functions
