@@ -59,7 +59,7 @@ function x86_64 () {
     fi
 
     clean_platform_specific_env
-    arch -x86_64 zsh
+    arch -x86_64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh
   fi
 }
 
@@ -71,7 +71,7 @@ function arm64 () {
     fi
 
     clean_platform_specific_env
-    arch -arm64 zsh
+    arch -arm64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh
   fi
 }
 
