@@ -51,28 +51,27 @@ function clean_platform_specific_env () {
   export PATH=`clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT`
 }
 
-function x86_64 () {
-  if [ "$(uname -m)" = 'arm64' ]; then
-    if type deactivate > /dev/null 2>&1; then
-      echo "Automatically deactivate virtualenv"
-      deactivate
-    fi
+function change-platform () {
+  local current_platform=$(uname -m)
+  local next_platform=$1
 
-    clean_platform_specific_env
-    arch -x86_64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh
+  if [ $current_platform = $next_platform ] ; then
+    return
   fi
-}
 
-function arm64 () {
-  if [ "$(uname -m)" = 'x86_64' ]; then
-    if type deactivate > /dev/null 2>&1; then
-      echo "Automatically deactivate virtualenv"
-      deactivate
-    fi
-
-    clean_platform_specific_env
-    arch -arm64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh
+  if type deactivate > /dev/null 2>&1; then
+    echo "Automatically deactivate virtualenv"
+    deactivate
   fi
+
+  clean_platform_specific_env
+
+  case ${next_platform} in
+    arm64*)
+      arch -arm64  env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
+    x86_64*)
+      arch -x86_64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
+  esac
 }
 
 function current_platform () {
@@ -126,31 +125,26 @@ function switch_platform () {
   done
 
   if test -f $platform_file ; then
-    if [[ $(pwd) != "$(get_front_path)" ]] ; then
+    if [[ "$(PWD)" != "$(get_front_path)" ]] ; then
+      echo "push"
       push_front "$(PWD)" "$(cat $platform_file)"
     fi
-
-    case "$(get_front_platform)" in
-      arm64*)
-        arm64 ;;
-      x86_64*)
-        x86_64 ;;
-    esac
   fi
 
   case "$(get_front_platform)" in
     arm64*)
-      arm64 ;;
+      echo "arm"
+      change-platform "arm64"  ;;
     x86_64*)
-      x86_64 ;;
+      echo "amd"
+      change-platform "x86_64" ;;
     *)
-      arm64 ;;  # default to arm64
+      change-platform "arm64"  ;;  # default to "arm64"
   esac
 }
 
 typeset -a precmd_functions
 precmd_functions+=(switch_platform)
-
 
 if type wslvar > /dev/null 2>&1; then
   export CLIPBOARD_APP=clip.exe
