@@ -51,28 +51,27 @@ function clean_platform_specific_env () {
   export PATH=`clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT`
 }
 
-function x86_64 () {
-  if [ "$(uname -m)" = 'arm64' ]; then
-    if type deactivate > /dev/null 2>&1; then
-      echo "Automatically deactivate virtualenv"
-      deactivate
-    fi
+function change-platform () {
+  local current_platform="$(uname -m)"
+  local next_platform="$1"
 
-    clean_platform_specific_env
-    arch -x86_64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh
+  if [ "$current_platform" = "$next_platform" ] ; then
+    return
   fi
-}
 
-function arm64 () {
-  if [ "$(uname -m)" = 'x86_64' ]; then
-    if type deactivate > /dev/null 2>&1; then
-      echo "Automatically deactivate virtualenv"
-      deactivate
-    fi
-
-    clean_platform_specific_env
-    arch -arm64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh
+  if type deactivate > /dev/null 2>&1; then
+    echo "Automatically deactivate virtualenv"
+    deactivate
   fi
+
+  clean_platform_specific_env
+
+  case "${next_platform}" in
+    arm64*)
+      arch -arm64  env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
+    x86_64*)
+      arch -x86_64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
+  esac
 }
 
 function current_platform () {
@@ -85,72 +84,69 @@ function current_platform () {
   fi
 }
 
-push_front() {
+function push_front () {
+  local path="$(PWD)"
+
   if [ -z "$PATH_HIST" ]; then
-    PATH_HIST="$1"
-    PLATFORM_HIST="$2"
+    PATH_HIST="$path"
+    PLATFORM_HIST="$1"
   else
-    PATH_HIST="$1,$PATH_HIST"
-    PLATFORM_HIST="$2,$PLATFORM_HIST"
+    PATH_HIST="$path,$PATH_HIST"
+    PLATFORM_HIST="$1,$PLATFORM_HIST"
   fi
 }
 
-pop_front() {
+function pop_front () {
   if [ -z "$PATH_HIST" ]; then
-    echo ""
-  else
-    PATH_HIST=$(echo "$PATH_HIST" | awk '{
-      sub(/^[^,]*,?/, "")
-      print
-    }')
-    PLATFORM_HIST=$(echo "$PLATFORM_HIST" | awk '{
-      sub(/^[^,]*,?/, "")
-      print
-    }')
+    return
   fi
+
+  PATH_HIST=$(echo "$PATH_HIST" | awk '{
+    sub(/^[^,]*,?/, "")
+    print
+  }')
+  PLATFORM_HIST=$(echo "$PLATFORM_HIST" | awk '{
+    sub(/^[^,]*,?/, "")
+    print
+  }')
 }
 
-get_front_platform() {
-  echo "$PLATFORM_HIST" | awk -F, '{print $1}'
+function get_front_platform() {
+  echo "$PLATFORM_HIST" | cut -d , -f 1
 }
 
-get_front_path() {
-  echo "$PATH_HIST" | awk -F, '{print $1}'
+function get_front_path() {
+  echo "$PATH_HIST" | cut -d , -f 1
 }
 
 function switch_platform () {
   local platform_file=.apple-silicon-platform
 
   while [[ $(pwd) != "$(get_front_path)"* ]] ; do
+    if [ -z "$(get_front_path)" ] ; then
+      break
+    fi
     pop_front
   done
 
   if test -f $platform_file ; then
-    if [[ $(pwd) != "$(get_front_path)" ]] ; then
-      push_front "$(PWD)" "$(cat $platform_file)"
+    if [[ "$(PWD)" != "$(get_front_path)" ]] ; then
+      push_front "$(cat $platform_file)"
     fi
-
-    case "$(get_front_platform)" in
-      arm64*)
-        arm64 ;;
-      x86_64*)
-        x86_64 ;;
-    esac
   fi
 
   case "$(get_front_platform)" in
     arm64*)
-      arm64 ;;
+      change-platform "arm64"  ;;
     x86_64*)
-      x86_64 ;;
+      change-platform "x86_64" ;;
     *)
-      arm64 ;;  # default to arm64
+      change-platform "arm64"  ;;  # default to "arm64"
   esac
 }
 
 typeset -a precmd_functions
 precmd_functions+=(switch_platform)
-
 
 if type wslvar > /dev/null 2>&1; then
   export CLIPBOARD_APP=clip.exe
