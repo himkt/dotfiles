@@ -84,7 +84,9 @@ function current_platform () {
   fi
 }
 
-push_front() {
+function push_front () {
+  local path="$(PWD)"
+
   if [ -z "$PATH_HIST" ]; then
     PATH_HIST="$path"
     PLATFORM_HIST="$1"
@@ -94,7 +96,7 @@ push_front() {
   fi
 }
 
-pop_front() {
+function pop_front () {
   if [ -z "$PATH_HIST" ]; then
     return
   fi
@@ -109,12 +111,12 @@ pop_front() {
   }')
 }
 
-get_front_platform() {
-  echo "$PLATFORM_HIST" | awk -F, '{print $1}'
+function get_front_platform() {
+  echo "$PLATFORM_HIST" | cut -d , -f 1
 }
 
-get_front_path() {
-  echo "$PATH_HIST" | awk -F, '{print $1}'
+function get_front_path() {
+  echo "$PATH_HIST" | cut -d , -f 1
 }
 
 function switch_platform () {
