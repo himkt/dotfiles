@@ -123,6 +123,9 @@ function switch_platform () {
   local platform_file=.apple-silicon-platform
 
   while [[ $(pwd) != "$(get_front_path)"* ]] ; do
+    if [ -z "$(get_front_path)" ] ; then
+      break
+    fi
     pop_front
   done
 
