@@ -96,17 +96,17 @@ push_front() {
 
 pop_front() {
   if [ -z "$PATH_HIST" ]; then
-    echo ""
-  else
-    PATH_HIST=$(echo "$PATH_HIST" | awk '{
-      sub(/^[^,]*,?/, "")
-      print
-    }')
-    PLATFORM_HIST=$(echo "$PLATFORM_HIST" | awk '{
-      sub(/^[^,]*,?/, "")
-      print
-    }')
+    return
   fi
+
+  PATH_HIST=$(echo "$PATH_HIST" | awk '{
+    sub(/^[^,]*,?/, "")
+    print
+  }')
+  PLATFORM_HIST=$(echo "$PLATFORM_HIST" | awk '{
+    sub(/^[^,]*,?/, "")
+    print
+  }')
 }
 
 get_front_platform() {
