@@ -86,11 +86,11 @@ function current_platform () {
 
 push_front() {
   if [ -z "$PATH_HIST" ]; then
-    PATH_HIST="$1"
-    PLATFORM_HIST="$2"
+    PATH_HIST="$path"
+    PLATFORM_HIST="$1"
   else
-    PATH_HIST="$1,$PATH_HIST"
-    PLATFORM_HIST="$2,$PLATFORM_HIST"
+    PATH_HIST="$path,$PATH_HIST"
+    PLATFORM_HIST="$1,$PLATFORM_HIST"
   fi
 }
 
@@ -126,8 +126,7 @@ function switch_platform () {
 
   if test -f $platform_file ; then
     if [[ "$(PWD)" != "$(get_front_path)" ]] ; then
-      echo "push"
-      push_front "$(PWD)" "$(cat $platform_file)"
+      push_front "$(cat $platform_file)"
     fi
   fi
 
