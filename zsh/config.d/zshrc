@@ -132,10 +132,8 @@ function switch_platform () {
 
   case "$(get_front_platform)" in
     arm64*)
-      echo "arm"
       change-platform "arm64"  ;;
     x86_64*)
-      echo "amd"
       change-platform "x86_64" ;;
     *)
       change-platform "arm64"  ;;  # default to "arm64"
