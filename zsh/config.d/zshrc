@@ -52,10 +52,10 @@ function clean_platform_specific_env () {
 }
 
 function change-platform () {
-  local current_platform=$(uname -m)
-  local next_platform=$1
+  local current_platform="$(uname -m)"
+  local next_platform="$1"
 
-  if [ $current_platform = $next_platform ] ; then
+  if [ "$current_platform" = "$next_platform" ] ; then
     return
   fi
 
@@ -66,7 +66,7 @@ function change-platform () {
 
   clean_platform_specific_env
 
-  case ${next_platform} in
+  case "${next_platform}" in
     arm64*)
       arch -arm64  env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
     x86_64*)
