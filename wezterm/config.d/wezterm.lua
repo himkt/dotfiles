@@ -1,6 +1,9 @@
 local wezterm = require 'wezterm'
 local config = {}
 
+
+config.keys = {}
+
 config.scrollback_lines = 9999999
 
 -- Use the defaults as a base
@@ -20,5 +23,13 @@ config.colors = {
 
 -- skip confirmation prompt when quitting app
 config.window_close_confirmation = 'NeverPrompt'
+
+-- fullscreen shortcut
+config.native_macos_fullscreen_mode = true
+config.keys[1] = {
+  key    = 'f',
+  mods   = 'CMD|CTRL',
+  action = wezterm.action.ToggleFullScreen,
+}
 
 return config
