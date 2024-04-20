@@ -69,7 +69,7 @@ function clean_platform_specific_env () {
   export PATH=`echo ${(j/:/)cleaned_paths}`
 }
 
-function change-platform () {
+function change_platform () {
   local current_platform="$(uname -m)"
   local next_platform="$1"
 
@@ -155,11 +155,11 @@ function switch_platform () {
 
   case "$(get_front_platform)" in
     arm64*)
-      change-platform "arm64"  ;;
+      change_platform "arm64"  ;;
     x86_64*)
-      change-platform "x86_64" ;;
+      change_platform "x86_64" ;;
     *)
-      change-platform "arm64"  ;;  # default to "arm64"
+      change_platform "arm64"  ;;  # default to "arm64"
   esac
 }
 
@@ -310,11 +310,11 @@ if command -v tmux > /dev/null; then
 fi
 
 if command -v fzf > /dev/null; then
-  function cd-f () {
+  function cd_f () {
     cd $(find . -type d -print 2> /dev/null | fzf --prompt ">>> ")
   }
 
-  function cd-z () {
+  function cd_z () {
     if [ -z "$1" ]; then
       cd $(z | sort -rh | awk '{print $2}' | fzf --prompt ">>> ")
     else
@@ -327,12 +327,12 @@ if command -v fzf > /dev/null; then
     zle accept-line
   }
 
-  bindkey '^t' cd-f
-  bindkey '^y' cd-z
+  bindkey '^t' cd_f
+  bindkey '^y' cd_z
   bindkey '^r' hist-f
 
-  zle -N cd-f
-  zle -N cd-z
+  zle -N cd_f
+  zle -N cd_z
   zle -N hist-f
 fi
 
