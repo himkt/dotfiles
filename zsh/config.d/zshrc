@@ -82,7 +82,7 @@ function change_platform () {
     deactivate
   fi
 
-  clean_platform_specific_env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT
+  clean_platform_specific_env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT $RYE_HOME
 
   case "${next_platform}" in
     arm64*)
