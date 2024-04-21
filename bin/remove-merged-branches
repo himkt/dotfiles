@@ -1,6 +1,10 @@
 #!/bin/bash
 
-BRANCH=`git branch| awk '{print $NF}' | fzf --prompt '(base branch) > '`
+if [ -n "$1" ]; then
+  BRANCH="$1"
+else
+  BRANCH=`git branch| awk '{print $NF}' | fzf --prompt '(base branch) > '`
+fi
 
 if [ -z $BRANCH ]; then
   echo "Select valid branch"
