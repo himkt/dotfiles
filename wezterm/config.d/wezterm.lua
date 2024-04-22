@@ -31,5 +31,10 @@ config.keys[1] = {
   mods   = 'CMD|CTRL',
   action = wezterm.action.ToggleFullScreen,
 }
+config.keys[2] = {
+  key    = 'Enter',
+  mods   = 'CMD',
+  action = wezterm.action.ToggleFullScreen,
+}
 
 return config
