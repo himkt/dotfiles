@@ -53,6 +53,10 @@ def verify(args: argparse.Namespace):
     ret_lazy_cmd = [s.format(argv0=f"{name}_lazy") for s in run_cmd]
 
     ret = run_and_decode(ret_cmd)
+    if args.without_lazy:
+        print("Run: " + bcolors.OKGREEN + "passed" + bcolors.ENDC)
+        return
+
     ret_lazy = run_and_decode(ret_lazy_cmd)
 
     if ret_lazy == ret:
@@ -93,6 +97,14 @@ if __name__ == "__main__":
             "(default: \"cargo run --bin {argv0}\")\n\n"
         ),
         default="cargo run --bin {argv0}",
+    )
+    parser.add_argument(
+        "--without-lazy",
+        action="store_true",
+        help=(
+            "If this option is specified, it will continue to run a\n"
+            "given program until fail."
+        ),
     )
     while 1:
         verify(parser.parse_args())
