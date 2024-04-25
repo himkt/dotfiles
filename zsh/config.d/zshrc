@@ -297,10 +297,13 @@ if command -v kubectl > /dev/null; then
   compdef _kubectl k
 fi
 
-# custom zsh script
-for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
+# custom zsh scripts
+for source in $HOME/dotfiles/zsh/config.d/*.zsh
 do
   source $source
 done
 
-source $HOME/dotfiles/zsh/config.d/platform.zsh
+for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
+do
+  source $source
+done
