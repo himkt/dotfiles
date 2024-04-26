@@ -1,5 +1,4 @@
-
-function clean_platform_specific_env () {
+function clean-platform-specific-env () {
   prefixes=("$@")
 
   paths=("${(@s/:/)PATH}")
@@ -21,7 +20,7 @@ function clean_platform_specific_env () {
   export PATH=`echo ${(j/:/)cleaned_paths}`
 }
 
-function change_platform () {
+function change-platform () {
   local current_platform="$(uname -m)"
   local next_platform="$1"
 
@@ -34,7 +33,7 @@ function change_platform () {
     deactivate
   fi
 
-  clean_platform_specific_env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT $RYE_HOME
+  clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT $RYE_HOME
 
   case "${next_platform}" in
     arm64*)
@@ -46,10 +45,10 @@ function change_platform () {
 
 # user facing interface
 function use-platform () {
-  push_front $1
+  push-front $1
 }
 
-function push_front () {
+function push-front () {
   local path="$(PWD)"
 
   if [ -z "$PATH_HIST" ]; then
@@ -61,7 +60,7 @@ function push_front () {
   fi
 }
 
-function pop_front () {
+function pop-front () {
   if [ -z "$PATH_HIST" ]; then
     return
   fi
@@ -76,39 +75,41 @@ function pop_front () {
   }')
 }
 
-function get_front_platform() {
+function get-front-platform() {
   echo "$PLATFORM_HIST" | cut -d , -f 1
 }
 
-function get_front_path() {
+function get-front-path() {
   echo "$PATH_HIST" | cut -d , -f 1
 }
 
-function switch_platform () {
+function switch-platform () {
   local platform_file=.apple-silicon-platform
 
-  while [[ $(pwd) != "$(get_front_path)"* ]] ; do
-    if [ -z "$(get_front_path)" ] ; then
+  while [[ $(pwd) != "$(get-front-path)"* ]] ; do
+    if [ -z "$(get-front-path)" ] ; then
       break
     fi
-    pop_front
+    pop-front
   done
 
   if test -f $platform_file ; then
-    if [[ "$(PWD)" != "$(get_front_path)" ]] ; then
-      push_front "$(cat $platform_file)"
+    if [[ "$(PWD)" != "$(get-front-path)" ]] ; then
+      push-front "$(cat $platform_file)"
     fi
   fi
 
-  case "$(get_front_platform)" in
+  # default to "arm64"
+  local default_platform="${DEFAULT_APPLE_SILICON_PLATFORM:-arm64}"
+  case "$(get-front-platform)" in
     arm64*)
-      change_platform "arm64"  ;;
+      change-platform "arm64"  ;;
     x86_64*)
-      change_platform "x86_64" ;;
+      change-platform "x86_64" ;;
     *)
-      change_platform "arm64"  ;;  # default to "arm64"
+      change-platform $default_platform  ;;
   esac
 }
 
 typeset -a precmd_functions
-precmd_functions+=(switch_platform)
+precmd_functions+=(switch-platform)
