@@ -96,7 +96,7 @@ if __name__ == "__main__":
             "until outputs become different (i.e. find a corner case).\n"
             "(default: \"cargo run --bin {argv0}\")\n\n"
         ),
-        default="cargo run --bin {argv0}",
+        default="cargo run --release --bin {argv0}",
     )
     parser.add_argument(
         "--without-lazy",
