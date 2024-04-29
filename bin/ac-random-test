@@ -37,7 +37,7 @@ class bcolors:
 devnull = open(os.devnull, "w")
 
 
-def run_and_decode(args: list[str]) -> str:
+def run_and_decode(args: list[str]) -> tuple[str, float]:
     s = time.time()
     ret = subprocess.check_output(args, stdin=open("in.txt"), stderr=devnull)
     f = time.time()
@@ -68,19 +68,23 @@ def verify(args: argparse.Namespace):
     ret_lazy_cmd = [s.format(argv0=f"{name}_lazy") for s in run_cmd]
 
     ret, elapsed = run_and_decode(ret_cmd)
+    if elapsed >= args.max_ms:
+        print(f"Run: {bcolors.FAIL}fail{bcolors.ENDC} (took {bcolors.FAIL}{elapsed:.2f}{bcolors.ENDC}ms>={args.max_ms:.2f}ms)")
+        sys.exit(1)
+
     if args.without_lazy:
-        print("Run: " + bcolors.OKGREEN + "passed" + bcolors.ENDC + f" ({elapsed_with_color(elapsed)}ms)")
+        print(f"Run: {bcolors.OKGREEN}passed{bcolors.ENDC} ({elapsed_with_color(elapsed)}ms)")
         return
 
     ret_lazy, _ = run_and_decode(ret_lazy_cmd)
 
     if ret_lazy == ret:
-        print("Check: " + bcolors.OKGREEN + "passed" + bcolors.ENDC + f" ({elapsed_with_color(elapsed)}ms)")
+        print("Run: " + bcolors.OKGREEN + "passed" + bcolors.ENDC + f" ({elapsed_with_color(elapsed)}ms)")
     else:
-        print("Check: " + bcolors.FAIL + "failed" + bcolors.ENDC)
-        print("Found the edge case and stored in in.txt.", end="")
-        print(" (output: expected=" + bcolors.OKGREEN + ret_lazy + bcolors.ENDC, end="")
-        print(", got=" + bcolors.FAIL + ret + bcolors.ENDC + ")")
+        print("Run: " + bcolors.FAIL + "failed" + bcolors.ENDC, end="")
+        print(" (found the edge case and stored in in.txt.", end="")
+        print(" [output: expected=" + bcolors.OKGREEN + ret_lazy + bcolors.ENDC, end="")
+        print(", got=" + bcolors.FAIL + ret + bcolors.ENDC + "])")
         sys.exit(1)
 
 
@@ -121,5 +125,15 @@ if __name__ == "__main__":
             "given program until fail."
         ),
     )
+    parser.add_argument(
+        "--max-ms",
+        help=(
+            "Make a run fail if elapsed exceeds the given value (in mili seconds).\n"
+            "(default: inf)."
+        ),
+        type=float,
+        default=float("inf"),
+    )
+
     while 1:
         verify(parser.parse_args())
