@@ -118,7 +118,7 @@ Linux*)
   if test -f ~/home/linuxbrew/.linuxbrew/bin/brew; then
     export HOMEBREW_ROOT=/home/linuxbrew/.linuxbrew
   else
-    export HOMEBREW_ROOT==$HOME/.linuxbrew
+    export HOMEBREW_ROOT=$HOME/.linuxbrew
   fi
   ;;
 esac
