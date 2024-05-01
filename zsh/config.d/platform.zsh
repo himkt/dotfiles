@@ -44,6 +44,11 @@ function change-platform () {
 }
 
 # user facing interface
+function set-platform () {
+  echo "$1" > .apple-silicon-platform
+}
+
+# user facing interface
 function use-platform () {
   push-front $1
 }
