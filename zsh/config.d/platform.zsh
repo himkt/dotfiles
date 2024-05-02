@@ -14,6 +14,7 @@ function change-platform () {
     return
   fi
 
+  # for python virtualenv
   if type deactivate > /dev/null 2>&1; then
     echo "Automatically deactivate virtualenv"
     deactivate
