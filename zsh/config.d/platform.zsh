@@ -1,23 +1,9 @@
-function clean-platform-specific-env () {
-  prefixes=("$@")
-
-  paths=("${(@s/:/)PATH}")
-  cleaned_paths=()
-
-  for path in $paths; do
-    match=0
-    for prefix in $prefixes; do
-      if [[ $path == $prefix* ]]; then
-        match=1
-        break
-      fi
-    done
-    if [[ $match -eq 0 ]]; then
-      cleaned_paths+=$path
-    fi
+function prepare-default-paths () {
+  paths=()
+  for path in `cat /etc/paths`; do
+    paths+=$path
   done
-
-  export PATH=`echo ${(j/:/)cleaned_paths}`
+  echo ${(j/:/)paths}
 }
 
 function change-platform () {
@@ -33,13 +19,11 @@ function change-platform () {
     deactivate
   fi
 
-  clean-platform-specific-env $HOMEBREW_ROOT $PYENV_ROOT $NODENV_ROOT $RYE_HOME
-
   case "${next_platform}" in
     arm64*)
-      arch -arm64  env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
+      arch -arm64  env PATH="$(prepare-default-paths)" PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
     x86_64*)
-      arch -x86_64 env PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
+      arch -x86_64 env PATH="$(prepare-default-paths)" PLATFORM_HIST="$PLATFORM_HIST" PATH_HIST="$PATH_HIST" zsh ;;
   esac
 }
 
