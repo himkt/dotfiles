@@ -11,3 +11,7 @@ apply = ['source']
 [plugins.z]
 github = 'rupa/z'
 apply = ['source']
+
+[plugins.zsh-platform-switcher]
+github = 'himkt/zsh-platform-switcher'
+apply = ['source']
