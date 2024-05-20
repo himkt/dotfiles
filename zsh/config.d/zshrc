@@ -95,6 +95,12 @@ fi
 export LANG=$language
 export LC_CTYPE=$language
 
+for source in $(find $XDG_CONFIG_HOME/dotfiles/zsh -name "*.pre.zsh")
+do
+  echo "source $source"
+  source $source
+done
+
 case `uname -s` in
 Darwin*)
   if [ `uname -m` = "arm64" ]; then
@@ -297,7 +303,7 @@ if command -v kubectl > /dev/null; then
   compdef _kubectl k
 fi
 
-for source in $XDG_CONFIG_HOME/dotfiles/zsh/*.zsh
+for source in $(find $XDG_CONFIG_HOME/dotfiles/zsh -name "*.post.zsh")
 do
   source $source
 done
