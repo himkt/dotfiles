@@ -9,7 +9,7 @@ config.scrollback_lines = 9999999
 config.hyperlink_rules = wezterm.default_hyperlink_rules()
 
 -- Font
-config.font = wezterm.font 'JetBrains Mono'
+config.font = wezterm.font 'JetBrains Mono NL'
 config.font_size = 16.0
 
 -- https://wezfurlong.org/wezterm/colorschemes/g/index.html
