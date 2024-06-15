@@ -1,0 +1,1 @@
+* delete remotes/origin/{branch} from local git: git fetch -p
