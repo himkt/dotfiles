@@ -1,0 +1,2 @@
+* add specific version of Python: `rye fetch 3.11`
+* get default python: `rye config --get default.toolchain`
