@@ -7,3 +7,9 @@
 
 [alias]
 	remove-merged = !remove-merged-branches
+
+[format]
+	pretty = oneline
+
+[log]
+	abbrevCommit = true
