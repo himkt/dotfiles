@@ -11,13 +11,16 @@ def tips_home() -> pathlib.Path:
     return pathlib.Path(os.getenv("TIPS_HOME", default)) / "tips.d"
 
 
-def list_tips(_: argparse.Namespace) -> list[str]:
-    for name in tips_home().iterdir():
-        print(name.name)
+def list_tips(args: argparse.Namespace) -> None:
+    if (name := args.name) is None:
+        for _tips_dir in tips_home().iterdir():
+            name = _tips_dir.name
+            if args.query is not None and args.query not in name:
+                continue
+            print(name)
+        return
 
-
-def show_tips(args: argparse.Namespace) -> None:
-    tips_file = tips_home() / args.name / "tips"
+    tips_file = tips_home() / name / "tips"
     if not tips_file.exists():
         print(f"No tips available for {args.name}")
         return
@@ -56,7 +59,6 @@ def main(args: argparse.Namespace) -> None:
 
     actions = {
         "list": list_tips,
-        "show": show_tips,
         "edit": edit_tips,
         "init": init_tips,
     }
@@ -73,10 +75,6 @@ if __name__ == "__main__":
     parser.add_argument("--version", "-v", action="version", version="0.0.1")
     sub_parsers = parser.add_subparsers(help="sub command help", dest="sub_parser")
 
-    show_parser = sub_parsers.add_parser("show")
-    show_parser.add_argument("name", type=str, default=None)
-    show_parser.add_argument("--query", "-q")
-
     edit_parser = sub_parsers.add_parser("edit")
     edit_parser.add_argument("name", type=str, default=None)
 
@@ -84,6 +82,8 @@ if __name__ == "__main__":
     init_parser.add_argument("name", type=str)
 
     list_parser = sub_parsers.add_parser("list")
+    list_parser.add_argument("name", type=str, nargs="?")
+    list_parser.add_argument("--query", "-q")
 
     args = parser.parse_args()
     main(args)

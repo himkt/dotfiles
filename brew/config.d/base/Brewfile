@@ -1,3 +1,2 @@
-brew 'gcc'
-brew 'nvim'
+brew 'neovim'
 brew 'zsh'

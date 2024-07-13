@@ -1,0 +1,2 @@
+* delete remotes/origin/{branch} from local git: git fetch -p
+* grep excluding specific path: git grep -- ':!folder'
