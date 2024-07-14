@@ -14,10 +14,12 @@ brew 'tmux'
 brew 'tree'
 brew 'z'
 
+tap 'derailed/k9s'
 tap 'himkt/himkt'
 tap 'ktr0731/evans'
 tap 'ynqa/tap'
 
+brew 'derailed/k9s/k9s'
 brew 'himkt/himkt/ac-random-test'
 brew 'ktr0731/evans/evans'
 brew 'ynqa/tap/jnv'
