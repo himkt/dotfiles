@@ -1,0 +1,4 @@
+- 0 (stdin), 1 (stdout) and 2 (stderr)
+- & (stdout and stderr)
+- '&' is needed to indicate 1 or 2 is a file descriptor (not file named 1 or 2)
+- (cmd) > /dev/null 2>&1: getting rid of all outputs (stdout and stderr)
