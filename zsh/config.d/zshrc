@@ -10,6 +10,7 @@ bindkey  "^[[F"   end-of-line
 
 autoload -Uz compinit && compinit
 autoload -U colors && colors
+autoload -Uz zmv && alias zmv='noglob zmv -W'
 zstyle ':completion:*:default' menu select=1
 
 setopt auto_cd
