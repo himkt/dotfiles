@@ -1,4 +1,5 @@
 {
+  "inlayHint.enable": false,
   "python.formatting.provider": "black",
-  "python.analysis.diagnosticMode": "workspace",
+  "python.analysis.diagnosticMode": "workspace"
 }
