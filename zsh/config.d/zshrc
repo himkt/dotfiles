@@ -208,11 +208,11 @@ if command -v tmux > /dev/null; then
 fi
 
 if command -v fzf > /dev/null; then
-  function cd_f () {
+  function cd-f () {
     cd $(find . -type d -print 2> /dev/null | fzf --prompt ">>> ")
   }
 
-  function cd_z () {
+  function cd-z () {
     if [ -z "$1" ]; then
       cd $(z | sort -rh | awk '{print $2}' | fzf --prompt ">>> ")
     else
@@ -220,18 +220,18 @@ if command -v fzf > /dev/null; then
     fi
   }
 
-  function hist-f () {
+  function history-f () {
     BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt=">>> ")
     zle accept-line
   }
 
-  bindkey '^t' cd_f
-  bindkey '^y' cd_z
-  bindkey '^r' hist-f
+  bindkey '^t' cd-f
+  bindkey '^y' cd-z
+  bindkey '^r' history-f
 
-  zle -N cd_f
-  zle -N cd_z
-  zle -N hist-f
+  zle -N cd-f
+  zle -N cd-z
+  zle -N history-f
 fi
 
 function current_context () {
