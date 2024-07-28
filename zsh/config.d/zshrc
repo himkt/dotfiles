@@ -40,7 +40,7 @@ function date () {
     darwin*)
       command gdate $@ ;;
     linux*)
-      command date $@;;
+      command date $@ ;;
   esac
 }
 
