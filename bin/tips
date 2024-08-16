@@ -13,14 +13,14 @@ def tips_home() -> pathlib.Path:
 
 def list_tips(args: argparse.Namespace) -> None:
     if (name := args.name) is None:
-        for _tips_dir in tips_home().iterdir():
-            name = _tips_dir.name
+        for _tips_dir in tips_home().glob("*.tips"):
+            name = _tips_dir.name[:-5]
             if args.query is not None and args.query not in name:
                 continue
             print(name)
         return
 
-    tips_file = tips_home() / name / "tips"
+    tips_file = tips_home() / f"{name}.tips"
     if not tips_file.exists():
         print(f"No tips available for {args.name}")
         return
@@ -33,7 +33,7 @@ def list_tips(args: argparse.Namespace) -> None:
 
 
 def edit_tips(args: argparse.Namespace) -> None:
-    tips_file = tips_home() / args.name / "tips"
+    tips_file = tips_home() / f"{args.name}.tips"
     if args.init:
         tips_file.parent.mkdir(exist_ok=True)
         tips_file.touch()
