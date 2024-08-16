@@ -32,23 +32,15 @@ def list_tips(args: argparse.Namespace) -> None:
             print(tip)
 
 
-def init_tips(args: argparse.Namespace) -> None:
-    tips_file: pathlib.Path = tips_home() / args.name / "tips"
-    if tips_file.exists():
-        print(f"Tips for {args.name} already exists.")
-        return
-    tips_file.parent.mkdir(exist_ok=True)
-    tips_file.touch()
-    print(f"Created tips for {args.name}")
-
-
 def edit_tips(args: argparse.Namespace) -> None:
     tips_file = tips_home() / args.name / "tips"
-    if not tips_file.exists():
-        print(f"No tips available for {args.name}")
-        return
+    if args.init:
+        tips_file.parent.mkdir(exist_ok=True)
+        tips_file.touch()
     EDITOR = os.environ.get("EDITOR", "vim")
-    call([EDITOR, tips_file.as_posix()])
+    if call([EDITOR, tips_file.as_posix()]) != 0:
+        print("Cancelled.")
+        return
     print(f"Tips for {args.name} updated.")
 
 
@@ -60,7 +52,6 @@ def main(args: argparse.Namespace) -> None:
     actions = {
         "list": list_tips,
         "edit": edit_tips,
-        "init": init_tips,
     }
     if args.sub_parser is None:
         commands = ", ".join(actions.keys())
@@ -77,9 +68,7 @@ if __name__ == "__main__":
 
     edit_parser = sub_parsers.add_parser("edit")
     edit_parser.add_argument("name", type=str, default=None)
-
-    init_parser = sub_parsers.add_parser("init")
-    init_parser.add_argument("name", type=str)
+    edit_parser.add_argument("--init", action="store_true")
 
     list_parser = sub_parsers.add_parser("list")
     list_parser.add_argument("name", type=str, nargs="?")
