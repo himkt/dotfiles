@@ -4,11 +4,11 @@ NOCOLOR    := $(shell tput sgr0)
 
 .PHONY: \
 	all docs brew \
-	cui cli gui \
+	base cli gui \
 	cargo git \
 	nvim poetry tmux zsh
 
-all: clean cui docs
+all: clean base docs
 
 # =========================
 
@@ -29,7 +29,7 @@ krew-base:
 
 # =========================
 
-cui: cargo git nvim poetry tmux zsh
+base: cargo git tmux zsh
 
 cargo: cargo_clean
 	$(PWD)/cargo/bin/setup.sh
