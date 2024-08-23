@@ -28,9 +28,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'osyo-manga/vim-anzu'
   Plug 'vim-airline/vim-airline'
   Plug 'sheerun/vim-polyglot'
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-  Plug 'himkt/cargo-atcoder.nvim'
 call plug#end()
 
 " material.vim
@@ -58,15 +55,3 @@ vnoremap tr :<C-u> Tabularize /
 
 " vim-indent-guide
 let g:indent_guides_enable_on_vim_startup = 1
-
-" coc.nvim
-inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "<CR>"
-let g:coc_global_extensions = ['coc-pyright', 'coc-rust-analyzer']
-nmap <silent> cd :call CocAction('jumpDefinition', 'tabe')   <CR>
-nmap <silent> cv :call CocAction('jumpDefinition', 'vsplit') <CR>
-nmap <silent> ch :call CocAction('doHover') <CR>
-nmap <silent> cy <Plug>(coc-type-definition)
-nmap <silent> ci <Plug>(coc-implementation)
-nmap <silent> cr <Plug>(coc-references)
-nmap <silent> rn <Plug>(coc-rename)
-nmap <silent> fm <Plug>(coc-format)

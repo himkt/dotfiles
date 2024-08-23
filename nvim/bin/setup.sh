@@ -1,9 +1,5 @@
 #!/bin/bash
 
-if type "pip3" > /dev/null 2>&1; then
-  pip3 install neovim
-fi
-
 ln -s $HOME/dotfiles/nvim/config.d/vimrc $HOME/.vimrc
 
 if type "nvim" > /dev/null 2>&1; then

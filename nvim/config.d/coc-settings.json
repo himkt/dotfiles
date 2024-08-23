@@ -1,5 +1,0 @@
-{
-  "inlayHint.enable": false,
-  "python.formatting.provider": "black",
-  "python.analysis.diagnosticMode": "workspace"
-}
