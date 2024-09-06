@@ -1,3 +1,4 @@
+brew 'atuin'
 brew 'coreutils'
 brew 'envchain'
 brew 'fzf'
