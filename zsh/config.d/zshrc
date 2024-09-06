@@ -160,7 +160,7 @@ fi
 export PYTHONSYSTEMPATH=$(which python3)
 
 if command -v sheldon > /dev/null; then
-  eval "$(sheldon source)"
+  eval "$(sheldon -q source)"
 fi
 
 if command -v rbenv > /dev/null; then
