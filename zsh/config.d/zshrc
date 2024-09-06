@@ -185,6 +185,10 @@ if command -v nvim > /dev/null; then
   export EDITOR=nvim
 fi
 
+if command -v atuin > /dev/null; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
 if command -v tmux > /dev/null; then
   function attach_or_create_tmux_session () {
     if [ ! -z $DISABLE_TMUX ]; then return; fi
@@ -224,18 +228,11 @@ if command -v fzf > /dev/null; then
     fi
   }
 
-  function history-f () {
-    BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt=">>> ")
-    zle accept-line
-  }
-
   bindkey '^t' cd-f
   bindkey '^y' cd-z
-  bindkey '^r' history-f
 
   zle -N cd-f
   zle -N cd-z
-  zle -N history-f
 fi
 
 function current_context () {
