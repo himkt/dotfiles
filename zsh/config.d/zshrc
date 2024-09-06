@@ -98,7 +98,6 @@ export LC_CTYPE=$language
 
 for source in $(find $XDG_CONFIG_HOME/dotfiles/zsh -name "*.pre.zsh")
 do
-  echo "source $source"
   source $source
 done
 
