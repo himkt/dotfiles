@@ -1,0 +1,3 @@
+- shift+ctrl+option + ["%]: split pane
+- shift+ctrl+option + [↑←→↓]: change size of pane
+- shift+ctrl + [↑←→↓]: move pane
