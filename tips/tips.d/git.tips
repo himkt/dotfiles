@@ -1,2 +1,3 @@
 * delete remotes/origin/{branch} from local git: git fetch -p
 * grep excluding specific path: git grep -- ':!folder'
+* rich diff: GIT_EXTERNAL_DIFF=difft git diff
