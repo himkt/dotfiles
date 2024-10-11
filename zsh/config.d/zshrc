@@ -181,6 +181,11 @@ if command -v atuin > /dev/null; then
   eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd=z
+fi
+
 if command -v tmux > /dev/null; then
   function attach_or_create_tmux_session () {
     if [ ! -z $DISABLE_TMUX ]; then return; fi
@@ -205,26 +210,6 @@ if command -v tmux > /dev/null; then
   if [[ $(hostname) != *.local ]]; then
     attach_or_create_tmux_session
   fi
-fi
-
-if command -v fzf > /dev/null; then
-  function cd-f () {
-    cd $(find . -type d -print 2> /dev/null | fzf --prompt ">>> ")
-  }
-
-  function cd-z () {
-    if [ -z "$1" ]; then
-      cd $(z | sort -rh | awk '{print $2}' | fzf --prompt ">>> ")
-    else
-      _z $1
-    fi
-  }
-
-  bindkey '^t' cd-f
-  bindkey '^y' cd-z
-
-  zle -N cd-f
-  zle -N cd-z
 fi
 
 function current_context () {
