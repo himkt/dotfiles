@@ -159,6 +159,8 @@ fi
 
 export PYTHONSYSTEMPATH=$(which python3)
 
+# NOTE; third-party tools dependant
+
 if command -v sheldon > /dev/null; then
   eval "$(sheldon -q source)"
 fi
@@ -186,31 +188,18 @@ if command -v zoxide > /dev/null; then
   alias cd=z
 fi
 
-if command -v tmux > /dev/null; then
-  function attach_or_create_tmux_session () {
-    if [ ! -z $DISABLE_TMUX ]; then return; fi
-    if [ ! -z $TMUX_PANE ]; then return; fi
-    if [ "$TERM_PROGRAM" = "vscode" ]; then return; fi
-    if [ ! -z "$__INTELLIJ_COMMAND_HISTFILE__" ]; then return; fi
-    if [ ! -z "$WSL_INTEROP" ]; then return; fi
-    if tmux has-session; then tmux attach; else tmux; fi
-  }
-
-  function ssh () {
-    if [ "$(ps -p $(ps -p $$ -o ppid=) -o comm=)" = "tmux" ]; then
-      tmux rename-window ${@: -1}
-      command ssh "$@"
-      tmux set-window-option automatic-rename "on" 1>/dev/null
-    else
-      command ssh "$@"
-    fi
-  }
-
-  # auto launch happens only on remote host
-  if [[ $(hostname) != *.local ]]; then
-    attach_or_create_tmux_session
-  fi
+if command -v kubectl > /dev/null; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  compdef _kubectl k
 fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
+
+# NOTE; Utilities
 
 function current_context () {
   if test -f ~/.kubectl-hide-current-ctx; then
@@ -274,13 +263,6 @@ LF=$'\n'
 PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
-
-if command -v kubectl > /dev/null; then
-  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-  source <(kubectl completion zsh)
-  alias k=kubectl
-  compdef _kubectl k
-fi
 
 for source in $(find $XDG_CONFIG_HOME/dotfiles/zsh -name "*.post.zsh")
 do
