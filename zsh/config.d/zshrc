@@ -83,6 +83,7 @@ export SAVEHIST=100000
 export XDG_CONFIG_HOME=$HOME/.config
 export ZPLUG_HOME=$HOME/.config/zplug
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
+export HIMKT_DOTFILES_PRIVATE_CONFIG_DIR=$XDG_CONFIG_HOME/himkt/dotfiles/zsh/config.d
 
 if [ "$COLORTERM" = "gnome-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "xfce4-terminal" ]; then export TERM=xterm-256color; fi
@@ -96,7 +97,7 @@ fi
 export LANG=$language
 export LC_CTYPE=$language
 
-for source in $(find $XDG_CONFIG_HOME/dotfiles/zsh -name "*.pre.zsh")
+for source in $(find $HIMKT_DOTFILES_PRIVATE_CONFIG_DIR -name "*.pre.zsh")
 do
   source $source
 done
@@ -264,7 +265,7 @@ PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
-for source in $(find $XDG_CONFIG_HOME/dotfiles/zsh -name "*.post.zsh")
+for source in $(find $HIMKT_DOTFILES_PRIVATE_CONFIG_DIR -name "*.post.zsh")
 do
   source $source
 done
