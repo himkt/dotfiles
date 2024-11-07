@@ -1,1 +1,4 @@
 - `\\/` (<leader><leader>/): easymotion
+- cmd+i: inline chat
+- cmd+ctrl+i: chat
+- cmd+shift+i: edit
