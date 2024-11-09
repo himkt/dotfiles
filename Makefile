@@ -6,7 +6,7 @@ NOCOLOR    := $(shell tput sgr0)
 	all docs brew \
 	base cli gui \
 	cargo git \
-	nvim poetry tmux zsh
+	nvim poetry tmux uv zsh
 
 all: clean base docs
 
