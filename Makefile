@@ -52,6 +52,9 @@ sheldon: sheldon_clean
 tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
+uv: uv_clean
+	curl -LsSf https://astral.sh/uv/install.sh | sh
+
 wezterm: wezterm_clean
 	$(PWD)/wezterm/bin/setup.sh
 
@@ -89,6 +92,9 @@ sheldon_clean:
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
+
+uv_clean:
+	rm -rf $(HOME)/.local/bin/uv $(HOME)/.local/bin/uvx
 
 wezterm_clean:
 	rm -rf $(HOME)/.wezterm.lua
