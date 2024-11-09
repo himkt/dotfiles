@@ -122,10 +122,10 @@ Darwin*)
 Linux*)
   eval `ssh-agent -s`
 
-  if test -f ~/home/linuxbrew/.linuxbrew/bin/brew; then
-    export HOMEBREW_ROOT=/home/linuxbrew/.linuxbrew
-  else
+  if test -f $HOME/.linuxbrew/bin/brew; then
     export HOMEBREW_ROOT=$HOME/.linuxbrew
+  else
+    export HOMEBREW_ROOT=/home/linuxbrew/.linuxbrew
   fi
   ;;
 esac
