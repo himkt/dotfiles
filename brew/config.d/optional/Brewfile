@@ -1,3 +1,4 @@
+brew 'binutils'
 brew 'htop'
 brew 'krew'
 brew 'kubernetes-cli'
