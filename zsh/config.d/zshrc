@@ -160,46 +160,6 @@ fi
 
 export PYTHONSYSTEMPATH=$(which python3)
 
-# NOTE; third-party tools dependant
-
-if command -v sheldon > /dev/null; then
-  eval "$(sheldon -q source)"
-fi
-
-if command -v rbenv > /dev/null; then
-  eval "$(rbenv init -)"
-fi
-
-if command -v nodenv > /dev/null; then
-  eval "$(nodenv init -)"
-  export PATH=$PATH:"$(npm get prefix --global)/bin"
-fi
-
-if command -v nvim > /dev/null; then
-  alias vim=nvim
-  export EDITOR=nvim
-fi
-
-if command -v atuin > /dev/null; then
-  eval "$(atuin init zsh --disable-up-arrow)"
-fi
-
-if command -v zoxide > /dev/null; then
-  eval "$(zoxide init zsh)"
-  alias cd=z
-fi
-
-if command -v kubectl > /dev/null; then
-  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
-  source <(kubectl completion zsh)
-  alias k=kubectl
-  compdef _kubectl k
-fi
-
-if [ -f "$HOME/.cargo/env" ]; then
-  . "$HOME/.cargo/env"
-fi
-
 # NOTE; Utilities
 
 function current_context () {
@@ -264,6 +224,50 @@ LF=$'\n'
 PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
+
+# NOTE; third-party tools dependant
+if command -v fzf > /dev/null; then
+  source <(fzf --zsh)
+fi
+
+# NOTE; atuin should be loaded after fzf since both modifies ctrl-r behavior.
+if command -v atuin > /dev/null; then
+  eval "$(atuin init zsh --disable-up-arrow)"
+fi
+
+if command -v nodenv > /dev/null; then
+  eval "$(nodenv init -)"
+  export PATH=$PATH:"$(npm get prefix --global)/bin"
+fi
+
+if command -v nvim > /dev/null; then
+  alias vim=nvim
+  export EDITOR=nvim
+fi
+
+if command -v rbenv > /dev/null; then
+  eval "$(rbenv init -)"
+fi
+
+if command -v sheldon > /dev/null; then
+  eval "$(sheldon -q source)"
+fi
+
+if command -v zoxide > /dev/null; then
+  eval "$(zoxide init zsh)"
+  alias cd=z
+fi
+
+if command -v kubectl > /dev/null; then
+  export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
+  source <(kubectl completion zsh)
+  alias k=kubectl
+  compdef _kubectl k
+fi
+
+if [ -f "$HOME/.cargo/env" ]; then
+  . "$HOME/.cargo/env"
+fi
 
 for source in $(find $HIMKT_DOTFILES_PRIVATE_CONFIG_DIR -name "*.post.zsh")
 do
