@@ -134,8 +134,10 @@ if [ -f $RYE_HOME/env ] ; then
   source $RYE_HOME/env
 fi
 
-export PATH=$HOMEBREW_ROOT/sbin:$PATH
-export PATH=$HOMEBREW_ROOT/bin:$PATH
+if [[ -v HOMEBREW_ROOT ]] ; then
+  export PATH=$HOMEBREW_ROOT/sbin:$PATH
+  export PATH=$HOMEBREW_ROOT/bin:$PATH
+fi
 
 for prefix in $HOME $HOME/.local $HOME/dotfiles $GOPATH; do
   export PATH=$PATH:$prefix/bin
