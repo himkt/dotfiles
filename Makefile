@@ -37,6 +37,9 @@ cargo: cargo_clean
 git: git_clean
 	$(PWD)/git/bin/setup.sh
 
+nix: nix_clean
+	$(PWD)/nix/bin/setup.sh
+
 nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
@@ -74,6 +77,10 @@ cargo_clean:
 git_clean:
 	rm -rf $(HOME)/.config/git/config
 	rm -rf $(HOME)/.config/git/ignore
+
+nix_clean:
+	# TODO(himkt); uninstall nix itself.
+	rm -rf $(HOME)/.config/nix
 
 nvim_clean:
 	rm -rf $(HOME)/.vimrc
