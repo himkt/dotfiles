@@ -187,6 +187,12 @@ function current_timestamp () {
   echo "[%{$fg_bold[blue]%}$(date +'%Y-%m-%d %H:%M:%S')%{${reset_color}%}]"
 }
 
+function current_nix () {
+  if [[ -v IN_NIX_SHELL ]]; then
+    echo "[%{$fg_bold[cyan]%}nix%{${reset_color}%}]"
+  fi
+}
+
 function parse_git_branch() {
   (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
 }
@@ -221,7 +227,7 @@ function current_git_status () {
 }
 
 LF=$'\n'
-PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
+PROMPT='$(current_nix)$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
