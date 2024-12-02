@@ -15,7 +15,3 @@ apply = ['source']
 [plugins.zsh-syntax-highlighting]
 github = 'zsh-users/zsh-syntax-highlighting'
 apply = ['source']
-
-[plugins.zsh-platform-switcher]
-github = 'himkt/zsh-platform-switcher'
-apply = ['macos_source']
