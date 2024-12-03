@@ -20,6 +20,12 @@
     AppleShowAllFiles      = false;
   };
 
+  system.defaults.dock = {
+    autohide     = true;
+    show-recents = false;
+    orientation  = "bottom";
+  };
+
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
