@@ -26,6 +26,26 @@
     orientation  = "bottom";
   };
 
+  system.defaults.controlcenter = {
+    AirDrop                = false;
+    BatteryShowPercentage  = false;
+    Bluetooth              = false;
+    Display                = false;
+    FocusModes             = false;
+    NowPlaying             = false;
+    Sound                  = false;
+  };
+
+  # TODO(himkt); other items visibility settings (e.g. Wi-Fi).
+  # It modifies the almost same entries as the following command:
+  # `defaults -currentHost write  com.apple.controlcenter WiFi -int 18`
+  # However, it didn't change macOS UI actually even if I explicitly ran `killall SystemUIServer`.
+  #
+  # system.defaults.CustomUserPreferences."com.apple.controlcenter" = {
+  #   "NSStatusItem Preferred Position WiFi" = 18;
+  #   "NSStatusItem Visible WiFi"            = 1;
+  # };
+
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
