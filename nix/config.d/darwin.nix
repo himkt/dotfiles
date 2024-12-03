@@ -49,6 +49,17 @@
   #   "NSStatusItem Visible WiFi"            = 1;
   # };
 
+  system.defaults.NSGlobalDomain = {
+    InitialKeyRepeat = 15;
+    KeyRepeat        = 2;
+  };
+
+  system.defaults.loginwindow = {
+    GuestEnabled = false;
+  };
+
+  security.pam.enableSudoTouchIdAuth = true;
+
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
