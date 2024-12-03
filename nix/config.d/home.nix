@@ -21,6 +21,8 @@
     pkgs.zsh
     pkgs.zsh-autocomplete
     pkgs.zsh-syntax-highlighting
+    pkgs.coreutils
+    pkgs.git-lfs
   ];
 
   # NOTE(himkt); https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
