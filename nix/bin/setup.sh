@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# mkdir -p $HOME/.config/nix
-# ln -s $PWD/nix/config.d/nix.conf $HOME/.config/nix
+if ! command -v nix >/dev/null 2>&1; then
+  sh <(curl -L https://nixos.org/nix/install)
+fi
 
-mkdir -p $HOME/.config/nix-darwin
-cp $PWD/nix/config.d/flake.nix $HOME/.config/nix-darwin
+nix run nix-darwin -- switch --flake $HOME/dotfiles/nix/config.d
