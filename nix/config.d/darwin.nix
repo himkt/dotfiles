@@ -60,6 +60,23 @@
 
   security.pam.enableSudoTouchIdAuth = true;
 
+  homebrew = {
+    enable = true;
+    casks  = [
+      "arc"
+      "font-jetbrains-mono"
+      "docker"
+      # "notion"
+      "ngrok"
+      "insomnia"
+      "slack"
+      "visual-studio-code"
+      "wezterm"
+      "1password"
+    ];
+    onActivation.cleanup = "uninstall";
+  };
+
   # The platform the configuration will be used on.
   nixpkgs.hostPlatform = "aarch64-darwin";
 }
