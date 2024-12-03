@@ -23,6 +23,11 @@
     pkgs.zsh-syntax-highlighting
     pkgs.coreutils
     pkgs.git-lfs
+    pkgs.difftastic
+    pkgs.gh
+    pkgs.ghq
+    pkgs.jq
+    pkgs.tree
   ];
 
   # NOTE(himkt); https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
