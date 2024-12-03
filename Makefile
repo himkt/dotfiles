@@ -111,6 +111,9 @@ zsh_clean:
 
 # =========================
 
+nix_apply:
+	darwin-rebuild switch --flake $(PWD)/nix/config.d
+
 docs:
 	@echo ""
 	@echo "### Finish installing dotfiles!"
