@@ -26,28 +26,6 @@ setopt mark_dirs
 setopt no_beep
 setopt prompt_subst
 
-function ls () {
-  case ${OSTYPE} in
-    darwin*)
-      command ls -G $@ ;;
-    linux*)
-      command ls --color $@ ;;
-  esac
-}
-
-function date () {
-  case ${OSTYPE} in
-    darwin*)
-      command gdate $@ ;;
-    linux*)
-      command date $@ ;;
-  esac
-}
-
-function retcode () {
-  echo $?
-}
-
 function current_platform () {
   local platform="$(uname -m)"
 
