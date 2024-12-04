@@ -28,6 +28,7 @@
     pkgs.ghq
     pkgs.jq
     pkgs.tree
+    pkgs.fzf
   ];
 
   # NOTE(himkt); https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix
