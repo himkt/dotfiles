@@ -26,14 +26,6 @@ setopt mark_dirs
 setopt no_beep
 setopt prompt_subst
 
-function ls () {
-  command ls --color $@
-}
-
-function retcode () {
-  echo $?
-}
-
 function current_platform () {
   local platform="$(uname -m)"
 

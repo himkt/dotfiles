@@ -47,6 +47,8 @@
       t        = "tips";
       vim      = "nvim";
       cd       = "z";
+      ls       = "ls --color";
+      retcode  = "echo $?";
     };
 
 
