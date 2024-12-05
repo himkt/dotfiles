@@ -2,7 +2,7 @@
   description = "devenv";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-24.11-darwin";
   };
 
   outputs = { self, nixpkgs }: let
