@@ -2,34 +2,9 @@
 RED        := $(shell tput setaf 1)
 NOCOLOR    := $(shell tput sgr0)
 
-.PHONY: \
-	all docs brew \
-	base cli gui \
+.PHONY: all docs \
 	cargo git \
-	nvim poetry tmux uv zsh
-
-all: clean base docs
-
-# =========================
-
-brew:
-	$(PWD)/brew/bin/setup.sh
-
-brew-base:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/base/Brewfile
-
-brew-optional:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/optional/Brewfile
-
-brew-gui:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/gui/Brewfile
-
-krew-base:
-	kubectl krew install open-svc oidc-login ns images ctx hns stern neat
-
-# =========================
-
-base: cargo git tmux zsh
+	nvim tmux uv zsh
 
 cargo: cargo_clean
 	$(PWD)/cargo/bin/setup.sh
@@ -45,12 +20,6 @@ nvim: nvim_clean
 
 poetry: poetry_clean
 	$(PWD)/poetry/bin/setup.sh
-
-rye: rye_clean
-	curl -sSf https://rye-up.com/get | bash
-
-sheldon: sheldon_clean
-	$(PWD)/sheldon/bin/setup.sh
 
 tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
@@ -68,7 +37,7 @@ zsh: zsh_clean
 
 clean: \
 	cargo_clean \
-	git_clean nvim_clean poetry_clean \
+	git_clean nvim_clean \
 	tmux_clean zsh_clean
 
 cargo_clean:
@@ -86,16 +55,6 @@ nvim_clean:
 	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
-
-poetry_clean:
-	rm -rf $(HOME)/.config/pypoetry
-	rm -rf $(HOME)/Library/Application\ Support/pypoetry
-
-rye_clean:
-	./rye/bin/clean.sh
-
-sheldon_clean:
-	rm -rf $(HOME)/.config/sheldon
 
 tmux_clean:
 	rm -rf $(HOME)/.tmux.conf
