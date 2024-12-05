@@ -20,14 +20,3 @@ jobs:
         run: |
           cp -r $GITHUB_WORKSPACE $HOME/dotfiles && cd $HOME/dotfiles
           make
-
-      - name: make {brew,brew-optional}
-        run: |
-          make brew
-          make brew-base
-          make brew-optional
-
-      - name: zsh
-        run: |
-          make zsh
-          make sheldon
