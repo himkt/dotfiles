@@ -13,21 +13,30 @@
   home.stateVersion = "24.11";
 
   home.packages = [
-    pkgs.neovim
-    pkgs.nixd
-    pkgs.git
-    pkgs.zoxide
     pkgs.atuin
+    pkgs.coreutils
+    pkgs.difftastic
+    pkgs.fzf
+    pkgs.jq
+    pkgs.tree
+
+    pkgs.git
+    pkgs.git-lfs
+    pkgs.gh
+    pkgs.ghq
+
     pkgs.zsh
     pkgs.zsh-autocomplete
     pkgs.zsh-syntax-highlighting
-    pkgs.coreutils
-    pkgs.git-lfs
-    pkgs.difftastic
-    pkgs.gh
-    pkgs.ghq
-    pkgs.jq
-    pkgs.tree
+    pkgs.zoxide
+
+    pkgs.kubectl
+    pkgs.krew
+    pkgs.k9s
+
+    pkgs.neovim
+
+    pkgs.nixd
   ];
 
   # NOTE(himkt); https://github.com/nix-community/home-manager/blob/master/modules/programs/zsh.nix

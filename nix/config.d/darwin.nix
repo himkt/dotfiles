@@ -54,6 +54,11 @@
   #   "NSStatusItem Visible WiFi"            = 1;
   # };
 
+  system.keyboard = {
+    enableKeyMapping = true;
+    remapCapsLockToControl = true;
+  };
+
   system.defaults.NSGlobalDomain = {
     InitialKeyRepeat = 15;
     KeyRepeat        = 2;
