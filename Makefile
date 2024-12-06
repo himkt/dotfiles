@@ -72,24 +72,3 @@ zsh_clean:
 
 nix_apply:
 	darwin-rebuild switch --flake $(PWD)/nix/config.d
-
-docs:
-	@echo ""
-	@echo "### Finish installing dotfiles!"
-	@echo "Please run $(RED)source $$HOME/.zshrc$(NOCOLOR) on zsh to enable configures."
-	@echo "- If you want to use nvim with extensions, please run $(RED)make nvim$(NOCOLOR) (which needs pyenv)."
-	@echo "- If you want to install pyenv using brew, please read the Python section below."
-	@echo ""
-	@echo "---"
-	@echo ""
-	@echo "### Packages"
-	@echo "- If you want to use linuxbrew/homebrew, please run $(RED)make brew-cui$(NOCOLOR)."
-	@echo "- Please run $(RED)make brew$(NOCOLOR) before if you have not installed brew yet"
-	@echo "- Additionally, $(RED)make brew-optional$(NOCOLOR) installs optional packages"
-	@echo ""
-	@echo "---"
-	@echo ""
-	@echo "### Python"
-	@echo "- After $(RED)make brew, make brew-cui, source $$HOME/.zshrc$(NOCOLOR),"
-	@echo "  you can run $(RED)make nvim$(NOCOLOR) to install Python and the nvim library"
-	@echo ""

@@ -14,17 +14,9 @@
       uranus = darwin.lib.darwinSystem {
         system = "aarch64-darwin";
         modules = [
-          ./darwin.nix
           home-manager.darwinModules.home-manager
-          {
-            users.users.himkt.home = "/Users/himkt";
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.users.himkt = import ./home.nix ;
-
-            # Optionally, use home-manager.extraSpecialArgs to pass
-            # arguments to home.nix
-          }
+          ./home-manager.nix
+          ./darwin.nix
         ];
       };
     };
