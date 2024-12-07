@@ -6,16 +6,16 @@
   nix.settings.trusted-users = [ "root" "himkt" ];
 
   imports = [
-    ./darwin/system/defaults/controlcenter.nix
-    ./darwin/system/defaults/dock.nix
-    ./darwin/system/defaults/finder.nix
-    ./darwin/system/defaults/NSGlobalDomain.nix
-    ./darwin/system/defaults/loginwindow.nix
-    ./darwin/system/keyboard.nix
-    ./darwin/security/pam.nix
-    ./darwin/homebrew.nix
-    ./darwin/font.nix
-    ./darwin/environment/systemPackages.nix
+    ./environment/systemPackages.nix
+    ./fonts/packages.nix
+    ./homebrew.nix
+    ./system/defaults/controlcenter.nix
+    ./system/defaults/dock.nix
+    ./system/defaults/finder.nix
+    ./system/defaults/NSGlobalDomain.nix
+    ./system/defaults/loginwindow.nix
+    ./system/keyboard.nix
+    ./security/pam.nix
   ];
 
   # Used for backwards compatibility, please read the changelog before changing.
