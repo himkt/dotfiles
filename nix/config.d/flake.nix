@@ -15,8 +15,8 @@
         system = "aarch64-darwin";
         modules = [
           home-manager.darwinModules.home-manager
-          ./home-manager.nix
-          ./darwin.nix
+          ./darwin/darwin.nix
+          ./home/home.nix
         ];
       };
     };

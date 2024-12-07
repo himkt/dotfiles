@@ -18,8 +18,8 @@
     home.username = "himkt";
 
     imports = [
-      ./home/programs/zsh.nix
       ./home/packages.nix
+      ./programs/zsh.nix
     ];
 
     programs.home-manager.enable = true;
