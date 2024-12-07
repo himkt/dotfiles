@@ -20,6 +20,7 @@
     imports = [
       ./home/packages.nix
       ./programs/git.nix
+      ./programs/tmux.nix
       ./programs/wezterm.nix
       ./programs/zsh.nix
     ];
