@@ -19,6 +19,8 @@
 
     imports = [
       ./home/packages.nix
+      ./programs/git.nix
+      ./programs/wezterm.nix
       ./programs/zsh.nix
     ];
 
