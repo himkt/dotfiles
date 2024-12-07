@@ -1,7 +1,7 @@
 {
   description = "My templates of nix";
 
-  outputs = { self, ... }:
+  outputs = { ... }:
   {
     templates = {
       devenv-uv   = {
