@@ -22,6 +22,10 @@
       ".DS_Store"
     ];
 
+    lfs = {
+      enable = true;
+    };
+
     extraConfig = {
       format = {
         pretty = "format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]";
