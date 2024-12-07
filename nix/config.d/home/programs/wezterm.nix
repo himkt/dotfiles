@@ -40,6 +40,9 @@
         action = wezterm.action.ToggleFullScreen,
       }
 
+      -- https://www.reddit.com/r/wezterm/comments/1h381t5/wezterm_does_not_render_fonts/
+      config.front_end = "WebGpu"
+
       return config
     '';
   };
