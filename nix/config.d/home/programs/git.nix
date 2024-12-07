@@ -32,7 +32,7 @@
         date   = "iso";
       };
       pull = {
-        rebase = "false";
+        rebase = false;
       };
     };
   };
