@@ -1,0 +1,19 @@
+# editor
+.vim
+.vscode
+
+# ruby
+.rakeTasks
+.rubocop.yml
+
+# python
+.venv
+*.egg-info
+.mypy_cache
+
+# jetbrains
+.idea
+
+.DS_Store
+
+.apple-silicon-platform
