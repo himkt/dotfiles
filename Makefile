@@ -6,7 +6,7 @@ NOCOLOR    := $(shell tput sgr0)
 	all docs brew \
 	base cli gui \
 	cargo git \
-	nvim poetry tmux uv zsh
+	nvim tmux uv zsh
 
 all: clean base docs
 
@@ -40,12 +40,6 @@ git: git_clean
 nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
-poetry: poetry_clean
-	$(PWD)/poetry/bin/setup.sh
-
-rye: rye_clean
-	curl -sSf https://rye-up.com/get | bash
-
 sheldon: sheldon_clean
 	$(PWD)/sheldon/bin/setup.sh
 
@@ -65,7 +59,7 @@ zsh: zsh_clean
 
 clean: \
 	cargo_clean \
-	git_clean nvim_clean poetry_clean \
+	git_clean nvim_clean \
 	tmux_clean zsh_clean
 
 cargo_clean:
@@ -79,13 +73,6 @@ nvim_clean:
 	rm -rf $(HOME)/.vimrc
 	rm -rf $(HOME)/.vim
 	rm -rf $(HOME)/.config/nvim
-
-poetry_clean:
-	rm -rf $(HOME)/.config/pypoetry
-	rm -rf $(HOME)/Library/Application\ Support/pypoetry
-
-rye_clean:
-	./rye/bin/clean.sh
 
 sheldon_clean:
 	rm -rf $(HOME)/.config/sheldon
