@@ -148,15 +148,19 @@ if command -v brew > /dev/null; then
   export HOMEBREW_NO_AUTO_UPDATE=1
   eval $(brew shellenv)
 
-  if [ "$(brew --prefix xz 2>/dev/null)" != "" ]; then
+  if [ -d "$HOMEBREW_ROOT/opt/xz" ]; then
     export CONFIGURE_OPTS="--enable-shared"
     export CPPFLAGS="-I$(brew --prefix xz)/include"
     export LDFLAGS="-L$(brew --prefix xz)/lib"
   fi
 
-  if [ "$(brew --prefix openjdk 2>/dev/null)" != "" ]; then
+  if [ -d "$HOMEBREW_ROOT/opt/openjdk" ]; then
     export PATH="/opt/homebrew/opt/openjdk/bin:$PATH"
     export CPPFLAGS="$CPPFLAGS:-I/opt/homebrew/opt/openjdk/include"
+  fi
+
+  if [ -d "$HOMEBREW_ROOT/opt/libpq/bin" ]; then
+    export PATH="/opt/homebrew/opt/libpq/bin:$PATH"
   fi
 fi
 
