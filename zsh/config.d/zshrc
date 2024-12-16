@@ -242,8 +242,8 @@ if command -v fzf > /dev/null; then
   source <(fzf --zsh)
 fi
 
-# NOTE; atuin should be loaded after fzf since both modifies ctrl-r behavior.
 if command -v atuin > /dev/null; then
+  # NOTE; atuin should be loaded after fzf since both modifies ctrl-r behavior.
   eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
