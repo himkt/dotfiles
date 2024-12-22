@@ -14,6 +14,11 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - run: |
+          ls /usr/local
+          find /usr/local
+          exit 1
+        continue-on-error: true
       - name: uninstall builtin homebrew on macOS
         if: matrix.os == 'macos-latest'
         run: |
