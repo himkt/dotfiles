@@ -19,5 +19,7 @@ jobs:
           cp -r $GITHUB_WORKSPACE $HOME/dotfiles
           cd $HOME/dotfiles
           make
+          make brew
       - run: |
-          which zsh
+          brew doctor
+        shell: zsh {0}
