@@ -28,10 +28,6 @@ jobs:
           make brew
       - run: |
           source $HOME/.zshrc
-          echo $SHELL
-          which zsh
-          ls -la $HOME
           make brew-base
           brew doctor
         shell: zsh {0}
-        continue-on-error: true
