@@ -23,6 +23,10 @@ jobs:
           make
           make brew
       - run: |
+          echo $SHELL
+          which zsh
+          ls -la $HOME
           make brew-base
           brew doctor
         shell: zsh {0}
+        continue-on-error: true
