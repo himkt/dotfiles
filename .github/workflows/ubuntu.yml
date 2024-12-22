@@ -1,0 +1,27 @@
+name: Ubuntu test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: setup zsh for ubuntu-latest
+        run: |
+          sudo apt update -y
+          sudo apt install -y zsh
+          chsh -s $(which zsh)
+      - name: setup dotfiles
+        run: |
+          cp -r $GITHUB_WORKSPACE $HOME/dotfiles
+          cd $HOME/dotfiles
+          make
+          make brew
+      - name: install packages
+        run: |
+          source $HOME/.zshrc
+          make brew-base
+        shell: zsh {0}
