@@ -1,22 +1,23 @@
-
-
 name: "build"
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
 
 jobs:
-  check_pr:
-
+  main:
     strategy:
       matrix:
-        os: [macos-latest]
-
+        os: [macos-latest, ubuntu]
     runs-on: ${{ matrix.os }}
-
     steps:
       - uses: actions/checkout@v4
-
-      - name: setup
+      - name: setup ${{ matrix.os }}
         run: |
-          cp -r $GITHUB_WORKSPACE $HOME/dotfiles && cd $HOME/dotfiles
+          cp -r $GITHUB_WORKSPACE $HOME/dotfiles
+          cd $HOME/dotfiles
           make
+      - run: |
+          which zsh
