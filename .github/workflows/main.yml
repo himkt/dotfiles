@@ -21,5 +21,6 @@ jobs:
           make
           make brew
       - run: |
+          make brew-base
           brew doctor
         shell: zsh {0}
