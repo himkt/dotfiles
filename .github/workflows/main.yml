@@ -14,6 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
+      - name: check brew on macos-latest
+        if: matrix.os == 'macos-latest'
+        run: |
+          which brew
       - name: setup zsh for ubuntu-latest
         if: matrix.os == 'ubuntu-latest'
         run: |
