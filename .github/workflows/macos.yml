@@ -1,0 +1,30 @@
+name: macOS test
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  main:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: uninstall builtin homebrew on macOS
+        run: |
+          sudo rm -rf /opt/homebrew
+      - name: setup dotfiles
+        run: |
+          cp -r $GITHUB_WORKSPACE $HOME/dotfiles
+          cd $HOME/dotfiles
+          make
+          make brew
+      - name: install packages
+        run: |
+          source $HOME/.zshrc
+          make brew-base
+        shell: zsh {0}
+      - name: brew doctor on macOS
+        run: |
+          # NOTE(himkt); skip this on Ubuntu since brew doctor won't succeed
+          #              due to the installation path.
+          brew doctor

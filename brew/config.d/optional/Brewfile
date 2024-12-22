@@ -1,5 +1,6 @@
 brew 'bazelisk'
 brew 'binutils'
+brew 'envchain'
 brew 'htop'
 brew 'krew'
 brew 'kubernetes-cli'
