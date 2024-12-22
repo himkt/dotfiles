@@ -27,6 +27,7 @@ jobs:
           make
           make brew
       - run: |
+          source $HOME/.zshrc
           echo $SHELL
           which zsh
           ls -la $HOME
