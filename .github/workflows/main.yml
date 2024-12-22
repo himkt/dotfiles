@@ -30,8 +30,14 @@ jobs:
           cd $HOME/dotfiles
           make
           make brew
-      - run: |
+      - name: install packages
+        run: |
           source $HOME/.zshrc
           make brew-base
-          brew doctor
         shell: zsh {0}
+      - name: brew doctor on macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          # NOTE(himkt); skip this on Ubuntu since brew doctor won't succeed
+          #              due to the installation path.
+          brew doctor

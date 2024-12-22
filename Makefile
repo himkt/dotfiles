@@ -16,7 +16,7 @@ brew:
 	$(PWD)/brew/bin/setup.sh
 
 brew-base:
-	brew bundle --verbose -q --no-lock --file=$(PWD)/brew/config.d/base/Brewfile
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/base/Brewfile
 
 brew-optional:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/optional/Brewfile
