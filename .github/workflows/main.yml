@@ -14,10 +14,10 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - name: check brew on macos-latest
+      - name: uninstall builtin homebrew on macOS
         if: matrix.os == 'macos-latest'
         run: |
-          which brew
+          sudo rm -rf /opt/homebrew
       - name: setup zsh for ubuntu-latest
         if: matrix.os == 'ubuntu-latest'
         run: |
