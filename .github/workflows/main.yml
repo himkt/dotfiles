@@ -14,8 +14,12 @@ jobs:
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4
-      - run: sudo apt update -y && sudo apt install -y zsh
+      - name: setup zsh for ubuntu-latest
         if: matrix.os == 'ubuntu-latest'
+        run: |
+          sudo apt update -y
+          sudo apt install -y zsh
+          chsh -s $(which zsh)
       - name: setup ${{ matrix.os }}
         run: |
           cp -r $GITHUB_WORKSPACE $HOME/dotfiles
