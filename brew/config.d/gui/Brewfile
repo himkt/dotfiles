@@ -1,6 +1,7 @@
 cask 'arc'
 cask 'font-jetbrains-mono'
 cask 'docker'
+cask 'ghostty'
 cask 'notion'
 cask 'ngrok/ngrok/ngrok'
 cask 'insomnia'
