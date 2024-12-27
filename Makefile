@@ -34,6 +34,9 @@ base: cargo git tmux zsh
 cargo: cargo_clean
 	$(PWD)/cargo/bin/setup.sh
 
+ghostty: ghostty_clean
+	$(PWD)/ghostty/bin/setup.sh
+
 git: git_clean
 	$(PWD)/git/bin/setup.sh
 
@@ -64,6 +67,9 @@ clean: \
 
 cargo_clean:
 	rm -rf $(HOME)/.cargo/config.toml
+
+ghostty_clean:
+	rm -rf $(HOME)/Library/Application\ Support/com.mitchellh.ghostty
 
 git_clean:
 	rm -rf $(HOME)/.config/git/config
