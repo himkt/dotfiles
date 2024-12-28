@@ -237,14 +237,8 @@ PROMPT='$(current_nix)$(current_platform)$(current_context)$(current_path)$(curr
 RPROMPT='$(current_timestamp)'
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
-# NOTE; third-party tools dependant
 if command -v fzf > /dev/null; then
   source <(fzf --zsh)
-fi
-
-if command -v atuin > /dev/null; then
-  # NOTE; atuin should be loaded after fzf since both modifies ctrl-r behavior.
-  eval "$(atuin init zsh --disable-up-arrow)"
 fi
 
 if command -v nodenv > /dev/null; then
@@ -255,10 +249,6 @@ fi
 if command -v nvim > /dev/null; then
   alias vim=nvim
   export EDITOR=nvim
-fi
-
-if command -v rbenv > /dev/null; then
-  eval "$(rbenv init -)"
 fi
 
 if command -v sheldon > /dev/null; then
