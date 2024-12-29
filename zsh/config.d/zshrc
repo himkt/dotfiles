@@ -161,7 +161,6 @@ function current_git_status () {
   local git_branch="$(parse_git_branch)"
 
   if [ -z "$git_branch" ]; then
-    echo ""
     return
   fi
 
@@ -197,6 +196,7 @@ if command -v fzf > /dev/null; then
 fi
 
 if command -v nodenv > /dev/null; then
+  export NODENV_ROOT=$HOME/.nodenv
   eval "$(nodenv init -)"
   export PATH=$PATH:"$(npm get prefix --global)/bin"
 fi
