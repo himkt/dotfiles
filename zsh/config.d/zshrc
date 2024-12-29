@@ -103,15 +103,9 @@ Darwin*)
   if [ `uname -m` = "arm64" ]; then
     export HOMEBREW_ROOT=/opt/homebrew
     export HOMEBREW_CACHE=$HOME/.cache/Homebrew
-    export PYENV_ROOT=$HOME/.pyenv-arm64
-    export NODENV_ROOT=$HOME/.nodenv-arm64
-    export RYE_HOME=$HOME/.rye-arm64
   else
     export HOMEBREW_ROOT=/opt/homebrew-x86_64
     export HOMEBREW_CACHE=$HOME/.cache/Homebrew-x86_64
-    export PYENV_ROOT=$HOME/.pyenv
-    export NODENV_ROOT=$HOME/.nodenv
-    export RYE_HOME=$HOME/.rye-x86_64
   fi
 
   ;;
