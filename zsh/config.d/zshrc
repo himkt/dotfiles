@@ -4,10 +4,6 @@
 
 bindkey -e
 
-# For Zsh on Windows WSL
-bindkey  "^[[H"   beginning-of-line
-bindkey  "^[[F"   end-of-line
-
 autoload -Uz compinit && compinit
 autoload -U colors && colors
 autoload -Uz zmv && alias zmv='noglob zmv -W'
