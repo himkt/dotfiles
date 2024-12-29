@@ -54,36 +54,21 @@ function current_platform () {
   fi
 }
 
-if type wslvar > /dev/null 2>&1; then
-  export CLIPBOARD_APP=clip.exe
-else
-  case ${OSTYPE} in
-    darwin*)
-      export CLIPBOARD_APP=pbcopy;;
-    linux*)
-      export CLIPBOARD_APP="xsel --clipboard --input";;
-  esac
-fi
+function git-home () {
+  cd `git rev-parse --show-toplevel`
+}
 
-alias git-home='cd `git rev-parse --show-toplevel`'
-alias t='tips'
+export XDG_CONFIG_HOME=$HOME/.config
 
 export EDITOR=vim
 export FZF_DEFAULT_OPTS='--height 50% --reverse --border'
 export GOPATH=$HOME/go
 export GHQ_ROOT=$HOME/work
+export HIMKT_DOTFILES_PRIVATE_CONFIG_DIR=$XDG_CONFIG_HOME/himkt/dotfiles/zsh/config.d
 export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=100000
 export PYTHONDONTWRITEBYTECODE=1
 export SAVEHIST=100000
-export XDG_CONFIG_HOME=$HOME/.config
-export ZPLUG_HOME=$HOME/.config/zplug
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=241"
-export HIMKT_DOTFILES_PRIVATE_CONFIG_DIR=$XDG_CONFIG_HOME/himkt/dotfiles/zsh/config.d
-
-if [ "$COLORTERM" = "gnome-terminal" ]; then export TERM=xterm-256color; fi
-if [ "$COLORTERM" = "xfce4-terminal" ]; then export TERM=xterm-256color; fi
-if [ "$COLORTERM" = "rxvt-xpm" ]; then export TERM=rxvt-256color; fi
 
 language=en_US.UTF-8
 # If `en_US.UTF-8` is not available, fallback to `C.utf8`
