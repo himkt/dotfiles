@@ -182,21 +182,15 @@ function current_context () {
     return
   fi
 
-  echo "[%{$fg[blue]%}$current_context%{${reset_color}%}]"
+  echo "[%{$fg_bold[blue]%}$current_context%{${reset_color}%}]"
 }
 
 function current_path () {
-  echo "[%{${fg[yellow]}%}%~%{${reset_color}%}]"
+  echo "[%{${fg_bold[yellow]}%}%~%{${reset_color}%}]"
 }
 
 function current_timestamp () {
-  echo "[%{$fg_bold[blue]%}$(date +'%Y-%m-%d %H:%M:%S')%{${reset_color}%}]"
-}
-
-function current_nix () {
-  if [[ -v IN_NIX_SHELL ]]; then
-    echo "[%{$fg_bold[cyan]%}nix%{${reset_color}%}]"
-  fi
+  echo "[%{$fg_bold[green]%}$(date +'%H:%M:%S')%{${reset_color}%}]"
 }
 
 function parse_git_branch() {
@@ -232,9 +226,9 @@ function current_git_status () {
   fi
 }
 
-LF=$'\n'
-PROMPT='$(current_nix)$(current_platform)$(current_context)$(current_path)$(current_git_status)${LF}> '
-RPROMPT='$(current_timestamp)'
+PROMPT='$(current_platform)$(current_context)$(current_path)$(current_git_status)'
+PROMPT+=$'\n'
+PROMPT+='$(current_timestamp) > '
 SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
 
 if command -v fzf > /dev/null; then
