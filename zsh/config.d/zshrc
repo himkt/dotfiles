@@ -182,15 +182,15 @@ function current_context () {
     return
   fi
 
-  echo "[%{$fg_bold[blue]%}$current_context%{${reset_color}%}]"
+  echo "[$fg_bold[blue]$current_context$reset_color]"
 }
 
 function current_path () {
-  echo "[%{${fg_bold[yellow]}%}%~%{${reset_color}%}]"
+  echo "[$fg_bold[yellow]%~$reset_color]"
 }
 
 function current_timestamp () {
-  echo "[%{$fg_bold[green]%}$(date +'%H:%M:%S')%{${reset_color}%}]"
+  echo "[$fg_bold[green]$(date +'%H:%M:%S')$reset_color]"
 }
 
 function parse_git_branch() {
@@ -200,36 +200,39 @@ function parse_git_branch() {
 function current_git_status () {
   local git_branch="$(parse_git_branch)"
 
-  if [ -n "$git_branch" ]; then
-    STATUS="$fg[red]@${${git_branch}#(refs/heads/|tags/)}${reset_color}"
-
-    UNTRACK_STATUS=""
-    if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
-      UNTRACK_STATUS+="%{$fg[red]%}●%{$reset_color%}"
-    fi
-
-    if ! git diff --quiet 2> /dev/null; then
-      UNTRACK_STATUS+="%{$fg[yellow]%}●%{$reset_color%}"
-    fi
-
-    if ! git diff --cached --quiet 2> /dev/null; then
-      UNTRACK_STATUS+="%{$fg[green]%}●%{$reset_color%}"
-    fi
-
-    STATUS="["$STATUS"]"
-
-    if [ -n "$UNTRACK_STATUS" ]; then
-      STATUS=$STATUS"["$UNTRACK_STATUS"]"
-    fi
-
-    echo $STATUS
+  if [ -z "$git_branch" ]; then
+    echo ""
+    return
   fi
+
+  STATUS="$fg_bold[red]@${${git_branch}#(refs/heads/|tags/)}$reset_color"
+
+  UNTRACK_STATUS=""
+  if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
+    UNTRACK_STATUS+="$fg_bold[red]●$reset_color"
+  fi
+
+  if ! git diff --quiet 2> /dev/null; then
+    UNTRACK_STATUS+="$fg_bold[yellow]●$reset_color"
+  fi
+
+  if ! git diff --cached --quiet 2> /dev/null; then
+    UNTRACK_STATUS+="$fg_bold[green]●$reset_color"
+  fi
+
+  STATUS="["$STATUS"]"
+
+  if [ -n "$UNTRACK_STATUS" ]; then
+    STATUS=$STATUS"["$UNTRACK_STATUS"]"
+  fi
+
+  echo $STATUS
 }
 
 PROMPT='$(current_timestamp)$(current_platform)$(current_context)$(current_path)$(current_git_status)'
 PROMPT+=$'\n'
 PROMPT+='> '
-SPROMPT="%{${fg[red]}%}%r is correct? [y, n, a, e]:%{${reset_color}%}"
+SPROMPT="${fg[red]}%r$reset_color is correct? [y, n, a, e]:"
 
 if command -v fzf > /dev/null; then
   source <(fzf --zsh)
