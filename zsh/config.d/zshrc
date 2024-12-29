@@ -205,9 +205,7 @@ function current_git_status () {
     return
   fi
 
-  STATUS="[$fg_bold[red]@${${git_branch}#(refs/heads/|tags/)}$reset_color]"
   UNTRACK_STATUS=""
-
   if [[ -n $(git ls-files --other --exclude-standard 2> /dev/null) ]]; then
     UNTRACK_STATUS+="$fg_bold[red]u$reset_color"
   fi
@@ -220,11 +218,13 @@ function current_git_status () {
     UNTRACK_STATUS+="$fg_bold[green]s$reset_color"
   fi
 
+  STATUS="$fg_bold[red]${${git_branch}#(refs/heads/|tags/)}$reset_color"
   if [ -n "$UNTRACK_STATUS" ]; then
-    STATUS=$STATUS"["$UNTRACK_STATUS"]"
+    echo "[$UNTRACK_STATUS$fg_bold[gray]@$STATUS$reset_color]"
+  else
+    echo "[$fg_bold[bold]@$STATUS$reset_color]"
   fi
 
-  echo $STATUS
 }
 
 PROMPT='$(current_timestamp)$(current_platform)$(current_context)$(current_path)$(current_git_status)'
