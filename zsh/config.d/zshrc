@@ -92,16 +92,10 @@ Darwin*)
     export HOMEBREW_ROOT=/opt/homebrew-x86_64
     export HOMEBREW_CACHE=$HOME/.cache/Homebrew-x86_64
   fi
-
   ;;
 Linux*)
   eval `ssh-agent -s`
-
-  if test -f $HOME/.linuxbrew/bin/brew; then
-    export HOMEBREW_ROOT=$HOME/.linuxbrew
-  else
-    export HOMEBREW_ROOT=/home/linuxbrew/.linuxbrew
-  fi
+  export HOMEBREW_ROOT=$HOME/.linuxbrew
   ;;
 esac
 
