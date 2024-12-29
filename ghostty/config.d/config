@@ -1,14 +1,14 @@
 # app config
-window-theme           = ghostty
+macos-titlebar-style   = native
+window-theme           = dark
 window-padding-x       = 5
 window-padding-y       = 5
 window-padding-balance = true
-macos-titlebar-style   = transparent
 
 # color config
 theme = idea
 
-# backgroun config
+# background config
 background-opacity     = 0.85
 background-blur-radius = 20
 
