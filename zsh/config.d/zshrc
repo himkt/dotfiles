@@ -86,8 +86,8 @@ if [ "$COLORTERM" = "xfce4-terminal" ]; then export TERM=xterm-256color; fi
 if [ "$COLORTERM" = "rxvt-xpm" ]; then export TERM=rxvt-256color; fi
 
 language=en_US.UTF-8
+# If `en_US.UTF-8` is not available, fallback to `C.utf8`
 if [ "`locale -a | grep $language`" != $language ]; then
-  # If `en_US.UTF-8` is not available, fallback to `C.utf8`
   language=C.utf8
 fi
 export LANG=$language
