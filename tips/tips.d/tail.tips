@@ -1,1 +1,0 @@
-show contents from N-th line onward: tail -n +{n}

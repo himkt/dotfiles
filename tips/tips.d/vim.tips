@@ -1,6 +1,0 @@
-- zz: move cursor to the center of pane
-- :Ex (netrw on current buffer)
-- :Ve (netrw on splitted buffer)
-- C-x C-f: path completion (https://codeyarns.com/tech/2016-10-06-how-to-autocomplete-path-in-vim-insert-mode.html)
-- C-\ C-n: move to normal mode in :term
-- <leader><leader>/: easymotion incremental search

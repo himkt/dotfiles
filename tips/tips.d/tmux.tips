@@ -1,9 +1,0 @@
-- join-pane
-- break-window
-- next-layout: <prefix> <space>
-- select-layout even-(horizontal|vertical)
-- setw synchronize-panes (on|off)
-- q: quit mode
-- resize-pane -[RULD] <line>
-- resize pane: <prefix> + alt + [↑↓→←]
-- move pane: <prefix> + [↑↓→←]

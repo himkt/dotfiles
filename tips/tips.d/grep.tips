@@ -1,2 +1,0 @@
-- exclude self: grep '[q]uery'
-- show last character for each line (match arbitrary char + '-o' to show that): grep -o '.$'
