@@ -35,3 +35,9 @@ killall Dock
 #
 # guest login = false
 #
+
+# pam
+sudo rm -rf /etc/pam.d/sudo_local
+cat /etc/pam.d/sudo_local.template \
+  | sed -e 's/#auth/auth/g' \
+  | sudo tee /etc/pam.d/sudo_local >/dev/null
