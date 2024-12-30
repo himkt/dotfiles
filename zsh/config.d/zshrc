@@ -153,12 +153,8 @@ function current_timestamp () {
   echo "[$fg_bold[green]$(date +'%H:%M:%S')$reset_color]"
 }
 
-function parse_git_branch() {
-  (git symbolic-ref -q HEAD || git name-rev --name-only --no-undefined --always HEAD) 2> /dev/null
-}
-
 function current_git_status () {
-  local git_branch="$(git rev-parse --abbrev-ref HEAD)"
+  local git_branch="$(git rev-parse --abbrev-ref HEAD 2>/dev/null)"
   if [ -z "$git_branch" ]; then
     return
   fi
