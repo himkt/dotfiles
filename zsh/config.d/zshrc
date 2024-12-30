@@ -158,7 +158,7 @@ function parse_git_branch() {
 }
 
 function current_git_status () {
-  local git_branch="$(parse_git_branch)"
+  local git_branch="$(git rev-parse --abbrev-ref HEAD)"
   if [ -z "$git_branch" ]; then
     return
   fi
@@ -167,7 +167,7 @@ function current_git_status () {
   UNTRACK_STATUS+="$fg_bold[red]$(git ls-files --other --exclude-standard | wc -l | awk '{print $1}')$reset_color"
   UNTRACK_STATUS+="$fg_bold[yellow]$(git diff --name-only | wc -l | awk '{print $1}')$reset_color"
   UNTRACK_STATUS+="$fg_bold[green]$(git diff --name-only --staged | wc -l | awk '{print $1}')$reset_color"
-  BRANCH_NAME="$fg_bold[red]${${git_branch}#(refs/heads/|tags/)}$reset_color"
+  BRANCH_NAME="$fg_bold[red]$git_branch$reset_color"
   echo "[$UNTRACK_STATUS$fg_bold[gray]@$BRANCH_NAME$reset_color]"
 }
 
