@@ -69,6 +69,7 @@ export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=100000
 export PYTHONDONTWRITEBYTECODE=1
 export SAVEHIST=100000
+export TIPS_HOME=$GHQ_ROOT/github.com/himkt/tips
 
 language=en_US.UTF-8
 # If `en_US.UTF-8` is not available, fallback to `C.utf8`
