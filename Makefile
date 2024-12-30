@@ -4,7 +4,7 @@ NOCOLOR    := $(shell tput sgr0)
 
 .PHONY: \
 	all docs brew \
-	base cli gui \
+	base cli darwin gui \
 	cargo git \
 	nvim tmux uv zsh
 
@@ -33,6 +33,9 @@ base: cargo git tmux zsh
 
 cargo: cargo_clean
 	$(PWD)/cargo/bin/setup.sh
+
+darwin:
+	$(PWD)/darwin/bin/setup.sh
 
 ghostty: ghostty_clean
 	$(PWD)/ghostty/bin/setup.sh
