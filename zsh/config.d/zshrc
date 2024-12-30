@@ -5,22 +5,18 @@
 bindkey -e
 
 autoload -Uz compinit && compinit
-autoload -U colors && colors
-autoload -Uz zmv && alias zmv='noglob zmv -W'
-zstyle ':completion:*:default' menu select=1
+autoload -Uz colors   && colors
+autoload -Uz zmv      && alias zmv='noglob zmv -W'
 
-setopt auto_cd
-setopt correct
-setopt auto_param_keys
-setopt auto_param_slash
-setopt complete_aliases
-setopt complete_in_word
-setopt extended_history
-setopt share_history
-setopt magic_equal_subst
-setopt mark_dirs
-setopt no_beep
-setopt prompt_subst
+setopt auto_cd           # cd without cd
+setopt extended_history  # include timestamp and duration to the history.
+setopt share_history     # persist history to the file.
+setopt magic_equal_subst # expand filename for unquoted arguments.
+setopt mark_dirs         # insert '/' when directory is expanded via globbing.
+setopt no_beep           # disable beep in ZLE.
+setopt prompt_subst      # enable substitution in prompt (needed if we want to show information in PROMPT).
+
+zstyle ':completion:*:default' menu select=2  # enable menu in completion.
 
 function ls () {
   case ${OSTYPE} in
@@ -201,7 +197,6 @@ if command -v kubectl > /dev/null; then
   export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
   source <(kubectl completion zsh)
   alias k=kubectl
-  compdef _kubectl k
 fi
 
 if [ -f "$HOME/.cargo/env" ]; then
