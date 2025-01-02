@@ -126,7 +126,7 @@ export PYTHONSYSTEMPATH=$(which python3)
 # NOTE; Utilities
 
 function current_context () {
-  if test -f ~/.kubectl-hide-current-ctx; then
+  if test -f $XDG_CONFIG_HOME/kubectl-toggle-ctx/hide; then
     return
   fi
 
