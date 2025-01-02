@@ -1,8 +1,0 @@
-#!/bin/bash
-
-
-if test -f $HOME/.kubectl-hide-current-ctx; then
-  rm $HOME/.kubectl-hide-current-ctx
-else
-  touch $HOME/.kubectl-hide-current-ctx
-fi
