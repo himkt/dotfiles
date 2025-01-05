@@ -24,6 +24,9 @@ brew-optional:
 brew-gui:
 	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/gui/Brewfile
 
+brew-himkt:
+	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/himkt/Brewfile
+
 krew-base:
 	kubectl krew install open-svc oidc-login ns images ctx hns stern neat
 
