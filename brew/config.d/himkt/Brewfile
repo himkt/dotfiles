@@ -1,0 +1,2 @@
+tap  'himkt/tap'
+brew 'himkt/tap/tips-cli'
