@@ -8,10 +8,11 @@ brew 'neovim'
 brew 'nodenv'
 brew 'tmux'
 
-tap 'derailed/k9s'
-tap 'ktr0731/evans'
-tap 'ynqa/tap'
-
+tap  'derailed/k9s'
 brew 'derailed/k9s/k9s'
+
+tap  'ktr0731/evans'
 brew 'ktr0731/evans/evans'
+
+tap  'ynqa/tap'
 brew 'ynqa/tap/jnv'
