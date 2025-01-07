@@ -13,5 +13,6 @@ background-opacity     = 0.85
 background-blur-radius = 20
 
 # font config
-font-family = Jetbrains Mono
-font-size   = 16
+font-family  = Jetbrains Mono
+font-size    = 16
+font-feature = -calt
