@@ -14,5 +14,5 @@ cd $HOME/dotfiles && make
 
 If you don't have `brew`, you have to run `make brew` in advance.
 
-- `make brew_cui` and `make brew_cli` builds some essential softwares for me.
-- `make brew_gui` is only available on macOS, which builds GUI applications.
+- `make brew-base`: install essential tools
+- `make brew-gui`: install GUI apps for macOS
