@@ -1,3 +1,4 @@
+brew 'bat'
 brew 'bazelisk'
 brew 'binutils'
 brew 'envchain'
