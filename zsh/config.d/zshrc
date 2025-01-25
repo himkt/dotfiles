@@ -63,6 +63,7 @@ export HISTFILE=$HOME/.zsh-history
 export HISTSIZE=100000
 export PYTHONDONTWRITEBYTECODE=1
 export SAVEHIST=100000
+export TERM=xterm-256color
 export XDG_CONFIG_HOME=$HOME/.config
 
 # tier2
