@@ -1,5 +1,6 @@
 brew 'atuin'
 brew 'coreutils'
+brew 'corretto@17'
 brew 'difftastic'
 brew 'fzf'
 brew 'ghq'
