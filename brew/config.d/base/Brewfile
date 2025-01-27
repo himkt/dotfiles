@@ -1,6 +1,5 @@
 brew 'atuin'
 brew 'coreutils'
-brew 'corretto@17'
 brew 'difftastic'
 brew 'fzf'
 brew 'ghq'
@@ -10,3 +9,5 @@ brew 'jq'
 brew 'sheldon'
 brew 'tree'
 brew 'zoxide'
+
+cask 'corretto@17'
