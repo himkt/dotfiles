@@ -1,7 +1,6 @@
 ## dotfiles
 
-[![Actions Status](https://github.com/himkt/dotfiles/workflows/build/badge.svg)](https://github.com/himkt/dotfiles)
-
+[![macOS test](https://github.com/himkt/dotfiles/actions/workflows/macos.yml/badge.svg)](https://github.com/himkt/dotfiles/actions/workflows/macos.yml)
 
 ## Installation
 
