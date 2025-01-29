@@ -5,8 +5,7 @@ NOCOLOR    := $(shell tput sgr0)
 .PHONY: \
 	all docs brew \
 	base cli darwin gui \
-	cargo git \
-	nvim tmux uv zsh
+	git nvim tmux uv zsh
 
 all: clean base docs
 
@@ -32,10 +31,7 @@ krew-base:
 
 # =========================
 
-base: cargo git tmux zsh
-
-cargo: cargo_clean
-	$(PWD)/cargo/bin/setup.sh
+base: git tmux zsh
 
 darwin:
 	$(PWD)/darwin/bin/setup.sh
@@ -64,12 +60,8 @@ zsh: zsh_clean
 # =========================
 
 clean: \
-	cargo_clean \
 	git_clean nvim_clean \
 	tmux_clean zsh_clean
-
-cargo_clean:
-	rm -rf $(HOME)/.cargo/config.toml
 
 ghostty_clean:
 	rm -rf $(HOME)/Library/Application\ Support/com.mitchellh.ghostty
