@@ -19,12 +19,7 @@ setopt prompt_subst      # enable substitution in prompt (needed if we want to s
 zstyle ':completion:*:default' menu select=2  # enable menu in completion.
 
 function ls () {
-  case ${OSTYPE} in
-    darwin*)
-      command ls -G $@ ;;
-    linux*)
-      command ls --color $@ ;;
-  esac
+  command ls --color $@
 }
 
 function date () {
