@@ -64,7 +64,7 @@ clean: \
 	tmux_clean zsh_clean
 
 ghostty_clean:
-	rm -rf $(HOME)/Library/Application\ Support/com.mitchellh.ghostty
+	rm -rf $(HOME)/.config/ghostty
 
 git_clean:
 	rm -rf $(HOME)/.config/git/config
