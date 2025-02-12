@@ -1,7 +1,7 @@
 #!/bin/bash
 
-mkdir -p $HOME/Library/Application\ Support/com.mitchellh.ghostty
+mkdir -p $HOME/.config/ghostty
 
 ln -s \
   $HOME/dotfiles/ghostty/config.d/config \
-  $HOME/Library/Application\ Support/com.mitchellh.ghostty/config
+  $HOME/.config/ghostty/config
