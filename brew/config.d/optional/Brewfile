@@ -1,11 +1,10 @@
 brew 'bat'
 brew 'bazelisk'
 brew 'binutils'
-brew 'envchain'
+brew 'btop'
 brew 'htop'
 brew 'krew'
 brew 'kubernetes-cli'
-brew 'neovim'
 brew 'nodenv'
 brew 'tmux'
 
