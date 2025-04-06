@@ -53,6 +53,7 @@ tmux: tmux_clean
 
 uv: uv_clean
 	curl -LsSf https://astral.sh/uv/install.sh | sh
+	$(PWD)/uv/bin/setup.sh
 
 zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
@@ -83,6 +84,7 @@ tmux_clean:
 
 uv_clean:
 	rm -rf $(HOME)/.local/bin/uv $(HOME)/.local/bin/uvx
+	rm -rf $(HOME)/.config/uv
 
 zsh_clean:
 	rm -rf $(HOME)/.zshrc
