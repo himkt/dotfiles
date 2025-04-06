@@ -15,16 +15,16 @@ brew:
 	$(PWD)/brew/bin/setup.sh
 
 brew-base:
-	brew bundle --verbose --quiet --no-lock --file=$(PWD)/brew/config.d/base/Brewfile
+	brew bundle --verbose --file=$(PWD)/brew/config.d/base/Brewfile
 
 brew-optional:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/optional/Brewfile
+	brew bundle --verbose --file=$(PWD)/brew/config.d/optional/Brewfile
 
 brew-gui:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/gui/Brewfile
+	brew bundle --verbose --file=$(PWD)/brew/config.d/gui/Brewfile
 
 brew-himkt:
-	brew bundle --verbose --no-lock --file=$(PWD)/brew/config.d/himkt/Brewfile
+	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile
 
 krew-base:
 	kubectl krew install open-svc oidc-login ns images ctx hns stern neat
