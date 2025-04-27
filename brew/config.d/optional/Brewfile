@@ -5,7 +5,7 @@ brew 'btop'
 brew 'htop'
 brew 'krew'
 brew 'kubernetes-cli'
-brew 'nodenv'
+brew 'mise'
 brew 'tmux'
 
 tap  'derailed/k9s'
