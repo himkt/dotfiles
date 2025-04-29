@@ -42,6 +42,9 @@ ghostty: ghostty_clean
 git: git_clean
 	$(PWD)/git/bin/setup.sh
 
+mise: mise_clean
+	$(PWD)/mise/bin/setup.sh
+
 nvim: nvim_clean
 	$(PWD)/nvim/bin/setup.sh
 
@@ -70,6 +73,9 @@ ghostty_clean:
 git_clean:
 	rm -rf $(HOME)/.config/git/config
 	rm -rf $(HOME)/.config/git/ignore
+
+mise_clean:
+	rm -rf $(HOME)/.config/mise
 
 nvim_clean:
 	rm -rf $(HOME)/.vimrc

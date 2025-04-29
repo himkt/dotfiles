@@ -171,10 +171,8 @@ if command -v fzf > /dev/null; then
   source <(fzf --zsh)
 fi
 
-if command -v nodenv > /dev/null; then
-  export NODENV_ROOT=$HOME/.nodenv
-  eval "$(nodenv init -)"
-  export PATH=$PATH:"$(npm get prefix --global)/bin"
+if command -v mise > /dev/null; then
+  eval "$(mise activate zsh)"
 fi
 
 if command -v nvim > /dev/null; then
