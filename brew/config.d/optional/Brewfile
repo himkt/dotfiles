@@ -8,6 +8,3 @@ brew 'tmux'
 
 tap  'derailed/k9s'
 brew 'derailed/k9s/k9s'
-
-tap  'ktr0731/evans'
-brew 'ktr0731/evans/evans'
