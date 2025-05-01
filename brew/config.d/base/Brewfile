@@ -1,8 +1,5 @@
-brew 'atuin'
 brew 'coreutils'
-brew 'difftastic'
 brew 'fzf'
-brew 'ghq'
 brew 'gh'
 brew 'git-lfs'
 brew 'jq'

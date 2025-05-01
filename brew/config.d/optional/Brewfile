@@ -1,8 +1,6 @@
-brew 'bat'
 brew 'bazelisk'
 brew 'binutils'
 brew 'btop'
-brew 'htop'
 brew 'krew'
 brew 'kubernetes-cli'
 brew 'mise'
@@ -10,9 +8,3 @@ brew 'tmux'
 
 tap  'derailed/k9s'
 brew 'derailed/k9s/k9s'
-
-tap  'ktr0731/evans'
-brew 'ktr0731/evans/evans'
-
-tap  'ynqa/tap'
-brew 'ynqa/tap/jnv'
