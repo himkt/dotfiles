@@ -13,7 +13,7 @@ jobs:
         run: |
           sudo apt update -y
           sudo apt install -y zsh
-          chsh -s $(which zsh)
+          sudo chsh -s $(which zsh)
       - name: setup dotfiles
         run: |
           cp -r $GITHUB_WORKSPACE $HOME/dotfiles
