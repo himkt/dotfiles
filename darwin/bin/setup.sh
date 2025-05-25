@@ -20,7 +20,7 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # show-recents = false
 # orientation  = bottom
 #
-defaults write com.apple.dock orientation -string bottom
+defaults write com.apple.dock orientation -string left
 defaults write com.apple.dock autohide    -bool   true
 killall Dock
 
