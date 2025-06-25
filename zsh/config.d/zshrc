@@ -35,16 +35,6 @@ function retcode () {
   echo $?
 }
 
-function current_platform () {
-  local platform="$(uname -m)"
-
-  if [ "$platform" = "x86_64" ] ; then
-    echo "[\033[1;32m$platform\033[0m]"
-  elif [ "$platform" = "arm64" ]; then
-    echo "[\033[1;31m$platform\033[0m]"
-  fi
-}
-
 function git-home () {
   cd `git rev-parse --show-toplevel`
 }
@@ -162,7 +152,7 @@ function current_git_status () {
   echo "[$UNTRACK_STATUS$fg_bold[gray]@$BRANCH_NAME$reset_color]"
 }
 
-PROMPT='$(current_timestamp)$(current_platform)$(current_context)$(current_path)$(current_git_status)'
+PROMPT='$(current_timestamp)$(current_context)$(current_path)$(current_git_status)'
 PROMPT+=$'\n'
 PROMPT+='> '
 SPROMPT="${fg[red]}%r$reset_color is correct? [y, n, a, e]:"
