@@ -14,5 +14,6 @@ background-blur-radius = 20
 
 # font config
 font-family  = Jetbrains Mono
-font-size    = 16
-font-feature = -calt
+font-size    = 15
+font-feature = -calt, -liga, -dlig
+keybind = shift+enter=text:\n
