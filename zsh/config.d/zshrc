@@ -135,7 +135,7 @@ function current_path () {
 }
 
 function current_timestamp () {
-  echo "[$fg_bold[green]$(date +'%H:%M:%S')$reset_color]"
+  echo "[$fg_bold[red]$(date +'%H:%M:%S')$reset_color]"
 }
 
 function current_git_status () {
@@ -176,7 +176,6 @@ fi
 
 if command -v zoxide > /dev/null; then
   eval "$(zoxide init zsh)"
-  alias cd=z
 fi
 
 if command -v kubectl > /dev/null; then
