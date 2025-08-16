@@ -17,3 +17,6 @@
 .DS_Store
 
 .apple-silicon-platform
+
+**/.claude
+**/CLAUDE.md
