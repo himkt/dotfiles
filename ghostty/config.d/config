@@ -1,4 +1,4 @@
-# NOTE(himkt); 18446744073709551615 is usize limit
+# NOTE(himkt): 18446744073709551615 is usize limit
 
 # app config
 macos-titlebar-style   = native
