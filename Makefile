@@ -33,6 +33,9 @@ krew-base:
 
 base: git tmux zsh
 
+claude: claude_clean
+	$(PWD)/claude/bin/setup.sh
+
 darwin:
 	$(PWD)/darwin/bin/setup.sh
 
@@ -66,6 +69,10 @@ zsh: zsh_clean
 clean: \
 	git_clean nvim_clean \
 	tmux_clean zsh_clean
+
+claude_clean:
+	rm -rf $(HOME)/.claude/bin/status.py
+	rm -rf $(HOME)/.claude/settings.json
 
 ghostty_clean:
 	rm -rf $(HOME)/.config/ghostty
