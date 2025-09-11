@@ -5,7 +5,7 @@ NOCOLOR    := $(shell tput sgr0)
 .PHONY: \
 	all docs brew \
 	base cli darwin gui \
-	git nvim tmux uv zsh
+	git ghostty nvim sheldon tmux uv zsh
 
 all: clean base docs
 
