@@ -7,7 +7,8 @@ NOCOLOR    := $(shell tput sgr0)
 	base cli darwin gui \
 	git ghostty nvim sheldon tmux uv zsh
 
-all: clean base docs
+all: git tmux zsh docs
+optional: all claude darwin ghostty git mise nvim sheldon uv
 
 # =========================
 
@@ -27,11 +28,9 @@ brew-himkt:
 	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile
 
 krew-base:
-	kubectl krew install open-svc oidc-login ns images ctx hns stern neat
+	kubectl krew install open-svc oidc-login ns images ctx stern neat
 
 # =========================
-
-base: git tmux zsh
 
 claude: claude_clean
 	$(PWD)/claude/bin/setup.sh
@@ -65,10 +64,6 @@ zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
 
 # =========================
-
-clean: \
-	git_clean nvim_clean \
-	tmux_clean zsh_clean
 
 claude_clean:
 	rm -rf $(HOME)/.claude/bin/status.py
