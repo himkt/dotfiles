@@ -57,7 +57,6 @@ tmux: tmux_clean
 	$(PWD)/tmux/bin/setup.sh
 
 uv: uv_clean
-	curl -LsSf https://astral.sh/uv/install.sh | sh
 	$(PWD)/uv/bin/setup.sh
 
 zsh: zsh_clean

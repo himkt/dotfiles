@@ -5,6 +5,7 @@ brew 'krew'
 brew 'kubernetes-cli'
 brew 'mise'
 brew 'tmux'
+brew 'uv'
 
 tap  'derailed/k9s'
 brew 'derailed/k9s/k9s'
