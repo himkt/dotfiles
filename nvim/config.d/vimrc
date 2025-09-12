@@ -70,8 +70,9 @@ set noswapfile
 set nobackup
 
 "" Enable incremental and hilighting search
-set incsearch
 set hlsearch
+set incsearch
+set shortmess-=S
 
 "" Hilight a matched bracket
 set showmatch
