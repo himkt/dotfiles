@@ -14,6 +14,10 @@ defaults write -g KeyRepeat -int 2
 defaults write -g InitialKeyRepeat -int 20
 defaults write -g ApplePressAndHoldEnabled -bool false
 
+# trackpad
+defaults write com.apple.AppleMultitouchTrackpad Clicking -int 1
+defaults write com.apple.driver.AppleBluetoothMultitouch.trackpad Clicking -int 1
+
 # dock
 #
 # autohide     = true
