@@ -9,10 +9,12 @@
 # * (todo) remap caps to control
 # * key repeat rate
 # * delay until repeat
+# * F1, F2, ...etc behave as standard function keys
 #
 defaults write -g KeyRepeat -int 2
 defaults write -g InitialKeyRepeat -int 20
 defaults write -g ApplePressAndHoldEnabled -bool false
+defaults write NSGlobalDomain com.apple.keyboard.fnState -bool true
 
 # trackpad
 defaults write com.apple.AppleMultitouchTrackpad Clicking -int 1
