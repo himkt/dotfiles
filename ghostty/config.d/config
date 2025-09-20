@@ -9,14 +9,15 @@ window-padding-balance = true
 scrollback-limit = 18446744073709551615
 
 # color config
-theme = IR_Black
+theme = GitHub Dark Default
 
 # background config
-background-opacity     = 0.75
-background-blur-radius = 20
+background-opacity     = 0.85
+background-blur-radius = 10
 
 # font config
 font-family  = Jetbrains Mono
-font-size    = 14
+font-family = Hiragino Kaku Gothic ProN
+font-size    = 16
 font-feature = -calt, -liga, -dlig
 keybind = shift+enter=text:\n
