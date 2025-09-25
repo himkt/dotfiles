@@ -70,17 +70,11 @@ done
 
 case `uname -s` in
 Darwin*)
-  if [ `uname -m` = "arm64" ]; then
-    export HOMEBREW_ROOT=/opt/homebrew
-    export HOMEBREW_CACHE=$HOME/.cache/Homebrew
-  else
-    export HOMEBREW_ROOT=/opt/homebrew-x86_64
-    export HOMEBREW_CACHE=$HOME/.cache/Homebrew-x86_64
-  fi
+  export HOMEBREW_ROOT=/opt/homebrew
+  export HOMEBREW_CACHE=$HOME/.cache/Homebrew
   ;;
 Linux*)
-  eval `ssh-agent -s`
-  export HOMEBREW_ROOT=$HOME/.linuxbrew
+  export HOMEBREW_ROOT=/home/linuxbrew/.linuxbrew
   ;;
 esac
 

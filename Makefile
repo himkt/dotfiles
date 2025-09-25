@@ -13,7 +13,7 @@ optional: all claude darwin ghostty git mise nvim sheldon uv
 # =========================
 
 brew:
-	$(PWD)/brew/bin/setup.sh
+	/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 brew-base:
 	brew bundle --verbose --file=$(PWD)/brew/config.d/base/Brewfile
