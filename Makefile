@@ -8,7 +8,7 @@ NOCOLOR    := $(shell tput sgr0)
 	git ghostty nvim sheldon tmux uv zsh
 
 all: git tmux zsh docs
-optional: all claude darwin ghostty git mise nvim sheldon uv
+optional: all darwin ghostty git mise nvim sheldon uv
 
 # =========================
 
@@ -28,12 +28,9 @@ brew-himkt:
 	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile
 
 krew-base:
-	kubectl krew install open-svc oidc-login ns images ctx stern neat
+	kubectl krew install open-svc ns images ctx stern neat
 
 # =========================
-
-claude: claude_clean
-	$(PWD)/claude/bin/setup.sh
 
 darwin:
 	$(PWD)/darwin/bin/setup.sh
@@ -63,10 +60,6 @@ zsh: zsh_clean
 	$(PWD)/zsh/bin/setup.sh
 
 # =========================
-
-claude_clean:
-	rm -rf $(HOME)/.claude/bin/status.py
-	rm -rf $(HOME)/.claude/settings.json
 
 ghostty_clean:
 	rm -rf $(HOME)/.config/ghostty
