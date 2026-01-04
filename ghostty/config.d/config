@@ -12,8 +12,8 @@ scrollback-limit = 18446744073709551615
 theme = GitHub Dark Default
 
 # background config
-background-opacity     = 0.85
-background-blur-radius = 10
+background-opacity     = 0.95
+background-blur-radius = 20
 
 # font config
 font-family  = Jetbrains Mono
@@ -21,3 +21,5 @@ font-family = Hiragino Kaku Gothic ProN
 font-size    = 16
 font-feature = -calt, -liga, -dlig
 keybind = shift+enter=text:\n
+
+clipboard-paste-protection = false
