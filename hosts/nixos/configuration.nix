@@ -59,9 +59,21 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
+  # Fingerprint reader (Goodix 27c6:658c)
+  services.fprintd = {
+    enable = true;
+    tod = {
+      enable = true;
+      driver = pkgs.libfprint-2-tod1-goodix;
+    };
+  };
+
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
   security.rtkit.enable = true;
+
+  security.pam.services.gdm.enableGnomeKeyring = true;
+
   services.pipewire = {
     enable = true;
     alsa.enable = true;
