@@ -1,6 +1,16 @@
 { config, pkgs, ... }:
 
 {
+  imports = [
+    ../modules/zsh
+    ../modules/sheldon
+    ../modules/tmux
+    ../modules/nvim
+    ../modules/git
+    ../modules/uv
+    ../modules/ghostty
+  ];
+
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
   home.username = "himkt";
@@ -43,7 +53,6 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
     _1password-gui
-    ghostty
     google-chrome
     vscode
 
@@ -52,8 +61,6 @@
     gh
     ghq
     gnumake
-    neovim
-    uv
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -124,23 +131,6 @@
       serif = [ "Noto Serif CJK JP" ];
       emoji = [ "Noto Color Emoji" ];
     };
-  };
-
-  programs.git = {
-    enable = true;
-    settings = {
-      user = {
-        name = "himkt";
-	email = "himkt@klis.tsukuba.ac.jp";
-      };
-      credential."https://github.com" = {
-        helper = "!gh auth git-credential";
-      };
-    };
-  };
-
-  programs.zsh = {
-    enable = true;
   };
 
   # Let Home Manager install and manage itself.
