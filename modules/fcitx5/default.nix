@@ -42,9 +42,8 @@
             EnumerateWithTriggerKeys = "True";
             EnumerateSkipFirst = "False";
           };
-          # Ctrl+Shift to switch between English and Japanese
           "Hotkey/TriggerKeys" = {
-            "0" = "Control+Shift+Shift_L";
+            "0" = "Control+space";
           };
           Behavior = {
             ActiveByDefault = "False";

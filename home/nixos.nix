@@ -11,6 +11,7 @@
     ../modules/ghostty
     ../modules/gcc
     ../modules/gpg
+    ../modules/fcitx5
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -128,6 +129,12 @@
   home.sessionVariables = {
     EDITOR = "nvim";
     SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
+
+    # fcitx5 IME support
+    GTK_IM_MODULE = "fcitx";
+    QT_IM_MODULE = "fcitx";
+    XMODIFIERS = "@im=fcitx";
+    GLFW_IM_MODULE = "ibus";  # For some apps that use GLFW
   };
 
   dconf.settings = {
