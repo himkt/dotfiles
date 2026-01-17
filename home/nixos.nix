@@ -57,6 +57,7 @@
     # GUI
     _1password-gui
     google-chrome
+    slack
     vscode
 
     # CLI
@@ -71,7 +72,8 @@
     kubectx
     kustomize
     k9s
-    libpq
+    mise
+    postgresql
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
