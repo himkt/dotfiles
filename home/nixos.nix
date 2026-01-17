@@ -10,6 +10,7 @@
     ../modules/uv
     ../modules/ghostty
     ../modules/gcc
+    ../modules/gpg
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -74,6 +75,7 @@
     k9s
     mise
     postgresql
+    python3
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -109,6 +111,7 @@
   #
   home.sessionVariables = {
     EDITOR = "nvim";
+    SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
   };
 
   dconf.settings = {
