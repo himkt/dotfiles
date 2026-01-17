@@ -1,0 +1,47 @@
+[user]
+	email = himkt@klis.tsukuba.ac.jp
+	name = himkt
+
+[pull]
+	rebase = false
+
+[alias]
+  remove-merged = "!f() { \
+    if [ -n \"$1\" ]; then \
+      BRANCH=\"$1\"; \
+    else \
+      BRANCH=$(git branch | awk '{print $NF}' | fzf --prompt '(base branch) > '); \
+    fi; \
+    if [ -z \"$BRANCH\" ]; then \
+      echo \"Select valid branch\"; \
+      exit 1; \
+    fi; \
+    echo \"Log: base branch: $BRANCH\"; \
+    git branch --merged \"$BRANCH\" | grep -v \"$BRANCH\" | xargs -r git branch -d; \
+  }; f"
+  graph = log --graph --date-order --pretty=format:'<%h> %ad %Cgreen%d%Creset %s  %Cblue[%an]%Creset' --all --date=short
+
+[format]
+	pretty = format:%C(yellow)%h %C(green)%cd %C(reset)%s %C(red)%d %C(cyan)[%an]
+	date   = iso
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[column]
+	ui = auto
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[init]
+	defaultBranch = main
+[diff]
+	colorMoved = plain
+	mnemonicPrefix = true
+	renames = true
+[credential "https://github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential
+[credential "https://gist.github.com"]
+	helper = !/opt/homebrew/bin/gh auth git-credential

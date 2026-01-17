@@ -1,0 +1,25 @@
+# NOTE(himkt): 18446744073709551615 is usize limit
+
+# app config
+macos-titlebar-style   = native
+window-theme           = dark
+window-padding-x       = 5
+window-padding-y       = 5
+window-padding-balance = true
+scrollback-limit = 18446744073709551615
+
+# color config
+theme = GitHub Dark Default
+
+# background config
+background-opacity     = 0.95
+background-blur-radius = 20
+
+# font config
+font-family  = Jetbrains Mono
+font-family = Hiragino Kaku Gothic ProN
+font-size    = 16
+font-feature = -calt, -liga, -dlig
+keybind = shift+enter=text:\n
+
+clipboard-paste-protection = false
