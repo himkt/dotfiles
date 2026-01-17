@@ -8,10 +8,12 @@
 {
   programs.git = {
     enable = true;
-    userName = "himkt";
-    userEmail = "himkt@klis.tsukuba.ac.jp";
 
-    extraConfig = {
+    settings = {
+      user = {
+        name = "himkt";
+        email = "himkt@klis.tsukuba.ac.jp";
+      };
       credential."https://github.com" = {
         helper = "!gh auth git-credential";
       };
