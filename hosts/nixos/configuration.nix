@@ -78,11 +78,18 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 
-  # Define a user account. Don't forget to set a password with ‘passwd’.
+  # Docker
+  virtualisation.docker = {
+    enable = true;
+    enableOnBoot = false;
+  };
+  systemd.sockets.docker.wantedBy = pkgs.lib.mkForce [];
+
+  # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.himkt = {
     isNormalUser = true;
     description = "himkt";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [
     #  thunderbird
     ];
