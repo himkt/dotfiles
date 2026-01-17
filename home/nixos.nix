@@ -52,15 +52,25 @@
     # (pkgs.writeShellScriptBin "my-hello" ''
     #   echo "Hello, ${config.home.username}!"
     # '')
+
+    # GUI
     _1password-gui
     google-chrome
     vscode
 
+    # CLI
+    bazelisk
     btop
     claude-code
     gh
     ghq
     gnumake
+    jq
+    kubectl
+    kubectx
+    kustomize
+    k9s
+    libpq
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
