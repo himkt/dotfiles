@@ -10,6 +10,9 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+    plugins = with pkgs.vimPlugins; [
+      vim-plug
+    ];
   };
 
   xdg.configFile."nvim/init.vim" = {

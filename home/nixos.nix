@@ -15,6 +15,14 @@
   # release notes.
   home.stateVersion = "25.11"; # Please read the comment before changing.
 
+  # XDG Base Directory specification
+  xdg = {
+    enable = true;
+    configHome = "${config.home.homeDirectory}/.config";
+    cacheHome = "${config.home.homeDirectory}/.cache";
+    dataHome = "${config.home.homeDirectory}/.local/share";
+  };
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = with pkgs; [

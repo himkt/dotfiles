@@ -16,7 +16,7 @@ set mouse=
 let g:python3_host_prog=$PYTHONSYSTEMPATH
 
 "" load basic vim configuration
-source $HOME/dotfiles/nvim/config.d/vimrc
+source $XDG_CONFIG_HOME/nvim/vimrc
 
 "" load packages
 call plug#begin('~/.config/nvim/plugged')
