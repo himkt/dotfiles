@@ -9,6 +9,7 @@
     ../modules/git
     ../modules/uv
     ../modules/ghostty
+    ../modules/gcc
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
