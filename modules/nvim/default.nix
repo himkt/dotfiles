@@ -10,8 +10,15 @@
     enable = true;
     viAlias = true;
     vimAlias = true;
+
     plugins = with pkgs.vimPlugins; [
-      vim-plug
+      vim-easymotion
+      tabular
+      fzf-vim
+      vim-indent-guides
+      vim-anzu
+      vim-airline
+      vim-polyglot
     ];
   };
 

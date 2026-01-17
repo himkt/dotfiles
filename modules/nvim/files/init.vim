@@ -18,18 +18,6 @@ let g:python3_host_prog=$PYTHONSYSTEMPATH
 "" load basic vim configuration
 source $XDG_CONFIG_HOME/nvim/vimrc
 
-"" load packages
-call plug#begin('~/.config/nvim/plugged')
-  Plug 'easymotion/vim-easymotion'
-  Plug 'godlygeek/tabular'
-  Plug 'junegunn/fzf'
-  Plug 'junegunn/fzf.vim'
-  Plug 'nathanaelkane/vim-indent-guides'
-  Plug 'osyo-manga/vim-anzu'
-  Plug 'vim-airline/vim-airline'
-  Plug 'sheerun/vim-polyglot'
-call plug#end()
-
 " material.vim
 if (has('nvim'))
   let $NVIM_TUI_ENABLE_TRUE_COLOR = 1
