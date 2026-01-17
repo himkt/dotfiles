@@ -108,6 +108,22 @@
       Categories=Network;WebBrowser;
       MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
     '';
+
+    # Ghostty with fcitx5 workaround
+    # See: https://github.com/ghostty-org/ghostty/discussions/3628
+    ".local/share/applications/com.mitchellh.ghostty.desktop".text = ''
+      [Desktop Entry]
+      Version=1.0
+      Name=Ghostty
+      GenericName=Terminal
+      Comment=A terminal emulator
+      Exec=env GTK_IM_MODULE= ghostty
+      StartupNotify=true
+      Terminal=false
+      Icon=com.mitchellh.ghostty
+      Type=Application
+      Categories=System;TerminalEmulator;
+    '';
   };
 
   # Home Manager can also manage your environment variables through
