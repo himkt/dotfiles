@@ -91,6 +91,22 @@
     #   org.gradle.console=verbose
     #   org.gradle.daemon.idletimeout=3600000
     # '';
+
+    # Chrome with touchpad swipe gesture support
+    ".local/share/applications/google-chrome.desktop".text = ''
+      [Desktop Entry]
+      Version=1.0
+      Name=Google Chrome
+      GenericName=Web Browser
+      Comment=Access the Internet
+      Exec=google-chrome-stable --enable-features=TouchpadOverscrollHistoryNavigation %U
+      StartupNotify=true
+      Terminal=false
+      Icon=google-chrome
+      Type=Application
+      Categories=Network;WebBrowser;
+      MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
+    '';
   };
 
   # Home Manager can also manage your environment variables through
