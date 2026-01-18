@@ -18,8 +18,9 @@ background-blur-radius = 20
 # font config
 font-family  = Jetbrains Mono
 font-family = Hiragino Kaku Gothic ProN
-font-size    = 12
+font-size    = 11
 font-feature = -calt, -liga, -dlig
 keybind = shift+enter=text:\n
+keybind = super+t=new_tab
 
 clipboard-paste-protection = false
