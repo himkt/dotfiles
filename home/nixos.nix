@@ -77,6 +77,7 @@
     mise
     postgresql
     python3
+    rustup
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
