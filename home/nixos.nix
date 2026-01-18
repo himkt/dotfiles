@@ -125,6 +125,22 @@
       Type=Application
       Categories=System;TerminalEmulator;
     '';
+
+    # VSCode with Wayland support for better text rendering
+    ".local/share/applications/code.desktop".text = ''
+      [Desktop Entry]
+      Version=1.0
+      Name=Visual Studio Code
+      GenericName=Text Editor
+      Comment=Code Editing. Redefined.
+      Exec=code --ozone-platform=wayland %F
+      StartupNotify=true
+      Terminal=false
+      Icon=vscode
+      Type=Application
+      Categories=Development;IDE;TextEditor;
+      MimeType=text/plain;inode/directory;
+    '';
   };
 
   # Home Manager can also manage your environment variables through
@@ -152,6 +168,10 @@
     QT_IM_MODULE = "fcitx";
     XMODIFIERS = "@im=fcitx";
     GLFW_IM_MODULE = "ibus";  # For some apps that use GLFW
+
+    # Enable Wayland for Electron apps (VSCode, Slack, etc.)
+    # NIXOS_OZONE_WL = "1";
+    ELECTRON_OZONE_PLATFORM_HINT = "auto";
   };
 
   dconf.settings = {
