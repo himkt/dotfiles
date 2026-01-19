@@ -59,6 +59,8 @@
     # GUI
     _1password-gui
     google-chrome
+    inkscape
+    insomnia
     slack
     vscode
 
