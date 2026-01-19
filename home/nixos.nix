@@ -1,4 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
+
+let
+  unstable = import inputs.nixpkgs-unstable {
+    system = pkgs.system;
+    config.allowUnfree = true;
+  };
+in
 
 {
   imports = [
@@ -57,17 +64,16 @@
     # '')
 
     # GUI
-    _1password-gui
     google-chrome
     inkscape
     insomnia
     slack
-    vscode
+    unstable._1password-gui
+    unstable.vscode
 
     # CLI
     bazelisk
     btop
-    claude-code
     gh
     ghq
     gnumake
@@ -80,6 +86,7 @@
     postgresql
     python3
     rustup
+    unstable.claude-code
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
