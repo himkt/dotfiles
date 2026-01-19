@@ -119,6 +119,12 @@ in
       MimeType=text/html;text/xml;application/xhtml+xml;x-scheme-handler/http;x-scheme-handler/https;
     '';
 
+    # Hide duplicate Chrome entry
+    ".local/share/applications/com.google.Chrome.desktop".text = ''
+      [Desktop Entry]
+      NoDisplay=true
+    '';
+
     # Ghostty with fcitx5 workaround
     # See: https://github.com/ghostty-org/ghostty/discussions/3628
     ".local/share/applications/com.mitchellh.ghostty.desktop".text = ''
