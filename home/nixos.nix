@@ -76,6 +76,7 @@ in
     btop
     gh
     ghq
+    google-cloud-sdk
     gnumake
     jq
     kubectl
