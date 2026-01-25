@@ -209,7 +209,6 @@ in
     };
     "org/gnome/desktop/interface" = {
       show-battery-percentage = true;
-      gtk-key-theme = "Emacs";
     };
   };
 
