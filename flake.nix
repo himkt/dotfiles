@@ -9,6 +9,11 @@
       url = "github:nix-community/home-manager/release-25.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -29,6 +34,9 @@
         specialArgs = { inherit inputs username; };
         modules = [
           ./hosts/nixos/configuration.nix
+
+          # sops-nix for secrets management
+          inputs.sops-nix.nixosModules.sops
 
           # Home Manager as NixOS module
           home-manager.nixosModules.home-manager

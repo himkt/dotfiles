@@ -1,0 +1,12 @@
+keys:
+  # User key (from SSH key)
+  - &user_himkt age1p35h8xyy545vjzjledqsvlvy935zdzl97tyjeejq6qxnh3c2uq5qllurj3
+  # Host key (neptune)
+  - &host_neptune age1ngnflnwfkmadkqugc80qx2z550cpgany2dmsump0mvp0htgvnd8qg8hdjq
+
+creation_rules:
+  - path_regex: secrets/secrets\.yaml$
+    key_groups:
+      - age:
+          - *user_himkt
+          - *host_neptune

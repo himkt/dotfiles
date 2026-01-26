@@ -25,6 +25,37 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  # sops-nix secrets
+  sops = {
+    defaultSopsFile = ../../secrets/secrets.yaml;
+    age.keyFile = "/var/lib/sops-nix/key.txt";
+    secrets.nextdns_id = {};
+    secrets.dns_server_ipv4_0 = {};
+    secrets.dns_server_ipv4_1 = {};
+    secrets.dns_server_ipv6_0 = {};
+    secrets.dns_server_ipv6_1 = {};
+    templates."99-nextdns.conf" = {
+      content = ''
+        [Resolve]
+        DNS=${config.sops.placeholder.dns_server_ipv4_0}#${config.sops.placeholder.nextdns_id}.dns.nextdns.io
+        DNS=${config.sops.placeholder.dns_server_ipv6_0}#${config.sops.placeholder.nextdns_id}.dns.nextdns.io
+        DNS=${config.sops.placeholder.dns_server_ipv4_1}#${config.sops.placeholder.nextdns_id}.dns.nextdns.io
+        DNS=${config.sops.placeholder.dns_server_ipv6_1}#${config.sops.placeholder.nextdns_id}.dns.nextdns.io
+      '';
+      path = "/etc/systemd/resolved.conf.d/99-nextdns.conf";
+      mode = "0644";
+      restartUnits = [ "systemd-resolved.service" ];
+    };
+  };
+
+  # DNS over TLS with NextDNS
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+    fallbackDns = [];
+  };
+  networking.networkmanager.dns = "systemd-resolved";
+
   # Set your time zone.
   time.timeZone = "Asia/Tokyo";
 
