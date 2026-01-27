@@ -104,6 +104,7 @@
   security.rtkit.enable = true;
 
   security.pam.services.gdm.enableGnomeKeyring = true;
+  services.gnome.gnome-keyring.enable = true;
 
   services.pipewire = {
     enable = true;
