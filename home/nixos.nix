@@ -9,16 +9,16 @@ in
 
 {
   imports = [
-    ../modules/zsh
-    ../modules/sheldon
-    ../modules/tmux
-    ../modules/nvim
-    ../modules/git
-    ../modules/uv
-    ../modules/ghostty
-    ../modules/gcc
-    ../modules/gpg
-    ../modules/fcitx5
+    ./modules/zsh
+    ./modules/sheldon
+    ./modules/tmux
+    ./modules/nvim
+    ./modules/git
+    ./modules/uv
+    ./modules/ghostty
+    ./modules/gcc
+    ./modules/gpg
+    ./modules/fcitx5
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
