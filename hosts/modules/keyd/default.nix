@@ -7,33 +7,40 @@
       settings = {
         main = {
           leftmeta = "layer(mac)";
-          rightmeta = "layer(mac)";
+          rightalt = "rightmeta";
         };
 
-        "mac:C" = {
-          a = "a";
-          c = "c";
-          v = "v";
-          x = "x";
-          z = "z";
-          s = "s";
-          o = "o";
-          n = "n";
-          p = "p";
-          f = "f";
-          h = "h";
-          t = "t";
-          w = "w";
-          r = "r";
-          l = "l";
-          b = "b";
-          i = "i";
-          u = "u";
+        mac = {
+          a = "C-a";
+          b = "C-b";
+          c = "C-c";
+          f = "C-f";
+          h = "C-h";
+          i = "C-i";
+          j = "C-j";
+          k = "C-k";
+          l = "C-l";
+          n = "C-n";
+          o = "C-o";
+          p = "C-p";
+          q = "A-f4";
+          r = "C-r";
+          s = "C-s";
+          t = "C-t";
+          u = "C-u";
+          v = "C-v";
+          w = "C-w";
+          x = "C-x";
+          z = "C-z";
+          enter = "C-enter";
+          "`" = "C-`";
+          "-" = "C--";
+          equal = "C-equal";
         };
 
-        "mac:C-S" = {
-          z = "z";
-          t = "t";
+        "mac+shift" = {
+          "[" = "C-S-[";
+          "]" = "C-S-]";
         };
       };
     };
