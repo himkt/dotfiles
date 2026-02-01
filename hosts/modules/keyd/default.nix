@@ -36,6 +36,10 @@
           "`" = "C-`";
           "-" = "C--";
           equal = "C-equal";
+          left = "home";
+          right = "end";
+          up = "C-home";
+          down = "C-end";
         };
 
         "mac+shift" = {
