@@ -74,6 +74,7 @@ in
     # CLI
     bazelisk
     btop
+    file
     gh
     ghq
     google-cloud-sdk
@@ -87,6 +88,7 @@ in
     postgresql
     python3
     rustup
+    tree
     unstable.claude-code
   ];
 
