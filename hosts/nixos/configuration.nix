@@ -91,14 +91,20 @@
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
-  # Fingerprint reader (Goodix 27c6:658c)
-  services.fprintd = {
-    enable = true;
-    tod = {
-      enable = true;
-      driver = pkgs.libfprint-2-tod1-goodix;
-    };
-  };
+  # FIXME(himkt); fprint not working so well in some cases.
+  #               when finger print reader is not available,
+  #               the experience is not so good as macOS (waiting until timeout).
+  #               this happens when I use computer in clamshell mode and
+  #               keyboard without fingerprint reader.
+  #
+  # Fingerprint reader
+  # services.fprintd = {
+  #   enable = true;
+  #   tod = {
+  #     enable = true;
+  #     driver = pkgs.libfprint-2-tod1-goodix;  # note; Goodix 27c6:658c
+  #   };
+  # };
 
   # Enable sound with pipewire.
   services.pulseaudio.enable = false;
