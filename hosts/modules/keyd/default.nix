@@ -46,6 +46,7 @@
           "`" = "C-`";
           "-" = "C--";
           equal = "C-equal";
+          "/" = "C-/";
           left = "home";
           right = "end";
           up = "C-home";
