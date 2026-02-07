@@ -22,6 +22,7 @@ in
     ./modules/gcc
     ./modules/gpg
     ./modules/fcitx5
+    ./modules/mise
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -87,12 +88,10 @@ in
     kubectx
     kustomize
     k9s
-    mise
     postgresql
     python3
     rustup
     tree
-    unstable.claude-code
 
     # my own softwares
     himkt_pkgs.pathfinder
