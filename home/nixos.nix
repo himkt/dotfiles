@@ -5,6 +5,9 @@ let
     system = pkgs.system;
     config.allowUnfree = true;
   };
+  himkt_pkgs = import ./pkgs {
+    inherit pkgs;
+  };
 in
 
 {
@@ -90,6 +93,9 @@ in
     rustup
     tree
     unstable.claude-code
+
+    # my own softwares
+    himkt_pkgs.pathfinder
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
