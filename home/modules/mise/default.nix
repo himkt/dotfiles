@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   inputs,
   ...
@@ -23,6 +22,7 @@ in
       };
 
       settings = {
+        all_compile = false;
         experimental = true;
         disable_backends = [ "asdf" ];
       };

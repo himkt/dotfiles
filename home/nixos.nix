@@ -195,9 +195,6 @@ in
     # Enable Wayland for Electron apps (VSCode, Slack, etc.)
     # NIXOS_OZONE_WL = "1";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
-
-    # Let mise download binary if possible
-    MISE_ALL_COMPILE = "0";
   };
 
   dconf.settings = {
