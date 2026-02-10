@@ -206,7 +206,7 @@ in
       xkb-options = [ "ctrl:nocaps" ];
     };
     "org/gnome/desktop/peripherals/touchpad" = {
-      tap-to-click = true;
+      tap-to-click = false;
       natural-scroll = true;
       speed = 0.0;
     };
