@@ -2,6 +2,10 @@
 # .zshrc - The zsh configuration
 #
 
+if command -v tmux > /dev/null && [ -z "$TMUX" ] && [[ $- == *i* ]]; then
+  tmux attach-session 2>/dev/null || tmux new-session
+fi
+
 bindkey -e
 
 autoload -Uz compinit && compinit
