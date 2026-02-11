@@ -203,9 +203,6 @@ in
       experimental-features = [ "scale-monitor-framebuffer" ];
     };
 
-    "org/gnome/desktop/input-sources" = {
-      xkb-options = [ "ctrl:nocaps" ];
-    };
     "org/gnome/desktop/peripherals/touchpad" = {
       tap-to-click = false;
       natural-scroll = true;
