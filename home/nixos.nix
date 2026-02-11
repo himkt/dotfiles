@@ -20,6 +20,7 @@ in
     ./modules/uv
     ./modules/ghostty
     ./modules/gcc
+    ./modules/java
     ./modules/gpg
     ./modules/fcitx5
     ./modules/mise
