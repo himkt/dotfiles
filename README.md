@@ -1,7 +1,7 @@
 # dotfiles
 
-[![macOS](https://github.com/himkt/dotfiles/actions/workflows/macos.yml/badge.svg)](https://github.com/himkt/dotfiles/actions/workflows/macos.yml)
-[![NixOS](https://github.com/himkt/dotfiles/actions/workflows/nixos.yml/badge.svg)](https://github.com/himkt/dotfiles/actions/workflows/nixos.yml)
+[![macOS](https://img.shields.io/github/actions/workflow/status/himkt/dotfiles/macos.yml?label=macOS&logo=apple)](https://github.com/himkt/dotfiles/actions/workflows/macos.yml)
+[![NixOS](https://img.shields.io/github/actions/workflow/status/himkt/dotfiles/nixos.yml?label=NixOS&logo=nixos)](https://github.com/himkt/dotfiles/actions/workflows/nixos.yml)
 
 Unified Nix-based configuration for macOS (nix-darwin) and NixOS.
 
@@ -11,8 +11,13 @@ Unified Nix-based configuration for macOS (nix-darwin) and NixOS.
 dotfiles/
 ├── flake.nix          # Unified flake (NixOS + nix-darwin)
 ├── Makefile           # Build and setup targets
-├── hosts/             # System-level configuration per platform
-├── home/              # Home Manager configuration and modules
+├── hosts/
+│   ├── nixos/         # NixOS system configuration
+│   └── macos/         # nix-darwin system configuration
+├── home/
+│   ├── nixos.nix      # NixOS Home Manager entry point
+│   ├── macos.nix      # macOS Home Manager entry point
+│   └── modules/       # Shared and platform-specific modules
 ├── brew/              # Homebrew Brewfiles (macOS)
 └── secrets/           # sops-nix encrypted secrets
 ```
