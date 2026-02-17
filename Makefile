@@ -1,4 +1,4 @@
-.PHONY: macos-build macos-switch macos-brew-install macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt nixos-build nixos-switch nixos-update nixos-clean nixos-gc
+.PHONY: macos-build macos-switch macos-brew-install macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt macos-update macos-clean macos-gc nixos-build nixos-switch nixos-update nixos-clean nixos-gc
 
 # macOS targets
 macos-build:
@@ -21,6 +21,15 @@ macos-brew-optional:
 
 macos-brew-himkt:
 	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile
+
+macos-update:
+	nix flake update
+
+macos-clean:
+	nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system-profiles/darwin
+
+macos-gc:
+	nix-collect-garbage -d
 
 # NixOS targets
 nixos-build:

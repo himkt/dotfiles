@@ -1,36 +1,20 @@
 # dotfiles
 
+[![macOS](https://github.com/himkt/dotfiles/actions/workflows/macos.yml/badge.svg)](https://github.com/himkt/dotfiles/actions/workflows/macos.yml)
+[![NixOS](https://github.com/himkt/dotfiles/actions/workflows/nixos.yml/badge.svg)](https://github.com/himkt/dotfiles/actions/workflows/nixos.yml)
+
 Unified Nix-based configuration for macOS (nix-darwin) and NixOS.
 
 ## Structure
 
 ```
 dotfiles/
-├── flake.nix                    # Unified flake (NixOS + nix-darwin)
-├── Makefile                     # All targets for both platforms
-├── hosts/
-│   ├── nixos/                   # NixOS system configuration
-│   ├── macos/                   # nix-darwin system configuration
-│   └── modules/                 # System-level modules (keyd)
-├── home/
-│   ├── nixos.nix                # NixOS Home Manager entry point
-│   ├── macos.nix                # macOS Home Manager entry point
-│   ├── pkgs/                    # Custom packages
-│   └── modules/                 # Home Manager modules
-│       ├── git/                 # (shared)
-│       ├── sheldon/             # (shared)
-│       ├── nvim/                # (shared)
-│       ├── zsh/                 # (shared)
-│       ├── tmux/                # (shared)
-│       ├── ghostty/             # (shared)
-│       ├── uv/                  # (shared)
-│       ├── mise/                # (platform-specific config)
-│       ├── gcc/                 # (NixOS-only)
-│       ├── java/                # (NixOS-only)
-│       ├── gpg/                 # (NixOS-only)
-│       └── fcitx5/              # (NixOS-only)
-├── brew/                        # Homebrew Brewfiles (macOS)
-└── secrets/                     # sops-nix encrypted secrets
+├── flake.nix          # Unified flake (NixOS + nix-darwin)
+├── Makefile           # Build and setup targets
+├── hosts/             # System-level configuration per platform
+├── home/              # Home Manager configuration and modules
+├── brew/              # Homebrew Brewfiles (macOS)
+└── secrets/           # sops-nix encrypted secrets
 ```
 
 ## Setup
