@@ -10,5 +10,5 @@ jobs:
     steps:
       - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
-      - name: Build nix-darwin configuration (dry run)
-        run: nix build --dry-run .#darwinConfigurations.macos.system
+      - name: Build nix-darwin configuration
+        run: make macos-build

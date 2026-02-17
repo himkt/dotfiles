@@ -1,6 +1,9 @@
-.PHONY: macos-switch macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt nixos-switch nixos-update nixos-clean nixos-gc
+.PHONY: macos-build macos-switch macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt nixos-build nixos-switch nixos-update nixos-clean nixos-gc
 
 # macOS targets
+macos-build:
+	nix build .#darwinConfigurations.macos.system
+
 macos-switch:
 	darwin-rebuild switch --flake .#macos
 
@@ -17,6 +20,9 @@ macos-brew-himkt:
 	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile
 
 # NixOS targets
+nixos-build:
+	nix build .#nixosConfigurations.nixos.config.system.build.toplevel
+
 nixos-switch:
 	sudo nixos-rebuild switch --flake .#nixos
 
