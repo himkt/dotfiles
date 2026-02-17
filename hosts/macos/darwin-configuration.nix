@@ -16,6 +16,10 @@
     };
   };
 
+  users.users.himkt = {
+    home = "/Users/himkt";
+  };
+
   # Enable Touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
