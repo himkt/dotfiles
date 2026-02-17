@@ -19,6 +19,7 @@ in
     globalConfig = {
       tools = {
         "aqua:anthropics/claude-code" = "latest";
+        "core:node" = "latest";
       };
 
       settings = {
