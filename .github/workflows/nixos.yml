@@ -1,0 +1,14 @@
+name: NixOS build check
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+      - uses: DeterminateSystems/nix-installer-action@main
+      - name: Build NixOS configuration (dry run)
+        run: nix build --dry-run .#nixosConfigurations.nixos.config.system.build.toplevel
