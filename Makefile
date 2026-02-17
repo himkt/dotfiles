@@ -5,7 +5,7 @@ macos-build:
 	nix build .#darwinConfigurations.macos.system
 
 macos-switch:
-	darwin-rebuild switch --flake .#macos
+	sudo darwin-rebuild switch --flake .#macos
 
 macos-brew-install:
 	$(PWD)/brew/bin/setup.sh
@@ -26,10 +26,10 @@ macos-update:
 	nix flake update
 
 macos-clean:
-	nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system-profiles/darwin
+	sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system-profiles/darwin
 
 macos-gc:
-	nix-collect-garbage -d
+	sudo nix-collect-garbage -d
 
 # NixOS targets
 nixos-build:

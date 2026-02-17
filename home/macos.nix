@@ -1,5 +1,11 @@
 { config, pkgs, lib, inputs, ... }:
 
+let
+  himkt_pkgs = import ./pkgs {
+    inherit pkgs;
+  };
+in
+
 {
   imports = [
     # Shared modules (same 7 as NixOS)
@@ -30,6 +36,7 @@
     python3
     rustup
     tree
+    himkt_pkgs.pathfinder
   ];
 
   home.sessionVariables = {

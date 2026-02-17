@@ -25,6 +25,8 @@
   # Enable Touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   # Note: verify this value before first activation.
   # See https://daiderd.com/nix-darwin/manual/ for stateVersion documentation.
   system.stateVersion = 5;
