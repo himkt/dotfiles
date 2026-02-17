@@ -16,6 +16,8 @@
     };
   };
 
+  system.primaryUser = "himkt";
+
   users.users.himkt = {
     home = "/Users/himkt";
   };
