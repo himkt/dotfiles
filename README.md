@@ -26,7 +26,7 @@ dotfiles/
 
 ### macOS
 
-1. Install [Nix](https://nixos.org/download/) via the [Determinate Systems installer](https://github.com/DeterminateSystems/nix-installer)
+1. Install [Nix](https://nixos.org/download/)
 2. Clone this repository to `~/dotfiles`
 3. Apply the nix-darwin configuration:
    ```
