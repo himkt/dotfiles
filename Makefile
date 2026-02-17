@@ -1,4 +1,4 @@
-.PHONY: macos-build macos-switch macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt nixos-build nixos-switch nixos-update nixos-clean nixos-gc
+.PHONY: macos-build macos-switch macos-brew-install macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt nixos-build nixos-switch nixos-update nixos-clean nixos-gc
 
 # macOS targets
 macos-build:
@@ -6,6 +6,9 @@ macos-build:
 
 macos-switch:
 	darwin-rebuild switch --flake .#macos
+
+macos-brew-install:
+	$(PWD)/brew/bin/setup.sh
 
 macos-brew:
 	brew bundle --verbose --file=$(PWD)/brew/config.d/base/Brewfile

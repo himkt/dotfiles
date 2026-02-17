@@ -1,7 +1,3 @@
-[user]
-	email = himkt@klis.tsukuba.ac.jp
-	name = himkt
-
 [pull]
 	rebase = false
 
