@@ -97,11 +97,6 @@ if command -v brew > /dev/null; then
     export LDFLAGS="-L$(brew --prefix xz)/lib"
   fi
 
-  if [ -d "$HOMEBREW_ROOT/opt/openjdk" ]; then
-    export PATH="$HOMEBREW_ROOT/opt/openjdk/bin:$PATH"
-    export CPPFLAGS="$CPPFLAGS:-I$HOMEBREW_ROOT/opt/openjdk/include"
-  fi
-
   if [ -d "$HOMEBREW_ROOT/opt/libpq/bin" ]; then
     export PATH="$HOMEBREW_ROOT/opt/libpq/bin:$PATH"
   fi

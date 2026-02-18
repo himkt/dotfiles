@@ -1,5 +1,3 @@
 brew 'coreutils'
 brew 'gh'
 brew 'jq'
-
-cask 'corretto@17'

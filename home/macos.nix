@@ -16,6 +16,8 @@ in
     ./modules/git
     ./modules/uv
     ./modules/ghostty
+    ./modules/gcc
+    ./modules/java
     # macOS-specific modules
     ./modules/mise
   ];
