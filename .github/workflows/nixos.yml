@@ -1,4 +1,4 @@
-name: macOS nix-darwin build check
+name: NixOS build check
 on:
   push:
     branches:
@@ -6,9 +6,9 @@ on:
   pull_request:
 jobs:
   build:
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
-      - name: Build nix-darwin configuration
-        run: make macos-build
+      - name: Build NixOS configuration
+        run: make nixos-build

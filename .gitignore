@@ -1,21 +1,4 @@
 .*
 !.gitignore
-!.gitmodules
-!.amethyst
-!.bashrc
-!.zshrc
-!.vimrc
-!.tmux.conf
-!.osx.tmux.conf
-!.octaverc
-!.vim
-!.zsh
-!.keep
-
-*private*
-*secret*
-
-# https://github.com/himkt/omoide
-/bin/omoide
-# https://github.com/himkt/auto-release
-/bin/auto-release
+!.github/
+result

@@ -1,17 +1,67 @@
-## dotfiles
+# dotfiles
 
-[![macOS test](https://github.com/himkt/dotfiles/actions/workflows/macos.yml/badge.svg)](https://github.com/himkt/dotfiles/actions/workflows/macos.yml)
+[![macOS](https://img.shields.io/github/actions/workflow/status/himkt/dotfiles/macos.yml?label=macOS&logo=apple)](https://github.com/himkt/dotfiles/actions/workflows/macos.yml)
+[![NixOS](https://img.shields.io/github/actions/workflow/status/himkt/dotfiles/nixos.yml?label=NixOS&logo=nixos&logoColor=white)](https://github.com/himkt/dotfiles/actions/workflows/nixos.yml)
 
-## Installation
+Unified Nix-based configuration for macOS (nix-darwin) and NixOS.
+
+## Structure
 
 ```
-git clone git@github.com:himkt/dotfiles $HOME/dotfiles
-cd $HOME/dotfiles && make
+dotfiles/
+├── flake.nix          # Unified flake (NixOS + nix-darwin)
+├── Makefile           # Build and setup targets
+├── hosts/
+│   ├── nixos/         # NixOS system configuration
+│   └── macos/         # nix-darwin system configuration
+├── home/
+│   ├── nixos.nix      # NixOS Home Manager entry point
+│   ├── macos.nix      # macOS Home Manager entry point
+│   └── modules/       # Shared and platform-specific modules
+├── brew/              # Homebrew Brewfiles (macOS)
+└── secrets/           # sops-nix encrypted secrets
 ```
 
-### Homebrew/Linuxbrew
+## Setup
 
-If you don't have `brew`, you have to run `make brew` in advance.
+### macOS
 
-- `make brew-base`: install essential tools
-- `make brew-gui`: install GUI apps for macOS
+1. Install [Nix](https://nixos.org/download/)
+2. Clone this repository to `~/dotfiles`
+3. Apply the nix-darwin configuration:
+   ```
+   make macos-switch
+   ```
+4. Install Homebrew packages:
+   ```
+   make macos-brew
+   make macos-brew-gui
+   ```
+
+### NixOS
+
+1. Clone this repository to `~/dotfiles`
+2. Apply the NixOS configuration:
+   ```
+   make nixos-switch
+   ```
+
+## Makefile Targets
+
+| Target | Description |
+|--------|-------------|
+| `macos-build` | Build nix-darwin configuration (dry run) |
+| `macos-switch` | Apply nix-darwin + Home Manager configuration |
+| `macos-brew-install` | Install Homebrew |
+| `macos-brew` | Install base Homebrew packages |
+| `macos-brew-gui` | Install GUI Homebrew packages |
+| `macos-brew-optional` | Install optional Homebrew packages |
+| `macos-brew-himkt` | Install personal Homebrew packages |
+| `macos-update` | Update flake inputs |
+| `macos-clean` | Delete old macOS generations (keep last 7) |
+| `macos-gc` | Run Nix garbage collection |
+| `nixos-build` | Build NixOS configuration (dry run) |
+| `nixos-switch` | Apply NixOS + Home Manager configuration |
+| `nixos-update` | Update flake inputs |
+| `nixos-clean` | Delete old NixOS generations (keep last 7) |
+| `nixos-gc` | Run Nix garbage collection |

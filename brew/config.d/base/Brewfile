@@ -1,10 +1,3 @@
 brew 'coreutils'
-brew 'fzf'
 brew 'gh'
-brew 'git-lfs'
 brew 'jq'
-brew 'sheldon'
-brew 'tree'
-brew 'zoxide'
-
-cask 'corretto@17'
