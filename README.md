@@ -50,11 +50,17 @@ dotfiles/
 
 | Target | Description |
 |--------|-------------|
+| `macos-build` | Build nix-darwin configuration (dry run) |
 | `macos-switch` | Apply nix-darwin + Home Manager configuration |
+| `macos-brew-install` | Install Homebrew |
 | `macos-brew` | Install base Homebrew packages |
 | `macos-brew-gui` | Install GUI Homebrew packages |
 | `macos-brew-optional` | Install optional Homebrew packages |
 | `macos-brew-himkt` | Install personal Homebrew packages |
+| `macos-update` | Update flake inputs |
+| `macos-clean` | Delete old macOS generations (keep last 7) |
+| `macos-gc` | Run Nix garbage collection |
+| `nixos-build` | Build NixOS configuration (dry run) |
 | `nixos-switch` | Apply NixOS + Home Manager configuration |
 | `nixos-update` | Update flake inputs |
 | `nixos-clean` | Delete old NixOS generations (keep last 7) |
