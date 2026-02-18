@@ -25,6 +25,11 @@
   # Enable Touch ID for sudo
   security.pam.services.sudo_local.touchIdAuth = true;
 
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    noto-fonts-cjk-sans
+  ];
+
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Note: verify this value before first activation.

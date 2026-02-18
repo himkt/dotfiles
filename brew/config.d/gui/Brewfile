@@ -1,6 +1,5 @@
 cask 'claude-code'
 cask 'codex'
-cask 'font-jetbrains-mono'
 cask 'ghostty'
 cask 'google-chrome'
 cask 'netron'
