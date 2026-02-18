@@ -1,48 +1,43 @@
-.PHONY: macos-build macos-switch macos-brew-install macos-brew macos-brew-gui macos-brew-optional macos-brew-himkt macos-update macos-clean macos-gc nixos-build nixos-switch nixos-update nixos-clean nixos-gc
+UNAME := $(shell uname -s)
 
-# macOS targets
-macos-build:
-	nix build .#darwinConfigurations.macos.system
+ifeq ($(UNAME),Darwin)
+  NIX_BUILD_CMD := nix build .\#darwinConfigurations.macos.system
+  NIX_SWITCH_CMD := sudo darwin-rebuild switch --flake .\#macos
+else
+  NIX_BUILD_CMD := nix build .\#nixosConfigurations.nixos.config.system.build.toplevel
+  NIX_SWITCH_CMD := sudo nixos-rebuild switch --flake .\#nixos
+endif
 
-macos-switch:
-	sudo darwin-rebuild switch --flake .#macos
+.PHONY: build switch update clean gc brew-install brew brew-gui brew-optional brew-himkt
 
-macos-brew-install:
-	$(PWD)/brew/bin/setup.sh
+# Nix targets (platform-aware)
+build:
+	$(NIX_BUILD_CMD)
 
-macos-brew:
-	brew bundle --verbose --file=$(PWD)/brew/config.d/base/Brewfile
+switch:
+	$(NIX_SWITCH_CMD)
 
-macos-brew-gui:
-	brew bundle --verbose --file=$(PWD)/brew/config.d/gui/Brewfile
-
-macos-brew-optional:
-	brew bundle --verbose --file=$(PWD)/brew/config.d/optional/Brewfile
-
-macos-brew-himkt:
-	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile
-
-macos-update:
+update:
 	nix flake update
 
-macos-clean:
-	sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system-profiles/darwin
-
-macos-gc:
-	sudo nix-collect-garbage -d
-
-# NixOS targets
-nixos-build:
-	nix build .#nixosConfigurations.nixos.config.system.build.toplevel
-
-nixos-switch:
-	sudo nixos-rebuild switch --flake .#nixos
-
-nixos-update:
-	nix flake update
-
-nixos-clean:
+clean:
 	sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system
 
-nixos-gc:
+gc:
 	sudo nix-collect-garbage -d
+
+# Homebrew targets (macOS only)
+brew-install:
+	$(PWD)/brew/bin/setup.sh
+
+brew:
+	brew bundle --verbose --file=$(PWD)/brew/config.d/base/Brewfile
+
+brew-gui:
+	brew bundle --verbose --file=$(PWD)/brew/config.d/gui/Brewfile
+
+brew-optional:
+	brew bundle --verbose --file=$(PWD)/brew/config.d/optional/Brewfile
+
+brew-himkt:
+	brew bundle --verbose --file=$(PWD)/brew/config.d/himkt/Brewfile

@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Build nix-darwin configuration
-        run: make macos-build
+        run: make build

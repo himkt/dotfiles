@@ -11,4 +11,4 @@ jobs:
       - uses: actions/checkout@v6
       - uses: DeterminateSystems/nix-installer-action@main
       - name: Build NixOS configuration
-        run: make nixos-build
+        run: make build
