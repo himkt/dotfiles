@@ -9,11 +9,13 @@
           capslock = "leftcontrol";
         };
         control = {
-          q = "A-f4";
           left = "home";
           right = "end";
           up = "C-home";
           down = "C-end";
+        };
+        meta = {
+          q = "A-f4";
         };
       };
     };
