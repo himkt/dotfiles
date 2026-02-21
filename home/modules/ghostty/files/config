@@ -22,5 +22,6 @@ font-size    = 11
 font-feature = -calt, -liga, -dlig
 keybind = shift+enter=text:\n
 keybind = super+t=new_tab
+keybind = ctrl+enter=toggle_maximize
 
 clipboard-paste-protection = false
