@@ -2,25 +2,24 @@
   config,
   pkgs,
   lib,
+  inputs,
   ...
 }:
 
 let
-  claudeFiles = ./files;
+  src = ./files;
 in
 
 {
   home.file = {
-    # Top-level files
-    ".claude/CLAUDE.md".source = claudeFiles + "/CLAUDE.md";
-    ".claude/README.md".source = claudeFiles + "/README.md";
-    ".claude/settings.json".source = claudeFiles + "/settings.json";
-    ".claude/.mcp.json".source = claudeFiles + "/.mcp.json";
-
-    # Directories
-    ".claude/agents".source = claudeFiles + "/agents";
-    ".claude/bin".source = claudeFiles + "/bin";
-    ".claude/rules".source = claudeFiles + "/rules";
-    ".claude/skills".source = claudeFiles + "/skills";
+    ".claude/CLAUDE.md".source = src + "/CLAUDE.md";
+    ".claude/README.md".source = src + "/README.md";
+    ".claude/settings.json".source = src + "/settings.json";
+    ".claude/.mcp.json".source = src + "/.mcp.json";
+    ".claude/agents".source = src + "/agents";
+    ".claude/bin".source = src + "/bin";
+    ".claude/rules".source = src + "/rules";
+    ".claude/skills" = { source = src + "/skills"; recursive = true; };
+    ".claude/skills/slidev".source = inputs.slidev-src + "/skills/slidev";
   };
 }
