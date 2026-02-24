@@ -133,6 +133,7 @@ in
     XMODIFIERS = "@im=fcitx";
     GLFW_IM_MODULE = "ibus";
     ELECTRON_OZONE_PLATFORM_HINT = "auto";
+    PLAYWRIGHT_MCP_EXECUTABLE_PATH = "/etc/profiles/per-user/himkt/bin/google-chrome-stable";
   };
 
   dconf.settings = {
