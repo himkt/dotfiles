@@ -19,6 +19,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    slidev-src = {
+      url = "github:slidevjs/slidev";
+      flake = false;
+    };
   };
 
   outputs =

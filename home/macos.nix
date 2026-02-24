@@ -16,6 +16,7 @@ in
     ./modules/git
     ./modules/uv
     ./modules/ghostty
+    ./modules/claude-code
     ./modules/gcc
     ./modules/java
     # macOS-specific modules
