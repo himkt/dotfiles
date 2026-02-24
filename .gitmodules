@@ -1,0 +1,3 @@
+[submodule "home/modules/claude-code/files/vendor/slidev"]
+	path = home/modules/claude-code/files/vendor/slidev
+	url = git@github.com:slidevjs/slidev.git

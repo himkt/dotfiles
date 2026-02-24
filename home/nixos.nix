@@ -20,6 +20,7 @@ in
     ./modules/git
     ./modules/uv
     ./modules/ghostty
+    ./modules/claude-code
     # NixOS-only modules
     ./modules/gcc
     ./modules/java
