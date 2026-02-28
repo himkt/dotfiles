@@ -11,7 +11,9 @@
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
+      "Bash(gh api repos/*/*/pulls/*/comments)",
       "Bash(gh api repos/*/*/pulls/*/comments *)",
+      "Bash(gh api repos/*/*/pulls/*/reviews)",
       "Bash(gh api repos/*/*/pulls/*/reviews *)",
       "Bash(gh issue view *)",
       "Bash(gh pr view *)",
