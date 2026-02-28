@@ -11,7 +11,8 @@
   "permissions": {
     "allow": [
       "Read(~/.claude/skills/**)",
-      "Bash(gh api repos/*/*/pulls/*/comments)",
+      "Bash(gh api repos/*/*/pulls/*/comments *)",
+      "Bash(gh api repos/*/*/pulls/*/reviews *)",
       "Bash(gh issue view *)",
       "Bash(gh pr view *)",
       "Bash(gh pr diff *)",
@@ -28,6 +29,7 @@
       "Bash(git status)",
       "Bash(script -qf /dev/null -c 'npx @slidev/cli --open false */slide.md')",
       "Bash(tmux ls *)",
+      "Bash(uv sync *)",
       "Bash(uv run pytest *)",
       "Bash(uv run ruff check *)",
       "Bash(uv run ruff format *)",
