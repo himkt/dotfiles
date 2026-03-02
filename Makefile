@@ -8,7 +8,7 @@ else
   NIX_SWITCH_CMD := sudo nixos-rebuild switch --flake .\#nixos
 endif
 
-.PHONY: build switch update clean gc brew-install brew brew-gui brew-optional brew-himkt
+.PHONY: build switch update gc brew-install brew brew-gui brew-optional brew-himkt
 
 # Nix targets (platform-aware)
 build:
@@ -20,10 +20,8 @@ switch:
 update:
 	nix flake update
 
-clean:
-	sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system
-
 gc:
+	sudo nix-env --delete-generations +7 --profile /nix/var/nix/profiles/system
 	sudo nix-collect-garbage -d
 
 # Homebrew targets (macOS only)
